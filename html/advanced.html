@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+
+<html lang="en-US" dir="ltr">
+
+<head>
+
+    <title>CSS Advanced Guide</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Kevin Huang">
+    <meta name="description" content="A demonstration of advanced concepts and practices in CSS.">
+    <meta name="keywords" content="Animations, Canvas, CSS, Displays, Dropdown, Flexbox, Fonts, Grayscale, Grid,
+        HTML, Icons, JavaScript, Marquee, Material Symbols, Navigation Bar, Positioning, Responsive, Toggles">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <script src="https://kit.fontawesome.com/c9d939b58f.js" crossorigin="anonymous"></script>
+
+    <base href="../" target="_blank">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-advanced-apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-advanced-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-advanced-32x32.png">
+    <link rel="icon" type="image/x-icon" href="assets/favicon-advanced.ico">
+    <link rel="manifest" href="assets/advanced.webmanifest">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="javascript/scripts.js" defer></script>
+
+    <style data-title="*">
+        @import url(https://fonts.googleapis.com/css?family=Inconsolata);
+
+        @font-face {
+            font-family: Audiowide;
+            src: url(assets/audiowide-regular.ttf);
+        }
+
+        body {
+            background: #222;
+            font-family: Audiowide, Copperplate, fantasy;
+            font-size: var(--s2);
+            overflow: hidden;
+        }
+
+        .material-symbols-outlined {
+            color: teal;
+            cursor: pointer;
+            font-size: var(--x);
+            font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 200, 'opsz' 48;
+            user-select: none;
+        }
+
+        .material-symbols-outlined:hover {
+            color: peru;
+        }
+
+        .material-symbols-outlined:active {
+            font-variation-settings: 'FILL' 1;
+        }
+
+        :root {
+            --x: 45.89px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0;
+        }
+
+        [data-test] {
+            clear: none;
+            /* display: none !important; */
+        }
+
+        [id*="demo-"]>div,
+        #marquee {
+            /* animation-duration: 0s !important; */
+            clear: none;
+        }
+    </style>
+
+    <style data-title="nav">
+        nav {
+            display: block;
+        }
+
+        nav menu {
+            font-variant: small-caps;
+            left: calc(var(--x) + 1vw);
+            position: fixed;
+            text-align: center;
+            width: calc(100vw - var(--x) * 2 - 2vw);
+            z-index: 2;
+        }
+
+        nav menu>a,
+        nav menu .dropdown-container>a {
+            float: left;
+            overflow: hidden;
+            width: 25%;
+        }
+
+        nav menu a {
+            background: #666;
+            cursor: pointer;
+            font-family: Copperplate, fantasy;
+            font-size: var(--s3);
+            padding: 10px 0;
+            user-select: none;
+        }
+
+        nav menu a:hover {
+            background: #444 !important;
+            color: #ddd !important;
+        }
+
+        nav menu a:active {
+            background: #bbb !important;
+            color: #000 !important;
+        }
+
+        nav menu .current {
+            background: #000;
+            color: #bbb;
+        }
+
+        nav menu .dropdown-button {
+            cursor: default;
+        }
+
+        nav menu .dropdown-button:hover {
+            background: #444 !important;
+            color: #ddd !important;
+        }
+
+        nav menu .dropdown-container {
+            display: block;
+            position: relative;
+        }
+
+        nav menu .dropdown-container:hover .dropdown-content {
+            display: block !important;
+        }
+
+        nav menu .dropdown-content {
+            display: none;
+            min-width: 25%;
+            position: absolute;
+            right: 0;
+            top: var(--x);
+        }
+
+        nav menu .dropdown-content a {
+            border: 1px solid #ddd;
+            display: block;
+        }
+
+        nav menu .dropdown-content a:not(:first-child) {
+            border-top: none;
+        }
+    </style>
+
+    <style data-title="aside#left">
+        aside#left {
+            background: #000;
+            border-right: 0 dotted #fff;
+            box-sizing: content-box;
+            height: calc(100vh - var(--x) / 2);
+            left: 0;
+            overflow-y: scroll;
+            position: fixed;
+            width: calc(var(--x) + 1vw);
+            z-index: 1;
+        }
+
+        aside#left div#gutterLeft {
+            background: #000;
+            border-right: 0 dotted #fff;
+            box-sizing: content-box;
+            height: calc(var(--x) / 2);
+            left: 0;
+            position: fixed;
+            top: calc(100vh - var(--x) / 2);
+            width: calc(var(--x) + 1vw);
+        }
+
+        aside#left menu {
+            position: relative;
+        }
+
+        aside#left menu i {
+            left: 50%;
+            position: absolute;
+            transform: translateX(-50%);
+        }
+
+        aside#left menu i:nth-child(1) {
+            transform: scale(0.5) translateX(-100%);
+        }
+
+        aside#left menu i:nth-child(2) {
+            top: calc(var(--x) * 1 + 0vh);
+        }
+
+        aside#left menu i:nth-child(3) {
+            top: calc(var(--x) * 2 + 1vh);
+        }
+
+        aside#left menu i:nth-child(4) {
+            top: calc(var(--x) * 3 + 2vh);
+        }
+
+        aside#left menu i:nth-child(5) {
+            top: calc(var(--x) * 4 + 3vh);
+        }
+
+        aside#left menu i:nth-child(6) {
+            top: calc(var(--x) * 5 + 4vh);
+        }
+
+        aside#left menu i:nth-child(7) {
+            top: calc(var(--x) * 6 + 5vh);
+        }
+
+        aside#left menu i:nth-child(8) {
+            top: calc(var(--x) * 7 + 6vh);
+        }
+
+        aside#left menu i:nth-child(9) {
+            top: calc(var(--x) * 8 + 7vh);
+        }
+
+        aside#left menu i:nth-child(10) {
+            top: calc(var(--x) * 9 + 8vh);
+        }
+
+        aside#left menu i:nth-child(11) {
+            top: calc(var(--x) * 10 + 9vh);
+        }
+
+        aside#left menu i:nth-child(12) {
+            top: calc(var(--x) * 11 + 10vh);
+        }
+
+        aside#left menu i:nth-child(13) {
+            top: calc(var(--x) * 12 + 11vh);
+        }
+    </style>
+
+    <style data-title="aside#right">
+        aside#right {
+            background: #000;
+            border-left: 0 dotted #fff;
+            box-sizing: content-box;
+            height: calc(100vh - var(--x) / 2);
+            overflow-y: scroll;
+            position: fixed;
+            right: 0;
+            width: calc(var(--x) + 1vw);
+            z-index: 1;
+        }
+
+        aside#right div#gutterRight {
+            background: #000;
+            border-left: 0 dotted #fff;
+            box-sizing: content-box;
+            height: calc(var(--x) / 2);
+            position: fixed;
+            right: 0;
+            top: calc(100vh - var(--x) / 2);
+            width: calc(var(--x) + 1vw);
+        }
+
+        aside#right menu {
+            position: relative;
+        }
+
+        aside#right menu i {
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        aside#right menu i:nth-child(1) {
+            transform: scale(0.5) translateX(100%);
+        }
+
+        aside#right menu i:nth-child(2) {
+            top: calc(var(--x) * 1 + 0vh);
+        }
+
+        aside#right menu i:nth-child(3) {
+            top: calc(var(--x) * 2 + 1vh);
+        }
+
+        aside#right menu i:nth-child(4) {
+            top: calc(var(--x) * 3 + 2vh);
+        }
+
+        aside#right menu i:nth-child(5) {
+            top: calc(var(--x) * 4 + 3vh);
+        }
+
+        aside#right menu i:nth-child(6) {
+            top: calc(var(--x) * 5 + 4vh);
+        }
+
+        aside#right menu i:nth-child(7) {
+            top: calc(var(--x) * 6 + 5vh);
+        }
+
+        aside#right menu i:nth-child(8) {
+            top: calc(var(--x) * 7 + 6vh);
+        }
+
+        aside#right menu i:nth-child(9) {
+            top: calc(var(--x) * 8 + 7vh);
+        }
+
+        aside#right menu i:nth-child(10) {
+            top: calc(var(--x) * 9 + 8vh);
+        }
+
+        aside#right menu i:nth-child(11) {
+            top: calc(var(--x) * 10 + 9vh);
+        }
+
+        aside#right menu i:nth-child(12) {
+            top: calc(var(--x) * 11 + 10vh);
+        }
+
+        aside#right menu i:nth-child(13) {
+            top: calc(var(--x) * 12 + 11vh);
+        }
+    </style>
+
+    <style data-title="main#main">
+        main#main canvas {
+            animation: opacity2 11s;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            height: calc(100vh - (var(--x) * 1.5) * 2);
+            left: 50%;
+            min-height: 50vh;
+            min-width: 50vw;
+            opacity: 1;
+            position: absolute;
+            top: calc(50% + var(--x) / 4);
+            transform: translate(-50%, -50%);
+            width: calc(100vw - ((var(--x) + 1vw) * 2) * 2);
+        }
+
+        main#main div#welcome {
+            animation: opacity1 10s;
+            left: 50%;
+            letter-spacing: 0.5rem;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            width: 100%;
+        }
+
+        main#main div#welcome h1 {
+            animation-duration: 5s;
+            animation-iteration-count: 1;
+            animation-name: morph;
+            animation-timing-function: ease;
+            background: #222;
+            color: #ddd;
+            font-size: var(--s5);
+            font-weight: bolder;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        main#main div#welcome h2 {
+            color: slateblue;
+            font-size: var(--s3);
+        }
+    </style>
+
+    <style data-title="main#main div#demos">
+        main#main div#demos {
+            animation: opacity2 11s;
+            border: 1px solid red;
+            height: calc(100vh - var(--x) * 1.5);
+            margin: auto;
+            position: relative;
+            top: var(--x);
+            width: calc(100% - var(--x) * 2 - 2vw);
+        }
+
+        main#main div#demos article {
+            display: none;
+        }
+
+        main#main div#demos article>h3 {
+            animation: fadeInOut 4s;
+            animation-timing-function: ease-in-out;
+            color: #ddd;
+            font-size: var(--s4);
+            font-weight: bolder;
+            left: 50%;
+            letter-spacing: 0.5rem;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            width: 100%;
+        }
+
+        main#main div#demos article div {
+            animation: fadeInLong 10s;
+            animation-timing-function: ease-in-out;
+            color: #ddd;
+            left: 50%;
+            opacity: 1;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        main#main div#demos article#demo-01 {
+            animation: fadeIn 1s;
+            animation-timing-function: ease-in-out;
+            background: linear-gradient(to bottom right, #036 0%, #933 100%);
+            height: 100%;
+            width: 100%;
+        }
+
+        main#main div#demos article#demo-01 :last-child {
+            border: 1px solid transparent;
+            border-image-outset: 2rem;
+            border-image-repeat: round;
+            border-image-slice: 100;
+            border-image-source: url(assets/colors.bmp);
+            border-image-width: 1rem;
+            font-size: 10rem;
+            z-index: 1;
+        }
+
+        main#main div#demos article#demo-02 :last-child {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-03 :last-child {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-04 :last-child {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-05 :last-child {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-06 :last-child {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-07 :last-child {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-08 :last-child {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-09 :last-child {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-10 :last-child {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-11 :last-child {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-12 :last-child {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+    </style>
+
+    <style data-title="main#flexbox">
+        main#flexbox {
+            border: 1px solid green;
+            height: calc(100vh - var(--x) * 1.5);
+            margin: auto;
+            position: relative;
+            top: var(--x);
+            width: calc(100% - var(--x) * 2 - 2vw);
+        }
+
+        main#flexbox div h3 {
+            animation: fadeInOut 4s;
+            animation-timing-function: ease-in-out;
+            color: #ddd;
+            font-size: var(--s4);
+            font-weight: bolder;
+            left: 50%;
+            letter-spacing: 0.5rem;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            width: 100%;
+        }
+    </style>
+
+    <style data-title="main#grid">
+        main#grid {
+            border: 1px solid blue;
+            height: calc(100vh - var(--x) * 1.5);
+            margin: auto;
+            position: relative;
+            top: var(--x);
+            width: calc(100% - var(--x) * 2 - 2vw);
+        }
+
+        main#grid div h3 {
+            animation: fadeInOut 4s;
+            animation-timing-function: ease-in-out;
+            color: #ddd;
+            font-size: var(--s4);
+            font-weight: bolder;
+            left: 50%;
+            letter-spacing: 0.5rem;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            width: 100%;
+        }
+    </style>
+
+    <style data-title="footer">
+        footer {
+            display: block;
+        }
+
+        footer section {
+            background: #000;
+            bottom: 0;
+            color: #ddd;
+            height: calc(var(--x) / 2);
+            left: calc(var(--x) + 1vw);
+            position: fixed;
+            width: calc(100vw - var(--x) * 2 - 2vw);
+        }
+
+        footer section output {
+            animation: opacity2 11s, marquee 86400s linear infinite;
+            font-family: Inconsolata, 'Courier New', monospace;
+            font-size: var(--s2);
+            opacity: 1;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            user-select: none;
+            word-wrap: break-word;
+        }
+    </style>
+
+    <style data-title="@keyframes">
+        @keyframes fadeInLong {
+
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            70% {
+                opacity: 1;
+            }
+
+        }
+
+        @keyframes fadeIn {
+
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+        }
+
+        @keyframes fadeInOut {
+
+            0% {
+                opacity: 0;
+            }
+
+            25% {
+                opacity: 1;
+            }
+
+            75% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+        @keyframes marquee {
+
+            100% {
+                transform: translateX(-100%);
+            }
+
+        }
+
+        @keyframes morph {
+
+            0% {
+                margin-bottom: -35px;
+            }
+
+            20% {
+                letter-spacing: 0.5rem;
+            }
+
+            40% {
+                letter-spacing: 2rem;
+            }
+
+            80% {
+                letter-spacing: 0.5rem;
+                margin-bottom: -35px;
+            }
+
+            100% {
+                margin-bottom: 10px;
+            }
+
+        }
+
+        @keyframes opacity1 {
+
+            0% {
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+        @keyframes opacity2 {
+
+            0% {
+                opacity: 0;
+            }
+
+            80% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+        }
+    </style>
+
+    <style data-title="@media">
+        @media screen and (max-width:1000px) {
+
+            main#main div#welcome h1 {
+                font-size: var(--s4) !important;
+            }
+
+            main#main div#welcome h2 {
+                font-size: var(--s3) !important;
+            }
+
+        }
+
+        @media screen and (max-width:750px) {
+
+            main#main div#welcome h1 {
+                font-size: var(--s3) !important;
+            }
+
+            main#main div#welcome h2 {
+                font-size: var(--s2) !important;
+            }
+
+        }
+
+        @media screen and (max-width:600px) {
+
+            main#main canvas {
+                animation-duration: 2s !important;
+            }
+
+            main#main div#welcome h1,
+            main#main div#welcome h2 {
+                display: none !important;
+            }
+
+        }
+
+        @media screen and (max-width:500px) {
+
+            aside#left,
+            aside#right,
+            footer,
+            main#main canvas,
+            main#main div#welcome {
+                display: none !important;
+            }
+
+            footer section,
+            nav menu {
+                left: 0 !important;
+                width: 100% !important;
+            }
+
+            main h3 {
+                font-size: var(--s3) !important;
+            }
+
+            main#main div#demos {
+                animation-duration: 0s !important;
+                border: 1px solid red !important;
+                height: calc(100vh - var(--s3) * 3) !important;
+                top: calc(var(--s3) * 3) !important;
+                width: 100vw !important;
+            }
+
+            main#flexbox,
+            main#grid {
+                height: calc(100vh - var(--s3) * 3) !important;
+                top: calc(var(--s3) * 3) !important;
+                width: 100vw !important;
+            }
+
+            nav {
+                display: block !important;
+            }
+
+            nav menu>a,
+            nav menu .dropdown-container>a {
+                padding: 0 !important;
+                width: 100% !important;
+            }
+
+            nav menu .dropdown-container {
+                display: none !important;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <audio controls muted loop autoplay hidden>
+            <source src="assets/midnight.mp3" type="audio/mpeg">
+            Your browser does not support audio.
+        </audio>
+
+    </header>
+
+    <nav>
+
+        <menu>
+
+            <a id="buttonMain" class="current" onclick="navMain()">Main</a>
+            <a id="buttonFlexbox" onclick="navFlexbox()">Flexbox</a>
+            <a id="buttonGrid" onclick="navGrid()">Grid</a>
+
+            <div class="dropdown-container">
+                <a class="dropdown-button">Docs</a>
+                <div class="dropdown-content">
+                    <a href="https://getbootstrap.com/docs/5.2">Bootstrap 5</a>
+                    <a href="https://css-tricks.com">CSS-Tricks</a>
+                    <a href="https://javascript.info">JSInfo</a>
+                    <a href="https://developer.mozilla.org">MDN</a>
+                    <a href="https://google.github.io/styleguide">Style Guide</a>
+                    <a href="https://w3schools.com">W3Schools</a>
+                </div>
+            </div>
+
+        </menu>
+
+    </nav>
+
+    <aside id="left">
+
+        <menu>
+
+            <i class="material-symbols-outlined" title="Website Info"
+                onclick="window.alert('Revision - Nov 25, 2022\n&copy; 2022-2023 Kevin Huang')">copyright</i>
+
+            <i class="material-symbols-outlined" title="Toggle Navbar" onclick="toggleNav()">menu_open</i>
+            <i class="material-symbols-outlined" title="Palette Maker"
+                onclick="window.open('https:palettemaker.com')">colorize</i>
+            <i class="material-symbols-outlined" title="Unsplash"
+                onclick="window.open('https:unsplash.com')">photo_library</i>
+            <i class="material-symbols-outlined" title="Pixlr Editor"
+                onclick="window.open('https:pixlr.com/e')">edit</i>
+            <i class="material-symbols-outlined" title="Google Fonts"
+                onclick="window.open('https:fonts.google.com')">font_download</i>
+            <i class="material-symbols-outlined" title="Material Symbols"
+                onclick="window.open('https:fonts.google.com/icons')">cloud_download</i>
+            <i class="material-symbols-outlined" title="Font Awesome"
+                onclick="window.open('https:fontawesome.com')">download</i>
+            <i class="material-symbols-outlined" title="Favicon Generator"
+                onclick="window.open('https:favicon.io')">dataset</i>
+            <i class="material-symbols-outlined" title="Validators"
+                onclick="window.open('https:w3c.github.io/developers/tools')">check_box</i>
+            <i class="material-symbols-outlined" title="Replit" onclick="window.open('https:repl.it')">draft</i>
+            <i class="material-symbols-outlined" title="&lt;placeholder&gt;"
+                onclick="window.open('https:')">bookmark</i>
+            <i class="material-symbols-outlined" title="&lt;placeholder&gt;"
+                onclick="window.open('https:')">bookmark</i>
+
+        </menu>
+
+        <div id="gutterLeft"></div>
+
+    </aside>
+
+    <aside id="right">
+
+        <menu>
+
+            <i class="material-symbols-outlined" title="Mute / Unmute" onclick="toggleSound()">volume_off</i>
+
+            <i class="material-symbols-outlined" title="Demo 01" onclick="toggleDemo('01')">add_circle</i>
+            <i class="material-symbols-outlined" title="Demo 02" onclick="toggleDemo('02')">add_circle</i>
+            <i class="material-symbols-outlined" title="Demo 03" onclick="toggleDemo('03')">add_circle</i>
+            <i class="material-symbols-outlined" title="Demo 04" onclick="toggleDemo('04')">add_circle</i>
+            <i class="material-symbols-outlined" title="Demo 05" onclick="toggleDemo('05')">add_circle</i>
+            <i class="material-symbols-outlined" title="Demo 06" onclick="toggleDemo('06')">add_circle</i>
+            <i class="material-symbols-outlined" title="Demo 07" onclick="toggleDemo('07')">add_circle</i>
+            <i class="material-symbols-outlined" title="Demo 08" onclick="toggleDemo('08')">add_circle</i>
+            <i class="material-symbols-outlined" title="Demo 09" onclick="toggleDemo('09')">add_circle</i>
+            <i class="material-symbols-outlined" title="Demo 10" onclick="toggleDemo('10')">add_circle</i>
+            <i class="material-symbols-outlined" title="Demo 11" onclick="toggleDemo('11')">add_circle</i>
+            <i class="material-symbols-outlined" title="Demo 12" onclick="toggleDemo('12')">add_circle</i>
+
+        </menu>
+
+        <div id="gutterRight"></div>
+
+    </aside>
+
+    <main id="main">
+
+        <div data-test id="welcome">
+
+            <h1>Welcome To</h1>
+            <h2>Austin Coding Alliance</h2>
+
+        </div>
+
+        <canvas data-test data-type="dynamic">Your browser does not support Canvas.</canvas>
+
+        <div id="demos">
+
+            <article id="demo-01">
+
+                <h3 data-test>Demo 01</h3>
+
+                <div class="fa-solid fa-road-barrier"></div>
+
+            </article>
+
+            <article id="demo-02">
+
+                <h3 data-test>Demo 02</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-03">
+
+                <h3 data-test>Demo 03</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-04">
+
+                <h3 data-test>Demo 04</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-05">
+
+                <h3 data-test>Demo 05</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-06">
+
+                <h3 data-test>Demo 06</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-07">
+
+                <h3 data-test>Demo 07</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-08">
+
+                <h3 data-test>Demo 08</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-09">
+
+                <h3 data-test>Demo 09</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-10">
+
+                <h3 data-test>Demo 10</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-11">
+
+                <h3 data-test>Demo 11</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-12">
+
+                <h3 data-test>Demo 12</h3>
+
+                <div></div>
+
+            </article>
+
+        </div>
+
+    </main>
+
+    <main id="flexbox" style="display:none;">
+
+        <div>
+
+            <h3 data-test>Flexbox</h3>
+
+        </div>
+
+    </main>
+
+    <main id="grid" style="display:none;">
+
+        <div>
+
+            <h3 data-test>Grid</h3>
+
+        </div>
+
+    </main>
+
+    <footer>
+
+        <section>
+
+            <output id="marquee" data-type="dynamic"></output>
+
+        </section>
+
+    </footer>
+
+    <script data-title="header">
+        const audio = document.querySelector('audio');
+        const mute = document.querySelector('[title*="mute"]');
+
+        function toggleSound() {
+            if (audio.muted) {
+                audio.muted = false;
+                audio.play();
+                mute.innerHTML = 'volume_up';
+            } else {
+                audio.muted = true;
+                mute.innerHTML = 'volume_off';
+            }
+        }
+
+        addEventListener('visibilitychange', () => {
+            switch (document.visibilityState) {
+                case 'hidden':
+                    audio.pause();
+                    break;
+                case 'visible':
+                    audio.play();
+                    break;
+            }
+        })
+    </script>
+
+    <script data-title="nav">
+        const buttonFlexbox = document.getElementById('buttonFlexbox');
+        const buttonGrid = document.getElementById('buttonGrid');
+        const buttonMain = document.getElementById('buttonMain');
+        const pageFlexbox = document.getElementById('flexbox');
+        const pageGrid = document.getElementById('grid');
+        const pageMain = document.getElementById('main');
+
+        function navFlexbox() {
+            buttonFlexbox.style.backgroundColor = '#000';
+            buttonFlexbox.style.color = '#bbb';
+            pageFlexbox.style.display = 'block';
+            buttonGrid.style.backgroundColor = '#666';
+            buttonGrid.style.color = '#000';
+            pageGrid.style.display = 'none';
+            buttonMain.style.backgroundColor = '#666';
+            buttonMain.style.color = '#000';
+            pageMain.style.display = 'none';
+        }
+
+        function navGrid() {
+            buttonFlexbox.style.backgroundColor = '#666';
+            buttonFlexbox.style.color = '#000';
+            pageFlexbox.style.display = 'none';
+            buttonGrid.style.backgroundColor = '#000';
+            buttonGrid.style.color = '#bbb';
+            pageGrid.style.display = 'block';
+            buttonMain.style.backgroundColor = '#666';
+            buttonMain.style.color = '#000';
+            pageMain.style.display = 'none';
+        }
+
+        function navMain() {
+            buttonFlexbox.style.backgroundColor = '#666';
+            buttonFlexbox.style.color = '#000';
+            pageFlexbox.style.display = 'none';
+            buttonGrid.style.backgroundColor = '#666';
+            buttonGrid.style.color = '#000';
+            pageGrid.style.display = 'none';
+            buttonMain.style.backgroundColor = '#000';
+            buttonMain.style.color = '#bbb';
+            pageMain.style.display = 'block';
+        }
+    </script>
+
+    <script data-title="aside#left">
+        const demos = document.getElementById('demos');
+        const footer = document.querySelector('footer');
+        const gutterLeft = document.getElementById('gutterLeft');
+        const gutterRight = document.getElementById('gutterRight');
+        const left = document.getElementById('left');
+        const nav = document.querySelector('nav');
+        const right = document.getElementById('right');
+
+        function toggleNav() {
+            if (footer.style.display == 'none') {
+                demos.style.borderWidth = '1px';
+                footer.style.display = 'block';
+                gutterLeft.style.borderWidth = '0';
+                gutterRight.style.borderWidth = '0';
+                left.style.borderWidth = '0';
+                nav.style.display = 'block';
+                pageFlexbox.style.borderWidth = '1px';
+                pageGrid.style.borderWidth = '1px';
+                right.style.borderWidth = '0';
+            } else {
+                demos.style.borderWidth = '0';
+                footer.style.display = 'none';
+                gutterLeft.style.borderWidth = '1px';
+                gutterRight.style.borderWidth = '1px';
+                left.style.borderWidth = '1px';
+                nav.style.display = 'none';
+                pageFlexbox.style.borderWidth = '0';
+                pageGrid.style.borderWidth = '0';
+                right.style.borderWidth = '1px';
+            }
+        }
+    </script>
+
+    <script data-title="aside#right">
+        const demoList = document.querySelectorAll('[id*="demo-"]');
+        const welcome = document.getElementById('welcome');
+
+        function toggleDemo(id) {
+            canvas.style.display = 'none';
+            demos.style.animationDuration = '0s';
+            welcome.style.display = 'none';
+
+            for (let i = 0; i < demoList.length; i++) {
+                demoList[i].style.display = 'none';
+            }
+
+            demoList[parseInt(id) - 1].style.display = 'block';
+        }
+    </script>
+
+    <script data-title="main#main">
+        const canvas = document.querySelector('canvas');
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+
+        const c = canvas.getContext('2d');
+        c.strokeStyle = '#666';
+
+        for (let i = 0; i < 2000; i++) {
+            let x = Math.random() * canvas.width;
+            let y = Math.random() * canvas.height;
+            let r = Math.random() * 10;
+            let s = Math.random() * Math.PI * 2;
+            c.beginPath();
+            c.arc(x, y, r, s, Math.PI * 2, false);
+            c.stroke();
+        }
+    </script>
+
+    <script data-title="footer">
+        const output = document.querySelector('output');
+        let text = '';
+
+        for (let i = 1; i <= 86400; i++) {
+            text += Math.round(Math.random());
+        }
+
+        output.innerHTML = text;
+    </script>
+
+    <noscript>Your browser does not support scripts.</noscript>
+
+</body>
+
+</html>

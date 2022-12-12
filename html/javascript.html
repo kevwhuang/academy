@@ -1,0 +1,226 @@
+<body>
+</body>
+
+<script data-title="Globals" type="text/javascript">
+    const C = console.table.bind(console);
+    const c = console.log.bind(console);
+    const hr = (x) => console.log(`%c>>>>> ${x} <<<<<`, 'color:crimson; font-size:1pc;');
+</script>
+
+<script data-title="Number Methods" type="text/javascript">
+    hr('number methods');
+    const N = 1_234_567_890;
+    var T = [];
+
+    T.push({ method: '.toString()', return: N.toString() });
+    T.push({ method: '.toExponential()', return: N.toExponential() });
+    T.push({ method: '.toFixed()', return: N.toFixed(5) });
+    T.push({ method: '.toPrecision()', return: N.toPrecision(20) });
+    T.push({ method: '.valueOf()', return: (123.40).valueOf() });
+    T.push({ method: 'Number()', return: Number(true) });
+    T.push({ method: 'Number()', return: Number(' 0 ') });
+    T.push({ method: 'Number()', return: Number(' a ') });
+    T.push({ method: 'parseFloat()', return: parseFloat(1.2) });
+    T.push({ method: 'parseInt()', return: parseInt(1.2) });
+    T.push({ method: 'parseInt()', return: parseInt(' 0a ') });
+    T.push({ method: 'parseInt()', return: parseInt(' a0 ') });
+
+    C(T);
+</script>
+
+<script data-title="String Methods" type="text/javascript">
+    hr('string methods');
+    const S = 'abcdefgAbc';
+    const S0 = ' abc ';
+    var T = [];
+
+    T.push({ method: '.length', return: S.length });
+    T.push({ method: '.slice()', return: S.slice(2, -2) });
+    T.push({ method: '.substring()', return: S.substring(-99, 99) });
+    T.push({ method: '.substr()', return: S.substr(-2, 2) });
+    T.push({ method: '.replace()', return: S.replace('abc', '-') });
+    T.push({ method: '.replace()', return: S.replace(/abc/ig, '-') });
+    T.push({ method: '.replaceAll()', return: S.replaceAll('c', '-') });
+    T.push({ method: '.toUpperCase()', return: S.toUpperCase() });
+    T.push({ method: '.toLowerCase()', return: S.toLowerCase() });
+    T.push({ method: '.concat()', return: S.concat('d') });
+    T.push({ method: '.trim()', return: S0.trim() });
+    T.push({ method: '.trimStart()', return: S0.trimStart() });
+    T.push({ method: '.trimEnd()', return: S0.trimEnd() });
+    T.push({ method: '.padStart()', return: S0.padStart(10, '-') });
+    T.push({ method: '.padEnd()', return: S0.padEnd(10, '-') });
+    T.push({ method: '.charAt()', return: S0.charAt(1) });
+    T.push({ method: '.charCodeAt()', return: S0.charCodeAt(1) });
+    T.push({ method: '[]', return: S0[-1] });
+    T.push({ method: 'split()', return: '' + S0.split('') });
+    T.push({ method: 'split()', return: '' + S0.split('b') });
+
+    C(T);
+</script>
+
+<script data-title="Array Methods" type="text/javascript">
+    hr('array methods');
+    let A = new Array(3);
+    A[0] = 'b', A[1] = 'c', A[2] = 'd';
+    A = ['a', ...A, 'e',];
+
+    c('.toString()\t', A.toString(), '\t', A);
+    c('.join()\t', A.join('-'), '\t', A);
+    c('.concat()\t', A.concat('g'), '\t', A);
+    c('.slice()\t', A.slice(2, 4), '\t', A);
+    c('.splice()\t', A.splice(5, 3, 'f'), '\t', A);
+    c('.reverse()\t', A.reverse(), '\t', A);
+    c('.pop()\t', A.pop(), '\t', A);
+    c('.push()\t', A.push('f'), '\t', A);
+    c('.shift()\t', A.shift(), '\t', A);
+    c('.unshift()\t', A.unshift('a'), '\t', A);
+    c('.includes()\t', A.includes('b', 1), '\t', A);
+    c('.indexOf()\t', A.indexOf('f', 0), '\t', A);
+    c('.lastIndexOf()\t', A.lastIndexOf('f', -2), '\t', A);
+    c('.find()\t', A.find(e => e > 'c'), '\t', A);
+    c('.some()\t', A.some(e => e === 'c'), '\t', A);
+    c('.every()\t', A.every(e => e < 'g'), '\t', A);
+    c('.map()\t', A.map(e => e + e), '\t', A);
+    c('.reduce()\t', A.reduce((s, e) => s + e, 'x'), '\t', A);
+    c('.reduceRight()\t', A.reduceRight((s, e) => s + e), '\t', A);
+    c('.sort()\t', A.sort((a, b) => (a < b ? -1 : 1)), '\t', A);
+    c('.forEach()\t', A.forEach((e, i, a) => { console.log('\t\t', e, i, a) }), '\t', A);
+    c('.flat()\t', [1, 2, [[[[[3]]]]]].flat(5));
+    c('Array.isArray()\t', Array.isArray(A));
+</script>
+
+<script data-title="Array Filter" type="text/javascript">
+    hr('array filter');
+    const data = [{
+        title: 'A',
+        status: false
+    }, {
+        title: 'B',
+        status: true
+    }, {
+        title: 'C',
+        status: false
+    }, {
+        title: 'D',
+        status: true
+    }];
+
+    C(data.filter(e => e.status == true));
+</script>
+
+<script data-title="Object Methods" type="text/javascript">
+    hr('object methods');
+
+    let functions = new Object();
+    functions = {
+        f: function () {
+            return this.prop2;
+        },
+        prop1: 'one'
+    };
+    functions.prop2 = 'two';
+    functions = Object.assign({ 'a key': '' }, functions);
+
+    const functions_dup = functions;
+    const functionsClone = Object.create(functions);
+    functionsClone.prop2 = 'three';
+
+    c(functionsClone.f());
+    c('Object.entries()\t', Object.entries(functions));
+    c('Object.keys()\t', Object.keys(functions));
+    c('Object.values()\t', Object.values(functions));
+    c('Object.is()\t', Object.is(functions, functions_dup));
+</script>
+
+<script data-title="Arrow Functions" type="text/javascript">
+    hr('arrow functions');
+
+    function f1(x = 'output') {
+        return 'input: ' + x;
+    }
+
+    var f2 = function (x) {
+        return 'input: ' + x;
+    }
+
+    let f3 = (x) => {
+        return 'input: ' + `${x}`;
+    }
+
+    const f4 = (x) => `input: ${x}`;
+
+    console.log(f1());
+    console.log(f2('output'));
+    console.log(f3('output'));
+    console.log(f4('output'));
+</script>
+
+<script data-title="Loops" type="text/javascript">
+    hr('loops');
+    const array = [true, false, true];
+    const objectLiteral = { key_1: 1, key_2: 2, key_3: 3 };
+    let total = 0;
+
+    const { key_3, key_2 } = objectLiteral;
+    c(`destructure: ${key_2} & ${key_3}`);
+
+    for (let index = 20; index >= 0; index -= 3) {
+        console.table('index:', index);
+    }
+
+    for (let k of array) {
+        console.table('array search:', k);
+    }
+
+    for (let k in objectLiteral) {
+        console.table(k + ': ' + objectLiteral[k]);
+    }
+
+    do {
+        console.table('unary descending:', --total);
+    } while (total >= -5);
+
+    while (total < 0) {
+        ++total;
+        document.write('<h1>' + total + '</h1>');
+        console.table('unary ascending:', total);
+    }
+</script>
+
+<script data-title="Constructors" type="text/javascript">
+    hr('constructors');
+
+    function Construct(item_1, item_2) {
+        this.item_1 = item_1;
+        this.item_2 = item_2;
+    }
+    Construct.prototype.summary = function () {
+        return `${this.item_1} & ${this.item_2}`;
+    }
+    Construct.prototype.elapsed = function () {
+        this.elapsed = new Date().getFullYear() - 2020;
+    }
+
+    class ConstructDeeper extends Construct {
+        constructor(item_1, item_2, item_3) {
+            super(item_1, item_2);
+            this.item_3 = item_3;
+        }
+        print() {
+            return 'Printed';
+        }
+        static global() {
+            return 'Static';
+        }
+    }
+
+    const construct_1 = new Construct('Thing A', 'Thing B', 'Thing C');
+    construct_1.elapsed();
+    c(construct_1);
+
+    const construct_2 = new ConstructDeeper('Thing A', 'Thing B', 'Thing C');
+    c(construct_2);
+    c(construct_2.print());
+    c(construct_2.summary());
+    c(ConstructDeeper.global());
+</script>
