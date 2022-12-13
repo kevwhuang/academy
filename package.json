@@ -1,10 +1,11 @@
 {
   "name": "academy",
-  "version": "1.0.0",
+  "version": "22.12.12",
   "description": "Austin Coding Academy",
   "main": "app.js",
   "scripts": {
     "lint": "eslint .",
+    "start": "node app",
     "test": "mocha --no-timeouts"
   },
   "repository": {
@@ -12,7 +13,7 @@
     "url": "https://github.com/kevwhuang/academy.git"
   },
   "author": "Kevin Huang",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/kevwhuang/academy/issues"
   },
