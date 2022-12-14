@@ -16,6 +16,7 @@
     <style>
         body {
             background: #000;
+            height: 100vh;
             overflow: hidden;
         }
 
@@ -34,11 +35,26 @@
 
 <body>
 
-    <button onclick="document.location='html/sass.html'">Sass</button>
-    <button onclick="document.location='html/bootstrap.html'">Bootstrap</button>
-    <button onclick="document.location='html/html.html'">HTML</button>
-    <button onclick="document.location='html/css.html'">CSS</button>
-    <button onclick="document.location='html/advanced.html'">Advanced</button>
+    <script>
+        const labels = ['Sass', 'Bootstrap', 'HTML', 'CSS', 'Advanced'];
+
+        for (e of labels) {
+            const button = document.createElement('button');
+            const link = `html/${e.toLowerCase()}.html`;
+            button.innerText = e;
+            button.addEventListener('click', () => document.location = link);
+            document.body.appendChild(button);
+        }
+
+        document.body.addEventListener('mousemove', e => {
+            const r = e.clientX / 5;
+            const g = e.clientY / 5;
+            const b = (r + g) / 2;
+            document.body.style.backgroundColor = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        });
+    </script>
+
+    <noscript>Your browser does not support scripts.</noscript>
 
 </body>
 
