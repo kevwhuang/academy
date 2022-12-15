@@ -62,6 +62,10 @@
             font-variation-settings: 'FILL' 1;
         }
 
+        :focus {
+            outline: none;
+        }
+
         :root {
             --x: 45.89px;
         }
@@ -79,6 +83,54 @@
         #marquee {
             /* animation-duration: 0s !important; */
             clear: none;
+        }
+    </style>
+
+    <style data-title="elements">
+        input[type="submit"] {
+            background: #666;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 5vmin;
+            height: 100%;
+            letter-spacing: 0.5pc;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background: #444;
+            color: #ddd;
+        }
+
+        input[type="submit"]:active {
+            background: #bbb;
+            color: #000;
+        }
+
+        textarea {
+            background-color: #000;
+            border: 1px solid blue;
+            border-radius: 5px;
+            color: #ddd;
+            display: block;
+            font-family: Verdana, sans-serif;
+            font-size: var(--s2);
+            height: 95%;
+            left: 50%;
+            padding: 10px;
+            position: relative;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 95%;
+        }
+
+        textarea:focus {
+            border-color: green;
+        }
+
+        textarea::selection {
+            background: #666;
+            color: #000;
         }
     </style>
 
@@ -399,6 +451,8 @@
 
         main#main div#demos article {
             display: none;
+            height: 100%;
+            width: 100%;
         }
 
         main#main div#demos article>h3 {
@@ -419,7 +473,7 @@
             width: 100%;
         }
 
-        main#main div#demos article div {
+        main#main div#demos article>div {
             animation: fadeInLong 10s;
             animation-timing-function: ease-in-out;
             color: #ddd;
@@ -428,15 +482,12 @@
             position: absolute;
             top: 50%;
             transform: translate(-50%, -50%);
-            z-index: -1;
         }
 
         main#main div#demos article#demo-01 {
             animation: fadeIn 1s;
             animation-timing-function: ease-in-out;
             background: linear-gradient(to bottom right, #036 0%, #933 100%);
-            height: 100%;
-            width: 100%;
         }
 
         main#main div#demos article#demo-01 :last-child {
@@ -447,73 +498,148 @@
             border-image-source: url(assets/colors.bmp);
             border-image-width: 1rem;
             font-size: 10rem;
+        }
+
+        main#main div#demos article#demo-02 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-03 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-04 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-05 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-06 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-07 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-08 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-09 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-10 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-11 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-11 div button {
+            border: 1px solid #ddd;
+            color: #ddd;
+            cursor: pointer;
+            float: left;
+            font-size: 20vmin;
+            height: 50%;
+            width: 50%;
+        }
+
+        main#main div#demos article#demo-11 div button:hover {
+            color: red;
+            transition: color 1s;
+        }
+
+        main#main div#demos article#demo-11 div button:active {
+            font-size: 25vmin;
+            transition: font-size 250ms;
+        }
+
+        main#main div#demos article#demo-12>div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-12>div div#demo-12-div {
+            display: block !important;
+            height: 90%;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+        }
+
+        main#main div#demos article#demo-12>div div#demo-12-div section {
+            display: grid;
+            grid-template-areas:
+                'nav nav nav'
+                'left main right';
+            grid-template-columns: 1fr 80% 1fr;
+            grid-template-rows: 10% 90%;
+            height: 100%;
+        }
+
+        main#main div#demos article#demo-12>div div#demo-12-div section div:nth-child(1) {
+            grid-area: nav;
             z-index: 1;
         }
 
-        main#main div#demos article#demo-02 :last-child {
-            background: #000;
-            height: 80%;
-            width: 80%;
+        main#main div#demos article#demo-12>div div#demo-12-div section div:nth-child(2) {
+            grid-area: left;
         }
 
-        main#main div#demos article#demo-03 :last-child {
-            background: #000;
-            height: 80%;
-            width: 80%;
+        main#main div#demos article#demo-12>div div#demo-12-div section div:nth-child(3) {
+            grid-area: right;
         }
 
-        main#main div#demos article#demo-04 :last-child {
-            background: #000;
-            height: 80%;
-            width: 80%;
+        main#main div#demos article#demo-12>div div#demo-12-div section div:nth-child(4) {
+            grid-area: main;
         }
 
-        main#main div#demos article#demo-05 :last-child {
-            background: #000;
-            height: 80%;
-            width: 80%;
+        main#main div#demos article#demo-12>div div#demo-12-div section i {
+            font-size: 5vmin;
+            width: 100%;
+            cursor: default;
+            text-align: center;
+            height: 50%;
+            top: 50%;
+            position: relative;
+            transform: translateY(-50%);
         }
 
-        main#main div#demos article#demo-06 :last-child {
-            background: #000;
-            height: 80%;
-            width: 80%;
+        main#main div#demos article#demo-12>div div#demo-12-div section i:hover {
+            color: teal;
         }
 
-        main#main div#demos article#demo-07 :last-child {
-            background: #000;
-            height: 80%;
-            width: 80%;
-        }
-
-        main#main div#demos article#demo-08 :last-child {
-            background: #000;
-            height: 80%;
-            width: 80%;
-        }
-
-        main#main div#demos article#demo-09 :last-child {
-            background: #000;
-            height: 80%;
-            width: 80%;
-        }
-
-        main#main div#demos article#demo-10 :last-child {
-            background: #000;
-            height: 80%;
-            width: 80%;
-        }
-
-        main#main div#demos article#demo-11 :last-child {
-            background: #000;
-            height: 80%;
-            width: 80%;
-        }
-
-        main#main div#demos article#demo-12 :last-child {
-            background: #000;
-            height: 80%;
-            width: 80%;
+        main#main div#demos article#demo-12>div div#demo-12-div section i:active {
+            font-variation-settings: 'FILL' 0;
         }
     </style>
 
@@ -854,7 +980,7 @@
         <menu>
 
             <i class="material-symbols-outlined" title="Website Info"
-                onclick="window.alert('Revision - Nov 25, 2022\n&copy; 2022-2023 Kevin Huang')">copyright</i>
+                onclick="window.alert('Revision - Dec 15, 2022\n&copy; 2022-2023 Kevin Huang')">copyright</i>
 
             <i class="material-symbols-outlined" title="Toggle Navbar" onclick="toggleNav()">menu_open</i>
             <i class="material-symbols-outlined" title="Palette Maker"
@@ -1015,7 +1141,47 @@
 
                 <h3 data-test>Demo 12</h3>
 
-                <div></div>
+                <div>
+
+                    <div id="demo-12-div">
+
+                        <section>
+
+                            <div>
+
+                                <form>
+
+                                    <input type="submit" value="REVERSE">
+
+                                </form>
+
+                            </div>
+
+                            <div>
+
+                                <i class="material-symbols-outlined" title="Copy">content_copy</i>
+                                <i class="material-symbols-outlined" title="Cut">cut</i>
+
+                            </div>
+
+                            <div>
+
+                                <i class="material-symbols-outlined" title="Paste">content_paste</i>
+                                <i class="material-symbols-outlined" title="Input">change_circle</i>
+
+                            </div>
+
+                            <div>
+
+                                <textarea maxlength="10000"></textarea>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </div>
 
             </article>
 
@@ -1181,18 +1347,145 @@
         canvas.height = window.innerHeight;
         canvas.width = window.innerWidth;
 
-        const c = canvas.getContext('2d');
-        c.strokeStyle = '#666';
+        const context = canvas.getContext('2d');
+        context.strokeStyle = '#666';
 
         for (let i = 0; i < 2000; i++) {
             let x = Math.random() * canvas.width;
             let y = Math.random() * canvas.height;
             let r = Math.random() * 10;
             let s = Math.random() * Math.PI * 2;
-            c.beginPath();
-            c.arc(x, y, r, s, Math.PI * 2, false);
-            c.stroke();
+            context.beginPath();
+            context.arc(x, y, r, s, Math.PI * 2, false);
+            context.stroke();
         }
+    </script>
+
+    <script data-title="article#demo-11">
+        const buttons = ['&Delta;', '&Theta;', '&Sigma;', '&Omega;'];
+        const buttonsDiv = document.querySelector('#demo-11').lastElementChild;
+
+        for (b of buttons) {
+            const button = document.createElement('button');
+            button.id = `my${b}`;
+            button.className = 'hover';
+            button.setAttribute('title', `${b.toLowerCase().slice(1, -1)}`);
+            button.innerHTML = b;
+            buttonsDiv.appendChild(button);
+        }
+
+        console.log(document.body.parentElement.parentNode);
+        buttonsDiv.previousElementSibling.nextElementSibling.insertBefore(
+            document.createElement('button'), document.querySelector('button'));
+        document.getElementsByTagName('button')[0].remove();
+
+        const button1 = buttonsDiv.firstElementChild;
+        const button2 = buttonsDiv.children[1];
+        const button3 = buttonsDiv.children[2];
+        const button4 = buttonsDiv.lastElementChild;
+
+        button1.addEventListener('click', e => {
+            e.target.style.backgroundColor = '#ddd';
+            e.target.style.color = '#000';
+        });
+
+        button1.addEventListener('dblclick', e => {
+            e.target.style.backgroundColor = '#000';
+        });
+
+        button1.addEventListener('dblclick', e => {
+            e.target.style.color = '#ddd';
+        });
+
+        button2.addEventListener('mouseenter', e => {
+            e.target.style.backgroundColor = '#ddd';
+            e.target.style.color = '#000';
+        });
+
+        button2.addEventListener('mouseleave', e => {
+            e.target.style.backgroundColor = '#000';
+            e.target.style.color = '#ddd';
+        });
+
+        button2.addEventListener('mousedown', e => {
+            e.target.style.color = 'red';
+        });
+
+        button2.addEventListener('mouseup', e => {
+            e.target.style.color = '#000';
+        });
+
+        button3.addEventListener('mouseover', e => {
+            if (e.ctrlKey) {
+                e.target.style.color = 'blue';
+            } else if (e.altKey) {
+                e.target.style.color = 'green';
+            } else if (e.shiftKey) {
+                e.target.style.color = 'orange';
+            }
+        });
+
+        button3.addEventListener('mouseout', e => {
+            e.target.style.backgroundColor = '#000';
+            e.target.style.color = '#ddd';
+        });
+
+        button3.addEventListener('mousemove', e => {
+            const R = e.offsetX / 4 + 5;
+            const G = e.offsetY / 4 + 5;
+            const B = (R + G) / 2;
+            e.target.style.backgroundColor = 'rgb(' + R + ', ' + G + ', ' + B + ')';
+        });
+
+        button4.addEventListener('focus', e => {
+            e.target.style.borderColor = 'blue';
+        });
+
+        button4.addEventListener('blur', e => {
+            e.target.style.borderColor = '#ddd';
+        });
+
+        button4.addEventListener('keydown', e => {
+            if (Math.random() < 0.5) {
+                e.target.style.color = 'green';
+            } else {
+                e.target.style.color = 'orange';
+            }
+        });
+
+        button4.addEventListener('keyup', e => {
+            e.target.style.color = '#ddd';
+        });
+    </script>
+
+    <script data-title="article#demo-12">
+        const copy = document.querySelector('i[title="Copy"]');
+        const cut = document.querySelector('i[title="Cut"]');
+        const input = document.querySelector('i[title="Input"]');
+        const paste = document.querySelector('i[title="Paste"]');
+        const textarea = document.querySelector('textarea');
+
+        addEventListener('submit', e => {
+            e.preventDefault();
+            copy.style.color = cut.style.color = paste.style.color = input.style.color = 'teal';
+            textarea.value = textarea.value.split('').reverse().join('');
+        });
+
+        textarea.addEventListener('copy', () => {
+            copy.style.color = 'green';
+        });
+
+        textarea.addEventListener('cut', () => {
+            cut.style.color = 'green';
+        });
+
+        textarea.addEventListener('paste', () => {
+            paste.style.color = 'green';
+        });
+
+        textarea.addEventListener('input', () => {
+            input.style.color = 'green';
+        });
     </script>
 
     <script data-title="footer">
