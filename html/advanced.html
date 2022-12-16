@@ -1365,7 +1365,7 @@
         const buttons = ['&Delta;', '&Theta;', '&Sigma;', '&Omega;'];
         const buttonsDiv = document.querySelector('#demo-11').lastElementChild;
 
-        for (b of buttons) {
+        for (const b of buttons) {
             const button = document.createElement('button');
             button.id = `my${b}`;
             button.className = 'hover';

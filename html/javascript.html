@@ -1,9 +1,8 @@
-<body>
-</body>
+<body></body>
 
 <script data-title="Globals" type="text/javascript">
-    const C = console.table.bind(console);
-    const c = console.log.bind(console);
+    const C = console.table;
+    const c = console.log;
     const hr = x => console.log(`%c>>>>> ${x} <<<<<`, 'color:crimson; font-size:1pc;');
 </script>
 
@@ -169,11 +168,11 @@
         console.table('index:', index);
     }
 
-    for (let k of array) {
+    for (const k of array) {
         console.table('array index:', k);
     }
 
-    for (let k in objectLiteral) {
+    for (const k in objectLiteral) {
         console.table(k + ': ' + objectLiteral[k]);
     }
 
@@ -224,4 +223,27 @@
     c(ConstructDeeper.global());
     c(construct_2.print());
     c(construct_2.summary());
+</script>
+
+<script data-title="This" type="text/javascript">
+    hr('this');
+    const myObject = {
+        arbitrary: 'object',
+        logA: function () {
+            c(this.arbitrary);
+        },
+        logB: () => {
+            c(this.arbitrary);
+        }
+    }
+    var arbitrary = 'global';
+
+    const case1 = myObject.logA;
+    const case2 = myObject.logA.bind(myObject);
+    const case3 = myObject.logB;
+
+    c(this);
+    case1();
+    case2();
+    case3();
 </script>
