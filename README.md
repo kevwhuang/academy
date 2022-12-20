@@ -9,9 +9,9 @@ JavaScript|Learning
 # JS 211
 
 - [ ] Austin Coding Academy
+- [ ] JSInfo
 - [ ] W3Schools
 - [ ] YouTube
-- [ ] JSInfo
 
 # WEB 101
 
