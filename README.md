@@ -1,3 +1,20 @@
+# Summary
+
+Language|Status
+-|-
+HTML|Completed
+CSS|Learning
+JavaScript|Learning
+
+# JS 211
+
+- [ ] Austin Coding Academy
+- [ ] W3Schools
+- [ ] YouTube
+- [ ] JSInfo
+
+# WEB 101
+
 - [ ] Austin Coding Academy
     - [ ] 2
     - [ ] 3
@@ -37,12 +54,6 @@
     - [ ] advanced.html
     - [ ] bootstrap.html
     - [ ] sass.html
-
-Language|Status
--|-
-HTML|Completed
-CSS|Learning
-JavaScript|Learning
 
 # HTML Boilerplate Code
 

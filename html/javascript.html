@@ -241,9 +241,11 @@
     const case1 = myObject.logA;
     const case2 = myObject.logA.bind(myObject);
     const case3 = myObject.logB;
+    const case4 = myObject?.logC ?? 'optional chaining & nullish coalescing';
 
     c(this);
     case1();
     case2();
     case3();
+    c(case4);
 </script>

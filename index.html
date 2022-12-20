@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>GitHub Index</title>
+    <title>Academy</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,9 +47,9 @@
         }
 
         document.body.addEventListener('mousemove', e => {
-            const r = e.clientX / 5;
-            const g = e.clientY / 5;
-            const b = (r + g) / 2;
+            const r = Math.min(e.clientX / 5, 150);
+            const g = Math.min(e.clientY / 150);
+            const b = Math.min((r + g) / 2, 150);
             document.body.style.backgroundColor = 'rgb(' + r + ', ' + g + ', ' + b + ')';
         });
     </script>

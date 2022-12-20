@@ -1,4 +1,5 @@
 const assert = require('chai').assert;
+const fizzBuzz = require('../challenges/fizz-buzz.js').fizzBuzz;
 const inverseDiagonal = require('../challenges/inverse-diagonal.js').inverseDiagonal;
 const twoSum = require('../challenges/two-sum.js').twoSum;
 
@@ -120,4 +121,24 @@ describe('1. Two Sum', function () {
             assert.deepEqual(twoSum([2, 5, -3, 1, 5], 2), [1, 2]);
         });
     });
+});
+
+describe('412. Fizz Buzz', function () {
+    describe('Main Cases', function () {
+        const solution_1 = ['1', '2', 'Fizz'];
+        const solution_2 = ['1', '2', 'Fizz', '4', 'Buzz'];
+        const solution_3 = ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz', 'Buzz', '11',
+            'Fizz', '13', '14', 'FizzBuzz'];
+
+        it('Example 1', function () {
+            assert.deepEqual(fizzBuzz(3), solution_1);
+        });
+        it('Example 2', function () {
+            assert.deepEqual(fizzBuzz(5), solution_2);
+        });
+        it('Example 3', function () {
+            assert.deepEqual(fizzBuzz(15), solution_3);
+        });
+    });
+
 });
