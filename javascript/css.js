@@ -29,13 +29,9 @@ sect2.style.display = 'none';
 function toggleNav() {
     if (nav.style.display === 'none') {
         nav.style.display = 'block';
-        heightNav
-            = window.getComputedStyle(nav).getPropertyValue('height');
-        marginContainer
-            = window.getComputedStyle(container).getPropertyValue('margin-top');
-        offset
-            = parseFloat(heightNav.split('p')[0])
-            + parseFloat(marginContainer.split('p')[0]);
+        heightNav = window.getComputedStyle(nav).getPropertyValue('height');
+        marginContainer = window.getComputedStyle(container).getPropertyValue('margin-top');
+        offset = parseFloat(heightNav.split('p')[0]) + parseFloat(marginContainer.split('p')[0]);
         main.style.marginTop = offset + 'px';
     } else {
         main.style.marginTop = 0;

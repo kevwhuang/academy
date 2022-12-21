@@ -1,4 +1,4 @@
-# Summary
+# SUMMARY
 
 Language|Status
 -|-
@@ -55,7 +55,7 @@ JavaScript|Learning
     - [ ] bootstrap.html
     - [ ] sass.html
 
-# HTML Boilerplate Code
+# HTML BOILERPLATE
 
 ```html
 <!DOCTYPE html>

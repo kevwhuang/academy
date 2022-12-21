@@ -1,4 +1,4 @@
-module.exports = { fizzBuzz: fizzBuzz };
+module.exports = { fizzBuzz };
 
 function fizzBuzz(n) {
     const output = [];

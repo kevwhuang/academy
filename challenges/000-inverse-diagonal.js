@@ -1,10 +1,10 @@
-module.exports = { inverseDiagonal: inverseDiagonal };
+module.exports = { inverseDiagonal };
 
 function inverseDiagonal(input) {
     const LEN = input.length;
-    let clone = [];
+    const clone = [];
+    const solution = [];
     let line = [];
-    let solution = [];
 
     for (let i = 0; i < LEN; i++) {
         clone.push([...input[i]]);

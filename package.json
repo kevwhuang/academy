@@ -1,7 +1,9 @@
 {
   "name": "academy",
-  "version": "22.12.12",
+  "version": "22.12.22",
   "description": "Austin Coding Academy",
+  "author": "Kevin Huang",
+  "license": "MIT",
   "main": "app.js",
   "scripts": {
     "lint": "eslint .",
@@ -12,8 +14,6 @@
     "type": "git",
     "url": "https://github.com/kevwhuang/academy.git"
   },
-  "author": "Kevin Huang",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/kevwhuang/academy/issues"
   },

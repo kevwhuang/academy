@@ -83,7 +83,7 @@
     c('.reduceRight()\t', A.reduceRight((s, e) => s + e, 'x'), '\t', A);
     c('.reverse()\t', A.reverse(), '\t', A);
     c('.sort()\t', A.sort((a, b) => (a < b ? -1 : 1)), '\t', A);
-    c('.forEach()\t', A.forEach((e, i, a) => { console.log('\t\t', e, '\t', i, '\t', a) }), '\t', A);
+    c('.forEach()\t', A.forEach((e, i, a) => { c('\t\t', e, '\t', i, '\t', a) }), '\t', A);
     c('.flat()\t', [1, 2, [[[[[3]]]]]].flat(5));
     c('Array.isArray()\t', Array.isArray(A));
 </script>

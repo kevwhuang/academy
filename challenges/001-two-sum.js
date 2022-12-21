@@ -1,4 +1,4 @@
-module.exports = { twoSum: twoSum };
+module.exports = { twoSum };
 
 function twoSum(nums, target) {
     for (let i = 0; i < nums.length; i++) {
@@ -9,4 +9,5 @@ function twoSum(nums, target) {
             }
         }
     }
+    return;
 }
