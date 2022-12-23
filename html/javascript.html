@@ -90,19 +90,21 @@
 
 <script data-title="Array Filter" type="text/javascript">
     hr('array filter');
-    const data = [{
-        title: 'A',
-        status: false
-    }, {
-        title: 'B',
-        status: true
-    }, {
-        title: 'C',
-        status: false
-    }, {
-        title: 'D',
-        status: true
-    }];
+    const data = [
+        {
+            title: 'A',
+            status: false
+        }, {
+            title: 'B',
+            status: true
+        }, {
+            title: 'C',
+            status: false
+        }, {
+            title: 'D',
+            status: true
+        }
+    ];
 
     C(JSON.stringify(data));
     C(data.filter(e => e.status == true));
@@ -248,4 +250,37 @@
     case2();
     case3();
     c(case4);
+</script>
+
+<script data-title="Prototype Callbacks" type="text/javascript">
+    hr('prototype callbacks');
+
+    Array.prototype.customFind = function (callback) {
+        for (let i = 0; i < this.length; i++) {
+            if (callback(this[i], i, this)) {
+                return this[i];
+            }
+        }
+    }
+
+    Array.prototype.customFindIndex = function (callback) {
+        for (let i = 0; i < this.length; i++) {
+            if (callback(this[i], i, this)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    c([1, 2, 3].customFind(e => e > 1) === [1, 2, 3].find(e => e > 1));
+    c([1, 2, 3].customFindIndex(e => e > 1) === [1, 2, 3].findIndex(e => e > 1));
+</script>
+
+<script data-title="Regular Expressions" type="text/javascript">
+    hr('regular expressions');
+    const reg = new RegExp('u?v*w{0,}x{2,3}y+z+?(?=0|1|2)', 'g');
+
+    c(/^\d\w\s\*[a-z][^0-9]C.\S\W\D$/i.test('1_ *Abcde \''));
+    c('wwxxyyzz1 uvxxxyz2'.match(reg));
+    c('12!34!56'.match(new RegExp('((\\d+)!(\\d+))!(\\d+)')));
 </script>
