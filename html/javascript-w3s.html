@@ -1,0 +1,26 @@
+<body></body>
+
+<script>
+    const C = console.table;
+    const c = console.log;
+    const h = e => console.log(`%c***** ${e}`, 'color:orange;font-size:1pc;');
+</script>
+
+<script>
+    h('SYNTAX'); // statements end with semicolon
+    _ = undefined; // undeclared private variable
+    const _$ = null; // const must be initialized
+    let $ = $$ = true // valid identifiers
+        , $$$; // declared but unassigned
+    { $_ = false; var $_; /* var hoisting */ };;;
+    { let $$$ = Number.MAX_SAFE_INTEGER; c($$$); } // block scoped
+    c(14e-2 + 3 + '', 5); // normal parsing
+    c(typeof (BigInt(0) + BigInt('0'))); // type operator with expression operand
+    c($$$); // undefined
+    c($$$$); // unreferenced variable breaks script execution
+    c(_); // does not run
+</script>
+
+<script>
+    h('');
+</script>
