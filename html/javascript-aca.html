@@ -1,13 +1,13 @@
 <body></body>
 
-<script data-title="Globals" type="text/javascript">
+<script>
     const C = console.table;
     const c = console.log;
-    const hr = x => console.log(`%c>>>>> ${x} <<<<<`, 'color:crimson;font-size:1pc;');
+    const h = e => console.log(`%c***** ${e}`, 'color:crimson;font-size:1pc;');
 </script>
 
-<script data-title="Number Methods" type="text/javascript">
-    hr('number methods');
+<script>
+    h('NUMBER METHODS');
     const N = 1_234_567_890;
     var T = [];
 
@@ -27,8 +27,8 @@
     C(T);
 </script>
 
-<script data-title="String Methods" type="text/javascript">
-    hr('string methods');
+<script>
+    h('STRING METHODS');
     const S = 'abcdefgAbc';
     const S0 = ' abc ';
     var T = [];
@@ -57,9 +57,10 @@
     C(T);
 </script>
 
-<script data-title="Array Methods" type="text/javascript">
-    hr('array methods');
+<script>
+    h('ARRAY METHODS');
     let A = new Array(3);
+
     A[0] = 'b', A[1] = 'c', A[2] = 'd';
     A = ['a', ...A, 'e',];
 
@@ -88,8 +89,8 @@
     c('Array.isArray()\t', Array.isArray(A));
 </script>
 
-<script data-title="Array Filter" type="text/javascript">
-    hr('array filter');
+<script>
+    h('FILTER METHOD');
     const data = [
         {
             title: 'A',
@@ -110,10 +111,10 @@
     C(data.filter(e => e.status == true));
 </script>
 
-<script data-title="Object Methods" type="text/javascript">
-    hr('object methods');
-
+<script>
+    h('OBJECT METHODS');
     let functions = new Object();
+
     functions = {
         f: function () {
             return this.prop2;
@@ -134,8 +135,8 @@
     c('Object.is()\t', Object.is(functions, functions_dup));
 </script>
 
-<script data-title="Arrow Functions" type="text/javascript">
-    hr('arrow functions');
+<script>
+    h('ARROW FUNCTIONS');
 
     function f1(x = 'output') {
         return 'input: ' + x;
@@ -157,8 +158,8 @@
     console.log(f4('output'));
 </script>
 
-<script data-title="Loops" type="text/javascript">
-    hr('loops');
+<script>
+    h('LOOPS');
     const array = [true, false, true];
     const objectLiteral = { key_1: 1, key_2: 2, key_3: 3 };
     let total = 0;
@@ -189,8 +190,8 @@
     }
 </script>
 
-<script data-title="Constructors" type="text/javascript">
-    hr('constructors');
+<script>
+    h('CONSTRUCTORS');
 
     function Construct(item_1, item_2) {
         this.item_1 = item_1;
@@ -222,13 +223,13 @@
 
     const construct_2 = new ConstructDeeper('Thing A', 'Thing B', 'Thing C');
     c(construct_2);
-    c(ConstructDeeper.global());
     c(construct_2.print());
     c(construct_2.summary());
+    c(ConstructDeeper.global());
 </script>
 
-<script data-title="This" type="text/javascript">
-    hr('this');
+<script>
+    h('THIS');
     const myObject = {
         arbitrary: 'object',
         logA: function () {
@@ -252,8 +253,8 @@
     c(case4);
 </script>
 
-<script data-title="Prototype Callbacks" type="text/javascript">
-    hr('prototype callbacks');
+<script>
+    h('PROTOTYPE CALLBACKS');
 
     Array.prototype.customFind = function (callback) {
         for (let i = 0; i < this.length; i++) {
@@ -276,8 +277,8 @@
     c([1, 2, 3].customFindIndex(e => e > 1) === [1, 2, 3].findIndex(e => e > 1));
 </script>
 
-<script data-title="Regular Expressions" type="text/javascript">
-    hr('regular expressions');
+<script>
+    h('REGULAR EXPRESSIONS');
     const reg = new RegExp('u?v*w{0,}x{2,3}y+z+?(?=0|1|2)', 'g');
 
     c(/^\d\w\s\*[a-z][^0-9]C.\S\W\D$/i.test('1_ *Abcde \''));

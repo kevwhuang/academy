@@ -3,22 +3,58 @@
 <script>
     const C = console.table;
     const c = console.log;
-    const h = e => console.log(`%c***** ${e}`, 'color:orange;font-size:1pc;');
+    const h = e => console.log(`%c***** ${e}`, 'color:peru;font-size:1pc;');
 </script>
 
 <script>
-    h('SYNTAX'); // statements end with semicolon
+    h('SYNTAX'); // statement ends with semicolon
+
     _ = undefined; // undeclared private variable
     const _$ = null; // const must be initialized
     let $ = $$ = true // valid identifiers
         , $$$; // declared but unassigned
-    { $_ = false; var $_; /* var hoisting */ };;;
-    { let $$$ = Number.MAX_SAFE_INTEGER; c($$$); } // block scoped
-    c(14e-2 + 3 + '', 5); // normal parsing
+
+    { $_ = false; var $_; /* var hoisting */ }
+    { let $$$ = Number.MAX_SAFE_INTEGER; c($$$); /* block scoped */ }
+
+    c(14e-2 + 3 + '', 5); // left to right parsing
     c(typeof (BigInt(0) + BigInt('0'))); // type operator with expression operand
+
     c($$$); // undefined
     c($$$$); // unreferenced variable breaks script execution
     c(_); // does not run
+</script>
+
+<script>
+    h('ADVANCED FUNCTIONS'); // invoke method
+
+    [undefined, null] // anonymous variable
+        .map(c); // parameter iteration
+
+    myFunc1({ p2: true, p3: false }); // function hoisting
+    function myFunc1({ p1, p2, p3 }) { // function statement
+        c(p2, p3, p1); // destructured parameters
+    };;; // superfluous semicolons
+
+    const myFunc2 = function (...p) { C(p); } // function expression
+    myFunc2(true, false, Symbol); // rest parameters
+
+    (function myFunc3(p1) { // immediately invoked function expression
+        const NUM = 69; // numerical constant
+        const lex = () => { c(NUM); }; lex(); // lexical scope
+        C(arguments); // arguments object
+    })('arg1', 'arg2', 'arg3'); // excessive arguments
+
+    const myFunc4 = e => e **= 2; // arrow function
+    c([NaN, undefined, null].map(myFunc4)); // callback function
+
+    const myFunc5 = x => { // pure function
+        x *= 2; // assignment operator
+        c('queue:', x); // queue FIFO
+        if (x < 8) { myFunc5(x); } // recursion
+        c('stack:', x); // call stack FILO
+        return () => 'return' // anonymous first class function
+    }; c(myFunc5(1)); // function call
 </script>
 
 <script>
