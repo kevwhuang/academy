@@ -36,7 +36,7 @@
         c(p2, p3, p1); // destructured parameters
     };;; // superfluous semicolons
 
-    const myFunc2 = function (...p) { C(p); } // function expression
+    const myFunc2 = function (...p) { ; C(p); } // function expression
     myFunc2(true, false, Symbol); // rest parameters
 
     (function myFunc3(p1) { // immediately invoked function expression

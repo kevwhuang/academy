@@ -79,6 +79,7 @@
     c('.find()\t', A.find(e => e > 'c'), '\t', A);
     c('.some()\t', A.some(e => e === 'c'), '\t', A);
     c('.every()\t', A.every(e => e < 'g'), '\t', A);
+    c('.filter()\t', A.filter(e => e === 'a' || e === 'f'), '\t', A);
     c('.map()\t', A.map(e => e + e), '\t', A);
     c('.reduce()\t', A.reduce((s, e) => s + e, 'x'), '\t', A);
     c('.reduceRight()\t', A.reduceRight((s, e) => s + e, 'x'), '\t', A);
@@ -90,36 +91,18 @@
 </script>
 
 <script>
-    h('FILTER METHOD');
-    const data = [
-        {
-            title: 'A',
-            status: false
-        }, {
-            title: 'B',
-            status: true
-        }, {
-            title: 'C',
-            status: false
-        }, {
-            title: 'D',
-            status: true
-        }
-    ];
-
-    C(JSON.stringify(data));
-    C(data.filter(e => e.status == true));
-</script>
-
-<script>
     h('OBJECT METHODS');
+    const $prop1 = () => 'prop1';
+    const prop1 = undefined;
     let functions = new Object();
 
     functions = {
+        $f() { },
         f: function () {
             return this.prop2;
         },
-        prop1: 'one'
+        prop1,
+        [$prop1()]: 'one'
     };
     functions['prop2'] = 'two';
     functions = Object.assign({ 'a key': '' }, functions);
@@ -127,6 +110,7 @@
     const functions_dup = functions;
     const functionsClone = Object.create(functions);
     functionsClone.prop2 = 'three';
+    Object.defineProperty(functionsClone, 'prop2', { value: null });
 
     c(functionsClone.f());
     c('Object.entries()\t', Object.entries(functions));
@@ -164,8 +148,8 @@
     const objectLiteral = { key_1: 1, key_2: 2, key_3: 3 };
     let total = 0;
 
-    const { key_3, key_2 } = objectLiteral;
-    c(`destructuring: ${key_2} & ${key_3}`);
+    const { key_3: key3, key_2: key2 } = objectLiteral;
+    c(`destructuring: ${key2} & ${key3}`);
 
     for (let index = 15; index >= 10; index -= 2) {
         console.table('index:', index);
@@ -284,4 +268,17 @@
     c(/^\d\w\s\*[a-z][^0-9]C.\S\W\D$/i.test('1_ *Abcde \''));
     c('wwxxyyzz1 uvxxxyz2'.match(reg));
     c('12!34!56'.match(new RegExp('((\\d+)!(\\d+))!(\\d+)')));
+</script>
+
+<script>
+    h('JSON');
+    const json = JSON.stringify({ type: true });
+    let data;
+
+    C(json, JSON.parse(json));
+
+    fetch('../assets/json.json')
+        .then(r => r.json())
+        .then(e => data = e);
+    setTimeout(() => c(data), 1000);
 </script>
