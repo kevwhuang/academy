@@ -39,8 +39,6 @@ JavaScript|Learning
     - [ ] Flexbox
     - [ ] Grid
     - [ ] Responsive 1
-    - [ ] Responsive 2
-    - [ ] Responsive 3
     - [ ] Responsive 4
     - [ ] Sass
 - [ ] Reference Manual

@@ -11,6 +11,7 @@
         "ecmaVersion": "latest"
     },
     "plugins": [
+        "chai",
         "mocha"
     ],
     "rules": {
