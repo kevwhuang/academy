@@ -316,6 +316,9 @@ main .container .sect2 section .parallax .center:hover {
     -webkit-transition: transform 2s ease;
     transform: scale(2);
     transition: transform 2s ease;
+    transition-duration: 2s;
+    transition-property: transform;
+    transition-timing-function: ease;
 }
 
 /* ============================================================================================== */

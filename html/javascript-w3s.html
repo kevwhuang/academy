@@ -50,7 +50,7 @@
 
     const myFunc5 = x => { // pure function
         x *= 2; // assignment operator
-        c('queue:', x); // queue FIFO
+        c('queue:', x); // task queue FIFO
         if (x < 8) { myFunc5(x); } // recursion
         c('stack:', x); // call stack FILO
         return () => 'return' // anonymous first class function
