@@ -1,9 +1,10 @@
 <body></body>
 
 <script>
-    const C = console.table;
-    const c = console.log;
-    const h = e => console.log(`%c***** ${e}`, 'color:peru;font-size:1pc;');
+    const C = console.table; // function identifier
+    const c = console.log; // method shorthand
+    const h = e => console.log(`%c***** ${e}`, // string interpolation
+        'color:peru;font-size:1pc;'); // console styling
 </script>
 
 <script>
@@ -11,8 +12,8 @@
 
     _ = undefined; // undeclared private variable
     const _$ = null; // const must be initialized
-    let $ = $$ = true // valid identifiers
-        , $$$; // declared but unassigned
+    let $ = $$ = true, // valid identifiers
+        $$$; // declared but unassigned
 
     { $_ = false; var $_; /* var hoisting */ }
     { let $$$ = Number.MAX_SAFE_INTEGER; c($$$); /* block scoped */ }
@@ -50,15 +51,16 @@
 
     const myFunc5 = x => { // pure function
         x *= 2; // assignment operator
-        c('queue:', x); // task queue FIFO
-        if (x < 8) { myFunc5(x); } // recursion
         c('stack:', x); // call stack FILO
+        if (x < 8) { myFunc5(x); } // recursion
+        c('queue:', x); // task queue FIFO
         return () => 'return' // anonymous first class function
     }; c(myFunc5(1)); // function call
 </script>
 
 <script>
-    h('_____'); // string literal argument
+    h(`${'STRING ' + 'SEARCH'}`); // expression template literal
 
+    c(typeof String('')) // string coercion
     c(typeof new String('')); // string object
 </script>

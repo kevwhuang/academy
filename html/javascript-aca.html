@@ -16,10 +16,12 @@
     T.push({ method: '.toFixed()', return: N.toFixed(5) });
     T.push({ method: '.toPrecision()', return: N.toPrecision(20) });
     T.push({ method: '.valueOf()', return: (123.40).valueOf() });
+
     T.push({ method: 'parseFloat()', return: parseFloat(1.2) });
     T.push({ method: 'parseInt()', return: parseInt(1.2) });
     T.push({ method: 'parseInt()', return: parseInt(' 0a ') });
     T.push({ method: 'parseInt()', return: parseInt(' a0 ') });
+
     T.push({ method: 'Number()', return: Number(true) });
     T.push({ method: 'Number()', return: Number(' 0 ') });
     T.push({ method: 'Number()', return: Number(' a ') });
@@ -37,17 +39,31 @@
     T.push({ method: '.slice()', return: S.slice(2, -2) });
     T.push({ method: '.substring()', return: S.substring(-99, 99) });
     T.push({ method: '.substr()', return: S.substr(-2, 2) });
-    T.push({ method: '.replace()', return: S.replace('abc', '-') });
+
+    T.push({ method: '.includes()', return: S.includes('A', 0) });
+    T.push({ method: '.startsWith()', return: S.startsWith('A', 0) });
+    T.push({ method: '.endsWith()', return: S.endsWith('c', 3) });
+
+    T.push({ method: '.indexOf()', return: S.indexOf('A', -1) });
+    T.push({ method: '.lastIndexOf()', return: S.lastIndexOf('A', 10) });
+    T.push({ method: '.search()', return: S.search(/b/) });
+    T.push({ method: '.match()', return: S.match(/b/g) });
+    T.push({ method: '.matchAll()', return: S.matchAll(/b/g) });
+
     T.push({ method: '.replace()', return: S.replace(/abc/ig, '-') });
     T.push({ method: '.replaceAll()', return: S.replaceAll('c', '-') });
-    T.push({ method: '.toUpperCase()', return: S.toUpperCase() });
-    T.push({ method: '.toLowerCase()', return: S.toLowerCase() });
-    T.push({ method: '.concat()', return: S.concat('d') });
+
+    T.push({ method: '.toUpperCase()', return: S0.toUpperCase() });
+    T.push({ method: '.toLowerCase()', return: S0.toLowerCase() });
+    T.push({ method: '.concat()', return: S0.concat('d') });
+    T.push({ method: '.repeat()', return: S0.repeat(2) });
+
     T.push({ method: '.trim()', return: S0.trim() });
     T.push({ method: '.trimStart()', return: S0.trimStart() });
     T.push({ method: '.trimEnd()', return: S0.trimEnd() });
     T.push({ method: '.padStart()', return: S0.padStart(10, '-') });
     T.push({ method: '.padEnd()', return: S0.padEnd(10, '-') });
+
     T.push({ method: '.charAt()', return: S0.charAt(1) });
     T.push({ method: '.charCodeAt()', return: S0.charCodeAt(1) });
     T.push({ method: '.split()', return: '' + S0.split('') });
@@ -66,26 +82,33 @@
 
     c('.toString()\t', A.toString(), '\t', A);
     c('.join()\t', A.join('-'), '\t', A);
-    c('.concat()\t', A.concat('g'), '\t', A);
     c('.slice()\t', A.slice(2, 4), '\t', A);
+    c('.concat()\t', A.concat('g'), '\t', A);
+
     c('.splice()\t', A.splice(5, 3, 'f'), '\t', A);
     c('.pop()\t', A.pop(), '\t', A);
     c('.push()\t', A.push('f'), '\t', A);
     c('.shift()\t', A.shift(), '\t', A);
     c('.unshift()\t', A.unshift('a'), '\t', A);
+
     c('.includes()\t', A.includes('b', 1), '\t', A);
     c('.indexOf()\t', A.indexOf('f', 0), '\t', A);
     c('.lastIndexOf()\t', A.lastIndexOf('f', -2), '\t', A);
+
     c('.find()\t', A.find(e => e > 'c'), '\t', A);
     c('.some()\t', A.some(e => e === 'c'), '\t', A);
     c('.every()\t', A.every(e => e < 'g'), '\t', A);
-    c('.filter()\t', A.filter(e => e === 'a' || e === 'f'), '\t', A);
-    c('.map()\t', A.map(e => e + e), '\t', A);
-    c('.reduce()\t', A.reduce((s, e) => s + e, 'x'), '\t', A);
-    c('.reduceRight()\t', A.reduceRight((s, e) => s + e, 'x'), '\t', A);
-    c('.reverse()\t', A.reverse(), '\t', A);
-    c('.sort()\t', A.sort((a, b) => (a < b ? -1 : 1)), '\t', A);
+
     c('.forEach()\t', A.forEach((e, i, a) => { c('\t\t', e, '\t', i, '\t', a) }), '\t', A);
+    c('.filter()\t', A.filter((e, i, a) => e === 'a' || e === 'f'), '\t', A);
+    c('.map()\t', A.map((e, i, a) => e + e), '\t', A);
+
+    c('.reduce()\t', A.reduce((s, e, i, a) => s + e, 'x'), '\t', A);
+    c('.reduceRight()\t', A.reduceRight((s, e, i, a) => s + e, 'x'), '\t', A);
+
+    c('.sort()\t', A.sort((a, b) => (a < b ? -1 : 1)), '\t', A);
+    c('.reverse()\t', A.reverse(), '\t', A);
+
     c('.flat()\t', [1, 2, [[[[[3]]]]]].flat(5));
     c('Array.isArray()\t', Array.isArray(A));
 </script>
@@ -295,7 +318,7 @@
     })(2, false).then(add);
 
     (async function ($) {
-        await new Promise((res) => { setTimeout(() => { A.push($); res(); }, 100); });
+        await new Promise(res => { setTimeout(() => { A.push($); res(); }, 100); });
         add();
     })(3);
 
@@ -305,27 +328,27 @@
                 rej('Error...');
             }
         });
-    })().catch(err => c(err));
+    })().catch(c);
 
-    Promise.all([Promise.resolve('Hi'), null, new Promise((res, rej) =>
-        setTimeout(res, 100, 'Bye'))]).then(val => c(val));
+    Promise.all([Promise.resolve('Hi'), null, 420, new Promise(res =>
+        setTimeout(res, 100, 'Bye'))]).then(c);
 </script>
 
 <script>
     setTimeout(() => {
         h('JSON');
-        data = undefined;
         const json = JSON.stringify({ type: true });
-        C(json, JSON.parse(json));
+        c(json, '\t', JSON.parse(json));
 
         fetch('../assets/json.json')
             .then(res => res.json())
             .then(e => c('Promise.then()\t', e));
 
+        data = undefined;
         (async function () {
             const res = await fetch('../assets/json.json');
             data = await res.json();
             c('async / await\t', data);
         })();
-    }, 500);
+    }, 200);
 </script>
