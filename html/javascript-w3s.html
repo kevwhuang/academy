@@ -21,7 +21,7 @@
     c(typeof (BigInt(0) + BigInt('0'))); // type operator with expression operand
 
     c($$$); // undefined
-    c($$$$); // unreferenced variable breaks script execution
+    c($$$$); // unreferenced variable breaks script element execution
     c(_); // does not run
 </script>
 
@@ -58,5 +58,7 @@
 </script>
 
 <script>
-    h('');
+    h('_____'); // string literal argument
+
+    c(typeof new String('')); // string object
 </script>

@@ -271,14 +271,61 @@
 </script>
 
 <script>
-    h('JSON');
-    const json = JSON.stringify({ type: true });
-    let data;
+    h('ASYNC');
+    A = [0];
 
-    C(json, JSON.parse(json));
+    const add = () => {
+        document.body.innerHTML = null;
+        A.forEach(e => document.body.innerHTML += `<h1>${e}</h1>`);
+    }
 
-    fetch('../assets/json.json')
-        .then(r => r.json())
-        .then(e => data = e);
-    setTimeout(() => c(data), 1000);
+    (function ($, cb) { setTimeout(() => { A.push($); cb(); }, 100); })(1, add);
+
+    (function ($, err) {
+        return new Promise((res, rej) => {
+            setTimeout(() => {
+                if (!err) {
+                    A.push($);
+                    res();
+                } else {
+                    rej('Error...');
+                }
+            }, 100);
+        });
+    })(2, false).then(add);
+
+    (async function ($) {
+        await new Promise((res) => { setTimeout(() => { A.push($); res(); }, 100); });
+        add();
+    })(3);
+
+    (function (err = true) {
+        return new Promise((res, rej) => {
+            if (err) {
+                rej('Error...');
+            }
+        });
+    })().catch(err => c(err));
+
+    Promise.all([Promise.resolve('Hi'), null, new Promise((res, rej) =>
+        setTimeout(res, 100, 'Bye'))]).then(val => c(val));
+</script>
+
+<script>
+    setTimeout(() => {
+        h('JSON');
+        data = undefined;
+        const json = JSON.stringify({ type: true });
+        C(json, JSON.parse(json));
+
+        fetch('../assets/json.json')
+            .then(res => res.json())
+            .then(e => c('Promise.then()\t', e));
+
+        (async function () {
+            const res = await fetch('../assets/json.json');
+            data = await res.json();
+            c('async / await\t', data);
+        })();
+    }, 500);
 </script>
