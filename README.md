@@ -11,7 +11,6 @@ JavaScript|Learning
 - [ ] Austin Coding Academy
 - [ ] JSInfo
 - [ ] W3Schools
-- [ ] YouTube
 
 # WEB 101
 
@@ -38,8 +37,7 @@ JavaScript|Learning
     - [ ] Bootstrap
     - [ ] Flexbox
     - [ ] Grid
-    - [ ] Responsive 1
-    - [ ] Responsive 4
+    - [ ] Responsive
     - [ ] Sass
 - [ ] Reference Manual
     - [ ] Centering guide

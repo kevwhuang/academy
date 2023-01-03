@@ -18,7 +18,7 @@
     { $_ = false; var $_; /* var hoisting */ }
     { let $$$ = Number.MAX_SAFE_INTEGER; c($$$); /* block scoped */ }
 
-    c(14e-2 + 3 + '', 5); // left to right parsing
+    c(14e-2 + 3 + '', 6.9); // left to right parsing
     c(typeof (BigInt(0) + BigInt('0'))); // type operator with expression operand
 
     c($$$); // undefined
@@ -44,7 +44,7 @@
         const NUM = 69; // numerical constant
         const lex = () => { c(NUM); }; lex(); // lexical scope
         C(arguments); // arguments object
-    })('arg1', 'arg2', 'arg3'); // excessive arguments
+    })('arg1', 'arg2', 'arg3',); // excessive arguments
 
     const myFunc4 = e => e **= 2; // arrow function
     c([NaN, undefined, null].map(myFunc4)); // callback function
@@ -59,8 +59,29 @@
 </script>
 
 <script>
-    h(`${'STRING ' + 'SEARCH'}`); // expression template literal
+    h(`${'DATA ' + 'TYPES'}`); // template literal expression
 
-    c(typeof String('')) // string coercion
-    c(typeof new String('')); // string object
+    c(new Number([false])); // number object
+    c(Number([1])); // number coercion
+    c(Number.EPSILON, Number.MAX_VALUE, Number.NEGATIVE_INFINITY); // select number properties
+    c(Number.prototype); // prototype access
+    c(0.2 + 0.1 == (0.2 * 10 + 0.1 * 10) / 10); // float imprecision
+    c(010 / '-10'); // decimal-octal numeric string operation
+    c(0xF0.toString(2)); // hexadecimal to binary conversion
+    c(isNaN(NaN + Infinity)); // nan and infinity
+    c(3n / 1n); // bigint rounding
+
+    c(new String([false])); // string object
+    c(String([true])); // string coercion
+
+    const A = Array('', 1e1, '010', 1e0, null); // array constructor
+    const AA = [...A]; // spread syntax
+    delete A[A.length - 1]; // delete operator
+    c(A instanceof Array); // instanceof operator
+    c(A.sort((a, b) => a - b)); // comparison callback
+    c(A.sort(() => 0.5 - Math.random())); // pseudo-random sort
+    c([{ i: 'b' }, { i: 'A' }].sort((a, b) => // array of objects string sort
+        a.i.toLowerCase() < b.i.toLowerCase() ? -1 : 1)); // ternary operator
+    c(Math.max.apply(null, AA)); // find largest number
+    c(Math.min.apply(null, AA)); // find smallest number
 </script>
