@@ -54,7 +54,7 @@
         c('stack:', x); // call stack FILO
         if (x < 8) { myFunc5(x); } // recursion
         c('queue:', x); // task queue FIFO
-        return () => 'return' // anonymous first class function
+        return () => 'return'; // anonymous first class function
     }; c(myFunc5(1)); // function call
 </script>
 
@@ -66,8 +66,8 @@
     c(Number.EPSILON, Number.MAX_VALUE, Number.NEGATIVE_INFINITY); // select number properties
     c(Number.prototype); // prototype access
     c(0.2 + 0.1 == (0.2 * 10 + 0.1 * 10) / 10); // float imprecision
-    c(010 / '-10'); // decimal-octal numeric string operation
-    c(0xF0.toString(2)); // hexadecimal to binary conversion
+    c(010 / '-10'); // octal-decimal numeric string operation
+    c(0xF0.toString(2)); // hexadecimal-binary conversion
     c(isNaN(NaN + Infinity)); // nan and infinity
     c(3n / 1n); // bigint rounding
 
@@ -78,10 +78,25 @@
     const AA = [...A]; // spread syntax
     delete A[A.length - 1]; // delete operator
     c(A instanceof Array); // instanceof operator
-    c(A.sort((a, b) => a - b)); // comparison callback
     c(A.sort(() => 0.5 - Math.random())); // pseudo-random sort
-    c([{ i: 'b' }, { i: 'A' }].sort((a, b) => // array of objects string sort
+    c(A.sort((a, b) => a - b)); // comparison callback
+    c(Array.of({ i: 'b' }, { i: 'A' }).sort((a, b) => // array of objects string sort
         a.i.toLowerCase() < b.i.toLowerCase() ? -1 : 1)); // ternary operator
     c(Math.max.apply(null, AA)); // find largest number
     c(Math.min.apply(null, AA)); // find smallest number
+</script>
+
+<script>
+    h('BUILT-IN OBJECTS'); // date and math
+
+    const D = new Date(); c(D); // current datetime
+    const dates = [ // datetime manipulation
+        new Date(99, 0, -0, 24, false, -1, '1000'), // datetime constructor
+        new Date(-1e12), // milliseconds from 1970
+        Date(), // current datetime as string
+        D.toString(), // datetime to full date
+        D.toDateString(), // datetime to only date
+        D.toUTCString(), // datetime to gmt date
+        D.toISOString(), // datetime to iso date
+    ]; C(dates); // console table output
 </script>

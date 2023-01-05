@@ -20,7 +20,7 @@
     T.push({ method: 'parseInt()', return: parseInt(1.2) });
     T.push({ method: 'parseInt()', return: parseInt(' 0a1 ') });
     T.push({ method: 'parseInt()', return: parseInt(' a00 ') });
-    T.push({ method: 'parseFloat()', return: parseFloat(1.2) });
+    T.push({ method: 'parseFloat()', return: parseFloat('1.2') });
 
     T.push({ method: 'Number()', return: Number(true) });
     T.push({ method: 'Number()', return: Number(' 0 ') });
@@ -102,7 +102,7 @@
     c('.some()\t', A.some((v, i, a) => v === 'c'), '\t', A);
     c('.every()\t', A.every((v, i, a) => v < 'f'), '\t', A);
 
-    c('.forEach()\t', A.forEach((v, i, a) => { c('\t\t', v, '\t', i, '\t', a) }), '\t', A);
+    c('.forEach()\t', A.forEach((v, i, a) => c('\t', v, '\t', i, '\t', a)), '\t', A);
     c('.map()\t', A.map((v, i, a) => v + v), '\t', A);
     c('.filter()\t', A.filter((v, i, a) => v === 'a' || v === 'f'), '\t', A);
     c('.reduce()\t', A.reduce((s, v, i, a) => s + v, 'x'), '\t', A);
