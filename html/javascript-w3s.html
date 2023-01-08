@@ -89,14 +89,48 @@
 <script>
     h('BUILT-IN OBJECTS'); // date and math
 
-    const D = new Date(); c(D); // current datetime
-    const dates = [ // datetime manipulation
-        new Date(99, 0, -0, 24, false, -1, '1000'), // datetime constructor
-        new Date(-1e12), // milliseconds from 1970
-        Date(), // current datetime as string
-        D.toString(), // datetime to full date
-        D.toDateString(), // datetime to only date
-        D.toUTCString(), // datetime to gmt date
-        D.toISOString(), // datetime to iso date
+    const D = new Date(); c(D); // current date
+    let dates = [ // date manipulation
+        new Date(99, null, -0, [24], false, -1, '1000'), // date constructor
+        new Date(-1e12), // date in ms from 1970
+        Date(), // current date as string
+        D.toString(), // date to full
+        D.toDateString(), // date to long
+        D.toUTCString(), // date to gmt
+        D.toISOString(), // date to iso
+        Date.now(), // ms from 1970 to current
+        Date.parse(D), // ms from 1970 to date
     ]; C(dates); // console table output
+
+    dates = [ // date formats
+        new Date(''), // invalid date
+        new Date('1993-02-05'), // iso date
+        new Date('1993-02T12:00:00.000Z'), // iso datetime syntax case 1
+        new Date('1993T00:00:00Z'), // iso datetime syntax case 2
+        new Date('1993T00:00:00-06:00'), // iso datetime offet
+        new Date('02/31/2000'), // short date
+        new Date('Feb 31 2000'), // long date
+        new Date('31, February, 2000'), // long date alternative
+    ]; C(dates); // local time zone from browser
+
+    dates = [ // date methods
+        D.getFullYear(), // year with optional arguments
+        D.getMonth(),  // month 0-based
+        D.getDate(), // day of the month
+        D.getDay(), // day of the week 0-based
+        D.getHours(), // hours in military time
+        D.getMinutes(), // minutes
+        D.getSeconds(), // seconds
+        D.getMilliseconds(), // milliseconds
+        D.getUTCMilliseconds(), // utc is gmt
+        D.getTime(), // ms since 1970
+        D.getTimezoneOffset(), // minutes offset from local to utc
+        D.setFullYear(2000, 00, 01), // set method sample
+        D < new Date(), , , /* mutating set methods */]; C(dates);
+
+    C([ // math constants and static methods
+        Math.round(Math.sign(Math.cos(0) + Math.sin(Math.PI / Math.log2(Math.log10(1e4))))),
+        Math.trunc(Math.floor((Math.abs(Math.min(-Math.E, Math.max(Math.PI, -Infinity)))))),
+        Math.cbrt(Math.pow(3, Math.ceil(Math.random()) + Math.log(Math.exp(Math.sqrt(4))))),
+    ]); // no math constructor
 </script>
