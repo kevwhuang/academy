@@ -27,38 +27,6 @@
 </script>
 
 <script>
-    h('ADVANCED FUNCTIONS'); // invoke method
-
-    [undefined, null] // anonymous variable
-        .map(c); // parameter iteration
-
-    myFunc1({ p2: true, p3: false }); // function hoisting
-    function myFunc1({ p1, p2, p3 }) { // function statement
-        c(p2, p3, p1); // destructured parameters
-    };;; // superfluous semicolons
-
-    const myFunc2 = function (...p) { ; C(p); } // function expression
-    myFunc2(true, false, Symbol); // rest parameters
-
-    (function myFunc3(p1) { // immediately invoked function expression
-        const NUM = 69; // numerical constant
-        const lex = () => { c(NUM); }; lex(); // lexical scope
-        C(arguments); // arguments object
-    })('arg1', 'arg2', 'arg3',); // excessive arguments
-
-    const myFunc4 = e => e **= 2; // arrow function
-    c([NaN, undefined, null].map(myFunc4)); // callback function
-
-    const myFunc5 = x => { // pure function
-        x *= 2; // assignment operator
-        c('stack:', x); // call stack FILO
-        if (x < 8) { myFunc5(x); } // recursion
-        c('queue:', x); // task queue FIFO
-        return () => 'return'; // anonymous first class function
-    }; c(myFunc5(1)); // function call
-</script>
-
-<script>
     h(`${'DATA ' + 'TYPES'}`); // template literal expression
 
     c(new Number([false])); // number object
@@ -133,4 +101,39 @@
         Math.trunc(Math.floor((Math.abs(Math.min(-Math.E, Math.max(Math.PI, -Infinity)))))),
         Math.cbrt(Math.pow(3, Math.ceil(Math.random()) + Math.log(Math.exp(Math.sqrt(4))))),
     ]); // no math constructor
+</script>
+
+<script>
+    h('ADVANCED FUNCTIONS'); // invoke method
+
+    [undefined, null] // anonymous variable
+        .map(c); // parameter iteration
+
+    myFunc1({ p2: true, p3: false }); // function hoisting
+    function myFunc1({ p1, p2, p3 }) { // function statement
+        c(p2, p3, p1); // destructured parameters
+    };;; // superfluous semicolons
+
+    const myFunc2 = function (...p) { ; C(p); } // function expression
+    myFunc2(true, false, Symbol); // rest parameters
+
+    (function myFunc3(p1) { // immediately invoked function expression
+        const NUM = 69; // numerical constant
+        const lex = () => { c(NUM); }; lex(); // lexical scope
+        C(arguments); // arguments object
+    })('arg1', 'arg2', 'arg3',); // excessive arguments
+
+    const myFunc4 = e => e **= 2; // arrow function
+    c([NaN, undefined, null].map(myFunc4)); // callback function
+
+    const myFunc5 = x => { // pure function
+        x *= 2; // assignment operator
+        c('queue:', x); // task queue FIFO
+        if (x < 8) myFunc5(x); // recursion
+        c('stack:', x); // call stack FILO
+        return () => 'return'; // anonymous first class function
+    }; c(myFunc5(1)); // function call
+
+    const curry = c => b => a => a * b * c; // closures
+    c(curry(4)(3)(2)); // functional currying
 </script>
