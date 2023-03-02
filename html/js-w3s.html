@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<head>
+    <title>JavaScript: W3Schools</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Kevin Huang">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+
+<body>
+    <a href="javascript:void((5));">SYNTAX</a><br><br>
+    <a href="javascript:void(4);">DATA TYPES</a><br><br>
+    <a href="javascript:void(3);">BUILT-IN OBJECTS</a><br><br>
+    <a href="javascript:void(2);">ITERABLE OBJECTS</a><br><br>
+    <a href="javascript:void(1);">TYPED ARRAYS</a><br><br>
+    <a href="javascript:void(0);">BITWISE</a><br><br>
+    <a href="javascript:;">STATEMENTS</a><br><br>
+    <a href="javascript:;">ERRORS</a><br><br>
+    <a href="javascript:0;">FUNCTIONS</a><br><br>
+    <a href="javascript:1;">CLASSES</a><br><br>
+    <a href="javascript:2;">OOP</a><br><br>
+    <a href="javascript:3;">PROTOTYPES</a><br><br>
+    <a href="javascript:4;">PROMISES</a><br><br>
+    <a href="javascript:(5);">MISCELLANEOUS</a><br><br>
+</body>
+
+<script>
+    const C = console.table; // function identifier
+    const c = console.log; // method shorthand
+    const h = e => c(`%c***** ${e}`, // string interpolation
+        'color:peru;font-size:1pc;'); // console styling
+</script>
+
+<script>
+    h('SYNTAX'); // statement ends with semicolon
+
+    _ = undefined; // undeclared private variable
+    const _$ = null; // const must be initialized
+    let // line break
+        $ = $$ = true, // valid identifiers, $$ global scope
+        $$$; // declared but unassigned
+
+    { $_ = false; var $_; /* var hoisting */ }
+    { let $$$ = Number.MAX_SAFE_INTEGER; c($$$); /* block scoped */ }
+    { let a = 2, b = 1; a = (b += a -= b) - a; c(a, b); /* variable swap */ }
+
+    c(14e-2 + 3 + '', 6.9); // left to right parsing
+    c(typeof (BigInt(0) + BigInt('0'))); // type operator with expression operand
+    c(0 in [1]); // in operator
+    c('designMode' in document); // editable document
+
+    c($$$); // undefined
+    c($$$$); // unreferenced variable breaks script element execution
+    c(_); // does not run
+</script>
+
+<script>
+    h(`${'DATA ' + 'TYPES'}`); // template literal expression
+
+    c(new Number([false])); // number object
+    c(Number([1])); // number coercion
+    c(Number.EPSILON, Number.MIN_VALUE, Number.NEGATIVE_INFINITY); // select number properties
+    c(Number.prototype); // prototype access
+
+    c(0.2 + 0.1 == (0.2 * 10 + 0.1 * 10) / 10); // float imprecision
+    c(010 / '-10'); // octal-decimal numerical string operation
+    c(0xF0.toString(2)); // hexadecimal-binary conversion
+    c(isNaN(NaN + Infinity)); // nan and infinity
+    c(3n / 1n); // bigint rounding
+
+    c(new String([false])); // string object
+    c(String([true])); // string coercion
+    c('Ææ'.at(-1)); // relative indexing
+    c('\u00F1'.normalize() === '\u006E\u0303'.normalize()); // unicode normalization form
+
+    const A = Array('', 1e0, '010', 1e1, null); // array constructor
+    const AA = [...A]; // spread syntax works for any iterable
+    [A[1], A[3]] = [A[3], A[1]]; // destructured index swap
+    JSON.stringify([[1]]) == JSON.stringify([[1]]); // deep equal
+    delete A[A.length - 1]; // delete operator
+    c(A instanceof Array); // instanceof operator
+
+    c(A.sort(() => Math.random() - 0.5)); // pseudo-random sort
+    c(A.sort((a, b) => a - b)); // comparison callback
+    c(Array.of({ i: 'b' }, { i: 'A' }).sort((a, b) => // array of objects string sort
+        a.i.toLowerCase() < b.i.toLowerCase() ? -1 : 1)); // ternary operator
+    c(Math.max.apply(null, AA)); // find largest number
+    c(Math.min.apply(null, AA)); // find smallest number
+    c(deepCopy = arr => arr.map(v => Array.isArray(v) ? deepCopy(v) : v)); // recursive deep copy
+</script>
+
+<script>
+    h('BUILT-IN OBJECTS'); // date and math
+
+    const D = new Date(); c(D); // current date
+    let dates = [ // date formats
+        new Date(''), // invalid date
+        new Date('1993-02-05'), // iso date
+        new Date('1993-02T12:00:00.000Z'), // iso datetime syntax case 1
+        new Date('1993T00:00:00Z'), // iso datetime syntax case 2
+        new Date('1993T00:00:00-06:00'), // iso datetime offet
+        new Date('02/31/2000'), // short date
+        new Date('Feb 31 2000'), // long date
+        new Date('31, February, 2000'), // long date alternative
+    ]; C(dates); // local time zone from browser
+
+    dates = [ // date manipulation
+        new Date(99, null, -0, [24], false, -1, '1000'), // date constructor
+        new Date(-1e+12), // date in ms from 1970
+        Date(), // current date as string
+        D.toString(), // date to full
+        D.toDateString(), // date to long
+        D.toTimeString(), // date to time
+        D.toUTCString(), // date to gmt
+        D.toISOString(), // date to iso
+        D.toJSON(), // date to json
+        D.toLocaleString('en-US', { 'timeZoneName': 'long' }), // date to locale
+        D.toLocaleDateString(), // date to locale short
+        D.toLocaleTimeString(), // date to locale time
+        Date.now(), // ms from 1970 to current
+        Date.parse(D), // ms from 1970 to date
+        Date.UTC(1970), // ms from 1970 to utc
+    ]; C(dates); // console table output
+
+    dates = [ // date methods
+        D.getFullYear(), // year with optional arguments
+        D.getMonth(),  // month 0-based
+        D.getDate(), // day of the month
+        D.getDay(), // day of the week 0-based
+        D.getHours(), // hours in military time
+        D.getMinutes(), // minutes
+        D.getSeconds(), // seconds
+        D.getMilliseconds(), // milliseconds
+        D.getUTCMilliseconds(), // get utc sample
+        D.getTime(), // ms since 1970
+        D.getTimezoneOffset(), // minutes offset from local to utc
+        D.setFullYear(2000, 00, 01), // set method sample
+        D < new Date(), , , /* mutating set methods */]; C(dates);
+
+    C([ // math constants and static methods
+        Math.round(Math.sign(Math.cos(0) + Math.sin(Math.PI / Math.log2(Math.log10(1e4))))),
+        Math.trunc(Math.floor((Math.abs(Math.min(-Math.E, Math.max(Math.PI, -Infinity)))))),
+        Math.cbrt(Math.pow(3, Math.ceil(Math.random()) + Math.log(Math.exp(Math.sqrt(4))))),
+    ]); // no math constructor
+    c(Math.fround(0.1)); // single precision float representation
+    c(Math.clz32(8)); // count leading zeros
+</script>
+
+<script>
+    h('ITERABLE OBJECTS'); // set and map
+
+    const set = new Set([1]); // array argument
+    const sets = [ // keyed collection
+        set.has(+ '1'), // unary operator conversion
+        set.clear(), // empty set
+        set.add(1).size, // add value and get size property
+        set.delete(2), // delete value
+        set.keys(), // set keys iterator
+        set.values(), // set values iterator
+        set.entries(), // set entries iterator
+    ]; C(sets); // stores unique values
+    set.forEach(v => c(v)); // iterable values
+
+    const map = new Map([[[true, false], 2]]); // array of arrays argument
+    const maps = [ // keys can be any data type
+        map.has([true, false]), // array equality always false
+        map.clear(), // empty map
+        map.set('key', 2).size, // add key value pair and get size property
+        map.delete('value'), // delete key
+        map.get('key'), // get value
+        map.keys(), // map keys iterator
+        map.values(), // map values iterator
+        map.entries(), // map entries iterator
+    ]; C(maps); // retains insertion order
+    map.forEach(v => c(v)); // iterable map values
+    for (const v of map) c(v); // iterable entries
+</script>
+
+<script>
+    h('TYPED ARRAYS'); // fixed length sequential buffers
+
+    const typed1 = new Int8Array(1), // max 127 min -128
+        typed2 = new Uint8Array(1), // max 255 with looping
+        typed3 = new Uint8ClampedArray(1); // max 255
+    typed1[0] = 200, typed2[0] = typed3[0] = 300; // numeric assignments only
+    c(typed1[0]), c(typed2[0]), c(typed3[0]); // fast read slow write
+
+    console.dir(new Int16Array(2)), console.dir(new Uint16Array(2)); // max 2^16
+    console.dir(new Int32Array(2)), console.dir(new Uint32Array(2)); // max 2^32
+    console.dir(new Float32Array(2)), console.dir(new Float64Array(2)); // supports big numbers
+    console.dir(new BigInt64Array(2)), console.dir(new BigUint64Array(2)); // max 2^64
+</script>
+
+<script>
+    h('BITWISE'); // numbers stored as 64 bit floating point
+
+    void function () { // no function name
+        let bits = [ // operations as 32 bit signed integers
+            1 & 5, // and
+            5 | 1, // or
+            1 ^ 5, // xor
+            ~-4, // not
+            4 << 2, // zero fill left shift
+            -4 >> 2, // sign preserving right shift
+            4 >>> 2, // zero fill right shift
+        ]; C(bits); // negative is ~ plus 1
+
+        c((-100 >>> 0).toString(2)); // decimal-binary conversion
+        void c(bits.constructor === Array); // constructor type check
+        bits = void undefined; // empty variable
+    }(); // iife alternative syntax
+</script>
+
+<script>
+    h('STATEMENTS'); // reserved keywords
+
+    c(i); // var hoisted but not initialized
+    switch (!Boolean(null)) { // falsy value
+        case Boolean(Infinity): // case stacking
+        case new Boolean('' - ''): // boolean object
+            var i = 0; // increment initialization
+    } // last case does not require a break
+
+    for (; ;) { // all three expressions optional
+        ++i; // prefix increment operator
+        if (i == '3') { // terminal condition
+            list: { // code block label
+                i ||= 10; // logical or assignment
+                break list; // escape execution
+                c(1); // does not execute
+            } break; // break statement
+        } // otherwise infinite loop
+    } c('i:', i); // global scope
+
+    loop: for (let i = 0; i < 5; i++) { // for statement label
+        if (i % 2 != 0) { c(i); continue loop; } c(i); // continue statement
+    } // optional statement labels
+</script>
+
+<script>
+    h('ERRORS'); // try throw catch finally
+
+    try { (1).toString(37); } catch { } // range error
+    try { [].toFloat(); } catch (e) { c(e); } // type error
+    try { x; } catch (e) { c(e.name); } // reference error
+    try { eval('.'); } catch (e) { c(e.message); } // syntax error
+    try { decodeURI('%'); } catch { } finally { c('finally'); } // uri error
+    try { if ($ = {}) throw new Error('message'); } catch { } finally { } // custom error
+</script>
+
+<script>
+    h('FUNCTIONS'); // invoke method
+
+    new Function('param1', 'param2', 'code'); // function constructor
+    [undefined, null] // anonymous variable
+        .map(c); // parameter iteration
+
+    myFunc1({ p2: true, p3: false }); // function hoisting
+    function myFunc1({ p1, p2, p3 }) { // function declaration
+        c(p2, p3, p1); // destructured parameters
+    };;; // superfluous semicolons
+
+    const myFunc2 = function (...p) { ; C(p); }; // function expression
+    myFunc2(true, false, Symbol); // rest parameters
+
+    (function myFunc3(p1) { // immediately invoked function expression
+        const NUM = 69; // numeric constant
+        const lex = () => { c(NUM); }; lex(); // lexical scope
+        C(arguments); // arguments object
+    })('arg1', 'arg2', 'arg3',); // excessive arguments
+
+    const myFunc4 = e => e **= 2; // arrow function
+    c([NaN, undefined, null].map(myFunc4)); // callback function
+
+    const myFunc5 = x => { // pure function
+        x *= 2; // assignment operator
+        c('queue:', x); // task queue FIFO
+        if (x < 8) myFunc5(x); // recursion
+        c('stack:', x); // call stack FILO
+        return () => 'return'; // anonymous first class function
+    }; c(myFunc5(1)); // function call
+
+    const curry = c => b => a => a * b * c; // closures
+    c(curry(4)(3)(2)); // functional currying
+
+    function ttl(stat, ...dynamic) { c(stat.raw); c(dynamic); } // tagged template literal
+    { const a = 1, b = 2; ttl`ttl: ${1}${a, b}`; } // assignment returns itself
+</script>
+
+<script>
+    h('CLASSES'); // syntactic sugar
+
+    class es2022 { // ecmascript 2022 new features
+        constructor(x = 0) { this.x = x; } // class is an object template
+        i = ''; // public class field
+        #i = 'i'; // private class field
+        get() { this.#get(); } // public class method
+        #get() { c(this.#i); } // private class method
+        get _x() { return this.x; } // getter object accessor
+        set _x(x) { this.x = x; } // setter computed property
+    } const test = new es2022(); // instantiation
+
+    test.get(); // call method
+    c(test._x = 5); // set value
+</script>
+
+<script>
+    h('OOP'); // pillars of oop: abstraction, encapsulation, inheritance & polymorphism
+
+    const obj = Object.create(null), __obj__ = obj, k1 = 'k1'; // instantiate object
+    const proto = { test: NaN }; Object.setPrototypeOf(obj, proto); // set __proto__
+    obj[k1] = 'v1'; obj['k2'] = '2'; obj.k3 = '3'; // property assignments
+    obj[Symbol('k0')] = 'v0'; // symbol assignment
+
+    Object.defineProperty(obj, 'k4', // property descriptor attributes false by default
+        { value: 'v4', enumerable: true }); // can be iterated in for...of
+    Object.defineProperty(obj, 'k5', // non-enumerable properties dimmed in devtools
+        { value: 'v5', writable: false }); // cannot be reassigned
+    Object.defineProperty(obj, 'k6', // cannot change configurable from false
+        { value: 'v6', configurable: true }); // can be redefined and deleted
+    Object.defineProperties(obj, { k7: { value: 'k7' }, k8: { value: 'k8' } }); // multiple entries
+
+    obj.k4 = null; // non-writable
+    delete obj.k4; // non-deletable
+
+    const src = Object.fromEntries(new Map([['k2', 'v2'], ['k3', 'v3']])); // object from map
+    Object.assign(obj, src, {}); // copies values from source enumerables to target writables
+
+    console.dir(obj); // enable prototype dropdown
+    c(obj.test); // property inheritance
+    c(obj.toString()); // always same output
+    c(obj.hasOwnProperty('k1')); // deprecated
+    c(obj.propertyIsEnumerable('k2')); // check if enumerable
+
+    c(proto.isPrototypeOf(obj)); // direct inheritance
+    c(Object.prototype.isPrototypeOf(obj)); // inheritance chain
+    c(Object.is(obj, __obj__)); // check if same reference pointer
+    c(Object.hasOwn(obj.__proto__, 'test')); // check property existence
+
+    c(Object.getPrototypeOf(obj)); // get __proto__
+    c(Object.keys(obj)); // enumerable keys
+    c(Object.values(obj)); // enumerable values
+    c(Object.entries(obj)); // enumerable entries
+
+    c(Object.getOwnPropertyNames(obj)); // all keys
+    c(Object.getOwnPropertySymbols(obj)); // all symbols
+    c(Object.getOwnPropertyDescriptor(obj, 'k1')); // single attribute
+    C(Object.getOwnPropertyDescriptors(obj)); // all attributes
+
+    Object.preventExtensions(obj); // cannot add new properties or change prototype
+    Object.seal(obj); // above and cannot be reconfigured
+    Object.freeze(obj); // above and cannot be rewritten
+    c(Object.isExtensible(obj)); // no undo
+    c(Object.isSealed(obj)); // can be rewritten
+    c(Object.isFrozen(obj)); // total lockdown
+</script>
+
+<script>
+    h('PROTOTYPES'); // oop inheritance
+
+    const pro = { state: false, __proto__: { state: null } }; // __proto__ link
+    Object.setPrototypeOf(pro, { state: true }); // object static method
+    Object.getPrototypeOf(pro) === pro.__proto__; // [[prototype]] is __proto__
+    c(pro.state, pro.__proto__.state); // __proto__ accessor property
+
+    c((function () { }).prototype); // prototype property
+    c((function () { }).__proto__); // function has no __proto__
+
+    c((new function () { })); // constructor call
+    c((new function () { }).prototype); // object has no prototype
+    c((new function () { }).__proto__); // prototypal delegation
+</script>
+
+<script>
+    h('PROMISES'); // control flow
+
+    const pro1 = () => new Promise(res => res('task 1')); // auto resolve
+    const pro2 = msg => new Promise((res, rej) => rej(`${msg} task 2`)); // auto reject
+
+    pro1().then(msg => pro2(msg)).catch(c).finally(c('begin')); // promise chaining
+    Promise.race([pro1(), pro2()]).then(c).catch(c); // first to settle
+    Promise.any([Promise.resolve('res')]).then(c, c); // first to settle or reject all
+    Promise.all([Promise.reject('rej')]).then(c, c); // first to reject or settle all
+    Promise.allSettled([pro1(), pro2()]).then(c('fulfilled')); // settle all
+</script>
+
+<script type="module" readonly>
+    'use strict'; // directive at beginning of script or function
+    h('MISCELLANEOUS'); // uncategorized features
+
+    const weakSet = new WeakSet([{}, {}]); // objects only
+    const weakMap = new WeakMap([[{}, {}], [{}, {}]]); // object keys
+    c(weakSet); // methods: has, add, delete
+    c(weakMap); // methods: has, get, set, delete
+
+    const g = function* () { yield 2; c(yield); yield* g$(); return 0; }(); // generator function
+    function* g$() { yield 1; } // yield pauses function
+    c(g, g.next(), g.next(), g.next('arg'), g.next(), g.next()); // iteration
+    c([][Symbol.iterator]()); // iterable prototype has iterator symbol
+
+    const o1 = { key: null, get: function (x = '', y = '') { return this.key + x + y; } }; // this
+    const o2 = { key: 'me' }; // method reuse
+    const id = Symbol('id'); o2[id] = 1; c(o2, o2[id], o2.id); // symbol identifier
+    c(structuredClone({ ...o2 })); // deep clone objects
+    c(o1.get.call(o2, '!')); // string arguments
+    c(o1.get.apply(o2, ['!'])); // array argument
+    c(o1.get.bind(o2)('!')); // changes this context
+
+    import def from '../javascript/module.js'; // default import
+    import { mod3, mod2 as mod2 } from '../javascript/module.js'; // named import
+    import * as mod from '../javascript/module.js'; // module import
+    c(mod, def, mod2, mod3, this); // variables nonexistent in window
+
+    // debugger; /* toggles runtime debugger */
+</script>

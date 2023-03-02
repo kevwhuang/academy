@@ -1,0 +1,27 @@
+{
+    "editor.autoClosingQuotes": "never",
+    "editor.fontSize": 16,
+    "editor.hover.enabled": false,
+    "editor.minimap.enabled": false,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "html.autoCreateQuotes": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "terminal.integrated.fontSize": 16,
+    "update.mode": "none",
+    "window.zoomLevel": 1,
+    "workbench.activityBar.visible": false,
+    "workbench.colorTheme": "Default High Contrast",
+    "workbench.editor.untitled.hint": "hidden",
+    "workbench.startupEditor": "none",
+    "typescript.preferences.quoteStyle": "single",
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
+    "javascript.suggest.includeAutomaticOptionalChainCompletions": false,
+    "typescript.suggest.enabled": false,
+    "javascript.suggest.enabled": false,
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+}

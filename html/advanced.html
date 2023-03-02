@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+
+<html lang="en-US" dir="ltr">
+
+<head>
+
+    <title>CSS Advanced Guide</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Kevin Huang">
+    <meta name="description" content="A demonstration of advanced concepts and practices in CSS.">
+    <meta name="keywords" content="Animations, Axios, Canvas, CSS, Displays, Dropdown,
+        Event Listeners, Flexbox, Fonts, Grayscale, Grid, HTML, Icons, JavaScript, Marquee,
+        Material Symbols, Navigation Bar, Positioning, Responsive, Toggles, Web Components">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <base href="../" target="_blank">
+    <noscript>Your browser does not support scripts.</noscript>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-advanced-apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-advanced-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-advanced-32x32.png">
+    <link rel="icon" type="image/x-icon" href="assets/favicon-advanced.ico">
+    <link rel="manifest" href="documents/advanced.webmanifest">
+
+    <link rel="preload" as="style" href="css/reset.css">
+    <link rel="preload" as="style" href="css/root.css">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" media="screen" href="css/reset.css">
+    <link rel="stylesheet" media="screen" href="css/root.css">
+
+    <script src="https://kit.fontawesome.com/c9d939b58f.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" crossorigin="anonymous"></script>
+
+    <style data-title="*">
+        @import url(https://fonts.googleapis.com/css?family=Inconsolata);
+
+        @font-face {
+            font-family: Audiowide;
+            src: url(assets/audiowide-regular.ttf);
+        }
+
+        body {
+            background: #222;
+            font-family: Audiowide, Copperplate, fantasy;
+            font-size: var(--s2);
+            overflow: hidden;
+        }
+
+        .material-symbols-outlined {
+            color: teal;
+            cursor: pointer;
+            font-size: var(--x);
+            font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 200, 'opsz' 48;
+            user-select: none;
+        }
+
+        .material-symbols-outlined:hover {
+            color: peru;
+        }
+
+        .material-symbols-outlined:active {
+            font-variation-settings: 'FILL' 1;
+        }
+
+        :focus {
+            outline: none;
+        }
+
+        :root {
+            --x: 45.89px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0;
+        }
+
+        [data-test] {
+            clear: none;
+        }
+
+        [id*="demo-"]>div,
+        #marquee {
+            clear: none;
+        }
+    </style>
+
+    <style data-title="elements">
+        input[type="submit"] {
+            background: #666;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 5vmin;
+            height: 100%;
+            letter-spacing: 0.5pc;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background: #444;
+            color: #ddd;
+        }
+
+        input[type="submit"]:active {
+            background: #bbb;
+            color: #000;
+        }
+
+        textarea {
+            background-color: #000;
+            border: 1px solid blue;
+            border-radius: 5px;
+            caret-color: green;
+            color: #ddd;
+            display: block;
+            font-family: Verdana, sans-serif;
+            font-size: var(--s2);
+            height: 95%;
+            left: 50%;
+            padding: 10px;
+            position: relative;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 95%;
+        }
+
+        textarea:focus {
+            border-color: green;
+        }
+
+        textarea::selection {
+            background: #666;
+            color: #000;
+        }
+    </style>
+
+    <style data-title="nav">
+        nav {
+            display: block;
+        }
+
+        nav menu {
+            font-variant: small-caps;
+            left: calc(var(--x) + 1vw);
+            position: fixed;
+            text-align: center;
+            width: calc(100vw - var(--x) * 2 - 2vw);
+            z-index: 2;
+        }
+
+        nav menu>a,
+        nav menu .dropdown-container>a {
+            float: left;
+            overflow: hidden;
+            width: 25%;
+        }
+
+        nav menu a {
+            background: #666;
+            cursor: pointer;
+            font-family: Copperplate, fantasy;
+            font-size: var(--s3);
+            padding: 10px 0;
+            user-select: none;
+        }
+
+        nav menu a:hover {
+            background: #444 !important;
+            color: #ddd !important;
+        }
+
+        nav menu a:active {
+            background: #bbb !important;
+            color: #000 !important;
+        }
+
+        nav menu .current {
+            background: #000;
+            color: #bbb;
+        }
+
+        nav menu .dropdown-button {
+            cursor: default;
+        }
+
+        nav menu .dropdown-button:hover {
+            background: #444 !important;
+            color: #ddd !important;
+        }
+
+        nav menu .dropdown-container {
+            display: block;
+            position: relative;
+        }
+
+        nav menu .dropdown-container:hover .dropdown-content {
+            display: block !important;
+        }
+
+        nav menu .dropdown-content {
+            display: none;
+            min-width: 25%;
+            position: absolute;
+            right: 0;
+            top: var(--x);
+        }
+
+        nav menu .dropdown-content a {
+            border: 1px solid #ddd;
+            display: block;
+        }
+
+        nav menu .dropdown-content a:not(:first-child) {
+            border-top: none;
+        }
+    </style>
+
+    <style data-title="aside#left">
+        aside#left {
+            background: #000;
+            border-right: 0 dotted #fff;
+            box-sizing: content-box;
+            height: calc(100vh - var(--x) / 2);
+            left: 0;
+            overflow-y: scroll;
+            position: fixed;
+            width: calc(var(--x) + 1vw);
+            z-index: 1;
+        }
+
+        aside#left div#gutterLeft {
+            background: #000;
+            border-right: 0 dotted #fff;
+            box-sizing: content-box;
+            height: calc(var(--x) / 2);
+            left: 0;
+            position: fixed;
+            top: calc(100vh - var(--x) / 2);
+            width: calc(var(--x) + 1vw);
+        }
+
+        aside#left menu {
+            position: relative;
+        }
+
+        aside#left menu i {
+            left: 50%;
+            position: absolute;
+            transform: translateX(-50%);
+        }
+
+        aside#left menu i:nth-child(1) {
+            transform: scale(0.5) translateX(-100%);
+        }
+
+        aside#left menu i:nth-child(2) {
+            top: calc(var(--x) * 1 + 0vh);
+        }
+
+        aside#left menu i:nth-child(3) {
+            top: calc(var(--x) * 2 + 1vh);
+        }
+
+        aside#left menu i:nth-child(4) {
+            top: calc(var(--x) * 3 + 2vh);
+        }
+
+        aside#left menu i:nth-child(5) {
+            top: calc(var(--x) * 4 + 3vh);
+        }
+
+        aside#left menu i:nth-child(6) {
+            top: calc(var(--x) * 5 + 4vh);
+        }
+
+        aside#left menu i:nth-child(7) {
+            top: calc(var(--x) * 6 + 5vh);
+        }
+
+        aside#left menu i:nth-child(8) {
+            top: calc(var(--x) * 7 + 6vh);
+        }
+
+        aside#left menu i:nth-child(9) {
+            top: calc(var(--x) * 8 + 7vh);
+        }
+
+        aside#left menu i:nth-child(10) {
+            top: calc(var(--x) * 9 + 8vh);
+        }
+
+        aside#left menu i:nth-child(11) {
+            top: calc(var(--x) * 10 + 9vh);
+        }
+
+        aside#left menu i:nth-child(12) {
+            top: calc(var(--x) * 11 + 10vh);
+        }
+
+        aside#left menu i:nth-child(13) {
+            top: calc(var(--x) * 12 + 11vh);
+        }
+    </style>
+
+    <style data-title="aside#right">
+        aside#right {
+            background: #000;
+            border-left: 0 dotted #fff;
+            box-sizing: content-box;
+            height: calc(100vh - var(--x) / 2);
+            overflow-y: scroll;
+            position: fixed;
+            right: 0;
+            width: calc(var(--x) + 1vw);
+            z-index: 1;
+        }
+
+        aside#right div#gutterRight {
+            background: #000;
+            border-left: 0 dotted #fff;
+            box-sizing: content-box;
+            height: calc(var(--x) / 2);
+            position: fixed;
+            right: 0;
+            top: calc(100vh - var(--x) / 2);
+            width: calc(var(--x) + 1vw);
+        }
+
+        aside#right menu {
+            position: relative;
+        }
+
+        aside#right menu i {
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        aside#right menu i:nth-child(1) {
+            transform: scale(0.5) translateX(100%);
+        }
+
+        aside#right menu i:nth-child(2) {
+            top: calc(var(--x) * 1 + 0vh);
+        }
+
+        aside#right menu i:nth-child(3) {
+            top: calc(var(--x) * 2 + 1vh);
+        }
+
+        aside#right menu i:nth-child(4) {
+            top: calc(var(--x) * 3 + 2vh);
+        }
+
+        aside#right menu i:nth-child(5) {
+            top: calc(var(--x) * 4 + 3vh);
+        }
+
+        aside#right menu i:nth-child(6) {
+            top: calc(var(--x) * 5 + 4vh);
+        }
+
+        aside#right menu i:nth-child(7) {
+            top: calc(var(--x) * 6 + 5vh);
+        }
+
+        aside#right menu i:nth-child(8) {
+            top: calc(var(--x) * 7 + 6vh);
+        }
+
+        aside#right menu i:nth-child(9) {
+            top: calc(var(--x) * 8 + 7vh);
+        }
+
+        aside#right menu i:nth-child(10) {
+            top: calc(var(--x) * 9 + 8vh);
+        }
+
+        aside#right menu i:nth-child(11) {
+            top: calc(var(--x) * 10 + 9vh);
+        }
+
+        aside#right menu i:nth-child(12) {
+            top: calc(var(--x) * 11 + 10vh);
+        }
+
+        aside#right menu i:nth-child(13) {
+            top: calc(var(--x) * 12 + 11vh);
+        }
+    </style>
+
+    <style data-title="main#main">
+        main#main canvas {
+            animation: opacity2 11s;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            height: calc(100vh - (var(--x) * 1.5) * 2);
+            left: 50%;
+            min-height: 50vh;
+            min-width: 50vw;
+            opacity: 1;
+            position: absolute;
+            top: calc(50% + var(--x) / 4);
+            transform: translate(-50%, -50%);
+            width: calc(100vw - ((var(--x) + 1vw) * 2) * 2);
+        }
+
+        main#main div#welcome {
+            animation: opacity1 10s;
+            left: 50%;
+            letter-spacing: 0.5rem;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            width: 100%;
+        }
+
+        main#main div#welcome h1 {
+            animation-delay: 0;
+            animation-direction: normal;
+            animation-duration: 5s;
+            animation-fill-mode: none;
+            animation-iteration-count: 1;
+            animation-name: morph;
+            animation-play-state: running;
+            animation-timing-function: ease;
+            background: #222;
+            color: #ddd;
+            font-size: var(--s5);
+            font-weight: bolder;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        main#main div#welcome h2 {
+            color: slateblue;
+            font-size: var(--s3);
+        }
+    </style>
+
+    <style data-title="main#main div#demos">
+        main#main div#demos {
+            animation: opacity2 11s;
+            border: 1px solid red;
+            height: calc(100vh - var(--x) * 1.5);
+            margin: auto;
+            position: relative;
+            top: var(--x);
+            width: calc(100% - var(--x) * 2 - 2vw);
+        }
+
+        main#main div#demos article {
+            display: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        main#main div#demos article>h3 {
+            animation: fadeInOut 4s;
+            animation-timing-function: ease-in-out;
+            color: #ddd;
+            font-size: var(--s4);
+            font-weight: bolder;
+            left: 50%;
+            letter-spacing: 0.5rem;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            width: 100%;
+        }
+
+        main#main div#demos article>div {
+            animation: fadeInLong 10s;
+            animation-timing-function: ease-in-out;
+            color: #ddd;
+            left: 50%;
+            opacity: 1;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        main#main div#demos article#demo-01 {
+            animation: fadeIn 1s;
+            animation-timing-function: ease-in-out;
+            background: linear-gradient(to bottom right, #036 0%, #933 100%);
+        }
+
+        main#main div#demos article#demo-01 :last-child {
+            border: 1px solid transparent;
+            border-image-outset: 2rem;
+            border-image-repeat: round;
+            border-image-slice: 100;
+            border-image-source: url(assets/colors.bmp);
+            border-image-width: 1rem;
+            font-size: 10rem;
+        }
+
+        main#main div#demos article#demo-02 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-03 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-04 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-05 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-06 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-07 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-08 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-09 div {
+            background: #000;
+            height: 80%;
+            overflow: scroll;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-09 div p {
+            break-after: auto;
+            break-before: auto;
+            break-inside: auto;
+            column-count: 3;
+            column-fill: balance;
+            column-gap: 2rem;
+            column-rule: 1px solid #ddd;
+            column-rule-color: #ddd;
+            column-rule-style: solid;
+            column-rule-width: 1px;
+            column-span: all;
+            column-width: auto;
+            columns: auto 3;
+            cursor: crosshair;
+            font-family: Verdana, sans-serif;
+            line-height: 2.5rem;
+            margin: 2rem;
+            orphans: 1;
+            text-overflow: ellipsis;
+            user-select: none;
+            widows: 1;
+            word-wrap: break-word;
+        }
+
+        main#main div#demos article#demo-10 div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-10 div button {
+            border: 1px solid #ddd;
+            color: #ddd;
+            cursor: pointer;
+            float: left;
+            font-size: 20vmin;
+            height: 50%;
+            width: 50%;
+        }
+
+        main#main div#demos article#demo-10 div button:hover {
+            color: red;
+            transition: color 1s;
+        }
+
+        main#main div#demos article#demo-10 div button:active {
+            font-size: 25vmin;
+            transition: font-size 250ms;
+        }
+
+        main#main div#demos article#demo-11>div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-11>div div#demo-11-div {
+            display: block !important;
+            height: 90%;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+        }
+
+        main#main div#demos article#demo-11>div div#demo-11-div section {
+            display: grid;
+            grid-template-areas:
+                'nav nav nav'
+                'left main right';
+            grid-template-columns: 1fr 80% 1fr;
+            grid-template-rows: 10% 90%;
+            height: 100%;
+        }
+
+        main#main div#demos article#demo-11>div div#demo-11-div section div:nth-child(1) {
+            grid-area: nav;
+            z-index: 1;
+        }
+
+        main#main div#demos article#demo-11>div div#demo-11-div section div:nth-child(2) {
+            grid-area: left;
+        }
+
+        main#main div#demos article#demo-11>div div#demo-11-div section div:nth-child(3) {
+            grid-area: right;
+        }
+
+        main#main div#demos article#demo-11>div div#demo-11-div section div:nth-child(4) {
+            grid-area: main;
+        }
+
+        main#main div#demos article#demo-11>div div#demo-11-div section i {
+            font-size: 5vmin;
+            width: 100%;
+            cursor: default;
+            text-align: center;
+            height: 50%;
+            top: 50%;
+            position: relative;
+            transform: translateY(-50%);
+        }
+
+        main#main div#demos article#demo-11>div div#demo-11-div section i:hover {
+            color: teal;
+        }
+
+        main#main div#demos article#demo-11>div div#demo-11-div section i:active {
+            font-variation-settings: 'FILL' 0;
+        }
+
+        main#main div#demos article#demo-12>div {
+            background: #000;
+            height: 80%;
+            width: 80%;
+        }
+
+        main#main div#demos article#demo-12>div #cards {
+            line-height: 0;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main#main div#demos article#demo-12>div #cards div {
+            display: inline-block;
+            position: relative;
+        }
+
+        main#main div#demos article#demo-12>div #cards div img {
+            border: 2px solid transparent;
+            cursor: pointer;
+            filter: brightness(90%) grayscale(100%);
+            height: 100px;
+            width: 100px;
+        }
+
+        main#main div#demos article#demo-12>div #cards div img:active {
+            opacity: 0.5;
+        }
+
+        main#main div#demos article#demo-12>div #cards div span {
+            color: peru;
+            display: none;
+            font-family: Verdana, sans-serif;
+            font-size: var(--s1);
+            font-weight: 300;
+            left: 50%;
+            position: absolute;
+            text-transform: uppercase;
+            top: var(--s1);
+            transform: translateX(-50%);
+        }
+    </style>
+
+    <style data-title="main#flexbox">
+        main#flexbox {
+            border: 1px solid green;
+            height: calc(100vh - var(--x) * 1.5);
+            margin: auto;
+            position: relative;
+            top: var(--x);
+            width: calc(100% - var(--x) * 2 - 2vw);
+        }
+
+        main#flexbox div h3 {
+            animation: fadeInOut 4s;
+            animation-timing-function: ease-in-out;
+            color: #ddd;
+            font-size: var(--s4);
+            font-weight: bolder;
+            left: 50%;
+            letter-spacing: 0.5rem;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            width: 100%;
+        }
+    </style>
+
+    <style data-title="main#grid">
+        main#grid {
+            border: 1px solid blue;
+            height: calc(100vh - var(--x) * 1.5);
+            margin: auto;
+            position: relative;
+            top: var(--x);
+            width: calc(100% - var(--x) * 2 - 2vw);
+        }
+
+        main#grid div h3 {
+            animation: fadeInOut 4s;
+            animation-timing-function: ease-in-out;
+            color: #ddd;
+            font-size: var(--s4);
+            font-weight: bolder;
+            left: 50%;
+            letter-spacing: 0.5rem;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            width: 100%;
+        }
+    </style>
+
+    <style data-title="footer">
+        footer {
+            display: block;
+        }
+
+        footer section {
+            background: #000;
+            bottom: 0;
+            color: #ddd;
+            height: calc(var(--x) / 2);
+            left: calc(var(--x) + 1vw);
+            position: fixed;
+            width: calc(100vw - var(--x) * 2 - 2vw);
+        }
+
+        footer section output {
+            animation: opacity2 11s, marquee 86400s linear infinite;
+            font-family: Inconsolata, 'Courier New', monospace;
+            font-size: var(--s2);
+            opacity: 1;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            user-select: none;
+            word-wrap: break-word;
+        }
+    </style>
+
+    <style data-title="@keyframes">
+        @keyframes fadeInLong {
+
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            70% {
+                opacity: 1;
+            }
+
+        }
+
+        @keyframes fadeIn {
+
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+        }
+
+        @keyframes fadeInOut {
+
+            0% {
+                opacity: 0;
+            }
+
+            25% {
+                opacity: 1;
+            }
+
+            75% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+        @keyframes marquee {
+
+            100% {
+                transform: translateX(-100%);
+            }
+
+        }
+
+        @keyframes morph {
+
+            0% {
+                margin-bottom: -35px;
+            }
+
+            20% {
+                letter-spacing: 0.5rem;
+            }
+
+            40% {
+                letter-spacing: 2rem;
+            }
+
+            80% {
+                letter-spacing: 0.5rem;
+                margin-bottom: -35px;
+            }
+
+            100% {
+                margin-bottom: 10px;
+            }
+
+        }
+
+        @keyframes opacity1 {
+
+            0% {
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+        @keyframes opacity2 {
+
+            0% {
+                opacity: 0;
+            }
+
+            80% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+        }
+    </style>
+
+    <style data-title="@media">
+        @media screen and (max-width:1000px) {
+
+            main#main div#welcome h1 {
+                font-size: var(--s4) !important;
+            }
+
+            main#main div#welcome h2 {
+                font-size: var(--s3) !important;
+            }
+
+        }
+
+        @media screen and (max-width:750px) {
+
+            main#main div#welcome h1 {
+                font-size: var(--s3) !important;
+            }
+
+            main#main div#welcome h2 {
+                font-size: var(--s2) !important;
+            }
+
+        }
+
+        @media screen and (max-width:600px) {
+
+            main#main canvas {
+                animation-duration: 2s !important;
+            }
+
+            main#main div#welcome h1,
+            main#main div#welcome h2 {
+                display: none !important;
+            }
+
+        }
+
+        @media screen and (max-width:500px) {
+
+            aside#left,
+            aside#right,
+            footer,
+            main#main canvas,
+            main#main div#welcome {
+                display: none !important;
+            }
+
+            footer section,
+            nav menu {
+                left: 0 !important;
+                width: 100% !important;
+            }
+
+            main h3 {
+                font-size: var(--s3) !important;
+            }
+
+            main#main div#demos {
+                animation-duration: 0s !important;
+                border: 1px solid red !important;
+                height: calc(100vh - var(--s3) * 3) !important;
+                top: calc(var(--s3) * 3) !important;
+                width: 100vw !important;
+            }
+
+            main#main div#demos article#demo-09 div p {
+                line-height: 1rem;
+            }
+
+            main#flexbox,
+            main#grid {
+                height: calc(100vh - var(--s3) * 3) !important;
+                top: calc(var(--s3) * 3) !important;
+                width: 100vw !important;
+            }
+
+            nav {
+                display: block !important;
+            }
+
+            nav menu>a,
+            nav menu .dropdown-container>a {
+                padding: 0 !important;
+                width: 100% !important;
+            }
+
+            nav menu .dropdown-container {
+                display: none !important;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <audio controls muted loop autoplay hidden loading="lazy">
+            <source src="assets/midnight.mp3" type="audio/mpeg">
+            <p>Your browser does not support audio.</p>
+        </audio>
+
+    </header>
+
+    <nav>
+
+        <menu>
+
+            <a id="buttonMain" class="current" onclick="navMain()">Main</a>
+            <a id="buttonFlexbox" onclick="navFlexbox()">Flexbox</a>
+            <a id="buttonGrid" onclick="navGrid()">Grid</a>
+
+            <div class="dropdown-container">
+
+                <a class="dropdown-button">Docs</a>
+
+                <div class="dropdown-content">
+
+                    <a href="https://getbootstrap.com/docs/5.2">Bootstrap 5</a>
+                    <a href="https://css-tricks.com">CSS-Tricks</a>
+                    <a href="https://javascript.info">JSInfo</a>
+                    <a href="https://m3.material.io">Material 3</a>
+                    <a href="https://developer.mozilla.org">MDN</a>
+                    <a href="https://google.github.io/styleguide">Style Guide</a>
+                    <a href="https://w3schools.com">W3Schools</a>
+
+                </div>
+
+            </div>
+
+        </menu>
+
+    </nav>
+
+    <aside id="left">
+
+        <menu>
+
+            <i class="material-symbols-outlined" title="Website Info"
+                onclick="alert('Revision — Feb 28, 2023\n&copy; 2022-2023 Kevin Huang')">copyright</i>
+
+            <i class="material-symbols-outlined" title="Toggle Navbar" onclick="toggleNav()">menu_open</i>
+            <i class="material-symbols-outlined" title="GitHub"
+                onclick="window.open('https:github.com/kevwhuang')">home</i>
+            <i class="material-symbols-outlined" title="Node Package Manager"
+                onclick="window.open('https:www.npmjs.com')">download</i>
+            <i class="material-symbols-outlined" title="jsDelivr"
+                onclick="window.open('https:jsdelivr.com')">cloud_download</i>
+            <i class="material-symbols-outlined" title="Material 3"
+                onclick="window.open('https:m3.material.io')">design_services</i>
+            <i class="material-symbols-outlined" title="Google Fonts"
+                onclick="window.open('https:fonts.google.com')">font_download</i>
+            <i class="material-symbols-outlined" title="Material Symbols"
+                onclick="window.open('https:fonts.google.com/icons')">emoji_symbols</i>
+            <i class="material-symbols-outlined" title="Figma"
+                onclick="window.open('https:www.figma.com')">edit_square</i>
+            <i class="material-symbols-outlined" title="Webflow"
+                onclick="window.open('https:webflow.com')">edit_document</i>
+            <i class="material-symbols-outlined" title="Palette Maker"
+                onclick="window.open('https:palettemaker.com')">colorize</i>
+            <i class="material-symbols-outlined" title="Pixlr Editor"
+                onclick="window.open('https:pixlr.com/e')">auto_awesome</i>
+            <i class="material-symbols-outlined" title="Unsplash"
+                onclick="window.open('https:unsplash.com')">photo_library</i>
+
+        </menu>
+
+        <div id="gutterLeft"></div>
+
+    </aside>
+
+    <aside id="right">
+
+        <menu>
+
+            <i class="material-symbols-outlined" title="Mute / Unmute" onclick="toggleSound()">volume_off</i>
+
+            <i class="material-symbols-outlined" title="Demo 01" onclick="toggleDemo('01')">counter_1</i>
+            <i class="material-symbols-outlined" title="Demo 02" onclick="toggleDemo('02')">counter_2</i>
+            <i class="material-symbols-outlined" title="Demo 03" onclick="toggleDemo('03')">counter_3</i>
+            <i class="material-symbols-outlined" title="Demo 04" onclick="toggleDemo('04')">counter_4</i>
+            <i class="material-symbols-outlined" title="Demo 05" onclick="toggleDemo('05')">counter_5</i>
+            <i class="material-symbols-outlined" title="Demo 06" onclick="toggleDemo('06')">counter_6</i>
+            <i class="material-symbols-outlined" title="Demo 07" onclick="toggleDemo('07')">counter_7</i>
+            <i class="material-symbols-outlined" title="Demo 08" onclick="toggleDemo('08')">counter_8</i>
+            <i class="material-symbols-outlined" title="Demo 09" onclick="toggleDemo('09')">counter_9</i>
+            <i class="material-symbols-outlined" title="Demo 10" onclick="toggleDemo('10')">counter_0</i>
+            <i class="material-symbols-outlined" title="Demo 11" onclick="toggleDemo('11')">looks_one</i>
+            <i class="material-symbols-outlined" title="Demo 12" onclick="toggleDemo('12')">looks_two</i>
+
+        </menu>
+
+        <div id="gutterRight"></div>
+
+    </aside>
+
+    <main id="main">
+
+        <div data-test id="welcome">
+
+            <h1>Welcome To</h1>
+            <h2>Austin Coding Alliance</h2>
+
+        </div>
+
+        <canvas data-test data-type="dynamic">
+            <p>Your browser does not support Canvas.</p>
+        </canvas>
+
+        <div id="demos">
+
+            <article id="demo-01">
+
+                <h3 data-test>Demo 01</h3>
+
+                <div class="fa-solid fa-road-barrier"></div>
+
+            </article>
+
+            <article id="demo-02">
+
+                <h3 data-test>Demo 02</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-03">
+
+                <h3 data-test>Demo 03</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-04">
+
+                <h3 data-test>Demo 04</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-05">
+
+                <h3 data-test>Demo 05</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-06">
+
+                <h3 data-test>Demo 06</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-07">
+
+                <h3 data-test>Demo 07</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-08">
+
+                <h3 data-test>Demo 08</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-09">
+
+                <h3 data-test>Demo 09</h3>
+
+                <div>
+
+                    <p>
+                        Minima animi, atque aspernatur consequatur iure, accusantium minus impedit
+                        dolorem odio quibusdam numquam quod. Laborum incidunt beatae quo alias id
+                        eligendi natus ipsa, officia labore culpa repellat tempore vitae mollitia
+                        quibusdam dolore? Culpa ad vel temporibus esse rerum dicta libero dolorem
+                        doloribus et repellendus enim illo saepe quidem minus iure aperiam animi
+                        odio nostrum, dolores molestias. Aliquid quibusdam veniam sunt sequi, et
+                        cupiditate alias quod nostrum similique, obcaecati accusantium libero at
+                        magni a earum corrupti eveniet maiores dolores deserunt exercitationem
+                        minima iusto unde. Nemo officia sapiente inventore corporis incidunt
+                        consequatur laborum deleniti suscipit dolores. Voluptas rem eaque minima
+                        sit incidunt! Recusandae eaque sed expedita repellendus, tempora quod nihil,
+                        obcaecati sequi facilis facere eveniet error. Quae molestias minima odit
+                        sed non ratione ipsa libero, nemo iure veniam voluptates accusantium
+                        reprehenderit impedit perferendis quaerat adipisci amet atque voluptatem?
+                        Ducimus assumenda debitis porro culpa inventore maiores nihil.
+                        Exercitationem sapiente blanditiis, consequuntur, similique maiores,
+                        facilis iure at odio nemo autem esse deserunt deleniti. Maiores vitae
+                        molestias temporibus alias inventore fugit cum aliquam voluptates ipsam
+                        nisi ab perspiciatis eos, quas iure nesciunt magnam quisquam autem
+                        consequatur sint amet error tempore culpa. Modi veritatis, accusamus,
+                        totam officiis provident tempore cum perferendis dolores tenetur blanditiis
+                        dicta sunt.
+                    </p>
+
+                </div>
+
+            </article>
+
+            <article id="demo-10">
+
+                <h3 data-test>Demo 10</h3>
+
+                <div></div>
+
+            </article>
+
+            <article id="demo-11">
+
+                <h3 data-test>Demo 11</h3>
+
+                <div>
+
+                    <div id="demo-11-div">
+
+                        <section>
+
+                            <div>
+
+                                <form>
+                                    <input type="submit" value="REVERSE">
+                                </form>
+
+                            </div>
+
+                            <div>
+
+                                <i class="material-symbols-outlined" title="Copy">content_copy</i>
+                                <i class="material-symbols-outlined" title="Cut">cut</i>
+
+                            </div>
+
+                            <div>
+
+                                <i class="material-symbols-outlined" title="Paste">content_paste</i>
+                                <i class="material-symbols-outlined" title="Input">change_circle</i>
+
+                            </div>
+
+                            <div>
+
+                                <textarea maxlength="10000"></textarea>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article id="demo-12">
+
+                <h3 data-test>Demo 12</h3>
+
+                <div>
+
+                    <user-element event-listener="getUsers">
+                        <div slot="title">Get Users</div>
+                    </user-element>
+
+                    <div id="cards"></div>
+
+                </div>
+
+                <template>
+
+                    <link rel="stylesheet" media="screen" href="css/reset.css">
+
+                    <style>
+                        button {
+                            background: #666;
+                            font-family: Copperplate, fantasy;
+                            font-size: var(--s3);
+                            padding: 0 10px;
+                            position: absolute;
+                            top: calc((-1 * var(--s3)) - 1px);
+                        }
+
+                        button:hover {
+                            background: #444 !important;
+                            color: #ddd !important;
+                        }
+
+                        button:active {
+                            background: #bbb !important;
+                            color: #000 !important;
+                        }
+
+                        @media screen and (max-width:500px) {
+
+                            button {
+                                left: 50%;
+                                padding: 0;
+                                transform: translateX(-50%);
+                                width: 100%;
+                            }
+
+                        }
+
+                        @media screen and (max-height:400px) {
+
+                            button {
+                                font-size: var(--s2);
+                                top: calc(-1 * var(--s2));
+                            }
+
+                        }
+                    </style>
+
+                    <button>
+                        <slot name="title"></slot>
+                    </button>
+
+                </template>
+
+            </article>
+
+        </div>
+
+    </main>
+
+    <main id="flexbox" style="display:none;">
+
+        <div>
+
+            <h3 data-test>Flexbox</h3>
+
+        </div>
+
+    </main>
+
+    <main id="grid" style="display:none;">
+
+        <div>
+
+            <h3 data-test>Grid</h3>
+
+        </div>
+
+    </main>
+
+    <footer>
+
+        <section>
+
+            <output id="marquee" data-type="dynamic"></output>
+
+        </section>
+
+    </footer>
+
+    <script data-title="header">
+        const $ = e => console.log('%c' + e, 'color:crimson;');
+        var time = e => Math.floor(e.timeStamp / 1000).toString().padStart(5, '0');
+
+        const audio = document.querySelector('audio');
+        const mute = document.querySelector('[title*="mute"]');
+
+        function toggleSound() {
+            if (audio.muted) {
+                audio.muted = false;
+                audio.play();
+                mute.innerHTML = 'volume_up';
+            } else {
+                audio.muted = true;
+                mute.innerHTML = 'volume_off';
+            }
+        }
+
+        addEventListener('visibilitychange', () => {
+            switch (document.visibilityState) {
+                case 'hidden':
+                    audio.pause();
+                    break;
+                case 'visible':
+                    audio.play();
+                    break;
+            }
+        }, false);
+
+        console.groupCollapsed('Media');
+        console.log(audio);
+
+        audio.onloadstart = e => $(`[${time(e)}] Audio: loadstart`);
+        audio.onprogress = e => $(`[${time(e)}] Audio: progress`);
+        audio.ondurationchange = e => $(`[${time(e)}] Audio: durationchange`);
+        audio.onloadedmetadata = e => $(`[${time(e)}] Audio: loadedmetadata`);
+        audio.onloadeddata = e => $(`[${time(e)}] Audio: loadeddata`);
+        audio.oncanplay = e => $(`[${time(e)}] Audio: canplay`);
+        audio.oncanplaythrough = e => $(`[${time(e)}] Audio: canplaythrough`);
+        audio.onplay = e => $(`[${time(e)}] Audio: play`);
+        audio.onplaying = e => $(`[${time(e)}] Audio: playing`);
+        audio.ontimeupdate = () => { };
+        audio.onended = e => $(`[${time(e)}] Audio: ended`);
+
+        audio.onabort = e => $(`[${time(e)}] Audio: -- abort`);
+        audio.onemptied = e => $(`[${time(e)}] Audio: -- emptied`);
+        audio.onerror = e => $(`[${time(e)}] Audio: -- error`);
+        audio.onpause = e => $(`[${time(e)}] Audio: -- pause`);
+        audio.onratechange = e => $(`[${time(e)}] Audio: -- ratechange`);
+        audio.onseeked = e => $(`[${time(e)}] Audio: -- seeked`);
+        audio.onseeking = e => $(`[${time(e)}] Audio: -- seeking`);
+        audio.onstalled = e => $(`[${time(e)}] Audio: -- stalled`);
+        audio.onsuspend = e => $(`[${time(e)}] Audio: -- suspend`);
+        audio.onvolumechange = e => $(`[${time(e)}] Audio: -- volumechange`);
+        audio.onwaiting = e => $(`[${time(e)}] Audio: -- waiting`);
+
+        setTimeout(() => console.groupEnd('Media'), 3600e3);
+    </script>
+
+    <script data-title="nav">
+        const buttonFlexbox = document.getElementById('buttonFlexbox');
+        const buttonGrid = document.getElementById('buttonGrid');
+        const buttonMain = document.getElementById('buttonMain');
+        const pageFlexbox = document.getElementById('flexbox');
+        const pageGrid = document.getElementById('grid');
+        const pageMain = document.getElementById('main');
+
+        function navFlexbox() {
+            buttonFlexbox.style.backgroundColor = '#000';
+            buttonFlexbox.style.color = '#bbb';
+            pageFlexbox.style.display = 'block';
+            buttonGrid.style.backgroundColor = '#666';
+            buttonGrid.style.color = '#000';
+            pageGrid.style.display = 'none';
+            buttonMain.style.backgroundColor = '#666';
+            buttonMain.style.color = '#000';
+            pageMain.style.display = 'none';
+        }
+
+        function navGrid() {
+            buttonFlexbox.style.backgroundColor = '#666';
+            buttonFlexbox.style.color = '#000';
+            pageFlexbox.style.display = 'none';
+            buttonGrid.style.backgroundColor = '#000';
+            buttonGrid.style.color = '#bbb';
+            pageGrid.style.display = 'block';
+            buttonMain.style.backgroundColor = '#666';
+            buttonMain.style.color = '#000';
+            pageMain.style.display = 'none';
+        }
+
+        function navMain() {
+            buttonFlexbox.style.backgroundColor = '#666';
+            buttonFlexbox.style.color = '#000';
+            pageFlexbox.style.display = 'none';
+            buttonGrid.style.backgroundColor = '#666';
+            buttonGrid.style.color = '#000';
+            pageGrid.style.display = 'none';
+            buttonMain.style.backgroundColor = '#000';
+            buttonMain.style.color = '#bbb';
+            pageMain.style.display = 'block';
+        }
+    </script>
+
+    <script data-title="aside#left">
+        const demos = document.getElementById('demos');
+        const footer = document.querySelector('footer');
+        const gutterLeft = document.getElementById('gutterLeft');
+        const gutterRight = document.getElementById('gutterRight');
+        const left = document.getElementById('left');
+        const nav = document.querySelector('nav');
+        const right = document.getElementById('right');
+
+        function toggleNav() {
+            if (footer.style.display === 'none') {
+                demos.style.borderWidth = '1px';
+                footer.style.display = 'block';
+                gutterLeft.style.borderWidth = '0';
+                gutterRight.style.borderWidth = '0';
+                left.style.borderWidth = '0';
+                nav.style.display = 'block';
+                pageFlexbox.style.borderWidth = '1px';
+                pageGrid.style.borderWidth = '1px';
+                right.style.borderWidth = '0';
+            } else {
+                demos.style.borderWidth = '0';
+                footer.style.display = 'none';
+                gutterLeft.style.borderWidth = '1px';
+                gutterRight.style.borderWidth = '1px';
+                left.style.borderWidth = '1px';
+                nav.style.display = 'none';
+                pageFlexbox.style.borderWidth = '0';
+                pageGrid.style.borderWidth = '0';
+                right.style.borderWidth = '1px';
+            }
+        }
+    </script>
+
+    <script data-title="aside#right">
+        const demoList = document.querySelectorAll('article[id*="demo-"]');
+        const welcome = document.getElementById('welcome');
+
+        function toggleDemo(id) {
+            canvas.style.display = 'none';
+            demos.style.animationDuration = '0s';
+            welcome.style.display = 'none';
+
+            for (let i = 0; i < demoList.length; i++) demoList[i].style.display = 'none';
+            demoList[parseInt(id) - 1].style.display = 'block';
+        }
+    </script>
+
+    <script data-title="main#main">
+        class Circle {
+            constructor(x = 0, y = 0, dx = 1, dy = 1,
+                r = 1, start = 0, end = Math.PI * 2,
+                color = '#000', alpha = 1, width = 1, direction = false) {
+
+                this.x = x;
+                this.y = y;
+                this.dx = dx;
+                this.dy = dy;
+
+                this.r = r;
+                this.start = start;
+                this.end = end;
+
+                this.color = color;
+                this.alpha = alpha;
+                this.width = width;
+                this.direction = direction;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.alpha;
+                ctx.lineWidth = this.width;
+                ctx.strokeStyle = this.color;
+
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.r, this.start, this.end, this.direction);
+                ctx.stroke();
+                ctx.fill();
+            }
+
+            update() {
+                this.draw();
+
+                if (this.x + this.r > canvas.width || this.x - this.r < 0) this.dx *= -1;
+                if (this.y + this.r > canvas.height || this.y - this.r < 0) this.dy *= -1;
+
+                this.x += this.dx;
+                this.y += this.dy;
+            }
+        }
+
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        let circles = [];
+        let frames = null;
+
+        function init() {
+            canvas.height = parseFloat(getComputedStyle(canvas).height);
+            canvas.width = parseFloat(getComputedStyle(canvas).width);
+
+            for (let i = 0; i < 150; i++) {
+                const x = canvas.width / 2;
+                const y = canvas.height / 2;
+                const dx = (Math.random() * (5 - 1) + 1) * (Math.random() < .5 ? 1 : -1);
+                const dy = (Math.random() * (5 - 1) + 1) * (Math.random() < .5 ? 1 : -1);
+
+                const r = Math.random() * Math.min(canvas.width, canvas.height) * .1;
+                const start = Math.random() * Math.PI * 2;
+                const end = Math.random() * Math.PI * 2;
+
+                const color = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+                const alpha = Math.random() * (1 - .5) + .5;
+                const width = Math.random() * 2 + 1;
+                const direction = Math.random() < .5;
+
+                circles.push(new Circle(x, y, dx, dy, r, start, end, color, alpha, width, direction));
+            }
+        }
+
+        function paint() {
+            canvas.height = parseFloat(getComputedStyle(canvas).height);
+            canvas.width = parseFloat(getComputedStyle(canvas).width);
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            frames = requestAnimationFrame(paint);
+
+            for (const circle of circles) circle.update();
+        }
+
+        addEventListener('load', () => setTimeout(() => { init(); paint(); }, 1e4));
+        addEventListener('resize', () => {
+            circles = [];
+            cancelAnimationFrame(frames);
+            init();
+            paint();
+        });
+    </script>
+
+    <script data-title="div#demos">
+        {
+            const $ = e => console.log('%c' + e, 'color:peru;');
+            const animate = document.querySelector('main#main div#demos article>h3');
+
+            animate.onanimationstart = e => $(`[${time(e)}] Animation: start`);
+            animate.onanimationiteration = e => $(`[${time(e)}] Animation: iteration`);
+            animate.onanimationcancel = e => $(`[${time(e)}] Animation: cancel`);
+            animate.onanimationend = e => $(`[${time(e)}] Animation: end`);
+        }
+    </script>
+
+    <script data-title="article#demo-10">
+        const buttons = ['&Delta;', '&Theta;', '&Sigma;', '&Omega;'];
+        const buttonsDiv = document.querySelector('#demo-10').lastElementChild;
+
+        for (const b of buttons) {
+            const button = document.createElement('button');
+
+            button.id = `my${b}`;
+            button.className = 'hover';
+            button.setAttribute('title', `${b.toLowerCase().slice(1, -1)}`);
+            button.innerHTML = b;
+            buttonsDiv.appendChild(button);
+        }
+
+        const button1 = buttonsDiv.firstElementChild;
+        const button2 = buttonsDiv.children[1];
+        const button3 = buttonsDiv.children[2];
+        const button4 = buttonsDiv.lastElementChild;
+
+        button1.addEventListener('click', e => {
+            e.target.style.backgroundColor = '#ddd';
+            e.target.style.color = '#000';
+        });
+
+        button1.addEventListener('dblclick', e => {
+            e.target.style.backgroundColor = '#000';
+        });
+
+        button1.addEventListener('dblclick', e => {
+            e.target.style.color = '#ddd';
+        });
+
+        button2.addEventListener('mouseenter', e => {
+            e.target.style.backgroundColor = '#ddd';
+            e.target.style.color = '#000';
+        });
+
+        button2.addEventListener('mouseleave', e => {
+            e.target.style.backgroundColor = '#000';
+            e.target.style.color = '#ddd';
+        });
+
+        button2.addEventListener('mousedown', e => {
+            e.target.style.color = 'red';
+        });
+
+        button2.addEventListener('mouseup', e => {
+            e.target.style.color = '#000';
+        });
+
+        button3.addEventListener('mouseover', e => {
+            if (e.getModifierState('CapsLock')) e.target.style.color = 'red';
+            else if (e.ctrlKey) e.target.style.color = 'orange';
+            else if (e.altKey) e.target.style.color = 'yellow';
+            else if (e.shiftKey) e.target.style.color = 'green';
+            else if (e.metaKey) e.target.style.color = 'blue';
+        });
+
+        button3.addEventListener('mouseout', e => {
+            e.target.style.backgroundColor = '#000';
+            e.target.style.color = '#ddd';
+        });
+
+        button3.addEventListener('mousemove', e => {
+            const R = e.offsetX / 4 + 5;
+            const G = e.offsetY / 4 + 5;
+            const B = (R + G) / 2;
+
+            e.target.style.backgroundColor = 'rgb(' + R + ', ' + G + ', ' + B + ')';
+        });
+
+        button4.addEventListener('focus', e => {
+            e.target.style.borderColor = 'blue';
+        });
+
+        button4.addEventListener('focusin', e => {
+            e.target.style.borderColor = 'blue';
+        });
+
+        button4.addEventListener('blur', e => {
+            e.target.style.borderColor = '#ddd';
+        });
+
+        button4.addEventListener('focusout', e => {
+            e.target.style.borderColor = '#ddd';
+        });
+
+        button4.addEventListener('keydown', e => {
+            if (Math.random() < 0.5) e.target.style.color = 'green';
+            else e.target.style.color = 'orange';
+        });
+
+        button4.addEventListener('keyup', e => {
+            e.target.style.color = '#ddd';
+        });
+    </script>
+
+    <script data-title="article#demo-11">
+        const copy = document.querySelector('i[title="Copy"]');
+        const cut = document.querySelector('i[title="Cut"]');
+        const input = document.querySelector('i[title="Input"]');
+        const paste = document.querySelector('i[title="Paste"]');
+        const textarea = document.querySelector('textarea');
+
+        addEventListener('submit', e => {
+            e.preventDefault();
+            copy.style.color = cut.style.color = paste.style.color = input.style.color = 'teal';
+            textarea.value = textarea.value.split('').reverse().join('');
+        });
+
+        textarea.addEventListener('copy', () => {
+            copy.style.color = 'green';
+        });
+
+        textarea.addEventListener('cut', () => {
+            cut.style.color = 'green';
+        });
+
+        textarea.addEventListener('paste', () => {
+            paste.style.color = 'green';
+        });
+
+        textarea.addEventListener('input', () => {
+            input.style.color = 'green';
+        });
+
+        {
+            const $ = e => console.log('%c' + e, 'color:seagreen;');
+            const trans = document.querySelector('main#main div#demos article#demo-10 div button');
+
+            trans.ontransitionrun = e => $(`[${time(e)}] Transition: run`);
+            trans.ontransitionstart = e => $(`[${time(e)}] Transition: start`);
+            trans.ontransitioncancel = e => $(`[${time(e)}] Transition: cancel`);
+            trans.ontransitionend = e => $(`[${time(e)}] Transition: end`);
+        }
+    </script>
+
+    <script data-title="article#demo-12">
+        async function getUsers() {
+            const cards = document.getElementById('cards');
+            const url = 'https://randomuser.me/api';
+            const parameters = '/?results=200&nat=us,ca,gb,au&exc=login&noinfo';
+
+            cards.innerHTML = null;
+
+            await axios.get(url + parameters)
+                .then(res => {
+                    for (const e of res.data.results) {
+                        const div = document.createElement('div');
+                        const img = document.createElement('img');
+                        const span = document.createElement('span');
+
+                        cards.append(div);
+                        div.append(img);
+                        div.append(span);
+
+                        img.src = e.picture.large;
+                        img.title = `${e.name.first} ${e.name.last}`;
+                        img.alt = `A photo of ${e.name.first} ${e.name.last}.`;
+                        img.draggable = false;
+                        span.innerText = `${e.name.first}`;
+
+                        img.addEventListener('click', switchUser);
+                        div.addEventListener('mouseenter', showName);
+                        div.addEventListener('mouseleave', hideName);
+                    }
+                })
+                .catch(new Function);
+
+            hideUsers();
+        }
+
+        async function switchUser() {
+            await axios.get('https://randomuser.me/api/?nat=us,ca,gb,au')
+                .then(res => {
+                    const e = res.data.results[0];
+
+                    this.src = e.picture.large;
+                    this.title = `${e.name.first} ${e.name.last}`;
+                    this.alt = `A photo of ${e.name.first} ${e.name.last}.`;
+                    this.nextElementSibling.innerText = e.name.first;
+                })
+                .catch(new Function);
+        }
+
+        function showName() {
+            this.lastElementChild.style.display = 'inline';
+        }
+
+        function hideName() {
+            this.lastElementChild.style.display = 'none';
+        }
+
+        function hideUsers() {
+            const container = document.querySelector('#demo-12>div');
+            const photos = document.querySelectorAll('#demo-12 img');
+            const height = getComputedStyle(container).height.replace('px', '');
+
+            for (const e of photos) {
+                const offset = e.offsetParent.offsetTop + e.height + 16;
+                if (offset < parseInt(height)) e.parentElement.style.visibility = 'visible';
+                else e.parentElement.style.visibility = 'hidden';
+            }
+        }
+
+        const template = document.querySelector('#demo-12 template');
+        let debounce = null;
+
+        addEventListener('resize', () => {
+            clearTimeout(debounce);
+            debounce = setTimeout(hideUsers, 100);
+        });
+
+        class CustomElement extends HTMLElement {
+            constructor() {
+                super();
+                this.attachShadow({ mode: 'open' });
+                this.shadowRoot.appendChild(template.content.cloneNode(true));
+            }
+
+            connectedCallback() {
+                const b = this.shadowRoot.querySelector('button');
+
+                b.addEventListener('click', eval(this.getAttribute('event-listener')));
+                b.addEventListener('click', function () { this.innerText = 'Refresh'; });
+            }
+
+            disconnectedCallback() { }
+        }
+
+        customElements.define('user-element', CustomElement);
+    </script>
+
+    <script data-title="footer">
+        const output = document.querySelector('output');
+        let text = '';
+
+        for (let i = 1; i <= 86400; i++) text += Math.round(Math.random());
+        output.innerHTML = text;
+    </script>
+
+    <script data-title="dev" type="application/text">
+        const css = document.styleSheets[3];
+        css.cssRules[9].style.setProperty('display', 'none', 'important');
+        css.cssRules[10].style.setProperty('animation-duration', '0s', 'important');
+        setTimeout(() => console.groupEnd('Media'), 1000);
+        document.querySelector('[title="Demo 12"]').click();
+    </script>
+
+</body>
+
+</html>

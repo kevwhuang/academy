@@ -1,0 +1,383 @@
+.agent {
+    all: revert;
+}
+
+.box {
+    background: red !important;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.default {
+    all: unset;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+/* ============================================================================================== */
+
+html {
+    background: rgba(41, 66, 130, 95%);
+    font-size: var(--s2);
+}
+
+/* ============================================================================================== */
+
+header p {
+    -ms-writing-mode: tb-rl;
+    -o-transition: transform 2s;
+    -webkit-transition: -webkit-transform 2s;
+    -webkit-writing-mode: vertical-rl;
+    bottom: 0;
+    cursor: default;
+    font-size: var(--s1);
+    position: fixed;
+    right: 0;
+    transition: transform 2s, -webkit-transform 2s;
+    writing-mode: vertical-rl;
+}
+
+header p span {
+    background: var(--c1);
+    border-radius: 100%;
+}
+
+header p:hover {
+    -ms-transform: scale(2) translateX(-10vw) translateY(-10vh);
+    -ms-transform-origin: right bottom;
+    -ms-writing-mode: initial;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: none;
+    -webkit-perspective-origin: inherit;
+    -webkit-transform: scale(2) translateX(-10vw) translateY(-10vh);
+    -webkit-transform-origin: right bottom;
+    -webkit-transform-style: flat;
+    -webkit-writing-mode: initial;
+    backface-visibility: hidden;
+    perspective: none;
+    perspective-origin: inherit;
+    transform: scale(2) translateX(-10vw) translateY(-10vh);
+    transform-origin: right bottom;
+    transform-style: flat;
+    writing-mode: initial;
+    z-index: 100;
+}
+
+/* ============================================================================================== */
+
+nav {
+    background: #222;
+    isolation: auto;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 90;
+}
+
+nav ul {
+    margin: auto;
+    width: 80%;
+}
+
+nav ul a {
+    color: #ccc;
+    font: var(--s3)/var(--s3) 'Courier New', monospace;
+    text-transform: uppercase;
+}
+
+nav ul a:visited {
+    color: #ccc;
+}
+
+nav ul a:hover {
+    color: indigo;
+}
+
+nav ul a:active {
+    color: #000;
+}
+
+nav ul hr {
+    margin: calc(1rem / 2) 0;
+}
+
+nav ul li {
+    float: left;
+    overflow: hidden;
+    text-align: center;
+    width: calc(100% / 3);
+}
+
+/* ============================================================================================== */
+
+aside button {
+    -o-transition: all 0.5s ease-in-out 500ms, color 2s;
+    -o-transition-delay: 500ms;
+    -o-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+    -webkit-transition: all 0.5s ease-in-out 500ms, color 2s;
+    -webkit-transition-delay: 500ms;
+    -webkit-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+    border: none;
+    color: #ccc;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: var(--s4);
+    left: 0.75rem;
+    position: fixed;
+    transition: all 0.5s ease-in-out 500ms, color 2s;
+    transition-delay: 500ms;
+    transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+    z-index: 100;
+}
+
+aside button:nth-child(1) {
+    -ms-transform: translateY(-0.5rem);
+    -webkit-transform: translateY(-0.5rem);
+    top: 1rem;
+    transform: translateY(-0.5rem);
+}
+
+aside button:nth-child(2) {
+    -ms-transform: translateY(calc((-2rem - var(--s3)) / 4));
+    -webkit-transform: translateY(calc((-2rem - var(--s3)) / 4));
+    top: calc(2.5rem + var(--s3));
+    transform: translateY(calc((-2rem - var(--s3)) / 4));
+}
+
+aside button:hover {
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    color: indigo;
+    font-size: calc(var(--s4) + 0.5rem);
+    transform: rotate(360deg);
+}
+
+aside button:active {
+    color: #000;
+}
+
+/* ============================================================================================== */
+
+main .container {
+    background: var(--c1);
+    border-color: var(--c3) var(--c4) var(--c5);
+    border-radius: var(--s2)/var(--s4);
+    border-style: double dashed solid dotted;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-width: thick;
+    height: calc(100vh - var(--box) * 2 * 9 / 16);
+    margin: calc(var(--box) * 9 / 16) auto;
+    outline: medium none;
+    outline-color: #999;
+    outline-offset: 0.5rem;
+    position: relative;
+    width: calc(100% - var(--box) * 2);
+}
+
+main .container:hover {
+    outline-style: groove;
+}
+
+/* ============================================================================================== */
+
+main .container h1 {
+    -moz-user-select: none;
+    -ms-transform: translateX(-50%);
+    -ms-user-select: none;
+    -webkit-transform: translateX(-50%);
+    -webkit-user-select: none;
+    bottom: 0;
+    color: #ccc;
+    font-family: 'Courier New', monospace;
+    font-size: min(calc(var(--s2) + 10vmin), var(--s6));
+    left: 50%;
+    position: absolute;
+    text-shadow: 10ch 10ch var(--s2) var(--c3), 0 0 var(--s3) var(--c4), 0 0 var(--s4) var(--c5);
+    transform: translateX(-50%);
+    user-select: none;
+}
+
+main .container .sect1 {
+    border-bottom: 1px ridge var(--c5);
+    height: calc((100vh - var(--box) * 2 * 9 / 16) * 0.7);
+    overflow: scroll;
+}
+
+main .container .sect1 p {
+    -moz-text-align-last: right;
+    direction: ltr;
+    float: left;
+    font-size: min(calc(var(--s1) + 1.25vmin), var(--s3));
+    letter-spacing: -1px;
+    line-height: 1.2;
+    padding: 2vmin;
+    text-align: justify;
+    text-align-last: right;
+    text-indent: var(--s2);
+    unicode-bidi: normal;
+    width: calc(100% / 3);
+    word-break: break-all;
+    word-spacing: calc(var(--s1) / 4);
+}
+
+main .container .sect1 p::first-letter {
+    font-size: 150%;
+}
+
+main .container .sect1 p::first-line {
+    color: var(--c3);
+    font-variant: small-caps;
+}
+
+main .container .sect1 p::selection {
+    background: #000;
+    color: #ccc;
+}
+
+/* ============================================================================================== */
+
+main .container .sect2 {
+    border-bottom: 1px ridge var(--c5);
+    height: calc((100vh - var(--box) * 2 * 9 / 16) * 0.7);
+    overflow: scroll;
+}
+
+main .container .sect2 .list {
+    float: left;
+    font-size: min(calc(var(--s1) + 2.5vmin), var(--s3));
+    padding: 2vmin;
+    text-align: justify;
+    width: calc(100% / 2);
+    word-break: break-all;
+}
+
+main .container .sect2 ol {
+    counter-reset: counter;
+    list-style: initial;
+    list-style-image: none;
+    list-style-position: inside;
+    list-style-type: square;
+}
+
+main .container .sect2 ol li:first-child {
+    background: var(--c3);
+}
+
+main .container .sect2 ol li:lang(special) {
+    background: #444;
+}
+
+main .container .sect2 ol li:last-child {
+    background: var(--c4);
+}
+
+main .container .sect2 ol li:nth-child(even) {
+    background: var(--c2);
+}
+
+main .container .sect2 ol li::before {
+    content: counters(counter, '.') ' ';
+    counter-increment: counter;
+}
+
+main .container .sect2 ol li::marker {
+    color: #ccc;
+}
+
+main .container .sect2 ol li::selection {
+    background: #000;
+    color: #ccc;
+}
+
+main .container .sect2 ol li.adjacent+li {
+    background: #777;
+}
+
+main .container .sect2 ol li.sibling~li {
+    background: var(--c5);
+}
+
+main .container .sect2 ol li[custom] {
+    background: #333;
+}
+
+main .container .sect2 ol li[data-tip*="pec"] {
+    background: #555;
+}
+
+main .container .sect2 section {
+    float: left;
+    height: 100%;
+    opacity: 1;
+    padding: 2vmin;
+    width: calc(100% / 2);
+}
+
+main .container .sect2 section .parallax:first-child {
+    background-attachment: fixed;
+    background-clip: content-box;
+    background-image: url(../assets/gradient-1.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50%;
+    position: relative;
+}
+
+main .container .sect2 section .parallax:last-child {
+    background: var(--c1) url(../assets/gradient-2.webp) no-repeat fixed center;
+    background-clip: content-box;
+    background-size: cover;
+    height: 50%;
+    position: relative;
+}
+
+main .container .sect2 section .parallax .center {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    font-size: min(calc(var(--s1) + 2.5vmin), var(--s3));
+    position: absolute;
+    text-align: center;
+    top: calc(50% - min(calc(var(--s1) + 2.5vmin), var(--s3)) / 2);
+    user-select: none;
+    width: 100%;
+}
+
+main .container .sect2 section .parallax .center:hover {
+    -ms-transform: scale(2);
+    -o-transition: transform 2s ease;
+    -o-transition-duration: 2s;
+    -o-transition-property: transform;
+    -o-transition-timing-function: ease;
+    -webkit-transform: scale(2);
+    -webkit-transition: -webkit-transform 2s ease;
+    -webkit-transition-duration: 2s;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-timing-function: ease;
+    transform: scale(2);
+    transition: transform 2s ease, -webkit-transform 2s ease;
+    transition-duration: 2s;
+    transition-property: transform, -webkit-transform;
+    transition-timing-function: ease;
+}
+
+/* ============================================================================================== */
+
+@media screen and (max-width:568px) {
+
+    header {
+        visibility: hidden;
+    }
+
+    .parallax {
+        background-attachment: scroll !important;
+    }
+
+}

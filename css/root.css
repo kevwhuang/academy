@@ -1,0 +1,17 @@
+:root {
+    /* Horizontal Margin */
+    --box: 5vw;
+    /* Colors - Blue Moon (Palette Maker) */
+    --c1: #28345A;
+    --c2: #294282;
+    --c3: #325C6A;
+    --c4: #6A9A9E;
+    --c5: #9bC6bF;
+    /* Sizes - 1.618 Golden Ratio (Type Scale) */
+    --s1: 9.89px;
+    --s2: 16.00px;
+    --s3: 25.89px;
+    --s4: 41.89px;
+    --s5: 67.77px;
+    --s6: 109.66px;
+}
