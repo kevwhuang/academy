@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"git.confirmSync": false,
+		"liveServer.settings.donotShowInfoMsg": true,
+		"terminal.integrated.fontSize": 16,
+		"window.zoomLevel": 1,
+		"workbench.activityBar.visible": false,
+		"workbench.colorTheme": "Default High Contrast",
+		"workbench.editor.untitled.hint": "hidden"
+	}
+}
