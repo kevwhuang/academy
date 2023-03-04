@@ -3,9 +3,7 @@ function twoSum(nums, target) {
         const check = nums.slice(i + 1);
 
         for (let j = 0; j < check.length; j++) {
-            if (nums[i] + check[j] === target) {
-                return [i, i + j + 1];
-            }
+            if (nums[i] + check[j] === target) return [i, i + j + 1];
         }
     }
 

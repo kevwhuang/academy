@@ -1030,7 +1030,7 @@
                 <dd class="addPaddingBot"><a href="https://github.com/lemak91" target="_blank">GitHub</a></dd>
 
                 <dt class="addPaddingTop">Noe Robles</dt>
-                <dd>Discord: &lt;unknown&gt;</dd>
+                <dd>Discord: Macrodose#0672</dd>
                 <dd class="addPaddingBot"><a href="https://github.com/noearobles" target="_blank">GitHub</a></dd>
 
                 <dt class="addPaddingTop">Vinicius Lopes</dt>
@@ -1062,15 +1062,11 @@
                 </li>
 
                 <li>
-                    <label for="progressSQL">SQL</label>
-                    <progress id="progressSQL" value="0" max="58"></progress>
-                    <ul type="square">
-                        <li>
-                            <label for="progressMySQL">MySQL</label>
-                            <progress id="progressMySQL" value="0" max="52"></progress>
-                        </li>
-                    </ul>
+                    <label for="progressGIT">GIT</label>
+                    <progress id="progressGIT" value="0" max="27"></progress>
                 </li>
+
+
 
             </menu>
 
@@ -1078,7 +1074,7 @@
 
                 <li>
                     <label for="progressJavaScript">JavaScript</label>
-                    <progress id="progressJavaScript" value="0" max="161"></progress>
+                    <progress id="progressJavaScript" value="161" max="161"></progress>
                     <ol type="i" start="5" reversed>
                         <li>
                             <label for="progressTypeScript">TypeScript</label>
@@ -1091,6 +1087,17 @@
                             <progress id="progressReact" value="0" max="34"></progress>
                         </li>
                     </ol>
+                </li>
+
+                <li>
+                    <label for="progressSQL">SQL</label>
+                    <progress id="progressSQL" value="0" max="58"></progress>
+                    <ul type="square">
+                        <li>
+                            <label for="progressMySQL">MySQL</label>
+                            <progress id="progressMySQL" value="0" max="52"></progress>
+                        </li>
+                    </ul>
                 </li>
 
             </menu>
@@ -2316,8 +2323,8 @@
                     </tr>
                     <tr>
                         <th>Staging Check</th>
-                        <td>status</td>
-                        <td></td>
+                        <td>status -s</td>
+                        <td>-s short</td>
                     </tr>
                     <tr>
                         <th>Stage File</th>
@@ -2351,12 +2358,47 @@
                     </tr>
                     <tr>
                         <th>Commit to Repo Message</th>
-                        <td>commit -m "[message]"</td>
-                        <td>-m message</td>
+                        <td>commit -am "[message]"</td>
+                        <td>-a auto, -m message, --amend</td>
                     </tr>
                     <tr>
                         <th>View Commits</th>
                         <td>log</td>
+                        <td>--oneline</td>
+                    </tr>
+                    <tr>
+                        <th>View Differences</th>
+                        <td>diff [branch]</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Stash Add</th>
+                        <td>stash</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Stash View</th>
+                        <td>stash list</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Stash Merge</th>
+                        <td>stash apply [stash]</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Stash Merge Delete</th>
+                        <td>stash pop [stash]</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Stash Remove</th>
+                        <td>stash drop [stash]</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Stash Remove All</th>
+                        <td>stash clear</td>
                         <td></td>
                     </tr>
                     <tr>
@@ -2370,23 +2412,38 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <th>Branch Remove</th>
-                        <td>branch -d [branch]</td>
-                        <td>-d delete</td>
-                    </tr>
-                    <tr>
                         <th>Branch Rename</th>
                         <td>branch -m [branch]</td>
                         <td>-m modify</td>
                     </tr>
                     <tr>
+                        <th>Branch Remove</th>
+                        <td>branch -d [branch]</td>
+                        <td>-d delete</td>
+                    </tr>
+                    <tr>
                         <th>Branch Switch</th>
-                        <td>checkout [branch]</td>
+                        <td>checkout -b [branch]</td>
                         <td>-b branch</td>
                     </tr>
                     <tr>
                         <th>Branch Merge</th>
                         <td>merge [branch]</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Revert File</th>
+                        <td>restore [file]</td>
+                        <td>--staged</td>
+                    </tr>
+                    <tr>
+                        <th>Revert Commit</th>
+                        <td>revert [hash]</td>
+                        <td>HEAD~n, --no-edit</td>
+                    </tr>
+                    <tr>
+                        <th>Reset Commit</th>
+                        <td>reset [hash]</td>
                         <td></td>
                     </tr>
                     <tr>
@@ -2417,22 +2474,32 @@
                     <tr>
                         <th>Push to Remote Forced</th>
                         <td>push -f</td>
-                        <td>-f forced</td>
+                        <td>-f force</td>
                     </tr>
                     <tr>
-                        <th>Pull from Remote</th>
+                        <th>Fetch from Remote</th>
+                        <td>fetch</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Merge from Remote</th>
                         <td>pull</td>
                         <td></td>
                     </tr>
                     <tr>
                         <th>Clone from Remote</th>
-                        <td>clone [repo]</td>
+                        <td>clone [repo] [dir]</td>
                         <td></td>
                     </tr>
                     <tr>
                         <th>Version</th>
                         <td>-v</td>
                         <td>-v version</td>
+                    </tr>
+                    <tr>
+                        <th>Help</th>
+                        <td>help</td>
+                        <td>Add -help or --help after command</td>
                     </tr>
 
                 </tbody>
@@ -2441,7 +2508,7 @@
 
                     <tr style="background-color:coral;">
                         <th>&Sigma;</th>
-                        <th colspan="2">25</th>
+                        <th colspan="2">37</th>
                     </tr>
 
                 </tfoot>
@@ -2515,11 +2582,6 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <th>Clear Screen</th>
-                        <td>Cmd+L</td>
-                        <td></td>
-                    </tr>
-                    <tr>
                         <th>Quit Terminal or Window</th>
                         <td>Cmd+D</td>
                         <td></td>
@@ -2546,8 +2608,8 @@
                     </tr>
                     <tr>
                         <th>Execute Multiple Commands</th>
-                        <td>&&</td>
-                        <td></td>
+                        <td>;</td>
+                        <td>Similar to &&</td>
                     </tr>
                     <tr>
                         <th>Root Directory</th>
@@ -2572,7 +2634,7 @@
                     <tr>
                         <th>Clear Screen</th>
                         <td>clear</td>
-                        <td></td>
+                        <td>Same as Cmd+L</td>
                     </tr>
                     <tr>
                         <th>Return Username</th>
@@ -2796,7 +2858,7 @@
 
                     <tr style="background-color:coral;">
                         <th>&Sigma;</th>
-                        <th colspan="2">55</th>
+                        <th colspan="2">54</th>
                     </tr>
 
                 </tfoot>
@@ -2976,7 +3038,7 @@
 
             <h2>Links</h2>
             <a href="https://github.com" target="_blank">GitHub</a>
-            <a href="https://temp-101-ebook.herokuapp.com" target="_blank">Textbook</a>
+            <a href="https://iamprogrammer!!:2021,hereicome!!@temp-101-ebook.herokuapp.com" target="_blank">Textbook</a>
             <a href="https://youtube.com/TraversyMedia" target="_blank">Traversy Media</a>
             <a href="https://w3schools.com" target="_blank">W3Schools</a>
             <a href="https://learn.zollege.com/courses/4503" target="_blank">Zollege</a>
