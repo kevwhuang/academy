@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kevwhuang.github.io/documents/sitemap.xml
+Sitemap: https://kevwhuang.github.io/academy/documents/sitemap.xml
