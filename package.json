@@ -1,6 +1,6 @@
 {
     "name": "academy",
-    "version": "23.03.07",
+    "version": "23.03.09",
     "description": "Austin Coding Academy",
     "author": "Kevin Huang",
     "license": "GPL-3.0",
@@ -46,6 +46,7 @@
         "autoprefixer": "*",
         "chai": "*",
         "chart.js": "*",
+        "cloudinary": "*",
         "cookie-parser": "*",
         "cors": "*",
         "css-loader": "*",
@@ -64,6 +65,7 @@
         "html-webpack-plugin": "*",
         "lodash": "*",
         "mini-css-extract-plugin": "*",
+        "mysql": "*",
         "nodemon": "*",
         "postcss-loader": "*",
         "sass-loader": "*",

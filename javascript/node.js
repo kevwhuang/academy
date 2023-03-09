@@ -2,7 +2,7 @@ require('fs').readFile('index.html', (err, html) => {
     if (err) { throw err; }
 
     const server = require('http').createServer((req, res) => {
-        res.setHeader('Content-type', 'text/html');
+        res.setHeader('Content-Type', 'text/html');
         res.write(html);
         res.end();
     });
