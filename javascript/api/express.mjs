@@ -43,7 +43,7 @@ app.get('/api/photo', (req, res) => {
     res.sendFile(path.join(__dirname, '../../assets/nina-nesbitt.jpg'));
 });
 app.get('/api/sql', (req, res) => {
-    db.query('SELECT * FROM users', (err, dbres) => res.send(dbres));
+    db.query('SELECT * FROM users', (err, result) => res.send(result));
 });
 
 function log(req, res, next) {

@@ -19,7 +19,8 @@ CREATE TABLE users (
     field_6 VARCHAR (100),
     field_7 VARCHAR (100),
     field_8 INTEGER (100),
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    UNIQUE KEY (field_4)
 );
 
 INSERT INTO
