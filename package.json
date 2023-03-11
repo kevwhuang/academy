@@ -1,6 +1,6 @@
 {
     "name": "academy",
-    "version": "23.03.09",
+    "version": "23.03.12",
     "description": "Austin Coding Academy",
     "author": "Kevin Huang",
     "license": "GPL-3.0",
@@ -10,7 +10,7 @@
         "lint": "eslint .",
         "start": "ts-node javascript/api/express.mjs",
         "test": "jest --watchAll",
-        "watch": "nodemon"
+        "watch": "nodemon javascript/experiment.js"
     },
     "homepage": "https://github.com/kevwhuang/academy#readme",
     "repository": {

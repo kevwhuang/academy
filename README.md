@@ -56,6 +56,7 @@ Next|
 - [ ] ESLint
 - [ ] Express
 - [ ] Jest
+- [ ] MySQL
 - [ ] Next
 - [ ] Node
 - [ ] PostCSS

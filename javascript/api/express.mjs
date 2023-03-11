@@ -19,6 +19,14 @@ const db = mysql.createConnection({
     password: 'password',
     database: 'admin',
 });
+const pool = mysql.createPool({
+    host: process.env.HOST,
+    user: process.env.USERNAME,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
+    connectionLimit: 100,
+    debug: false,
+});
 
 app.engine('hbs', exphbs.engine({
     extname: 'hbs',
@@ -27,7 +35,6 @@ app.engine('hbs', exphbs.engine({
 app.set('views', path.join(__dirname, '../../documents/views'));
 app.set('view engine', 'hbs');
 app.listen(PORT, () => console.log(`Server listening on PORT ${PORT}.`));
-db.connect();
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../')));
@@ -39,11 +46,9 @@ app.use('/api/users', route);
 
 app.get('/', (req, res) => res.redirect('/api'));
 app.get('/api', (req, res) => res.render('home', { heading: 'ROUTES', users }));
-app.get('/api/photo', (req, res) => {
+app.get('/sql', select);
+app.get('/photo', (req, res) => {
     res.sendFile(path.join(__dirname, '../../assets/nina-nesbitt.jpg'));
-});
-app.get('/api/sql', (req, res) => {
-    db.query('SELECT * FROM users', (err, result) => res.send(result));
 });
 
 function log(req, res, next) {
@@ -53,4 +58,22 @@ function log(req, res, next) {
         method: req.method,
     });
     next();
+}
+
+function select(req, res) {
+    const template = 'SELECT * FROM ?? WHERE ?? > ?';
+    const inserts = ['users', 'id', 0];
+    const query = mysql.format(template, inserts);
+
+    if (Number(process.env.STATE_POOL)) {
+        pool.query(query, (err, result) => {
+            if (err) return res.status(500).json(err);
+            res.send(result);
+        });
+    } else {
+        db.query(query, (err, result) => {
+            if (err) return res.status(500).json(err);
+            res.send(result);
+        });
+    }
 }

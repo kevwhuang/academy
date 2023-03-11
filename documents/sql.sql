@@ -113,9 +113,8 @@ VALUES
     (2, 'body2');
 
 CREATE TABLE data2 (
-    id INT AUTO_INCREMENT,
-    body TEXT,
-    PRIMARY KEY (id)
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    body TEXT
 );
 
 INSERT INTO
@@ -167,3 +166,17 @@ GROUP BY
     field_3
 HAVING
     COUNT(field_2) >= 0;
+
+DELIMITER $$
+
+CREATE PROCEDURE `get` ()
+BEGIN
+SELECT
+    *
+FROM
+    users;
+END$$
+
+DELIMITER ;
+
+CALL `get` ();
