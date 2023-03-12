@@ -66,14 +66,14 @@ function select(req, res) {
     const query = mysql.format(template, inserts);
 
     if (Number(process.env.STATE_POOL)) {
-        pool.query(query, (err, result) => {
+        pool.query(query, (err, results) => {
             if (err) return res.status(500).json(err);
-            res.send(result);
+            res.send(results);
         });
     } else {
-        db.query(query, (err, result) => {
+        db.query(query, (err, results) => {
             if (err) return res.status(500).json(err);
-            res.send(result);
+            res.send(results);
         });
     }
 }

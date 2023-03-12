@@ -103,7 +103,7 @@ CREATE TABLE data1 (
     date DATETIME DEFAULT CURRENT_TIMESTAMP,
     body TEXT,
     PRIMARY KEY (id),
-    FOREIGN KEY (users_id) REFERENCES users (id)
+    FOREIGN KEY (users_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
 INSERT INTO
