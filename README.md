@@ -6,11 +6,11 @@ HTML|Completed
 CSS|Learning
 Bootstrap|
 JavaScript|Completed
-TypeScript|
-Node|
-Express|
-SQL|
-MySQL|
+TypeScript|Learning
+Node|Learning
+Express|Learning
+SQL|Learning
+MySQL|Learning
 React|
 Next|
 

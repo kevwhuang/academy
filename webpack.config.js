@@ -1,8 +1,7 @@
-const path = require('path');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const stylesHandler = MiniCssExtractPlugin.loader;
@@ -53,9 +52,7 @@ module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
         config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
-    } else {
-        config.mode = 'development';
-    }
+    } else config.mode = 'development';
 
     return config;
 };

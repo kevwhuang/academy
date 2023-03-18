@@ -40,7 +40,7 @@
 <script>
     h('SYNTAX'); // statement ends with semicolon
 
-    _ = undefined; // undeclared private variable
+    _ = (1, undefined); // undeclared private variable with comma operator
     const _$ = null; // const must be initialized
     let // line break
         $ = $$ = true, // valid identifiers, $$ global scope
@@ -64,7 +64,7 @@
     h(`${'DATA ' + 'TYPES'}`); // template literal expression
 
     c(new Number([false])); // number object
-    c(Number([1])); // number coercion
+    c(Number([+1])); // number coercion
     c(Number.EPSILON, Number.MIN_VALUE, Number.NEGATIVE_INFINITY); // select number properties
     c(Number.prototype); // prototype access
 
