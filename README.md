@@ -7,7 +7,7 @@ CSS|In Progress
 Git|Completed
 HTML|Completed
 JavaScript|Completed
-MySQL|In Progress
+MySQL|Completed
 Node|In Progress
 React|
 Sass|
@@ -22,7 +22,7 @@ Bootstrap|
 ESLint|In Progress
 Express|In Progress
 Jest|In Progress
-MySQL|In Progress
+MySQL|Completed
 Next|
 Node|In Progress
 PostCSS|
@@ -76,7 +76,7 @@ Scrimba React|
 - [ ] Projects
 - [ ] Videos
 
-# HTML BOILERPLATE
+## HTML BOILERPLATE
 
 ```html
 <!DOCTYPE html>
@@ -123,4 +123,28 @@ Scrimba React|
 </body>
 
 </html>
+```
+
+## JSDELIVR
+
+```html
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/eslint/lib/api.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/express/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jest/build/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mysql/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/next/dist/server/next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nodemon/lib/cli/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/npm/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/postcss/lib/postcss.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/redux/dist/redux.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sass/sass.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typescript/lib/typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vite/dist/node/index.min.js"></script>
 ```

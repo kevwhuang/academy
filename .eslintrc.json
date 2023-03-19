@@ -16,6 +16,7 @@
     ],
     "rules": {
         "arrow-parens": "off",
+        "consistent-return": "off",
         "curly": "off",
         "guard-for-in": "off",
         "import/extensions": "off",

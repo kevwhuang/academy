@@ -85,19 +85,24 @@ WHERE
 ALTER TABLE
     users
 ADD
-    field_9 INT;
+    field_9 INT
+AFTER
+    field_8;
 
 ALTER TABLE
     users
 MODIFY
     field_9 VARCHAR (255);
 
+ALTER TABLE
+    users DROP COLUMN field_9;
+
 CREATE INDEX my_index ON users (password);
 
 ALTER TABLE
     users DROP INDEX my_index;
 
-CREATE TABLE data1 (
+CREATE TABLE data0 (
     id INT AUTO_INCREMENT,
     users_id INT,
     date DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -105,6 +110,8 @@ CREATE TABLE data1 (
     PRIMARY KEY (id),
     FOREIGN KEY (users_id) REFERENCES users (id) ON DELETE CASCADE
 );
+
+RENAME TABLE data0 to data1;
 
 INSERT INTO
     data1 (users_id, body)
@@ -121,16 +128,21 @@ INSERT INTO
     data2 (body)
 VALUES
     (111),
-    (222);
+    (111);
+
+REPLACE INTO data2
+VALUES
+    (2, 222);
+
+DESCRIBE users;
 
 SELECT
     DISTINCT users.id,
-    UCASE(password) AS pass,
+    UCASE(password) AS 'my pass',
     field_1,
     field_2,
     CONCAT(field_6, ' ', field_7),
-    field_9,
-    data1.date,
+    YEAR(data1.date),
     data2.body
 FROM
     users
@@ -144,7 +156,7 @@ WHERE
     AND field_4 IS NOT NULL
     AND field_5 = 'value'
     AND field_6 LIKE 'start%'
-    AND field_7 LIKE '%end'
+    AND field_7 LIKE '%_nd'
     AND (
         field_8 NOT BETWEEN 0
         AND 99
@@ -159,24 +171,54 @@ SELECT
     COUNT(field_2),
     MIN(field_2),
     MAX(field_2),
+    AVG(field_2),
     SUM(field_2)
 FROM
-    users
+    users u
 GROUP BY
-    field_3
+    u.field_3 WITH ROLLUP
 HAVING
-    COUNT(field_2) >= 0;
+    COUNT(field_2) <> 0
+LIMIT
+    1;
 
-DELIMITER $$
+(
+    SELECT
+        *
+    FROM
+        users
+)
+INTERSECT
+(
+    SELECT
+        *
+    FROM
+        users
+)
+UNION
+(
+    SELECT
+        *
+    FROM
+        users
+);
 
-CREATE PROCEDURE `get` ()
-BEGIN
+CREATE VIEW master AS
 SELECT
     *
 FROM
     users;
-END$$
 
-DELIMITER ;
-
-CALL `get` ();
+-- DELIMITER $$
+--
+-- CREATE PROCEDURE `get` ()
+-- BEGIN
+-- SELECT
+--     *
+-- FROM
+--     users;
+-- END$$
+--
+-- DELIMITER;
+--
+-- CALL `get`;
