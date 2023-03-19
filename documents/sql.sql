@@ -1,3 +1,13 @@
+CREATE USER 'user' @'%' IDENTIFIED BY 'password';
+
+GRANT
+SELECT
+    ON *.* TO user;
+
+FLUSH PRIVILEGES;
+
+DROP USER 'user' @'%';
+
 DROP DATABASE IF EXISTS admin;
 
 CREATE DATABASE admin;
@@ -20,8 +30,10 @@ CREATE TABLE users (
     field_7 VARCHAR (100),
     field_8 INTEGER (100),
     PRIMARY KEY (id),
-    UNIQUE KEY (field_4)
+    UNIQUE (field_4)
 );
+
+TRUNCATE TABLE users;
 
 INSERT INTO
     users (
@@ -95,7 +107,7 @@ MODIFY
     field_9 VARCHAR (255);
 
 ALTER TABLE
-    users DROP COLUMN field_9;
+    users DROP field_9;
 
 CREATE INDEX my_index ON users (password);
 
@@ -121,7 +133,8 @@ VALUES
 
 CREATE TABLE data2 (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    body TEXT
+    body TEXT,
+    CONSTRAINT id_body UNIQUE (id)
 );
 
 INSERT INTO
@@ -134,6 +147,24 @@ REPLACE INTO data2
 VALUES
     (2, 222);
 
+SELECT
+    CONCAT_WS('@', user, host) AS user,
+    IF(select_priv = 'Y', 'yes', NULL) AS _select,
+    CASE
+        WHEN insert_priv = 'Y' THEN 'yes'
+        ELSE NULL
+    END AS _insert,
+    CURTIME() AS time,
+    TRUNCATE(RAND(), 5) AS token
+FROM
+    mysql.user
+WHERE
+    user NOT LIKE 'mysql%'
+ORDER BY
+    user;
+
+SHOW TABLES;
+
 DESCRIBE users;
 
 SELECT
@@ -142,7 +173,7 @@ SELECT
     field_1,
     field_2,
     CONCAT(field_6, ' ', field_7),
-    YEAR(data1.date),
+    DAYNAME(data1.date),
     data2.body
 FROM
     users
@@ -182,43 +213,34 @@ HAVING
 LIMIT
     1;
 
-(
-    SELECT
-        *
-    FROM
-        users
-)
-INTERSECT
-(
-    SELECT
-        *
-    FROM
-        users
-)
-UNION
-(
-    SELECT
-        *
-    FROM
-        users
-);
-
 CREATE VIEW master AS
 SELECT
     *
 FROM
     users;
 
--- DELIMITER $$
+-- DELIMITER ^
 --
--- CREATE PROCEDURE `get` ()
--- BEGIN
--- SELECT
---     *
--- FROM
---     users;
--- END$$
+-- CREATE PROCEDURE `get` () BEGIN (
+--     SELECT
+--         *
+--     FROM
+--         users
+-- )
+-- INTERSECT
+-- (
+--     SELECT
+--         *
+--     FROM
+--         users
+-- )
+-- UNION
+-- (
+--     SELECT
+--         *
+--     FROM
+--         users
+-- );
+-- END^
 --
--- DELIMITER;
---
--- CALL `get`;
+-- CALL `get`^
