@@ -1,82 +1,80 @@
-# SUMMARY
+# TUTORIALS
 
-Language|Status
+Name|Status
 -|-
-HTML|Completed
-CSS|Learning
 Bootstrap|
+CSS|In Progress
+Git|Completed
+HTML|Completed
 JavaScript|Completed
-TypeScript|Learning
-Node|Learning
-Express|Learning
-SQL|Learning
-MySQL|Learning
+MySQL|In Progress
+Node|In Progress
 React|
+Sass|
+TypeScript|In Progress
+
+# DOCUMENTATIONS
+
+Name|Status
+-|-
+Axios|In Progress
+Bootstrap|
+ESLint|In Progress
+Express|In Progress
+Jest|In Progress
+MySQL|In Progress
 Next|
+Node|In Progress
+PostCSS|
+React|
+Redux|
+Sass|
+TypeScript|In Progress
+Vite|
+
+# RESOURCES
+
+Name|Status
+-|-
+Cracking the Coding Interview|
+CS50|
+CSS-Tricks|
+freeCodeCamp|
+HackerRank|
+JavaScript 30|In Progress
+Modern JavaScript Tutorial|In Progress
+NeetCode 150|In Progress
+Scrimba React|
 
 # WEB 101
 
 - [ ] Academy
 - [ ] Projects
-- [ ] Tutorials
 - [ ] Videos
 
 # JS 211
 
 - [x] Academy
 - [x] Projects
-- [x] Tutorials
 - [x] Videos
 
 # JS 311
 
 - [ ] Academy
 - [ ] Projects
-- [ ] Tutorials
 - [ ] Videos
 
 # JS 411
 
 - [ ] Academy
 - [ ] Projects
-- [ ] Tutorials
 - [ ] Videos
 
 # JOB 501
 
 - [ ] Academy
 - [ ] Projects
-- [ ] Tutorials
 - [ ] Videos
-
-# DOCUMENTATION
-
-- [ ] Axios
-- [ ] Bootstrap
-- [ ] ESLint
-- [ ] Express
-- [ ] Jest
-- [ ] MySQL
-- [ ] Next
-- [ ] Node
-- [ ] PostCSS
-- [ ] React
-- [ ] Redux
-- [ ] Sass
-- [ ] TypeScript
-- [ ] Vite
-
-# RESOURCES
-
-- [ ] Cracking the Coding Interview
-- [ ] CS50
-- [ ] CSS-Tricks
-- [ ] freeCodeCamp
-- [ ] HackerRank
-- [ ] JavaScript 30
-- [ ] Modern JavaScript Tutorial
-- [ ] NeetCode 150
-- [ ] Scrimba React
 
 # HTML BOILERPLATE
 

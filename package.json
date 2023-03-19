@@ -6,11 +6,9 @@
     "license": "GPL-3.0",
     "main": "javascript/api/express.mjs",
     "scripts": {
-        "build": "webpack --mode=production --node-env=production",
         "lint": "eslint .",
         "start": "ts-node javascript/api/express.mjs",
-        "test": "jest --watchAll",
-        "watch": "nodemon javascript/experiment.js"
+        "test": "jest --watchAll"
     },
     "homepage": "https://github.com/kevwhuang/academy#readme",
     "repository": {
@@ -48,6 +46,7 @@
         "chart.js": "*",
         "cloudinary": "*",
         "cookie-parser": "*",
+        "corepack": "*",
         "cors": "*",
         "css-loader": "*",
         "dotenv": "*",
@@ -67,6 +66,7 @@
         "mini-css-extract-plugin": "*",
         "mysql": "*",
         "nodemon": "*",
+        "npm": "*",
         "postcss-loader": "*",
         "sass-loader": "*",
         "style-loader": "*",
