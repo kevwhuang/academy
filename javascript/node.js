@@ -66,8 +66,6 @@ const server = http.createServer((req, res) => {
 });
 server.listen(PORT, 'localhost');
 
-c('\x1b[35m%s\x1b[0m', '=============================');
-
 // c(global);
 // c(process);
 // c(console);
@@ -85,3 +83,5 @@ c('\x1b[35m%s\x1b[0m', '=============================');
 // emitter.log('test');
 // c(http);
 // c(server);
+
+c('\x1b[35m%s\x1b[0m', '=============================');

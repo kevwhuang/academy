@@ -6,7 +6,6 @@
     "license": "GPL-3.0",
     "main": "javascript/api/express.mjs",
     "scripts": {
-        "lint": "eslint .",
         "start": "ts-node javascript/api/express.mjs",
         "test": "jest --watchAll"
     },
@@ -27,7 +26,6 @@
         "mysql": "*",
         "next": "*",
         "nodemon": "*",
-        "npm": "*",
         "postcss": "*",
         "react": "*",
         "redux": "*",
@@ -68,6 +66,7 @@
         "html-webpack-plugin": "*",
         "lodash": "*",
         "mini-css-extract-plugin": "*",
+        "npm": "*",
         "postcss-loader": "*",
         "sass-loader": "*",
         "style-loader": "*",
