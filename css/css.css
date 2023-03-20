@@ -86,7 +86,7 @@ nav ul {
 
 nav ul a {
     color: #ccc;
-    font: var(--s3)/var(--s3) 'Courier New', monospace;
+    font: var(--s3) / var(--s3) 'Courier New', monospace;
     text-transform: uppercase;
 }
 
@@ -166,7 +166,7 @@ aside button:active {
 main .container {
     background: var(--c1);
     border-color: var(--c3) var(--c4) var(--c5);
-    border-radius: var(--s2)/var(--s4);
+    border-radius: var(--s2) / var(--s4);
     border-style: double dashed solid dotted;
     border-top-left-radius: 0;
     border-top-right-radius: 0;

@@ -12,6 +12,7 @@
         "ecmaVersion": "latest"
     },
     "plugins": [
+        "html",
         "jest"
     ],
     "rules": {

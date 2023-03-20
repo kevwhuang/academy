@@ -58,7 +58,7 @@
             document.body.appendChild(button);
         }
 
-        addEventListener('mousemove', e => {
+        window.addEventListener('mousemove', e => {
             const r = Math.min(e.clientX / 5, 150);
             const g = Math.min(e.clientY / 5, 150);
             const b = Math.min((r + g) / 2, 150);

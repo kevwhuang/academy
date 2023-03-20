@@ -140,7 +140,6 @@
             grid-row: 2/4;
             letter-spacing: 25px;
             padding: 20px;
-            position: -webkit-sticky;
             position: sticky;
             text-align: center;
             text-decoration: none;
@@ -184,7 +183,7 @@
             font-style: normal;
             font-weight: bold;
             margin-bottom: 5pt;
-            margin-top: 0pt;
+            margin-top: 0;
             text-transform: uppercase;
         }
 
@@ -679,7 +678,7 @@
 
         #myCanvas {
             background-color: slateblue;
-            border: 3px solid currentColor;
+            border: 3px solid currentcolor;
             color: cadetblue;
             float: left;
             margin: 20px;
@@ -830,7 +829,7 @@
         @media screen and (max-width: 768px) {
 
             main {
-                background-color: hsl(39, 77%, 83%);
+                background-color: hsl(39deg, 77%, 83%);
             }
 
         }
@@ -838,7 +837,7 @@
         @media screen and (max-width: 480px) {
 
             main {
-                background-color: rgba(245, 222, 179, 1);
+                background-color: rgba(245, 222, 179, 100%);
             }
 
         }
@@ -904,7 +903,7 @@
     </template>
 
     <script>
-        const table = [{ 'Name': 'Zero' }, { 'Name': 'One', 'Bool': true }, { 'Bool': false }];
+        const table = [{ Name: 'Zero' }, { Name: 'One', Bool: true }, { Bool: false }];
 
         console.clear();
         console.group('Group');
@@ -915,7 +914,7 @@
         console.info('This is info.');
         console.warn('This is a warning.');
         console.error('This is an error.');
-        console.assert(1 == 2, 'This is an assertion error.');
+        console.assert(1 === 2, 'This is an assertion error.');
         console.timeEnd('Timer');
         console.groupEnd();
 
@@ -923,7 +922,7 @@
         console.count('Label');
         console.count('Label');
         console.countReset('Label');
-        (function () { console.trace('Trace'); })();
+        (function () { console.trace('Trace'); }());
         console.groupEnd();
     </script>
 
@@ -1748,7 +1747,7 @@
                     }
                 }
 
-                addEventListener('visibilitychange', () => {
+                window.addEventListener('visibilitychange', () => {
                     switch (document.visibilityState) {
                         case 'hidden':
                             myVideo.pause();
@@ -1941,9 +1940,12 @@
                             }
 
                             function writePos(pos) {
-                                myGeolocation.innerHTML = 'Latitude: ' + pos.coords.latitude +
-                                    ' & Longitude: ' + pos.coords.longitude +
-                                    ' & Accuracy: ' + pos.coords.accuracy;
+                                myGeolocation.innerHTML = 'Latitude: '
+                                    + pos.coords.latitude
+                                    + ' & Longitude: '
+                                    + pos.coords.longitude
+                                    + ' & Accuracy: '
+                                    + pos.coords.accuracy;
                             }
 
                             function errorPos(err) {
@@ -2000,6 +2002,8 @@
                             var myWorker = document.getElementById('myWorker');
 
                             function webWorker() {
+                                let ww;
+
                                 if (typeof Worker === 'undefined') {
                                     myWorker.innerHTML = 'Your browser does not support web workers.';
                                 } else if (typeof ww === 'undefined') {
@@ -2903,7 +2907,7 @@
                         <th>Heading</th>
                         <td>###### [...]</td>
                         <td>
-                            <h2 style="margin:0px;">lorem ipsum</h2>
+                            <h2 style="margin:0;">lorem ipsum</h2>
                         </td>
                     </tr>
                     <tr>
@@ -2989,7 +2993,7 @@
                         <th>Table</th>
                         <td>[...]|[...]\n-|-</td>
                         <td>
-                            <table role="presentation" style="border:none;border-spacing:0px;">
+                            <table role="presentation" style="border:none;border-spacing:0;">
                                 <tr>
                                     <td style="border:1px solid black;">lorem</td>
                                     <td style="border:1px solid black;border-left:none;">ipsum</td>
