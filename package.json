@@ -8,7 +8,8 @@
     "bin": "./javascript/api/express.mjs",
     "scripts": {
         "eslint": "eslint .",
-        "eslint-html": "eslint **/*.html",
+        "eslinthtml": "eslint **/*.html",
+        "htmllint": "html-validate **/*.{html,hbs}",
         "start": "ts-node javascript/api/express.mjs",
         "stylelint": "stylelint **/*.{css,sass,html}",
         "test": "jest --watchAll"
@@ -70,6 +71,7 @@
         "express-handlebars": "*",
         "figlet": "*",
         "gradient-string": "*",
+        "html-validate": "*",
         "html-webpack-plugin": "*",
         "lodash": "*",
         "mini-css-extract-plugin": "*",
