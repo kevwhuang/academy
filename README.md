@@ -24,7 +24,6 @@ Express|In Progress
 Jest|In Progress
 MySQL|Completed
 Next|
-Nodemon|Completed
 Node|In Progress
 PostCSS|
 React|
@@ -140,7 +139,6 @@ Scrimba React|
 <script src="https://cdn.jsdelivr.net/npm/jest/build/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mysql/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/next/dist/server/next.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/nodemon/lib/cli/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/postcss/lib/postcss.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/redux/dist/redux.min.js"></script>
