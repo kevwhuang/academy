@@ -189,7 +189,7 @@ dialog {
 
 body {
     font-family: Arial, sans-serif;
-    text-rendering: optimizeSpeed;
+    text-rendering: optimizespeed;
     user-select: none;
 }
 

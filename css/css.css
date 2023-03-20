@@ -370,7 +370,7 @@ main .container .sect2 section .parallax .center:hover {
 
 /* ============================================================================================== */
 
-@media screen and (max-width:568px) {
+@media screen and (max-width: 568px) {
 
     header {
         visibility: hidden;

@@ -8,4 +8,6 @@
  ** CSS Comment
  */
 
-.block-entity__element-section--modifier-variation {}
+.block-entity__element-section--modifier-variation {
+    clear: none;
+}

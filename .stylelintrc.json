@@ -1,0 +1,12 @@
+{
+    "extends": [
+        "stylelint-config-standard"
+    ],
+    "rules": {
+        "color-function-notation": "legacy",
+        "declaration-block-no-redundant-longhand-properties": null,
+        "function-url-quotes": "never",
+        "property-no-vendor-prefix": null,
+        "rule-empty-line-before": null
+    }
+}
