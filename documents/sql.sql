@@ -1,3 +1,5 @@
+/* MySQL Example Queries */
+--
 CREATE USER 'user' @'%' IDENTIFIED BY 'password';
 
 GRANT
@@ -109,7 +111,7 @@ MODIFY
 ALTER TABLE
     users DROP field_9;
 
-CREATE INDEX my_index ON users (password);
+CREATE UNIQUE INDEX my_index ON users (password);
 
 ALTER TABLE
     users DROP INDEX my_index;
@@ -117,7 +119,7 @@ ALTER TABLE
 CREATE TABLE data0 (
     id INT AUTO_INCREMENT,
     users_id INT,
-    date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    date DATETIME DEFAULT CURRENT_TIMESTAMP(),
     body TEXT,
     PRIMARY KEY (id),
     FOREIGN KEY (users_id) REFERENCES users (id) ON DELETE CASCADE
@@ -134,7 +136,8 @@ VALUES
 CREATE TABLE data2 (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     body TEXT,
-    CONSTRAINT id_body UNIQUE (id)
+    CONSTRAINT id_body UNIQUE (id),
+    CHECK (body >= 0)
 );
 
 INSERT INTO
@@ -173,7 +176,7 @@ SELECT
     field_1,
     field_2,
     CONCAT(field_6, ' ', field_7),
-    DAYNAME(data1.date),
+    DAYNAME(IFNULL(data1.date, CURRENT_DATE())),
     data2.body
 FROM
     users
@@ -198,12 +201,15 @@ ORDER BY
 LIMIT
     100;
 
+DROP TABLE IF EXISTS temp;
+
+CREATE TEMPORARY TABLE temp
 SELECT
     COUNT(field_2),
     MIN(field_2),
     MAX(field_2),
     AVG(field_2),
-    SUM(field_2)
+    SUM(field_2) AS sum
 FROM
     users u
 GROUP BY
@@ -213,34 +219,51 @@ HAVING
 LIMIT
     1;
 
+INSERT INTO
+    temp (sum)
+SELECT
+    NULL;
+
+SELECT
+    *
+FROM
+    temp
+WHERE
+    sum > ALL (
+        SELECT
+            0
+    );
+
+DROP VIEW IF EXISTS master;
+
 CREATE VIEW master AS
 SELECT
     *
 FROM
     users;
 
--- DELIMITER ^
---
--- CREATE PROCEDURE `get` () BEGIN (
---     SELECT
---         *
---     FROM
---         users
--- )
--- INTERSECT
--- (
---     SELECT
---         *
---     FROM
---         users
--- )
--- UNION
--- (
---     SELECT
---         *
---     FROM
---         users
--- );
--- END^
---
--- CALL `get`^
+DELIMITER ^
+
+CREATE PROCEDURE `get` () BEGIN (
+    SELECT
+        *
+    FROM
+        users
+)
+INTERSECT
+(
+    SELECT
+        *
+    FROM
+        users
+)
+UNION
+(
+    SELECT
+        *
+    FROM
+        users
+);
+END^
+
+CALL `get`^
