@@ -1,34 +1,54 @@
 {
+    "root": true,
     "env": {
         "browser": true,
         "commonjs": true,
-        "es2021": true,
-        "jest/globals": true,
+        "es2022": true,
+        "jest": true,
         "node": true
     },
-    "extends": "airbnb-base",
-    "overrides": [],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": "latest"
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
     },
-    "plugins": [
-        "html",
-        "jest"
+    "extends": [
+        "eslint:recommended",
+        "airbnb-base",
+        "plugin:@typescript-eslint/recommended"
     ],
+    "plugins": [
+        "@typescript-eslint",
+        "html",
+        "import",
+        "jest",
+        "jsx-a11y",
+        "node",
+        "react",
+        "react-hooks"
+    ],
+    "overrides": [],
     "rules": {
+        "@typescript-eslint/no-inferrable-types": "warn",
+        "@typescript-eslint/no-unused-vars": "off",
         "arrow-parens": "off",
         "consistent-return": "off",
         "curly": "off",
         "guard-for-in": "off",
         "import/extensions": "off",
+        "import/newline-after-import": "off",
+        "import/no-extraneous-dependencies": "off",
         "indent": "off",
         "max-classes-per-file": "off",
         "no-confusing-arrow": "off",
         "no-console": "off",
-        "no-continue": "off",
         "no-loop-func": "off",
         "no-plusplus": "off",
         "no-restricted-syntax": "off",
+        "no-underscore-dangle": "off",
         "no-unused-vars": "warn",
         "no-use-before-define": "off",
         "strict": "off"

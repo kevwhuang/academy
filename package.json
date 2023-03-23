@@ -74,6 +74,7 @@
         "gradient-string": "*",
         "html-validate": "*",
         "html-webpack-plugin": "*",
+        "jsdoc": "*",
         "lodash": "*",
         "mini-css-extract-plugin": "*",
         "nodemon": "*",

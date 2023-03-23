@@ -2,7 +2,7 @@
     "compilerOptions": {
         "module": "system",
         "noImplicitAny": true,
-        "outFile": "../tsc.js",
+        "outFile": "../build/tsc.js",
         "preserveConstEnums": true,
         "removeComments": true,
         "sourceMap": false
