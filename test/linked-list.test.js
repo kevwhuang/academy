@@ -1,4 +1,4 @@
-const $ = require('../javascript/linked-list');
+const $ = require('../javascript/data-structures/linked-list');
 
 const list1 = new $.LinkedList();
 const list2 = new $.LinkedList();

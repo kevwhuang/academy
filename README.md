@@ -19,7 +19,7 @@ Name|Status
 -|-
 Axios|In Progress
 Bootstrap|
-ESLint|In Progress
+ESLint|Completed
 Express|In Progress
 Jest|In Progress
 MySQL|Completed

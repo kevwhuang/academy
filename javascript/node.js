@@ -70,6 +70,7 @@ server.listen(PORT, 'localhost');
 // c(process);
 // c(console);
 
+// c(process.cwd());
 // c(path);
 // c(pathCurrent);
 // c(fs);

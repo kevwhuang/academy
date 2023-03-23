@@ -1,6 +1,6 @@
 {
     "ext": "js,mjs,json",
-    "delay": 69,
+    "delay": 10,
     "verbose": false,
     "restartable": "r"
 }
