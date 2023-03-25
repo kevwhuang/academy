@@ -9,6 +9,7 @@
     "javascript.preferences.quoteStyle": "single",
     "javascript.suggest.enabled": false,
     "javascript.suggest.includeAutomaticOptionalChainCompletions": false,
+    "js/ts.implicitProjectConfig.checkJs": true,
     "liveServer.settings.donotShowInfoMsg": true,
     "security.workspace.trust.untrustedFiles": "open",
     "terminal.integrated.fontSize": 16,
