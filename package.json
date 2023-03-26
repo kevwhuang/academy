@@ -1,16 +1,16 @@
 {
     "name": "academy",
-    "version": "23.03.24",
-    "description": "Austin Coding Academy",
+    "version": "23.03.25",
     "author": "Kevin Huang",
+    "description": "Austin Coding Academy",
     "license": "GPL-3.0",
     "main": "javascript/api/express.mjs",
     "bin": "./javascript/api/express.mjs",
     "scripts": {
-        "jsdoc": "jsdoc -c documents/jsdoc.json",
         "eslint": "eslint '**/*.{js,mjs,ts}'",
         "eslinthtml": "eslint **/*.html",
         "htmllint": "html-validate **/*.{html,hbs}",
+        "jsdoc": "jsdoc -c documents/jsdoc.json",
         "start": "ts-node javascript/api/express.mjs",
         "stylelint": "stylelint **/*.{css,sass,html}",
         "test": "jest --watchAll"

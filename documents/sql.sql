@@ -1,6 +1,6 @@
 /* MySQL Example Queries */
 --
-CREATE USER 'user' @'%' IDENTIFIED BY 'password';
+CREATE USER 'user'@'%' IDENTIFIED BY 'password';
 
 GRANT
 SELECT
@@ -8,7 +8,7 @@ SELECT
 
 FLUSH PRIVILEGES;
 
-DROP USER 'user' @'%';
+DROP USER 'user'@'%';
 
 DROP DATABASE IF EXISTS admin;
 
@@ -34,8 +34,6 @@ CREATE TABLE users (
     PRIMARY KEY (id),
     UNIQUE (field_4)
 );
-
-TRUNCATE TABLE users;
 
 INSERT INTO
     users (
@@ -83,6 +81,43 @@ INSERT INTO
     users ()
 VALUES
     ();
+
+CREATE TABLE history AS
+SELECT
+    *
+FROM
+    users;
+
+TRUNCATE TABLE history;
+
+DROP TRIGGER IF EXISTS after_delete;
+
+DELIMITER $$
+
+CREATE TRIGGER after_delete
+AFTER
+    DELETE ON users FOR EACH ROW BEGIN
+INSERT INTO
+    history
+VALUES
+    (
+        OLD.id,
+        OLD.password,
+        OLD.admin,
+        OLD.date,
+        OLD.field_1,
+        OLD.field_2,
+        OLD.field_3,
+        OLD.field_4,
+        OLD.field_5,
+        OLD.field_6,
+        OLD.field_7,
+        OLD.field_8
+    );
+
+END$$
+
+DELIMITER ;
 
 DELETE FROM
     `admin`.`users`
@@ -241,6 +276,8 @@ SELECT
     *
 FROM
     users;
+
+DROP PROCEDURE IF EXISTS `get`;
 
 DELIMITER ^
 

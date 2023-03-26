@@ -3,7 +3,7 @@
         "plugins/markdown",
         "plugins/summarize"
     ],
-    "recurseDepth": 20,
+    "recurseDepth": 100,
     "source": {
         "include": [
             "javascript"
@@ -15,7 +15,8 @@
     "sourcetype": "module",
     "opts": {
         "encoding": "utf8",
-        "destination": "./docs/",
+        "destination": "./docs",
+        "readme": "./README.md",
         "recurse": true
     },
     "templates": {

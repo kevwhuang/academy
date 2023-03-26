@@ -65,8 +65,8 @@ const twoDigits = input => {
     if (typeof input !== 'number') return;
     const str = String(input);
     const index = str.indexOf('.');
-    if (index === -1) return `${input}.00`;
-    else return (str.length - index === 2) ? `${input}0` : str.slice(0, index + 3);
+    return index === -1 ? `${input}.00` : str.length - index === 2
+        ? `${input}0` : str.slice(0, index + 3);
 };
 
 // CLASS 10

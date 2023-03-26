@@ -1,10 +1,11 @@
 {
     "compilerOptions": {
         "module": "system",
-        "noImplicitAny": true,
+        "target": "esnext",
         "outFile": "../build/tsc.js",
-        "preserveConstEnums": true,
+        "noImplicitAny": true,
         "removeComments": true,
+        "preserveConstEnums": true,
         "sourceMap": false
     },
     "include": [

@@ -412,9 +412,9 @@
     c(o1.get.apply(o2, ['!'])); // array argument
     c(o1.get.bind(o2)('!')); // changes this context
 
-    import def from '../javascript/module.js'; // default import
-    import { mod3, mod2 as mod2 } from '../javascript/module.js'; // named import
-    import * as mod from '../javascript/module.js'; // module import
+    import def from '../javascript/module.mjs'; // default import
+    import { mod3, mod2 as mod2 } from '../javascript/module.mjs'; // named import
+    import * as mod from '../javascript/module.mjs'; // module import
     c(mod, def, mod2, mod3, this); // variables nonexistent in window
 
     // debugger; /* toggles runtime debugger */

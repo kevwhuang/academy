@@ -1,3 +1,7 @@
+/**
+ * @module module
+ */
+
 const mod1 = 'mod1';
 const mod2 = 'mod2';
 
