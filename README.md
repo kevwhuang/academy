@@ -2,7 +2,7 @@
 
 Name|Status
 -|-
-Bootstrap|
+Bootstrap|In Progress
 CSS|In Progress
 Git|Completed
 HTML|Completed
@@ -10,7 +10,7 @@ JavaScript|Completed
 MySQL|Completed
 Node|In Progress
 React|
-Sass|
+Sass|In Progress
 TypeScript|In Progress
 
 # DOCUMENTATIONS
@@ -18,17 +18,17 @@ TypeScript|In Progress
 Name|Status
 -|-
 Axios|In Progress
-Bootstrap|
+Bootstrap|In Progress
 ESLint|Completed
 Express|In Progress
 Jest|In Progress
 MySQL|Completed
 Next|
 Node|In Progress
-PostCSS|
+PostCSS|In Progress
 React|
 Redux|
-Sass|
+Sass|In Progress
 TypeScript|In Progress
 Vite|
 
@@ -38,12 +38,12 @@ Name|Status
 -|-
 Cracking the Coding Interview|
 CS50|
-CSS-Tricks|
+CSS-Tricks|In Progress
 freeCodeCamp|
 HackerRank|
-JavaScript 30|In Progress
+JavaScript 30|
 Modern JavaScript Tutorial|In Progress
-NeetCode 150|In Progress
+NeetCode 150|
 Scrimba React|
 
 # WEB 101
