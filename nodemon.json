@@ -1,6 +1,6 @@
 {
     "ext": "js,mjs,json,ts",
+    "restartable": "r",
     "delay": 10,
-    "verbose": false,
-    "restartable": "r"
+    "verbose": false
 }

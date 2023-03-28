@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "module": "system",
+        "outDir": "build",
+        "outFile": "build/dist.js",
+        "target": "esnext",
+        "allowJs": false,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitAny": true,
+        "noLib": false,
+        "noUncheckedIndexedAccess": true,
+        "preserveConstEnums": true,
+        "removeComments": true,
+        "skipLibCheck": true,
+        "sourceMap": false,
+        "strict": true,
+        "strictNullChecks": false
+    },
+    "include": [
+        "typescript/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

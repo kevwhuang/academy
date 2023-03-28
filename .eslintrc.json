@@ -32,8 +32,9 @@
     ],
     "overrides": [],
     "rules": {
+        "@typescript-eslint/no-explicit-any": "warn",
         "@typescript-eslint/no-inferrable-types": "warn",
-        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
         "arrow-parens": "off",
         "consistent-return": "off",
         "curly": "off",

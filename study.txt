@@ -19,11 +19,9 @@ Tutorial - CSS Reference
 Tutorial - CSS Responsive
 Tutorial - Node
 Tutorial - Sass
-Tutorial - TypeScript
 Video - Bootstrap
 Video - Flexbox
 Video - Grid
 Video - PostCSS
 Video - Sass
-Video - TypeScript
 Video - Website

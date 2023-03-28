@@ -11,7 +11,7 @@ MySQL|Completed
 Node|In Progress
 React|
 Sass|In Progress
-TypeScript|In Progress
+TypeScript|Completed
 
 # DOCUMENTATIONS
 
