@@ -1,23 +1,24 @@
-Academy - 02
-Academy - 03
 Documentation - Axios
-Documentation - Bootstrap
 Documentation - Express
 Documentation - Jest
 Documentation - Node
+Documentation - TypeScript
+Resource - Modern JavaScript Tutorial
+Tutorial - Node
+
+Academy - 02
+Academy - 03
+Documentation - Bootstrap
 Documentation - PostCSS
 Documentation - Sass
-Documentation - TypeScript
 Project - advanced.html
 Project - bootstrap.html
 Project - sass.html
 Resource - CSS-Tricks
-Resource - Modern JavaScript Tutorial
 Tutorial - Bootstrap
 Tutorial - CSS Advanced
 Tutorial - CSS Reference
 Tutorial - CSS Responsive
-Tutorial - Node
 Tutorial - Sass
 Video - Bootstrap
 Video - Flexbox

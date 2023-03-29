@@ -12,6 +12,7 @@
         "eslinthtml": "eslint **/*.html",
         "htmllint": "html-validate **/*.{html,hbs}",
         "jsdoc": "jsdoc -c documents/jsdoc.json",
+        "node": "nodemon javascript/test.mjs",
         "start": "ts-node javascript/api/express.mjs",
         "stylelint": "stylelint **/*.{css,sass,html}",
         "test": "jest --watchAll"
