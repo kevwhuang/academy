@@ -1,7 +1,7 @@
-afterAll(() => null);
-afterEach(() => null);
 beforeAll(() => null);
 beforeEach(() => null);
+afterEach(() => null);
+afterAll(() => null);
 
 describe('Equality', () => {
     const $ = require('../javascript/jest');
