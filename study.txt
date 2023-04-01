@@ -1,5 +1,4 @@
 Documentation - Axios
-Documentation - Express
 Documentation - Node
 Documentation - TypeScript
 Resource - Modern JavaScript Tutorial

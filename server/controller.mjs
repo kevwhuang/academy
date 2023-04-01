@@ -1,4 +1,4 @@
-import { users } from './users.mjs';
+import users from './users.mjs';
 
 const get = (req, res) => res.json(users);
 
@@ -103,5 +103,10 @@ const remove = (req, res) => {
 };
 
 export default {
-    get, getId, post, put, patch, remove,
+    get,
+    getId,
+    post,
+    put,
+    patch,
+    remove,
 };

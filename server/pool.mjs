@@ -14,14 +14,14 @@ const poolOptions = {
     user: process.env.USERNAME,
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
+    acquireTimeout: 10000,
     connectionLimit: 100,
     queueLimit: 0,
-    acquireTimeout: 10000,
     waitForConnections: true,
     debug: false,
 };
 
-function select(req, res) {
+export default function select(req, res) {
     const template = 'SELECT * FROM ?? WHERE ?? > ?';
     const values = ['users', 'id', 0];
     const query = mysql.format(template, values);
@@ -46,5 +46,3 @@ function select(req, res) {
             });
     }
 }
-
-export default select;

@@ -20,7 +20,7 @@ Name|Status
 Axios|In Progress
 Bootstrap|In Progress
 ESLint|Completed
-Express|In Progress
+Express|Completed
 Jest|Completed
 MySQL|Completed
 Next|

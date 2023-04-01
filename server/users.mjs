@@ -1,8 +1,8 @@
-export const users = [
+export default [
     {
         id: 0,
         name: 'Johnathan',
-        role: 'Full Stack Developer',
+        role: 'Mid-Level Developer',
         student: false,
     },
     {
