@@ -1,3 +1,24 @@
 {
-    "verbose": true
+    "bail": 1,
+    "collectCoverage": false,
+    "displayName": {
+        "name": "Jest",
+        "color": "blue"
+    },
+    "globals": {
+        "timeout": 5000
+    },
+    "moduleFileExtensions": [
+        "js",
+        "mjs",
+        "cjs",
+        "jsx",
+        "ts",
+        "tsx",
+        "json"
+    ],
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "verbose": true,
+    "watchPlugins": []
 }

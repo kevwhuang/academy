@@ -21,7 +21,7 @@ Axios|In Progress
 Bootstrap|In Progress
 ESLint|Completed
 Express|In Progress
-Jest|In Progress
+Jest|Completed
 MySQL|Completed
 Next|
 Node|In Progress

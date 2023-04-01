@@ -15,7 +15,7 @@
         "node": "nodemon javascript/test.mjs",
         "start": "ts-node javascript/api/express.mjs",
         "stylelint": "stylelint **/*.{css,sass,html}",
-        "test": "jest --watchAll"
+        "test": "jest --watchAll --config test/jest.config.json"
     },
     "homepage": "https://github.com/kevwhuang/academy#readme",
     "repository": {
@@ -47,9 +47,9 @@
         "@babel/preset-flow": "*",
         "@babel/preset-react": "*",
         "@babel/preset-typescript": "*",
-        "@jest/globals": "*",
         "@emotion/react": "*",
         "@emotion/styled": "*",
+        "@jest/globals": "*",
         "@mui/material": "*",
         "@types/express": "*",
         "@types/jest": "*",

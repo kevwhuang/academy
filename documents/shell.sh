@@ -36,4 +36,6 @@ git -v;
 heroku -v;
 echo -e "\033[0;36m--------------------";
 
+echo -e "\033[0;33m>>> NPX\033[0m";
+npx jest --config test/jest.config.json;
 npx nodemon;

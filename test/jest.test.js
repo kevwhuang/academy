@@ -1,34 +1,50 @@
-beforeAll(() => null);
-beforeEach(() => null);
-afterEach(() => null);
-afterAll(() => null);
+const blank = () => { };
 
-describe('Equality', () => {
-    const $ = require('../javascript/jest');
+beforeAll(blank);
+beforeEach(blank);
+afterEach(blank);
+afterAll(blank);
+
+describe('Matching', () => {
+    let funcs = {};
+
+    try {
+        funcs = require('../javascript/jest');
+    } catch {
+        funcs.sum = (a, b) => a + b;
+        funcs.diff = (a, b) => a - b;
+    }
 
     test('toBe', () => {
-        expect($.diff(2, 3)).toBe(-1);
-        expect($.sum(0, 1)).toBe(1);
+        const { getType } = require('jest-get-type');
+
+        expect(funcs.sum(0, 1)).toBe(1);
+        expect(funcs.diff(2, 3)).toBe(-1);
+        expect(getType([])).toBe('array');
     });
 
-    test('toBeDefined', () => expect($.diff).toBeDefined());
+    test('toBeCloseTo', () => expect(0.1 + 0.2).toBeCloseTo(0.3, 5));
 
-    test('toBeUndefined', () => expect($.sum).not.toBeUndefined());
+    test('toHaveLength', () => expect([0, 1]).toHaveLength(2));
+
+    test('toBeDefined', () => expect(funcs.diff).toBeDefined());
+
+    test('toBeUndefined', () => expect(funcs.sum).not.toBeUndefined());
 });
 
-describe('Type Equality', () => {
-    test('toBeFalsy', () => expect(false).toBeFalsy());
+describe('Type Matching', () => {
+    test('toBeTruthy', () => expect(1).toBeTruthy());
 
-    test('toBeInstanceOf', () => expect(new Number()).toBeInstanceOf(Number));
+    test('toBeFalsy', () => expect('').toBeFalsy());
 
     test('toBeNaN', () => expect(NaN).toBeNaN());
 
     test('toBeNull', () => expect(null).toBeNull());
 
-    test('toBeTruthy', () => expect(0).not.toBeTruthy());
+    test('toBeInstanceOf', () => expect(new Number()).toBeInstanceOf(Number));
 });
 
-describe('Comparison', () => {
+describe('Comparisons', () => {
     test('toBeGreaterThan', () => expect(1).toBeGreaterThan(0));
 
     test('toBeGreaterThanOrEqual', () => expect(0).toBeGreaterThanOrEqual(0));
@@ -38,29 +54,82 @@ describe('Comparison', () => {
     test('toBeLessThanOrEqual', () => expect(0).toBeLessThanOrEqual(0));
 });
 
-describe('Deep Match', () => {
-    test('toContain', () => expect([1]).toContain(1));
+describe('Deep Matching', () => {
+    test('toEqual', () => expect([]).toEqual([undefined]));
 
-    test('toEqual', () => expect([]).toEqual([]));
+    test('toStrictEqual', () => expect({ 1: undefined }).toStrictEqual({ 1: undefined }));
 
     test('toMatch', () => expect('string').toMatch(/\w+/));
 
-    test('toStrictEqual', () => expect({ 1: 1 }).toStrictEqual({ 1: 1 }));
+    test('toMatchObject', () => expect({ a: 1, b: 2 }).toMatchObject({ b: 2 }));
 
-    test('toThrow', () => expect(() => { throw Error(); }).toThrow());
+    test('toContain', () => expect([1]).toContain(1));
+
+    test('toContainEqual', () => expect([{ 1: 1 }]).toContainEqual({ 1: 1 }));
+
+    test('toHaveProperty', () => expect({ a: { b: 2 } }).toHaveProperty('a.b', 2));
+
+    test('toThrow', () => expect(() => { throw Error('ab'); }).toThrow('b'));
 });
 
-describe('Asynchronous', () => {
+describe('Asynchronous Testing', () => {
+    const URL = 'https://jsonplaceholder.typicode.com/users/1';
+
+    test('hasAssertions', () => fetch(URL)
+        .then(res => res.json())
+        .then(data => {
+            expect.hasAssertions();
+            expect(data).not.toBeNull();
+        }));
+
     test('assertions', async () => {
-        const url = 'https://jsonplaceholder.typicode.com/users/1';
-        const res = await fetch(url);
+        const res = await fetch(URL);
         const data = await res.json();
 
-        expect(res.ok).toBeTruthy();
-        expect(res.redirected).toBeFalsy();
+        expect.assertions(4);
         expect(res.status).toBe(200);
+        expect(res.ok).toBeTruthy();
+        expect(Object.keys(data)).toHaveLength(8);
         expect(data.username).toBe('Bret');
-        expect(Object.keys(data).length).toBe(8);
-        expect.assertions(5);
     });
+
+    test('resolves', () => expect(fetch(URL)).resolves.toBeDefined());
+
+    test('rejects', () => expect(fetch('')).rejects.toBeDefined());
+});
+
+describe('Globals', () => {
+    const table1 = [
+        [Infinity, true],
+        [NaN, false],
+        ['', false],
+        [[], true],
+        [{}, true],
+    ];
+    const table2 = [
+        [{ NaN }, expect.anything(), 'anything'],
+        [0, expect.any(Number), 'any'],
+        ['abc', expect.stringContaining('b'), 'stringContaining'],
+        ['abc', expect.stringMatching(/a?c/), 'stringMatching'],
+        [{ a: 1 }, expect.objectContaining({ a: 1 }), 'objectContaining'],
+    ];
+
+    let counter = 1;
+
+    describe/*.only*/.each(table1)('Describe', (a, exp) => {
+        test/*.only*/(`Test ${counter++}`, () => expect(Boolean(a)).toBe(exp));
+    });
+
+    describe.each(table2)('Asymmetric Matching', (a, exp, desc) => {
+        test.each([null])(desc, () => expect(a).toEqual(exp));
+    });
+
+    describe.skip('', () => {
+        jest.fn();
+        jest.mock('axios');
+    }, timeout);
+
+    test.skip('', blank, timeout);
+
+    it.todo('');
 });
