@@ -1,11 +1,46 @@
 {
     "name": "academy",
-    "version": "23.04.01",
+    "version": "23.4.1",
+    "description": "Academy is a metaproject that documents my learning journey.",
+    "keywords": [
+        "Axios",
+        "Bootstrap",
+        "CSS",
+        "ESLint",
+        "Express",
+        "Git",
+        "HTML",
+        "JavaScript",
+        "Jest",
+        "MySQL",
+        "Next",
+        "Node",
+        "PostCSS",
+        "React",
+        "Redux",
+        "Sass",
+        "TypeScript",
+        "Vite"
+    ],
+    "homepage": "https://github.com/kevwhuang/academy#readme",
+    "bugs": {
+        "url": "https://github.com/kevwhuang/academy/issues",
+        "email": "kevwhuang@gmail.com"
+    },
+    "license": "(MIT OR GPL-3.0+)",
     "author": "Kevin Huang",
-    "description": "Austin Coding Academy",
-    "license": "GPL-3.0",
+    "contributors": [],
+    "funding": "https://github.com/kevwhuang/academy",
+    "files": [
+        "*"
+    ],
     "main": "server/express.mjs",
-    "bin": "./server/express.mjs",
+    "browser": "index.html",
+    "bin": "javascript/terminal.mjs",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kevwhuang/academy.git"
+    },
     "scripts": {
         "build": "tsc --watch",
         "eslint": "eslint '**/*.{js,mjs,cjs,ts}'",
@@ -13,32 +48,28 @@
         "htmllint": "html-validate **/*.{html,hbs}",
         "jsdoc": "jsdoc -c documents/jsdoc.json",
         "nodemon": "nodemon javascript/exp.cjs",
+        "prestart": "ts-node -v",
         "start": "ts-node server/express.mjs",
         "stylelint": "stylelint **/*.{css,sass,html}",
         "test": "jest --watchAll --config test/jest.config.json"
     },
-    "homepage": "https://github.com/kevwhuang/academy#readme",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/kevwhuang/academy.git"
-    },
-    "bugs": {
-        "url": "https://github.com/kevwhuang/academy/issues"
+    "config": {
+        "port": 65535
     },
     "dependencies": {
-        "axios": "*",
-        "bootstrap": "*",
-        "eslint": "*",
-        "express": "*",
-        "jest": "*",
-        "mysql": "*",
-        "next": "*",
-        "postcss": "*",
-        "react": "*",
-        "redux": "*",
-        "sass": "*",
-        "typescript": "*",
-        "vite": "*"
+        "axios": "* || 1.x",
+        "bootstrap": "* || 5.x",
+        "eslint": "* || 8.x",
+        "express": "* || 4.x",
+        "jest": "* || 29.x",
+        "mysql": "* || 2.x",
+        "next": "* || 13.x",
+        "postcss": "* || 8.x",
+        "react": "* || 18.x",
+        "redux": "* || 4.x",
+        "sass": "* || 1.x",
+        "typescript": "* || 5.x",
+        "vite": "* || 4.x"
     },
     "devDependencies": {
         "@babel/core": "*",
@@ -93,6 +124,7 @@
         "postcss-loader": "*",
         "postcss-sass": "*",
         "react-dom": "*",
+        "react-native": "*",
         "sass-loader": "*",
         "style-loader": "*",
         "stylelint": "*",
@@ -106,5 +138,25 @@
         "webpack-cli": "*",
         "webpack-dev-server": "*",
         "workbox-webpack-plugin": "*"
-    }
+    },
+    "peerDependencies": {},
+    "bundleDependencies": [],
+    "optionalDependencies": {},
+    "overrides": {},
+    "engines": {
+        "node": ">=18.15.0"
+    },
+    "os": [
+        "darwin"
+    ],
+    "cpu": [
+        "x64"
+    ],
+    "private": true,
+    "publishConfig": {
+        "port": 65535
+    },
+    "workspaces": [
+        "./"
+    ]
 }

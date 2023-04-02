@@ -6,7 +6,9 @@
 	],
 	"settings": {
 		"git.confirmSync": false,
+		"js/ts.implicitProjectConfig.checkJs": false,
 		"liveServer.settings.donotShowInfoMsg": true,
+		"terminal.integrated.defaultProfile.osx": "bash",
 		"terminal.integrated.fontSize": 16,
 		"window.zoomLevel": 1,
 		"workbench.activityBar.visible": false,

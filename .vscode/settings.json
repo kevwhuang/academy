@@ -12,6 +12,7 @@
     "js/ts.implicitProjectConfig.checkJs": false,
     "liveServer.settings.donotShowInfoMsg": true,
     "security.workspace.trust.untrustedFiles": "open",
+    "terminal.integrated.defaultProfile.osx": "bash",
     "terminal.integrated.fontSize": 16,
     "typescript.preferences.quoteStyle": "single",
     "typescript.suggest.enabled": false,
