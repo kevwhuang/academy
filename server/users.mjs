@@ -2,7 +2,7 @@ export default [
     {
         id: 0,
         name: 'Johnathan',
-        role: 'Mid-Level Developer',
+        role: 'React Developer',
         student: false,
     },
     {

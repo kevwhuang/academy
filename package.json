@@ -49,7 +49,7 @@
         "jsdoc": "jsdoc -c documents/jsdoc.json",
         "nodemon": "nodemon javascript/exp.cjs",
         "prestart": "ts-node -v",
-        "start": "ts-node server/express.mjs",
+        "start": "NODE_ENV=production ts-node server/express.mjs",
         "stylelint": "stylelint **/*.{css,sass,html}",
         "test": "jest --watchAll --config test/jest.config.json"
     },
@@ -80,6 +80,7 @@
         "@babel/preset-typescript": "*",
         "@emotion/react": "*",
         "@emotion/styled": "*",
+        "@godaddy/terminus": "*",
         "@jest/globals": "*",
         "@mui/material": "*",
         "@types/express": "*",
@@ -93,6 +94,7 @@
         "chai": "*",
         "chart.js": "*",
         "cloudinary": "*",
+        "compression": "*",
         "cookie-parser": "*",
         "corepack": "*",
         "cors": "*",
@@ -110,9 +112,12 @@
         "eslint-plugin-node": "*",
         "eslint-plugin-react": "*",
         "eslint-plugin-react-hooks": "*",
+        "express-actuator": "*",
         "express-handlebars": "*",
+        "express-session": "*",
         "figlet": "*",
         "gradient-string": "*",
+        "helmet": "*",
         "html-validate": "*",
         "html-webpack-plugin": "*",
         "jsdoc": "*",
@@ -139,9 +144,7 @@
         "webpack-dev-server": "*",
         "workbox-webpack-plugin": "*"
     },
-    "peerDependencies": {},
     "bundleDependencies": [],
-    "optionalDependencies": {},
     "overrides": {},
     "engines": {
         "node": ">=18.15.0"
