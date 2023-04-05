@@ -36,12 +36,12 @@ const OPTS_TERMINUS = {
     healthChecks: { '/healthcheck': () => Promise.resolve() },
     signal: 'SIGINT',
     onSignal() {
-        console.log(COLOR, '\nServer cleanup initiated...');
+        console.log(COLOR, '\nServer cleanup initiated.');
         return Promise.all([]);
     },
     onShutdown() {
         server.close();
-        console.log(COLOR, 'Server gracefully terminated...');
+        console.log(COLOR, 'Server gracefully terminated.');
     },
 };
 
@@ -52,20 +52,24 @@ const app = express();
 const server = http.createServer(app).listen(PORT - 1 || 65534);
 const count = { n: 0 };
 
-const log = async (req, res, next) => {
+const log = (req, res, next) => {
     console.table({
         method: req.method,
         url: `${req.protocol}://${req.get('host')}${req.url}`,
         time: new Date().toUTCString(),
     });
 
-    if (!count.n) for (const e in req.cookies) res.clearCookie(e);
+    if (!count.n) {
+        for (const e in req.cookies) res.clearCookie(e);
+        req.cookies = {};
+    }
+
     count.n += 1;
-    res.cookie(`Query ${count.n}`, Math.trunc(Math.random() * 1e12));
+    res.cookie(`Query ${count.n}`, Math.trunc(Math.random() * 1e15));
     next();
 };
 
-const error = (err, req, res, next) => {
+const error = async (err, req, res, next) => {
     res.status(500);
     next(err);
 };
@@ -87,16 +91,19 @@ app.set('view engine', 'hbs');
 app.set('trust proxy', 'loopback, linklocal, uniquelocal');
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../')));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.raw());
+app.use(express.static(path.join(__dirname, '../'), { dotfiles: 'allow' }));
+app.use(express.text());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(actuator());
 app.use(compression());
 app.use(cookieParser());
 app.use(cors(OPTS_CORS));
 app.use(helmet());
-app.use(log);
 app.use(session(OPTS_SESSION));
+
+app.use(log);
 
 app.use('/api/users', router);
 
