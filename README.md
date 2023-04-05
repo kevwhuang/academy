@@ -61,8 +61,8 @@ Scrimba React|
 # JS 311
 
 - [ ] Academy
-- [x] Projects
-- [x] Videos
+- [ ] Projects
+- [ ] Videos
 
 # JS 411
 

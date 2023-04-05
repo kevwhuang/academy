@@ -25,16 +25,30 @@ const OPTS_CORS = {
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
 };
 
+const OPTS_ENGINE = {
+    defaultLayout: 'template',
+    extname: 'hbs',
+};
+
 const OPTS_SESSION = {
-    secret: 'Session',
     resave: false,
     saveUninitialized: true,
+    secret: 'Session',
     cookie: {},
 };
 
+const OPTS_STATIC = {
+    redirect: false,
+    dotfiles: 'allow',
+    extensions: ['htm', 'html'],
+    setHeaders(res) {
+        res.set('Content-Security-Policy', 'script-src \'self\' \'unsafe-inline\'');
+    },
+};
+
 const OPTS_TERMINUS = {
-    healthChecks: { '/healthcheck': () => Promise.resolve() },
     signal: 'SIGINT',
+    healthChecks: { '/healthcheck': () => Promise.resolve() },
     onSignal() {
         console.log(COLOR, '\nServer cleanup initiated.');
         return Promise.all([]);
@@ -52,7 +66,7 @@ const app = express();
 const server = http.createServer(app).listen(PORT - 1 || 65534);
 const count = { n: 0 };
 
-const log = (req, res, next) => {
+const logger = (req, res, next) => {
     console.table({
         method: req.method,
         url: `${req.protocol}://${req.get('host')}${req.url}`,
@@ -79,20 +93,20 @@ app.listen(PORT, () => {
     createTerminus(server, OPTS_TERMINUS);
 });
 
-app.disable('x-powered-by');
+app.engine('hbs', hbs.engine(OPTS_ENGINE));
 
-app.engine('hbs', hbs.engine({
-    extname: 'hbs',
-    defaultLayout: 'template',
-}));
-
-app.set('views', path.join(__dirname, '../documents/views'));
+app.set('env', 'production');
+app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']);
 app.set('view engine', 'hbs');
-app.set('trust proxy', 'loopback, linklocal, uniquelocal');
+app.set('views', path.join(__dirname, '../public'));
+
+app.enable('case sensitive routing');
+
+app.disable('strict routing');
+app.disable('x-powered-by');
 
 app.use(express.json());
 app.use(express.raw());
-app.use(express.static(path.join(__dirname, '../'), { dotfiles: 'allow' }));
 app.use(express.text());
 app.use(express.urlencoded({ extended: true }));
 
@@ -103,11 +117,18 @@ app.use(cors(OPTS_CORS));
 app.use(helmet());
 app.use(session(OPTS_SESSION));
 
-app.use(log);
-
+app.use(logger);
+app.use(express.static(path.join(__dirname, '../'), OPTS_STATIC));
 app.use('/api/users', router);
 
-app.route('/api/route')
+app.param(['a', 'b'], (req, res, next, val) => {
+    console.log({
+        [Object.keys(req.params).find(k => req.params[k] === val)]: val,
+    });
+    next();
+});
+
+app.route(['/api/route'])
     .get([(req, res, next) => next('route')])
     .post((req, res) => res.send('POST!'))
     .put((req, res) => res.send('PUT!'))
@@ -127,6 +148,10 @@ app.get('/api/error', () => {
     throw new Error('500');
 });
 
+app.get('/api/params/:a&:b', (req, res) => {
+    res.send(req.params);
+});
+
 app.get('/api/route', (req, res) => {
     res.send('GET!');
 });
@@ -142,6 +167,10 @@ app.all(/(^\/api\/).*/, (req, res) => {
 });
 
 app.all(/^(?!(^\/api\/?$)).*/, (req, res) => {
+    res.redirect('/');
+});
+
+app.all('*', (req, res) => {
     res.redirect('/');
 });
 
