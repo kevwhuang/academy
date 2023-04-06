@@ -42,7 +42,8 @@ const OPTS_STATIC = {
     dotfiles: 'allow',
     extensions: ['htm', 'html'],
     setHeaders(res) {
-        res.set('Content-Security-Policy', 'script-src \'self\' \'unsafe-inline\'');
+        res.set('Content-Security-Policy',
+            'script-src \'self\' \'unsafe-inline\'');
     },
 };
 
@@ -67,19 +68,33 @@ const server = http.createServer(app).listen(PORT - 1 || 65534);
 const count = { n: 0 };
 
 const logger = (req, res, next) => {
-    console.table({
-        method: req.method,
-        url: `${req.protocol}://${req.get('host')}${req.url}`,
+    const log = {
         time: new Date().toUTCString(),
-    });
+        url: `${req.protocol}://${req.get('host')}${req.path}`,
+        method: req.method,
+    };
+
+    if (Object.keys(req.body).length) {
+        log.body = JSON.stringify(req.body).slice(1, -1)
+            .replaceAll('"', '').replaceAll(':', ' : ').replaceAll(',', ' | ');
+    }
+
+    if (Object.keys(req.query).length) {
+        log.query = JSON.stringify(req.query).slice(1, -1)
+            .replaceAll('"', '').replaceAll(':', ' : ').replaceAll(',', ' | ');
+    }
 
     if (!count.n) {
         for (const e in req.cookies) res.clearCookie(e);
         req.cookies = {};
     }
 
-    count.n += 1;
-    res.cookie(`Query ${count.n}`, Math.trunc(Math.random() * 1e15));
+    if (!log.url.includes('favicon.ico')) {
+        count.n++;
+        res.cookie(`Query ${count.n}`, Math.trunc(Math.random() * 1e15), {});
+        console.table(log);
+    }
+
     next();
 };
 
@@ -122,7 +137,7 @@ app.use(express.static(path.join(__dirname, '../'), OPTS_STATIC));
 app.use('/api/users', router);
 
 app.param(['a', 'b'], (req, res, next, val) => {
-    console.log({
+    console.log('Parameter', {
         [Object.keys(req.params).find(k => req.params[k] === val)]: val,
     });
     next();
@@ -144,11 +159,23 @@ app.get('/api/cookies', (req, res) => {
     res.json(req.cookies);
 });
 
+app.get('/api/download', (req, res) => {
+    res.append('Content-Type', 'text/plain');
+    res.cookie('download_photo', true, { maxAge: 3600e3 });
+    res.links({ home: `${req.protocol}://${req.get('host')}/api` });
+    res.location('back');
+    res.type('html');
+    res.vary('User-Agent');
+
+    res.attachment(path.join(__dirname, '../assets/andres-torres.jpg'));
+    res.end();
+});
+
 app.get('/api/error', () => {
     throw new Error('500');
 });
 
-app.get('/api/params/:a&:b', (req, res) => {
+app.get('/api/params/:a..:b', (req, res) => {
     res.send(req.params);
 });
 
@@ -171,7 +198,7 @@ app.all(/^(?!(^\/api\/?$)).*/, (req, res) => {
 });
 
 app.all('*', (req, res) => {
-    res.redirect('/');
+    res.redirect(302, '/');
 });
 
 app.use(error);

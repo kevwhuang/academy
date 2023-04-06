@@ -1,24 +1,24 @@
 import mysql from 'mysql';
 
 const dbOptions = {
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'admin',
-    connectTimeout: 10000,
     debug: false,
+    connectTimeout: 10000,
+    database: 'admin',
+    host: 'localhost',
+    password: 'password',
+    user: 'root',
 };
 
 const poolOptions = {
-    host: process.env.HOST,
-    user: process.env.USERNAME,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
+    debug: false,
+    waitForConnections: true,
     acquireTimeout: 10000,
     connectionLimit: 100,
     queueLimit: 0,
-    waitForConnections: true,
-    debug: false,
+    database: process.env.DATABASE,
+    host: process.env.HOST,
+    password: process.env.PASSWORD,
+    user: process.env.USERNAME,
 };
 
 export default function select(req, res) {

@@ -21,16 +21,21 @@ const post = (req, res) => {
     if (typeof newUser.id !== 'number') {
         return res.status(400).json({ error: '<id> must be a number.' });
     }
+
     if (users.some(check)) {
         return res.status(400).json({ error: `<id: ${newUser.id}> already exists.` });
     }
+
     if (!newUser.name) return res.status(400).json({ error: '<name> must be included.' });
+
     if (typeof newUser.name !== 'string') {
         return res.status(400).json({ error: '<name> must be a string.' });
     }
+
     if (typeof newUser.role !== 'string') {
         return res.status(400).json({ error: '<role> must be a string.' });
     }
+
     if (typeof newUser.student !== 'boolean') {
         return res.status(400).json({ error: '<student> must be a boolean.' });
     }
@@ -54,12 +59,15 @@ const put = (req, res) => {
     if (!currentUser.name) {
         return res.status(400).json({ error: '<name> must be included.' });
     }
+
     if (typeof currentUser.name !== 'string') {
         return res.status(400).json({ error: '<name> must be a string.' });
     }
+
     if (typeof currentUser.role !== 'string') {
         return res.status(400).json({ error: '<role> must be a string.' });
     }
+
     if (typeof currentUser.student !== 'boolean') {
         return res.status(400).json({ error: '<student> must be a boolean.' });
     }
@@ -82,9 +90,11 @@ const patch = (req, res) => {
     if (typeof currentUser.name !== 'string') {
         return res.status(400).json({ error: '<name> must be a string.' });
     }
+
     if (typeof currentUser.role !== 'string') {
         return res.status(400).json({ error: '<role> must be a string.' });
     }
+
     if (typeof currentUser.student !== 'boolean') {
         return res.status(400).json({ error: '<student> must be a boolean.' });
     }

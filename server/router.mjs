@@ -4,6 +4,11 @@ import controller from './controller.mjs';
 
 const router = express.Router();
 
+router.param('id', (req, res, next) => {
+    console.log('Parameter', { id: req.params.id });
+    next();
+});
+
 router.get('/', controller.get);
 router.get('/:id', controller.getId);
 router.post('/', controller.post);
