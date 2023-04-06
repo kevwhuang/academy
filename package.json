@@ -43,6 +43,7 @@
     },
     "scripts": {
         "build": "tsc --watch",
+        "deploy": "gcloud app deploy",
         "eslint": "eslint '**/*.{js,mjs,cjs,ts}'",
         "eslinthtml": "eslint **/*.html",
         "htmllint": "html-validate **/*.{html,hbs}",
@@ -91,6 +92,7 @@
         "@webpack-cli/generators": "*",
         "autoprefixer": "*",
         "babel-jest": "*",
+        "bcryptjs": "*",
         "chai": "*",
         "chalk": "*",
         "chart.js": "*",
@@ -123,6 +125,7 @@
         "html-validate": "*",
         "html-webpack-plugin": "*",
         "jsdoc": "*",
+        "jsonwebtoken": "*",
         "lodash": "*",
         "mini-css-extract-plugin": "*",
         "moment": "*",
