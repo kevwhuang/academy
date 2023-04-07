@@ -3,19 +3,21 @@ import { createTerminus } from '@godaddy/terminus';
 import { fileURLToPath } from 'url';
 
 import actuator from 'express-actuator';
+import hbs from 'express-handlebars';
+import session from 'express-session';
+
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express from 'express';
-import hbs from 'express-handlebars';
 import helmet from 'helmet';
 import http from 'http';
 import path from 'path';
-import session from 'express-session';
 
+import auth from './auth.mjs';
 import router from './router.mjs';
 import select from './pool.mjs';
-import users from './users.mjs';
+import users from './data/users.mjs';
 
 const COLOR = '\x1b[35m%s\x1b[0m';
 const PORT = process.env.PORT || 65535;
@@ -134,6 +136,7 @@ app.use(session(OPTS_SESSION));
 
 app.use(logger);
 app.use(express.static(path.join(__dirname, '../'), OPTS_STATIC));
+app.use('/auth', auth);
 app.use('/api/users', router);
 
 app.param(['a', 'b'], (req, res, next, val) => {
@@ -145,10 +148,10 @@ app.param(['a', 'b'], (req, res, next, val) => {
 
 app.route(['/api/route'])
     .get([(req, res, next) => next('route')])
-    .post((req, res) => res.send('POST!'))
-    .put((req, res) => res.send('PUT!'))
-    .patch((req, res) => res.send('PATCH!'))
-    .delete((req, res) => res.send('DELETE!'))
+    .post((req, res) => res.status(201).send('POST!'))
+    .put((req, res) => res.status(204).send('PUT!'))
+    .patch((req, res) => res.status(204).send('PATCH!'))
+    .delete((req, res) => res.status(204).send('DELETE!'))
     .all((req, res) => res.send(`${req.method}!`));
 
 app.get('/api', (req, res) => {
@@ -190,15 +193,15 @@ app.get('/api/photo', (req, res) => {
 app.get('/api/sql', select);
 
 app.all(/(^\/api\/).*/, (req, res) => {
-    res.redirect('/api');
+    res.status(308).redirect('/api');
 });
 
 app.all(/^(?!(^\/api\/?$)).*/, (req, res) => {
-    res.redirect('/');
+    res.status(308).redirect('/');
 });
 
 app.all('*', (req, res) => {
-    res.redirect(302, '/');
+    res.status(308).redirect(302, '/');
 });
 
 app.use(error);
