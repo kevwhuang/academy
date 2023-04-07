@@ -23,6 +23,7 @@ const COLOR = '\x1b[35m%s\x1b[0m';
 const PORT = process.env.PORT || 65535;
 
 const OPTS_CORS = {
+    credentials: true,
     origin: '*',
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
 };
@@ -36,7 +37,7 @@ const OPTS_SESSION = {
     resave: false,
     saveUninitialized: true,
     secret: 'Session',
-    cookie: {},
+    cookie: { secure: false },
 };
 
 const OPTS_STATIC = {
@@ -77,7 +78,10 @@ const logger = (req, res, next) => {
     };
 
     if (Object.keys(req.body).length) {
-        log.body = JSON.stringify(req.body).slice(1, -1)
+        const body = { ...req.body };
+
+        if (body.password) body.password = '******';
+        log.body = JSON.stringify(body).slice(1, -1)
             .replaceAll('"', '').replaceAll(':', ' : ').replaceAll(',', ' | ');
     }
 
