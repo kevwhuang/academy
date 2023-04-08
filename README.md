@@ -2,34 +2,34 @@
 
 Name|Status
 -|-
-Bootstrap|In Progress
-CSS|In Progress
+Bootstrap|
+CSS|
 Git|Completed
 HTML|Completed
 JavaScript|Completed
 MySQL|Completed
-Node|In Progress
+Node|Completed
 React|
-Sass|In Progress
+Sass|
 TypeScript|Completed
 
 # DOCUMENTATIONS
 
 Name|Status
 -|-
-Axios|In Progress
-Bootstrap|In Progress
+Axios|Completed
+Bootstrap|
 ESLint|Completed
 Express|Completed
 Jest|Completed
 MySQL|Completed
 Next|
-Node|In Progress
-PostCSS|In Progress
+Node|Completed
+PostCSS|
 React|
 Redux|
-Sass|In Progress
-TypeScript|In Progress
+Sass|
+TypeScript|Completed
 Vite|
 
 # RESOURCES
@@ -38,11 +38,11 @@ Name|Status
 -|-
 Cracking the Coding Interview|
 CS50|
-CSS-Tricks|In Progress
+CSS-Tricks|
 freeCodeCamp|
 HackerRank|
 JavaScript 30|
-Modern JavaScript Tutorial|In Progress
+Modern JavaScript Tutorial|
 NeetCode 150|
 Scrimba React|
 
@@ -60,9 +60,9 @@ Scrimba React|
 
 # JS 311
 
-- [ ] Academy
-- [ ] Projects
-- [ ] Videos
+- [x] Academy
+- [x] Projects
+- [x] Videos
 
 # JS 411
 

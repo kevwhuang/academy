@@ -1,7 +1,6 @@
 Documentation - Axios
 Documentation - Node
 Documentation - TypeScript
-Resource - Modern JavaScript Tutorial
 Tutorial - Node
 
 Academy - 02
@@ -13,6 +12,7 @@ Project - advanced.html
 Project - bootstrap.html
 Project - sass.html
 Resource - CSS-Tricks
+Resource - Modern JavaScript Tutorial
 Tutorial - Bootstrap
 Tutorial - CSS Advanced
 Tutorial - CSS Reference
