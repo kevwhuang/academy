@@ -222,7 +222,7 @@
 
     c(i); // var hoisted but not initialized
     switch (!Boolean(null)) { // falsy value
-        case Boolean(Infinity): // case stacking
+        case !!Infinity: // case stacking with boolean conversion trick
         case new Boolean('' - ''): // boolean object
             var i = 0; // increment initialization
     } // last case does not require a break
@@ -279,9 +279,9 @@
     c([NaN, undefined, null].map(myFunc4)); // callback function
 
     const myFunc5 = x => { // pure function
-        x *= 2; // assignment operator
+        x *= 2 || null; // assignment operator with short circuit evaluation
         c('queue:', x); // task queue FIFO
-        if (x < 8) myFunc5(x); // recursion
+        (x < 8) && myFunc5(x); // recursion with if statement substitution
         c('stack:', x); // call stack FILO
         return () => 'return'; // anonymous first class function
     }; c(myFunc5(1)); // function call

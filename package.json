@@ -17,7 +17,6 @@
         "Node",
         "PostCSS",
         "React",
-        "Redux",
         "Sass",
         "TypeScript",
         "Vite"
@@ -67,7 +66,6 @@
         "next": "* || 13.x",
         "postcss": "* || 8.x",
         "react": "* || 18.x",
-        "redux": "* || 4.x",
         "sass": "* || 1.x",
         "typescript": "* || 5.x",
         "vite": "* || 4.x"
@@ -143,6 +141,7 @@
         "postcss-sass": "*",
         "react-dom": "*",
         "react-native": "*",
+        "redux": "*",
         "sass-loader": "*",
         "style-loader": "*",
         "styled-components": "*",

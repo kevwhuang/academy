@@ -27,7 +27,6 @@ Next|
 Node|Completed
 PostCSS|
 React|
-Redux|
 Sass|
 TypeScript|Completed
 Vite|
@@ -141,7 +140,6 @@ Scrimba React|
 <script src="https://cdn.jsdelivr.net/npm/next/dist/server/next.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/postcss/lib/postcss.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/redux/dist/redux.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sass/sass.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/typescript/lib/typescript.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vite/dist/node/index.min.js"></script>
