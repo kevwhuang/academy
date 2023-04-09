@@ -45,7 +45,7 @@
         "deploy": "gcloud app deploy",
         "eslint": "eslint '**/*.{js,mjs,cjs,ts}'",
         "eslinthtml": "eslint **/*.html",
-        "htmllint": "html-validate **/*.{html,hbs}",
+        "htmllint": "html-validate **/*.{html,htm,hbs}",
         "jsdoc": "jsdoc -c documents/jsdoc.json",
         "nodemon": "nodemon javascript/exp.js",
         "prestart": "ts-node -v",
