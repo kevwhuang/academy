@@ -1,5 +1,5 @@
 {
-    "ext": "js,mjs,json,ts",
+    "ext": "js,mjs,cjs,ts,json",
     "restartable": "r",
     "delay": 10,
     "verbose": false

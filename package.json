@@ -133,6 +133,7 @@
         "mocha": "*",
         "moment": "*",
         "morgan": "*",
+        "multer": "*",
         "nodemon": "*",
         "npm": "*",
         "passport": "*",

@@ -12,6 +12,8 @@ import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import http from 'http';
+import multer from 'multer';
+import os from 'os';
 import path from 'path';
 
 import auth from './auth.mjs';
@@ -50,10 +52,20 @@ const OPTS_STATIC = {
     },
 };
 
+const OPTS_STORAGE = {
+    destination: path.join(os.userInfo().homedir, '/downloads'),
+    filename(req, file, cb) {
+        const fn = file.originalname;
+        const i = fn.lastIndexOf('.');
+
+        cb(null, `${fn.slice(0, i)}-${Date.now()}${fn.slice(i)}`);
+    },
+};
+
 const OPTS_TERMINUS = {
     signal: 'SIGINT',
     healthChecks: { '/healthcheck': () => Promise.resolve() },
-    onSignal() {
+    async onSignal() {
         console.log(COLOR, '\nServer cleanup initiated.');
         return Promise.all([]);
     },
@@ -95,7 +107,7 @@ const logger = (req, res, next) => {
         req.cookies = {};
     }
 
-    if (!log.url.includes('favicon.ico')) {
+    if (!log.url.includes('favicon')) {
         count.n++;
         res.cookie(`Query ${count.n}`, Math.trunc(Math.random() * 1e15), {});
         console.table(log);
@@ -150,14 +162,6 @@ app.param(['a', 'b'], (req, res, next, val) => {
     next();
 });
 
-app.route(['/api/route'])
-    .get([(req, res, next) => next('route')])
-    .post((req, res) => res.status(201).send('POST!'))
-    .put((req, res) => res.status(204).send('PUT!'))
-    .patch((req, res) => res.status(204).send('PATCH!'))
-    .delete((req, res) => res.status(204).send('DELETE!'))
-    .all((req, res) => res.send(`${req.method}!`));
-
 app.get('/api', (req, res) => {
     res.render('home', { heading: 'ROUTES', users });
 });
@@ -186,6 +190,14 @@ app.get('/api/params/:a..:b', (req, res) => {
     res.send(req.params);
 });
 
+app.route(['/api/route'])
+    .get([(req, res, next) => next('route')])
+    .post((req, res) => res.status(201).send('POST!'))
+    .put((req, res) => res.status(204).send('PUT!'))
+    .patch((req, res) => res.status(204).send('PATCH!'))
+    .delete((req, res) => res.status(204).send('DELETE!'))
+    .all((req, res) => res.send(`${req.method}!`));
+
 app.get('/api/route', (req, res) => {
     res.send('GET!');
 });
@@ -195,6 +207,22 @@ app.get('/api/photo', (req, res) => {
 });
 
 app.get('/api/sql', select);
+
+app.get('/api/upload', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/upload.htm'));
+});
+
+app.post('/api/upload',
+    multer({ storage: multer.diskStorage(OPTS_STORAGE) }).array('resources'),
+    (req, res) => {
+        console.log('Body', { message: req.body.message || null });
+
+        for (let i = 0, total = 1; i < req.files.length; i++, total++) {
+            console.log(`File (${total})`, { name: req.files[i].filename });
+        }
+
+        res.status(200).redirect('/api/upload');
+    });
 
 app.all(/(^\/api\/).*/, (req, res) => {
     res.status(308).redirect('/api');

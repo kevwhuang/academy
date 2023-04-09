@@ -1,5 +1,6 @@
 /* MySQL Example Queries */
 --
+
 CREATE USER 'user'@'%' IDENTIFIED BY 'password';
 
 GRANT
@@ -234,7 +235,7 @@ ORDER BY
     field_1 * field_2 DESC,
     field_1 ASC
 LIMIT
-    100;
+    100 OFFSET 1;
 
 DROP TABLE IF EXISTS temp;
 

@@ -29,7 +29,7 @@ export default function select(req, res) {
     if (Number(process.env.STATE_POOL)) {
         const pool = mysql.createPool(poolOptions);
 
-        pool.query(query, (err, results) => {
+        pool.query(query, (err, results, fields) => {
             if (err) return res.status(500).json(err);
             pool.on('acquire', con => console.log('acquire'));
             pool.on('connection', con => console.log('connection'));

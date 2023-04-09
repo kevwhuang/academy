@@ -25,7 +25,7 @@ const link = new URL('https://user:pass@sub.domain.com:8000/path?p1=v1&p2=v2#has
 link.searchParams.append('p3', 'v3');
 
 const EventEmitter = require('events');
-class MyEmitter extends require('events') { log(msg) { this.emit('event', msg); } }
+class MyEmitter extends require('events') { log(msg) { this.emit('event', `${msg}!`); } }
 const emitter = new MyEmitter;
 emitter.on('event', c);
 
@@ -79,6 +79,7 @@ server.listen(PORT, 'localhost');
 // c(os.cpus());
 // C([`${os.platform()} ${os.arch()}`, `${os.freemem()} / ${os.totalmem()}`]);
 // c(url);
+// c(url.parse(String(link), true).query);
 // c(link);
 // c(EventEmitter);
 // emitter.log('test');

@@ -43,7 +43,7 @@ auth.get('/access', protect, (req, res) => res.json(req.account));
 auth.post('/register', asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
     const formatName = /^[A-z ]+$/;
-    const formatEmail = /^[A-z0-9._\-]+@[A-z0-9\-]+\.[A-z]+$/;
+    const formatEmail = /^[A-z0-9._-]+@[A-z0-9-]+\.[A-z]+$/;
     const formatPassword = /.{6,}/;
 
     if (!name) return errors.missing(res, 'name');
@@ -70,7 +70,6 @@ auth.post('/login', asyncHandler(async (req, res) => {
 
     if (!email) return errors.missing(res, 'email');
     if (!password) return errors.missing(res, 'password');
-
     for (const e of accounts) if (e.email === email) user = e;
     if (!user) return errors.unknown(res, 'email', email);
 
