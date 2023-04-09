@@ -1,23 +1,23 @@
 {
+    "recurseDepth": 100,
+    "sourcetype": "module",
     "plugins": [
         "plugins/markdown",
         "plugins/summarize"
     ],
-    "recurseDepth": 100,
+    "opts": {
+        "recurse": true,
+        "destination": "./docs",
+        "encoding": "utf8",
+        "readme": "./README.md"
+    },
     "source": {
+        "excludePattern": "(node_modules/|docs)",
+        "includePattern": "(.js$|.mjs$|.ts$)",
+        "exclude": [],
         "include": [
             "javascript"
-        ],
-        "exclude": [],
-        "includePattern": "(.js$|.mjs$|.ts$)",
-        "excludePattern": "(node_modules/|docs)"
-    },
-    "sourcetype": "module",
-    "opts": {
-        "encoding": "utf8",
-        "destination": "./docs",
-        "readme": "./README.md",
-        "recurse": true
+        ]
     },
     "templates": {
         "cleverLinks": true,

@@ -1,7 +1,7 @@
 {
     "name": "academy",
     "version": "23.4.1",
-    "description": "Academy is a metaproject that documents my learning journey.",
+    "description": "A metaproject documenting my coding journey.",
     "keywords": [
         "Axios",
         "Bootstrap",
@@ -47,7 +47,7 @@
         "eslinthtml": "eslint **/*.html",
         "htmllint": "html-validate **/*.{html,hbs}",
         "jsdoc": "jsdoc -c documents/jsdoc.json",
-        "nodemon": "nodemon javascript/exp.cjs",
+        "nodemon": "nodemon javascript/exp.js",
         "prestart": "ts-node -v",
         "start": "NODE_ENV=production ts-node server/express.mjs",
         "stylelint": "stylelint **/*.{css,sass,html}",

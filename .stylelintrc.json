@@ -5,18 +5,16 @@
     ],
     "overrides": [
         {
+            "customSyntax": "postcss-html",
             "files": [
                 "**/*.html"
-            ],
-            "customSyntax": "postcss-html"
+            ]
         }
     ],
     "rules": {
-        "color-function-notation": "legacy",
         "color-named": null,
         "declaration-block-no-redundant-longhand-properties": null,
         "declaration-property-value-disallowed-list": null,
-        "function-url-quotes": "never",
         "keyframes-name-pattern": null,
         "no-descending-specificity": null,
         "property-no-vendor-prefix": null,
@@ -25,6 +23,8 @@
         "selector-id-pattern": null,
         "selector-max-compound-selectors": null,
         "selector-max-id": null,
-        "selector-no-qualifying-type": null
+        "selector-no-qualifying-type": null,
+        "color-function-notation": "legacy",
+        "function-url-quotes": "never"
     }
 }

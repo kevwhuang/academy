@@ -1,24 +1,24 @@
 {
-    "bail": 1,
     "collectCoverage": false,
-    "displayName": {
-        "name": "Jest",
-        "color": "blue"
-    },
-    "globals": {
-        "timeout": 5000
-    },
+    "verbose": true,
+    "bail": 1,
+    "preset": "ts-jest",
+    "testEnvironment": "node",
     "moduleFileExtensions": [
         "js",
         "mjs",
         "cjs",
-        "jsx",
         "ts",
         "tsx",
+        "jsx",
         "json"
     ],
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "verbose": true,
-    "watchPlugins": []
+    "watchPlugins": [],
+    "displayName": {
+        "color": "blue",
+        "name": "Jest"
+    },
+    "globals": {
+        "timeout": 5000
+    }
 }

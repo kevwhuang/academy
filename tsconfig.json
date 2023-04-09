@@ -1,9 +1,11 @@
 {
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "typescript/*.ts"
+    ],
     "compilerOptions": {
-        "module": "system",
-        "outDir": "build",
-        "outFile": "build/dist.js",
-        "target": "esnext",
         "allowJs": false,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
@@ -15,12 +17,10 @@
         "skipLibCheck": true,
         "sourceMap": false,
         "strict": true,
-        "strictNullChecks": false
-    },
-    "include": [
-        "typescript/*.ts"
-    ],
-    "exclude": [
-        "node_modules"
-    ]
+        "strictNullChecks": false,
+        "module": "system",
+        "outDir": "build",
+        "outFile": "build/dist.js",
+        "target": "esnext"
+    }
 }

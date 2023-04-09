@@ -1,20 +1,53 @@
 {
+    "prefer_related_applications": false,
+    "background_color": "#222",
+    "description": "A metaproject documenting my coding journey.",
+    "dir": "ltr",
+    "display": "browser",
+    "id": "",
+    "lang": "en",
     "name": "Academy",
-    "short_name": "Academy",
-    "start_url": "../index.html",
-    "display": "standalone",
-    "background_color": "#000000",
-    "theme_color": "#ffffff",
+    "orientation": "landscape-primary",
+    "scope": "../",
+    "short_name": "academy",
+    "start_url": "../html/advanced.html",
+    "theme_color": "#ddd",
+    "categories": [
+        "education"
+    ],
+    "display_override": [
+        "standalone",
+        "minimal-ui"
+    ],
+    "file_handlers": [],
     "icons": [
         {
-            "src": "../assets/favicon-advanced-android-chrome-192x192.png",
+            "purpose": "any",
             "sizes": "192x192",
+            "src": "../assets/favicon-advanced-android-chrome-192x192.png",
             "type": "image/png"
         },
         {
-            "src": "../assets/favicon-advanced-android-chrome-512x512.png",
+            "purpose": "any",
             "sizes": "512x512",
+            "src": "../assets/favicon-advanced-android-chrome-512x512.png",
             "type": "image/png"
         }
-    ]
+    ],
+    "protocol_handlers": [],
+    "related_applications": [],
+    "screenshots": [
+        {
+            "label": "Home screen",
+            "platform": "wide",
+            "sizes": "1440x900",
+            "src": "screenshot.tif",
+            "type": "image/tiff"
+        }
+    ],
+    "shortcuts": [],
+    "launch_handler": {
+        "client_mode": "auto"
+    },
+    "share_target": {}
 }

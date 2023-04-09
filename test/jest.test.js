@@ -9,17 +9,17 @@ describe('Matching', () => {
     let funcs = {};
 
     try {
-        funcs = require('../javascript/jest');
+        funcs = require('../javascript/common');
     } catch {
-        funcs.sum = (a, b) => a + b;
         funcs.diff = (a, b) => a - b;
+        funcs.sum = (a, b) => a + b;
     }
 
     test('toBe', () => {
         const { getType } = require('jest-get-type');
 
-        expect(funcs.sum(0, 1)).toBe(1);
         expect(funcs.diff(2, 3)).toBe(-1);
+        expect(funcs.sum(0, 1)).toBe(1);
         expect(getType([])).toBe('array');
     });
 
