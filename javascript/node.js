@@ -1,89 +1,36 @@
-const c = console.log;
-const C = console.table;
+const LOG = true;
+const modules = 'assert|dgram|os|string_decoder|tls';
+const [PURPLE, TEAL] = ['\x1b[35m%s\x1b[0m', '\x1b[36m%s\x1b[0m'];
+const [c, C, O] = [console.log, console.table, function (output) { this.output = output; }];
+const $ = (table, key, value) => eval(`$${table}['${key}'] = new O('${value}')`);
+const node = table => LOG && setTimeout(() => { c(TEAL, table); C(eval(`$${table}`)); }, 0);
 
-const path = require('path');
-const pathRelative = '../output';
-const pathOutputDir = path.join(__dirname, pathRelative);
-const pathOutputFile = path.join(pathOutputDir, 'node.txt');
-const pathCurrent = path.parse(__filename);
-pathCurrent['dir'] = path.dirname(__filename);
-pathCurrent['base'] = path.basename(__filename);
-pathCurrent['ext'] = path.extname(__filename);
+for (const e of modules.split('|')) { eval(`var ${e} = require('${e}'); var $${e} = {}`); }
+c(PURPLE, '#'.repeat(29));
+setTimeout(() => c(PURPLE, '#'.repeat(29)), 10);
 
-const fs = require('fs');
-if (!fs.existsSync(pathOutputDir)) fs.mkdirSync(pathOutputDir);
-fs.writeFileSync(pathOutputFile, '');
-fs.appendFileSync(pathOutputFile, 'Hello, World!');
-const fsData = fs.readFileSync(pathOutputFile, 'utf8');
-fs.renameSync(pathOutputFile, path.join(pathOutputDir, 'node.nfo'));
-fs.rmSync(pathOutputDir, { recursive: true });
+node('assert');
+$('assert', 'deepStrictEqual()', '', assert.strict.deepStrictEqual([{ 0: [0] }], [{ 0: [0] }]));
+$('assert', 'doesNotMatch()', '', assert.strict.doesNotMatch('1', /2/));
+$('assert', 'ifError()', '', assert.strict.ifError(undefined));
+$('assert', 'match()', '', assert.strict.match('1', /1/));
+$('assert', 'notDeepStrictEqual()', '', assert.strict.notDeepStrictEqual([{ 0: [0] }], [{ 0: ['0'] }]));
+$('assert', 'ok()', '', assert.strict.ok(!!1));
+$('assert', 'throws()', '', assert.strict.throws(() => { throw Error; }));
 
-const os = require('os');
+node('dgram');
+$('dgram', 'createSocket()', dgram.createSocket('udp4').bind(9999, 'localhost').type);
 
-const url = require('url');
-const link = new URL('https://user:pass@sub.domain.com:8000/path?p1=v1&p2=v2#hash');
-link.searchParams.append('p3', 'v3');
+node('os');
+$('os', 'cpus()', os.cpus()[0].model.slice(os.cpus()[0].model.indexOf(' i') + 1));
+$('os', 'freemem()', `${parseInt(os.freemem() * 1e-6)} MB`);
+$('os', 'machine()', os.machine());
+$('os', 'release()', os.release());
+$('os', 'totalmem()', `${parseInt(os.totalmem() * 1e-6)} MB`);
+$('os', 'type()', os.type());
+$('os', 'userInfo()', os.userInfo().username);
 
-const EventEmitter = require('events');
-class MyEmitter extends require('events') { log(msg) { this.emit('event', `${msg}!`); } }
-const emitter = new MyEmitter;
-emitter.on('event', c);
+node('string_decoder');
+$('string_decoder', 'write()', (new string_decoder.StringDecoder).write(Buffer.from('æ')));
 
-const http = require('http');
-const PORT = 10000;
-const server = http.createServer((req, res) => {
-    const filePath = path.join(__dirname, '../', req.url === '/' ? 'index.html' : req.url);
-    let contentType;
-
-    switch (path.extname(filePath)) {
-        case '.css':
-            contentType = 'text/css';
-            break;
-        case '.js':
-            contentType = 'text/javascript';
-            break;
-        case '.json':
-            contentType = 'application/json';
-            break;
-        case '.ico':
-            contentType = 'image/ico';
-            break;
-        default:
-            contentType = 'text/html';
-    }
-
-    fs.readFile(filePath, (err, content) => {
-        if (err) {
-            if (err.code === 'ENOENT') res.writeHead(400);
-            else res.writeHead(500);
-            res.write('<h1>');
-            res.end(`ERROR: ${err.code}</h1>`, 'utf8');
-        } else {
-            res.setHeader('Content-Type', contentType);
-            res.end(content);
-        }
-    });
-});
-server.listen(PORT, 'localhost');
-
-// c(global);
-// c(process);
-// c(console);
-
-// c(process.cwd());
-// c(path);
-// c(pathCurrent);
-// c(fs);
-// c(fsData);
-// c(os);
-// c(os.cpus());
-// C([`${os.platform()} ${os.arch()}`, `${os.freemem()} / ${os.totalmem()}`]);
-// c(url);
-// c(url.parse(String(link), true).query);
-// c(link);
-// c(EventEmitter);
-// emitter.log('test');
-// c(http);
-// c(server);
-
-c('\x1b[35m%s\x1b[0m', '=============================');
+node('tls');
