@@ -7,3 +7,4 @@ const funcs = {
 };
 
 module.exports = funcs;
+module.exports.mult = (a, b) => a * b;

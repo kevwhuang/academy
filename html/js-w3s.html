@@ -33,7 +33,7 @@
 <script>
     const C = console.table; // function identifier
     const c = console.log; // method shorthand
-    const h = e => c(`%c***** ${e}`, // string interpolation
+    const h = e => c(`%c***** ${e}`, // string interpolation with substitution
         'color:peru;font-size:1pc;'); // console styling
 </script>
 
@@ -157,7 +157,7 @@
 
     const set = new Set([1]); // array argument
     const sets = [ // keyed collection
-        set.has(+ '1'), // unary operator conversion
+        set.has(+'1'), // unary operator conversion
         set.clear(), // empty set
         set.add(1).size, // add value and get size property
         set.delete(2), // delete value
@@ -200,7 +200,7 @@
 <script>
     h('BITWISE'); // numbers stored as 64 bit floating point
 
-    void function () { // no function name
+    void function () { // unnamed function
         let bits = [ // operations as 32 bit signed integers
             1 & 5, // and
             5 | 1, // or
