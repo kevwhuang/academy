@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 
 import actuator from 'express-actuator';
 import hbs from 'express-handlebars';
+import oidc from 'express-openid-connect';
 import session from 'express-session';
 
 import compression from 'compression';
@@ -23,6 +24,15 @@ import users from './data/users.mjs';
 
 const COLOR = '\x1b[35m%s\x1b[0m';
 const PORT = process.env.PORT || 65535;
+
+const OPTS_AUTH = {
+    auth0Logout: true,
+    authRequired: false,
+    baseURL: `http://localhost:${process.env.PORT}`,
+    clientID: process.env.AUTH0_CLIENT_ID,
+    issuerBaseURL: process.env.AUTH0_DOMAIN,
+    secret: process.env.AUTH0_CLIENT_SECRET,
+};
 
 const OPTS_CORS = {
     credentials: true,
@@ -148,6 +158,7 @@ app.use(compression());
 app.use(cookieParser());
 app.use(cors(OPTS_CORS));
 app.use(helmet());
+app.use(oidc.auth(OPTS_AUTH));
 app.use(session(OPTS_SESSION));
 
 app.use(logger);
@@ -204,6 +215,10 @@ app.get('/api/route', (req, res) => {
 
 app.get('/api/photo', (req, res) => {
     res.sendFile(path.join(__dirname, '../assets/nina-nesbitt.jpg'));
+});
+
+app.get('/api/profile', oidc.requiresAuth(), (req, res) => {
+    if (req.oidc.isAuthenticated()) res.send(req.oidc.user);
 });
 
 app.get('/api/sql', select);
