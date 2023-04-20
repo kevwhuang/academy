@@ -28,7 +28,7 @@ Node|Completed
 PostCSS|
 React|
 Sass|
-TypeScript|Completed
+TypeScript|
 Vite|
 
 # RESOURCES

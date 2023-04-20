@@ -233,7 +233,7 @@ app.all(/^(?!(^\/api\/?$)).*/, (req, res) => {
 });
 
 app.all('*', (req, res) => {
-    res.status(308).redirect(302, '/');
+    res.status(308).redirect('/');
 });
 
 app.use(error);

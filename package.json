@@ -48,6 +48,7 @@
         "htmllint": "html-validate **/*.{html,htm,hbs}",
         "jsdoc": "jsdoc -c documents/jsdoc.json",
         "nodemon": "nodemon javascript/exp.js",
+        "postdeploy": "gcloud app deploy",
         "prestart": "ts-node -v",
         "start": "NODE_ENV=production ts-node server/express.mjs",
         "stylelint": "stylelint **/*.{css,sass,html}",
