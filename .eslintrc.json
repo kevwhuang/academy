@@ -4,7 +4,10 @@
     "extends": [
         "eslint:recommended",
         "airbnb-base",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:jsx-a11y/recommended"
     ],
     "overrides": [],
     "plugins": [
@@ -28,7 +31,7 @@
         "ecmaVersion": "latest",
         "sourceType": "module",
         "ecmaFeatures": {
-            "jsx": false
+            "jsx": true
         }
     },
     "rules": {
@@ -53,5 +56,10 @@
         "no-unused-vars": "warn",
         "no-use-before-define": "off",
         "strict": "off"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }

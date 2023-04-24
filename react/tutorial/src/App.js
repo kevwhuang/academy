@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import React from 'react';
 
 import './css/App.css';
 
 export default function Game() {
-    const [currentMove, setCurrentMove] = useState(0);
-    const [history, setHistory] = useState([Array(9).fill(null)]);
+    const [currentMove, setCurrentMove] = React.useState(0);
+    const [history, setHistory] = React.useState([Array(9).fill(null)]);
     const currentSquares = history[currentMove];
     const xNext = currentMove % 2 !== 0;
 

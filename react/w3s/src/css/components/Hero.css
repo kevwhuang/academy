@@ -1,0 +1,11 @@
+.text {
+    border: 1px solid white;
+    cursor: pointer;
+    font-size: 32px;
+    height: 200px;
+    line-height: 32px;
+    margin: auto;
+    overflow: scroll;
+    padding: 16px;
+    width: 80%;
+}

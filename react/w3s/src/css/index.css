@@ -10,16 +10,16 @@ body {
     background: var(--bc);
     color: var(--fc);
     font-family: Nunito Sans, sans-serif;
-    font-size: 36px;
 }
 
 nav {
     background: var(--bc2);
-    height: 100px;
+    background-image: url(https://source.unsplash.com/random/2000x1000/?library);
+    height: 50px;
 }
 
 header {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 50px);
 }
 
 main {

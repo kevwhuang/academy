@@ -11,7 +11,12 @@
         "react-dom": "*",
         "react-scripts": "*"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "eslint": "*",
+        "eslint-plugin-jsx-a11y": "*",
+        "eslint-plugin-react": "*",
+        "eslint-plugin-react-hooks": "*"
+    },
     "browserslist": {
         "development": [
             "last 1 chrome version",
@@ -22,11 +27,6 @@
             ">0.2%",
             "not dead",
             "not op_mini all"
-        ]
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app"
         ]
     }
 }
