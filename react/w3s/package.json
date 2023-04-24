@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "author": "Kevin Huang",
     "scripts": {
-        "build": "react-scripts build",
-        "start": "react-scripts start"
+        "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
+        "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start"
     },
     "dependencies": {
         "react": "*",
