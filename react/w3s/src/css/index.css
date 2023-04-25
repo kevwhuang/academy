@@ -6,16 +6,18 @@
     --fc: #F6F7F9;
 }
 
+aside {
+    height: 0;
+}
+
 body {
     background: var(--bc);
     color: var(--fc);
     font-family: Nunito Sans, sans-serif;
 }
 
-nav {
-    background: var(--bc2);
-    background-image: url(https://source.unsplash.com/random/2000x1000/?library);
-    height: 50px;
+footer {
+    height: 200px;
 }
 
 header {
@@ -27,10 +29,8 @@ main {
     height: 100vh;
 }
 
-aside {
-    height: 0;
-}
-
-footer {
-    height: 200px;
+nav {
+    background: var(--bc2);
+    background-image: url(https://source.unsplash.com/random/2000x1000/?library);
+    height: 50px;
 }
