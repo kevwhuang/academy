@@ -7,5 +7,6 @@
     margin: auto;
     overflow: scroll;
     padding: 16px;
+    user-select: none;
     width: 80%;
 }
