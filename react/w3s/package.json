@@ -9,7 +9,8 @@
     "dependencies": {
         "react": "*",
         "react-dom": "*",
-        "react-scripts": "*"
+        "react-scripts": "*",
+        "uuid": "*"
     },
     "devDependencies": {
         "eslint": "*",

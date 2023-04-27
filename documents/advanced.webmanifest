@@ -41,7 +41,7 @@
             "label": "Home screen",
             "platform": "wide",
             "sizes": "1440x900",
-            "src": "screenshot.tif",
+            "src": "../assets/screenshot.tif",
             "type": "image/tiff"
         }
     ],

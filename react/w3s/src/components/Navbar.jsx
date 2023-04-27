@@ -1,4 +1,4 @@
-import logo from '../assets/react.ico';
+import logo from '../media/react.ico';
 
 function Navbar() {
     const sites = ['Render', 'Netlify', 'Heroku'];
@@ -15,7 +15,7 @@ function Navbar() {
     return (
         <nav>
             <ul className="menu">{links}</ul>
-            <img src={logo}></img>
+            <img className="logo" src={logo} alt="" />
         </nav>
     );
 }

@@ -157,6 +157,7 @@
         "ts-loader": "*",
         "ts-node": "*",
         "tslib": "*",
+        "uuid": "*",
         "webpack": "*",
         "webpack-cli": "*",
         "webpack-dev-server": "*",
