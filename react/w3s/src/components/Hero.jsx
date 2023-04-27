@@ -1,6 +1,9 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 
+import useFetch from '../hooks/useFetch';
+import '../css/sass/Display.scss';
+
 const c = console.log;
 const myClass = 'text-box';
 
@@ -72,28 +75,21 @@ class Display extends React.Component {
     };
 }
 
-function Pokemon() {
-    const [pokemon, setPokemon] = React.useState([]);
+function Pokemon(props) {
     const baseURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/';
     const pokedex = [];
+    const pokemon = useFetch('');
     let pokenumber = 1;
 
     while (pokenumber <= 20) pokedex.push(pokenumber++);
 
-    React.useEffect(() => {
-        (async function () {
-            const { endpoint } = await import('../resources/endpoint');
-            const res = await fetch(endpoint);
-
-            if (!res.response) {
-                const data = await res.json();
-                setPokemon(data.results);
-            }
-        }());
-    }, []);
+    function onClick() {
+        props.setCounter(props.counter + 1);
+        c(props.counter + 1);
+    }
 
     return (
-        <ul className="pokemon">
+        <ul className="pokemon" onClick={onClick}>
             {pokemon.map((e, i) => {
                 if (i in pokedex) {
                     return (
@@ -108,14 +104,14 @@ function Pokemon() {
     );
 }
 
-function Hero() {
+function Hero({ counter, setCounter }) {
     return (
         <header>
             {React.createElement('h1', {}, 'Hello World!')}
             <Display myClass={myClass} initColor="peru" />
-            <Pokemon />
+            <Pokemon counter={counter} setCounter={setCounter} />
         </header>
     );
 }
 
-export default Hero;
+export default React.memo(Hero);

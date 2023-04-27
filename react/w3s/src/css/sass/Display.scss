@@ -1,0 +1,15 @@
+$borderColor: #fff;
+$fontSize: 32px;
+
+.text-box {
+    border: 1px solid $borderColor;
+    cursor: pointer;
+    font-size: $fontSize;
+    height: 200px;
+    line-height: $fontSize;
+    margin: auto;
+    overflow: scroll;
+    padding: calc($fontSize / 2);
+    user-select: none;
+    width: 80%;
+}

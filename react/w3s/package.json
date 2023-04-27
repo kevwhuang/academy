@@ -9,6 +9,7 @@
     "dependencies": {
         "react": "*",
         "react-dom": "*",
+        "react-router-dom": "*",
         "react-scripts": "*",
         "uuid": "*"
     },
@@ -16,7 +17,8 @@
         "eslint": "*",
         "eslint-plugin-jsx-a11y": "*",
         "eslint-plugin-react": "*",
-        "eslint-plugin-react-hooks": "*"
+        "eslint-plugin-react-hooks": "*",
+        "sass": "*"
     },
     "browserslist": {
         "development": [

@@ -164,7 +164,6 @@
         "workbox-webpack-plugin": "*"
     },
     "bundleDependencies": [],
-    "optionalDependencies": {},
     "overrides": {},
     "engines": {
         "node": ">=18.15.0"

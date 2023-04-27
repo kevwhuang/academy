@@ -1,3 +1,4 @@
+import css from '../css/modules/Logo.module.css';
 import logo from '../media/react.ico';
 
 function Navbar() {
@@ -15,7 +16,7 @@ function Navbar() {
     return (
         <nav>
             <ul className="menu">{links}</ul>
-            <img className="logo" src={logo} alt="" />
+            <img className={css.logo} src={logo} alt="React logo" />
         </nav>
     );
 }
