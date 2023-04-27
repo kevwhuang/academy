@@ -2,6 +2,7 @@ import React from 'react';
 import { v4 as uuid } from 'uuid';
 
 import useFetch from '../hooks/useFetch';
+
 import '../css/sass/Display.scss';
 
 const c = console.log;
