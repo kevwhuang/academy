@@ -1,0 +1,35 @@
+{
+    "background_color": "",
+    "description": "",
+    "dir": "ltr",
+    "display": "browser",
+    "lang": "en",
+    "name": "",
+    "orientation": "landscape-primary",
+    "short_name": "",
+    "start_url": "",
+    "theme_color": "",
+    "icons": [
+        {
+            "purpose": "any",
+            "sizes": "192x192",
+            "src": "",
+            "type": "image/png"
+        },
+        {
+            "purpose": "any",
+            "sizes": "512x512",
+            "src": "",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "label": "Home screen",
+            "platform": "wide",
+            "sizes": "",
+            "src": "",
+            "type": "image/png"
+        }
+    ]
+}

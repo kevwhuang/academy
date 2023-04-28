@@ -1,3 +1,5 @@
+import React from 'react';
+
 import css from '../css/modules/Logo.module.css';
 import logo from '../media/react.ico';
 
@@ -6,7 +8,7 @@ function Navbar() {
     const links = sites.map((site, i) => {
         return (
             <li key={i}>
-                <a href={`https://www.${site}.com`} target="_blank">
+                <a href={`https://www.${site}.com`} target="_blank" rel="noreferrer">
                     {site}
                 </a>
             </li>

@@ -43,7 +43,7 @@
     "scripts": {
         "build": "tsc --watch",
         "deploy": "gcloud app deploy",
-        "eslint": "eslint '**/*.{js,mjs,cjs,ts}'",
+        "eslint": "eslint '**/*.{js,cjs,mjs,jsx,ts,tsx}'",
         "eslinthtml": "eslint **/*.html",
         "htmllint": "html-validate **/*.{html,htm,hbs}",
         "jsdoc": "jsdoc -c documents/jsdoc.json",

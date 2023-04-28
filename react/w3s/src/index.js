@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Error from './pages/Error';
-import Home from './pages/Home';
-import Layout from './pages/Layout';
-import Random from './pages/Random';
+import Error from './pages/Error.tsx';
+import Home from './pages/Home.tsx';
+import Layout from './pages/Layout.tsx';
+import Random from './pages/Random.tsx';
 
 import './css/rectify.css';
 import './css/root.css';
 import './css/index.css';
-import './css/main.css';
+import './css/app.css';
 import './css/utilities.css';
 import './css/keyframes.css';
 import './css/media.css';

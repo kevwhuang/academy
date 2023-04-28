@@ -1,15 +1,21 @@
 {
     "name": "react-template",
     "version": "0.0.0",
+    "description": "",
+    "homepage": "",
+    "license": "",
     "author": "",
     "scripts": {
-        "build": "react-scripts build",
-        "start": "react-scripts start"
+        "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
+        "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start"
     },
     "dependencies": {
+        "axios": "*",
         "react": "*",
         "react-dom": "*",
-        "react-scripts": "*"
+        "react-router-dom": "*",
+        "react-scripts": "*",
+        "uuid": "*"
     },
     "devDependencies": {
         "eslint": "*",

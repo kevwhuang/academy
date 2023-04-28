@@ -6,8 +6,8 @@ import Main from '../components/Main';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 
-function App() {
-    const [counter, setCounter] = React.useState(0);
+export default function Home(): React.ReactElement {
+    const [counter, setCounter]: [number, Function] = React.useState(0);
 
     return (
         <>
@@ -19,5 +19,3 @@ function App() {
         </>
     );
 }
-
-export default App;

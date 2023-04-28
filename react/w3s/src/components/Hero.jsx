@@ -70,7 +70,7 @@ class Display extends React.Component {
         this.state.style.color === 'peru'
             ? this.setState({ style: { color: 'teal' } })
             : this.setState({ style: { color: 'peru' } });
-    };
+    }
 
     handleMouseOver = (status, e) => {
         c(`${status} (${e.type})`);
