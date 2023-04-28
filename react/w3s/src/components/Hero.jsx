@@ -12,6 +12,7 @@ class Display extends React.Component {
     constructor(props) {
         super(props);
         this.state = { style: { color: this.props.initColor } };
+        this.handleClick = this.handleClick.bind(this);
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -29,8 +30,8 @@ class Display extends React.Component {
                 <p
                     className={this.props.myClass}
                     style={this.state.style}
-                    onClick={this.changeColor}
-                    onMouseOver={event => this.mouseOver('Hovering', event)}
+                    onClick={this.handleClick}
+                    onMouseOver={e => this.handleMouseOver('Hovering', e)}
                 >
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Sapiente molestiae tempore non ullam quae est quo.
@@ -65,14 +66,14 @@ class Display extends React.Component {
         c('Unmounting');
     }
 
-    changeColor = () => {
+    handleClick() {
         this.state.style.color === 'peru'
             ? this.setState({ style: { color: 'teal' } })
             : this.setState({ style: { color: 'peru' } });
     };
 
-    mouseOver = (status, event) => {
-        c(`${status} (${event.type})`);
+    handleMouseOver = (status, e) => {
+        c(`${status} (${e.type})`);
     };
 }
 
