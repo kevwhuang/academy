@@ -81,7 +81,7 @@
 
     const A = Array('', 1e0, '010', 1e1, null); // array constructor
     const AA = [...A]; // spread syntax works for any iterable
-    [A[1], A[3]] = [A[3], A[1]]; // destructured index swap
+    [A[1], , , A[3]] = [A[3], , , A[1]]; // destructured index swap with skipping
     JSON.stringify([[1]]) == JSON.stringify([[1]]); // deep equal
     delete A[A.length - 1]; // delete operator
     c(A instanceof Array); // instanceof operator

@@ -15,6 +15,8 @@ function useFetch(url) {
         }());
     }, [url]);
 
+    React.useDebugValue('pokemon');
+
     return pokemon;
 }
 

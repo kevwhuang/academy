@@ -5,10 +5,7 @@ export default function Random() {
         backgroundColor += Math.floor(Math.random() * 10);
     }
 
-    const style = {
-        backgroundColor,
-        height: '100vh',
-    };
+    const style = { backgroundColor, height: '100vh' };
 
     return <section style={style}></section>;
 }
