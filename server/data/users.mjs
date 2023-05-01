@@ -14,7 +14,7 @@ export default [
     {
         id: 2,
         name: 'John',
-        role: 'Small Business Owner',
+        role: 'None',
         student: true,
     },
     {

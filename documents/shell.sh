@@ -2,7 +2,7 @@
 clear;
 
 echo -e "\033[0;33m>>> CLI\033[0m";
-cd /Users/kevinhuang/Documents/dev/academy;
+cd /Users/kevinhuang/Documents/dev;
 sudo find . -name ".DS_Store" -delete;
 echo -e "\033[0;36m--------------------";
 
@@ -25,7 +25,7 @@ echo -e "\033[0;36m--------------------";
 
 echo -e "\033[0;33m>>> NPM\033[0m";
 npm up;
-find /usr/local/lib/node_modules/ -name ".DS_Store" -delete;
+find /usr/local/lib/node_modules -name ".DS_Store" -delete;
 sudo npm up -g;
 npm ls -g;
 npm -v;
@@ -38,6 +38,7 @@ gcloud -v;
 echo -e "\033[0;36m--------------------";
 
 echo -e "\033[0;33m>>> NPX\033[0m";
-npx jest --config test/jest.config.json;
+cd /Users/kevinhuang/Documents/dev/academy;
 npx dotenv-vault push;
+npx jest --config test/jest.config.json;
 npx nodemon;

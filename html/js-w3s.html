@@ -405,7 +405,7 @@
     c([][Symbol.iterator]()); // iterable prototype has iterator symbol
 
     const o1 = { key: null, get: function (x = '', y = '') { return this.key + x + y; } }; // this
-    const o2 = { key: 'me' }; // method reuse
+    const key = 'k'; const o2 = { [`${key}ey`]: 'me' }; // method reuse with computed key
     const id = Symbol('id'); o2[id] = 1; c(o2, o2[id], o2.id); // symbol identifier
     c(structuredClone({ ...o2 })); // deep clone objects
     c(o1.get.call(o2, '!')); // string arguments

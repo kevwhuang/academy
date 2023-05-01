@@ -73,7 +73,6 @@ Scrimba React|
 
 - [ ] Academy
 - [ ] Projects
-- [ ] Videos
 
 ## HTML BOILERPLATE
 
