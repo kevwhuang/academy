@@ -110,7 +110,7 @@ function Hero({ counter, setCounter }) {
     return (
         <header>
             {React.createElement('h1', {}, 'Hello World!')}
-            <Display myClass={myClass} initColor="peru" />
+            <Display myClass={myClass} initColor='peru' />
             <Pokemon counter={counter} setCounter={setCounter} />
         </header>
     );

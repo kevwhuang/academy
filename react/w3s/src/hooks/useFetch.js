@@ -17,9 +17,7 @@ function useFetch(url) {
                     setPokemon((await res.json()).results);
                     controller = null;
                 }
-            } catch (err) {
-                console.log(err);
-            }
+            } catch (err) { }
         })();
 
         return () => controller?.abort();

@@ -4,11 +4,14 @@
     "author": "Kevin Huang",
     "scripts": {
         "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
+        "server": "json-server --watch src/resources/db.json -p 3001",
         "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start"
     },
     "dependencies": {
+        "json-server": "*",
         "react": "*",
         "react-dom": "*",
+        "react-icons": "*",
         "react-router-dom": "*",
         "react-scripts": "*",
         "uuid": "*"
