@@ -11,8 +11,6 @@ import './css/rectify.css';
 import './css/root.css';
 import './css/index.css';
 import './css/app.css';
-import './css/utilities.css';
-import './css/keyframes.css';
 import './css/media.css';
 
 ReactDOM.createRoot(document.getElementById('root'))

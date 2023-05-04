@@ -8,12 +8,17 @@
         "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start"
     },
     "dependencies": {
+        "@emotion/react": "*",
+        "@emotion/styled": "*",
+        "@mui/material": "*",
+        "@mui/icons-material": "*",
         "json-server": "*",
         "react": "*",
         "react-dom": "*",
         "react-icons": "*",
         "react-router-dom": "*",
         "react-scripts": "*",
+        "styled-components": "*",
         "uuid": "*"
     },
     "devDependencies": {

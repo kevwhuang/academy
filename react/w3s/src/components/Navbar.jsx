@@ -5,6 +5,7 @@ import logo from '../media/react.ico';
 
 function Navbar() {
     const sites = ['Render', 'Netlify', 'Heroku'];
+
     const links = sites.map((site, i) => {
         return (
             <li key={i}>

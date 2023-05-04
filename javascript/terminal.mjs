@@ -3,8 +3,8 @@
 import figlet from 'figlet';
 import gradient from 'gradient-string';
 
-const c = console.log;
 const MS = 5000;
+const c = console.log;
 
 console.clear();
 

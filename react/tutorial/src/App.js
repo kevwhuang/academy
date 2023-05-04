@@ -3,11 +3,13 @@ import React from 'react';
 export default function Game() {
     const [currentMove, setCurrentMove] = React.useState(0);
     const [history, setHistory] = React.useState([Array(9).fill(null)]);
+
     const currentSquares = history[currentMove];
     const xNext = currentMove % 2 !== 0;
 
     const moves = history.map((squares, move) => {
         const description = move > 0 ? `Go to move ${move}` : 'Go to start';
+
         return (
             <li key={move}>
                 <button onClick={() => jumpTo(move)}>{description}</button>
@@ -17,6 +19,7 @@ export default function Game() {
 
     function handlePlay(nextSquares) {
         const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+
         setCurrentMove(nextHistory.length - 1);
         setHistory(nextHistory);
     }
@@ -50,8 +53,10 @@ function Board({ squares, xNext, onPlay }) {
             [0, 4, 8],
             [2, 4, 6],
         ];
+
         for (let i = 0; i < winConditions.length; i++) {
             const [a, b, c] = winConditions[i];
+
             if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
                 return squares[a];
             }
@@ -60,6 +65,7 @@ function Board({ squares, xNext, onPlay }) {
 
     function handleClick(i) {
         const nextSquares = [...squares];
+
         if (calculateWinner(squares) || squares[i]) return;
         nextSquares[i] = xNext ? 'O' : 'X';
         onPlay(nextSquares);
@@ -88,9 +94,5 @@ function Board({ squares, xNext, onPlay }) {
 }
 
 function Square({ value, onSquareClick }) {
-    return (
-        <button className="square" onClick={onSquareClick}>
-            {value}
-        </button>
-    );
+    return <button className="square" onClick={onSquareClick}>{value}</button>;
 }

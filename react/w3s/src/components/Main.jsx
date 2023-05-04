@@ -21,6 +21,7 @@ function Main() {
         message: '',
         color: 'peru',
     });
+    
     const [messages, setMessages] = React.useState([]);
 
     function handleChange(e) {

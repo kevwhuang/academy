@@ -2,14 +2,13 @@
 
 Name|Status
 -|-
-Bootstrap|
 CSS|
 Git|Completed
 HTML|Completed
 JavaScript|Completed
 MySQL|Completed
 Node|Completed
-React|
+React|Completed
 Sass|
 TypeScript|Completed
 
@@ -18,10 +17,10 @@ TypeScript|Completed
 Name|Status
 -|-
 Axios|Completed
-Bootstrap|
 ESLint|Completed
 Express|Completed
 Jest|Completed
+MUI|
 MySQL|Completed
 Next|
 Node|Completed
@@ -103,17 +102,14 @@ Scrimba React|
 
 <body>
 
-    <header>
-    </header>
-
     <nav>
     </nav>
 
+    <header>
+    </header>
+
     <main>
     </main>
-
-    <aside>
-    </aside>
 
     <footer>
     </footer>
@@ -126,12 +122,11 @@ Scrimba React|
 ## JSDELIVR
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
 
+<script src="https://cdn.jsdelivr.net/npm/@mui/material@5/umd/material-ui.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/eslint/lib/api.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/express/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jest/build/index.min.js"></script>

@@ -15,6 +15,32 @@ class Display extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    render() {
+        return (
+            <p
+                className={this.props.myClass}
+                style={this.state.style}
+                onClick={this.handleClick}
+                onMouseOver={e => this.handleMouseOver('Hovering', e)}
+            >
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Sapiente molestiae tempore non ullam quae est quo.
+                Provident laborum consequuntur corporis! Ipsam soluta rem deleniti!
+                Voluptates quisquam quaerat explicabo laborum. At, optio enim.
+                Doloremque ratione minima ipsa ex? Eius, officiis error.
+                Delectus doloremque nesciunt provident aliquid consequuntur debitis doloribus.
+                Et ad, iure libero assumenda cupiditate velit modi.
+                Maiores saepe dolor cumque, id asperiores fugiat laboriosam.
+                At accusamus itaque obcaecati quae voluptatem est possimus.
+                Minima, dolore. Dicta dignissimos nobis obcaecati itaque illum.
+            </p>
+        );
+    }
+
+    componentDidMount() {
+        c('Rendered');
+    }
+
     static getDerivedStateFromProps(props, state) {
         c('Updating');
         return null;
@@ -22,30 +48,6 @@ class Display extends React.Component {
 
     shouldComponentUpdate() {
         return true;
-    }
-
-    render() {
-        return (
-            <>
-                <p
-                    className={this.props.myClass}
-                    style={this.state.style}
-                    onClick={this.handleClick}
-                    onMouseOver={e => this.handleMouseOver('Hovering', e)}
-                >
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Sapiente molestiae tempore non ullam quae est quo.
-                    Provident laborum consequuntur corporis! Ipsam soluta rem deleniti!
-                    Voluptates quisquam quaerat explicabo laborum. At, optio enim.
-                    Doloremque ratione minima ipsa ex? Eius, officiis error.
-                    Delectus doloremque nesciunt provident aliquid consequuntur debitis doloribus.
-                    Et ad, iure libero assumenda cupiditate velit modi.
-                    Maiores saepe dolor cumque, id asperiores fugiat laboriosam.
-                    At accusamus itaque obcaecati quae voluptatem est possimus.
-                    Minima, dolore. Dicta dignissimos nobis obcaecati itaque illum.
-                </p>
-            </>
-        );
     }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -56,10 +58,6 @@ class Display extends React.Component {
 
     componentDidUpdate() {
         c('Updated');
-    }
-
-    componentDidMount() {
-        c('Rendered');
     }
 
     componentWillUnmount() {
@@ -110,7 +108,7 @@ function Hero({ counter, setCounter }) {
     return (
         <header>
             {React.createElement('h1', {}, 'Hello World!')}
-            <Display myClass={myClass} initColor='peru' />
+            <Display myClass={myClass} initColor="peru" />
             <Pokemon counter={counter} setCounter={setCounter} />
         </header>
     );
