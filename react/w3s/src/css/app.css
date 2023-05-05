@@ -14,11 +14,17 @@
 }
 
 .card img {
+    cursor: move;
     height: 200px;
     padding: 20px;
     position: relative;
     top: 6px;
+    transition: filter .5s;
     width: 200px;
+}
+
+.card img:hover {
+    filter: saturate(150%);
 }
 
 .form {
@@ -208,6 +214,41 @@
 .message-name--switch {
     color: teal;
     font-size: 20px;
+}
+
+.modal {
+    cursor: not-allowed;
+    display: none;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1;
+}
+
+.modal-image {
+    background: #23272f;
+    border: 1px solid #57b285;
+    border-radius: 1rem;
+    left: 50%;
+    max-height: 75vh;
+    position: relative;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 75vw;
+}
+
+.mood {
+    background: #0d1117 !important;
+}
+
+.mood-label {
+    color: #555 !important;
+}
+
+.mood-icon {
+    padding-bottom: 2px;
 }
 
 .pokemon {

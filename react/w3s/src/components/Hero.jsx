@@ -3,6 +3,7 @@ import { v4 as uuid } from 'uuid';
 
 import useFetch from '../hooks/useFetch';
 
+import { openModal } from '../scripts/viewTransitions';
 import '../css/sass/Display.scss';
 
 const c = console.log;
@@ -83,17 +84,17 @@ function Pokemon(props) {
 
     while (pokenumber <= 20) pokedex.push(pokenumber++);
 
-    function onClick() {
+    function incrementCounter() {
         props.setCounter(props.counter + 1);
         c(props.counter + 1);
     }
 
     return (
-        <ul className="pokemon" onClick={onClick}>
+        <ul className="pokemon" onClick={incrementCounter}>
             {pokemon.map((e, i) => {
                 if (i in pokedex) {
                     return (
-                        <li className="card" key={uuid()}>
+                        <li className="card" key={uuid()} onClick={openModal}>
                             <h6>{e.name}</h6>
                             <img src={`${baseURL}${i + 1}.svg`} alt={e.name} />
                         </li>
