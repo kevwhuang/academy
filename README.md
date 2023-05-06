@@ -24,11 +24,9 @@ MUI|
 MySQL|Completed
 Next|
 Node|Completed
-PostCSS|
 React|
 Sass|
 TypeScript|
-Vite|
 
 # RESOURCES
 
@@ -37,7 +35,6 @@ Name|Status
 Cracking the Coding Interview|
 CS50|
 CSS-Tricks|
-freeCodeCamp|
 HackerRank|
 JavaScript 30|
 Modern JavaScript Tutorial|
@@ -132,9 +129,7 @@ Scrimba React|
 <script src="https://cdn.jsdelivr.net/npm/jest/build/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mysql/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/next/dist/server/next.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/postcss/lib/postcss.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sass/sass.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/typescript/lib/typescript.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vite/dist/node/index.min.js"></script>
 ```

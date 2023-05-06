@@ -15,11 +15,9 @@
         "MySQL",
         "Next",
         "Node",
-        "PostCSS",
         "React",
         "Sass",
-        "TypeScript",
-        "Vite"
+        "TypeScript"
     ],
     "homepage": "https://github.com/kevwhuang/academy",
     "bugs": {
@@ -65,11 +63,9 @@
         "jest": "* || 29.x",
         "mysql": "* || 2.x",
         "next": "* || 13.x",
-        "postcss": "* || 8.x",
         "react": "* || 18.x",
         "sass": "* || 1.x",
-        "typescript": "* || 5.x",
-        "vite": "* || 4.x"
+        "typescript": "* || 5.x"
     },
     "devDependencies": {
         "bcrypt": "*",
@@ -83,7 +79,8 @@
         "jsonwebtoken": "*",
         "multer": "*",
         "nodemon": "*",
-        "npm": "*"
+        "npm": "*",
+        "uuid": "*"
     },
     "peerDependencies": {
         "@babel/core": "*",
@@ -144,6 +141,7 @@
         "moment": "*",
         "morgan": "*",
         "passport": "*",
+        "postcss": "*",
         "postcss-html": "*",
         "postcss-loader": "*",
         "postcss-sass": "*",
@@ -163,7 +161,7 @@
         "ts-loader": "*",
         "ts-node": "*",
         "tslib": "*",
-        "uuid": "*",
+        "vite": "*",
         "webpack": "*",
         "webpack-cli": "*",
         "webpack-dev-server": "*",
