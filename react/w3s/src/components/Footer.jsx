@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
+import { styled as $Styled } from '@mui/system';
 
 import {
     SentimentDissatisfied as $SentimentDissatisfied,
@@ -12,7 +13,6 @@ import {
     BottomNavigationAction,
     colors as $Color,
 } from '@mui/material';
-import { styled as $Styled } from '@mui/system';
 
 const _Container = styled.div`
     left: 50%;
@@ -22,7 +22,7 @@ const _Container = styled.div`
     transform: translate(-50%, -35%);
     &:hover {
         outline: 1px solid #21b184;
-    };
+    }
 `;
 
 const _Copyright = $Styled('p')({

@@ -2,9 +2,9 @@ import React from 'react';
 import { v4 as uuid } from 'uuid';
 
 import useFetch from '../hooks/useFetch';
-
+import { CounterContext } from '../pages/Home.tsx';
 import { openModal } from '../scripts/viewTransitions';
-import '../css/sass/Display.scss';
+import '../css/scss/Display.scss';
 
 const c = console.log;
 const myClass = 'text-box';
@@ -77,26 +77,35 @@ class Display extends React.Component {
 }
 
 function Pokemon(props) {
+    const counterRef = React.useRef(-1);
+    const { counter, dispatchCounter } = React.useContext(CounterContext);
+
     const baseURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/';
     const pokedex = [];
     const pokemon = useFetch('');
     let pokenumber = 1;
 
+    React.useEffect(() => { counterRef.current++ }, [props.counter]);
     while (pokenumber <= 20) pokedex.push(pokenumber++);
 
     function incrementCounter() {
-        props.setCounter(props.counter + 1);
-        c(props.counter + 1);
+        dispatchCounter({ type: 'yes' });
+
+        if (counterRef.current === counter + 1) {
+            c(`%cClick count: ${counterRef.current}`, 'color:peru;');
+        }
     }
 
     return (
         <ul className="pokemon" onClick={incrementCounter}>
             {pokemon.map((e, i) => {
                 if (i in pokedex) {
+                    const text = `Image of ${(e.name)[0].toUpperCase()}${e.name.slice(1)}.`;
+
                     return (
                         <li className="card" key={uuid()} onClick={openModal}>
                             <h6>{e.name}</h6>
-                            <img src={`${baseURL}${i + 1}.svg`} alt={e.name} />
+                            <img src={`${baseURL}${i + 1}.svg`} alt={text} />
                         </li>
                     );
                 }
@@ -105,12 +114,12 @@ function Pokemon(props) {
     );
 }
 
-function Hero({ counter, setCounter }) {
+function Hero({ counter }) {
     return (
         <header>
             {React.createElement('h1', {}, 'Hello World!')}
             <Display myClass={myClass} initColor="peru" />
-            <Pokemon counter={counter} setCounter={setCounter} />
+            <Pokemon counter={counter} />
         </header>
     );
 }

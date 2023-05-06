@@ -24,9 +24,9 @@ function Main() {
 
     const [messages, setMessages] = React.useState([]);
 
-    function handleChange(e) {
+    const handleChange = React.useCallback(e => {
         setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
-    }
+    }, [formInputs]);
 
     function handleSubmit(e) {
         const copy = [...messages];

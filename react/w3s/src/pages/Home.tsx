@@ -5,19 +5,26 @@ import Hero from '../components/Hero';
 import Main from '../components/Main';
 import Modal from '../components/Modal';
 import Navbar from '../components/Navbar';
-import Sidebar from '../components/Sidebar';
+
+export const CounterContext: any = React.createContext(null);
 
 export default function Home(): React.ReactElement {
-    const [counter, setCounter]: [number, Function] = React.useState(0);
+    const [counter, dispatchCounter]: [number, Function] = React.useReducer(reducer, 0);
+
+    function reducer(state: number, action: { type: string }): number {
+        if (action.type === 'yes') {
+            return state + 1;
+        }
+        return state;
+    }
 
     return (
-        <>
+        <CounterContext.Provider value={{ counter, dispatchCounter }}>
             <Navbar />
-            <Hero counter={counter} setCounter={setCounter} />
+            <Hero counter={counter} />
             <Main />
-            <Sidebar />
             <Footer />
             <Modal />
-        </>
+        </CounterContext.Provider>
     );
 }

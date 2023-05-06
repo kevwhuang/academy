@@ -8,7 +8,7 @@ interface Style {
 export default function Random(): React.ReactElement {
     let backgroundColor: string = '#';
 
-    while (backgroundColor.length < 7) {
+    while (backgroundColor.length <= 6) {
         backgroundColor += Math.floor(Math.random() * 10);
     }
 

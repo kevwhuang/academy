@@ -13,17 +13,16 @@ import './css/index.css';
 import './css/app.css';
 import './css/media.css';
 
-ReactDOM.createRoot(document.getElementById('root'))
-    .render(
-        <React.StrictMode>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Layout />}>
-                        <Route index element={<Home />} />
-                        <Route path="random" element={<Random />} />
-                        <Route path="*" element={<Error />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </React.StrictMode>
-    );
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="random" element={<Random />} />
+                    <Route path="*" element={<Error />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    </React.StrictMode>
+);
