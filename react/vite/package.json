@@ -6,14 +6,13 @@
     "author": "Kevin Huang",
     "scripts": {
         "build": "tsc && vite build",
+        "dev": "vite",
         "lint": "eslint src --ext ts,tsx",
-        "preview": "vite preview",
-        "start": "vite"
+        "start": "vite preview"
     },
     "dependencies": {
         "@emotion/react": "*",
         "@emotion/styled": "*",
-        "@fontsource/roboto": "*",
         "@mui/icons-material": "*",
         "@mui/material": "*",
         "axios": "*",

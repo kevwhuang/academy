@@ -80,7 +80,8 @@
         "multer": "*",
         "nodemon": "*",
         "npm": "*",
-        "uuid": "*"
+        "uuid": "*",
+        "vite": "*"
     },
     "peerDependencies": {
         "@babel/core": "*",
@@ -114,10 +115,13 @@
         "commander": "*",
         "compression": "*",
         "corepack": "*",
+        "create-next-app": "*",
+        "create-react-app": "*",
         "css-loader": "*",
         "dotenv-vault": "*",
         "electron": "*",
         "emotion": "*",
+        "eslint-config-next": "*",
         "eslint-config-node": "*",
         "eslint-plugin-html": "*",
         "eslint-plugin-import": "*",
@@ -165,7 +169,6 @@
         "ts-loader": "*",
         "ts-node": "*",
         "tslib": "*",
-        "vite": "*",
         "webpack": "*",
         "webpack-cli": "*",
         "webpack-dev-server": "*",

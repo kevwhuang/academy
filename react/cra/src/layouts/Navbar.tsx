@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-function Layout(): React.ReactElement {
+function Navbar(): React.ReactElement {
     return (
         <>
             <Outlet />
@@ -9,4 +9,4 @@ function Layout(): React.ReactElement {
     );
 }
 
-export default Layout;
+export default Navbar;
