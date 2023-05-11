@@ -69,6 +69,7 @@
     },
     "devDependencies": {
         "bcrypt": "*",
+        "cookie": "*",
         "cookie-parser": "*",
         "cors": "*",
         "dotenv": "*",

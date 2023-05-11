@@ -15,6 +15,7 @@
         "@mui/icons-material": "*",
         "@mui/material": "*",
         "axios": "*",
+        "cookie": "*",
         "react": "*",
         "react-dom": "*",
         "react-router-dom": "*",

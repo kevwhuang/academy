@@ -3,7 +3,7 @@ import { useNavigate, useLocation, useParams, useSearchParams } from 'react-rout
 
 export default function Redirect(): React.ReactElement {
     const navigate: Function = useNavigate();
-    const params: Object = useParams();
+    const params: any = useParams();
     const [searchParams, setSearchParams]: [any, Function] = useSearchParams();
 
     console.log(useLocation());

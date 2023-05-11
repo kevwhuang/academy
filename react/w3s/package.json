@@ -13,13 +13,14 @@
         "@emotion/styled": "*",
         "@mui/material": "*",
         "@mui/icons-material": "*",
+        "cookie": "*",
         "json-server": "*",
         "react": "*",
         "react-dom": "*",
         "react-icons": "*",
         "react-router-dom": "*",
         "react-scripts": "*",
-        "styled-components": "*",
+        "styled-components": "5.x",
         "uuid": "*"
     },
     "devDependencies": {
@@ -27,7 +28,8 @@
         "eslint-plugin-jsx-a11y": "*",
         "eslint-plugin-react": "*",
         "eslint-plugin-react-hooks": "*",
-        "sass": "*"
+        "sass": "*",
+        "typescript": "*"
     },
     "browserslist": {
         "development": [
