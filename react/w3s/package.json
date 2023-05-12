@@ -24,6 +24,12 @@
         "uuid": "*"
     },
     "devDependencies": {
+        "@types/cookie": "*",
+        "@types/node": "*",
+        "@types/react": "*",
+        "@types/react-dom": "*",
+        "@types/react-router-dom": "*",
+        "@types/uuid": "*",
         "eslint": "*",
         "eslint-plugin-jsx-a11y": "*",
         "eslint-plugin-react": "*",
