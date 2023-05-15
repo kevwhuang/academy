@@ -36,10 +36,9 @@ Cracking the Coding Interview|
 CS50|
 CSS-Tricks|
 HackerRank|
-JavaScript 30|
+JavaScript 30|Completed
 Modern JavaScript Tutorial|
 NeetCode 150|
-Scrimba React|
 
 # WEB 101
 
