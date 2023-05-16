@@ -5,6 +5,7 @@
     "scripts": {
         "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
         "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
+        "sass": "sass --watch src/css/scss:compiled",
         "server": "json-server --watch src/resources/db.json -p 3001",
         "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start"
     },

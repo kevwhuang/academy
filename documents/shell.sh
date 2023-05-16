@@ -34,8 +34,8 @@ echo -e "\033[0;36m--------------------";
 
 echo -e "\033[0;33m>>> REPOS\033[0m";
 git -v;
-heroku -v;
 gcloud -v;
+heroku -v;
 echo -e "\033[0;36m--------------------";
 
 echo -e "\033[0;33m>>> NPX\033[0m";

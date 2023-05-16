@@ -9,7 +9,7 @@ JavaScript|Completed
 MySQL|Completed
 Node|Completed
 React|Completed
-Sass|
+Sass|Completed
 TypeScript|Completed
 
 # DOCUMENTATIONS
@@ -25,7 +25,7 @@ MySQL|Completed
 Next|
 Node|Completed
 React|
-Sass|
+Sass|Completed
 TypeScript|
 
 # RESOURCES

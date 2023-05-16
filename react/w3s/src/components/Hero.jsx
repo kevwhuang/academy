@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 import useFetch from '../hooks/useFetch';
 import { CounterContext } from '../pages/Home.tsx';
 import { openModal } from '../scripts/viewTransitions';
+import '../css/scss/Display.sass';
 import '../css/scss/Display.scss';
 
 const c = console.log;

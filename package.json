@@ -48,6 +48,7 @@
         "nodemon": "nodemon javascript/exp.js",
         "postdeploy": "gcloud app deploy",
         "prestart": "ts-node -v",
+        "sass": "sass --watch css:compiled",
         "start": "NODE_ENV=production ts-node server/express.mjs",
         "stylelint": "stylelint **/*.{css,sass,html}",
         "test": "jest --watchAll --config test/jest.config.json"
@@ -172,6 +173,7 @@
         "ts-loader": "*",
         "ts-node": "*",
         "tslib": "*",
+        "vercel": "*",
         "webpack": "*",
         "webpack-cli": "*",
         "webpack-dev-server": "*",
