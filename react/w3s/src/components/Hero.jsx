@@ -4,8 +4,9 @@ import { v4 as uuid } from 'uuid';
 import useFetch from '../hooks/useFetch';
 import { CounterContext } from '../pages/Home.tsx';
 import { openModal } from '../scripts/viewTransitions';
-import '../css/scss/Display.sass';
-import '../css/scss/Display.scss';
+import '../css/sass/Display.sass';
+import '../css/sass/Display.scss';
+import '../css/sass/app.scss';
 
 const c = console.log;
 const myClass = 'text-box';
@@ -104,9 +105,9 @@ function Pokemon(props) {
                     const text = `Image of ${(e.name)[0].toUpperCase()}${e.name.slice(1)}.`;
 
                     return (
-                        <li className="card" key={uuid()} onClick={openModal}>
+                        <li className="card" key={uuid()} >
                             <h6>{e.name}</h6>
-                            <img src={`${baseURL}${i + 1}.svg`} alt={text} />
+                            <img src={`${baseURL}${i + 1}.svg`} alt={text} onClick={openModal} />
                         </li>
                     );
                 }

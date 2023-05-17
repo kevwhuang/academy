@@ -1,32 +1,3 @@
-.card {
-    display: inline-block;
-}
-
-.card h6 {
-    color: teal;
-    font-family: Pokemon, fantasy;
-    letter-spacing: 2px;
-    position: relative;
-    text-align: center;
-    text-transform: uppercase;
-    top: 6px;
-    user-select: none;
-}
-
-.card img {
-    cursor: move;
-    height: 200px;
-    padding: 20px;
-    position: relative;
-    top: 6px;
-    transition: filter .5s;
-    width: 200px;
-}
-
-.card img:hover {
-    filter: saturate(150%);
-}
-
 .form {
     background: #0f1926;
     border-radius: 16px;
@@ -230,7 +201,6 @@
 .modal-image {
     background: #23272f;
     border: 1px solid #57b285;
-    border-radius: 1rem;
     left: 50%;
     max-height: 75vh;
     position: relative;

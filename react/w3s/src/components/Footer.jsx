@@ -21,7 +21,7 @@ const _Container = styled.div`
     top: 35%;
     transform: translate(-50%, -35%);
     &:hover {
-        outline: 1px solid #21b184;
+        outline: 1px solid hsl(161, 69%, 41%);
     }
 `;
 

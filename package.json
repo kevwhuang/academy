@@ -1,6 +1,6 @@
 {
     "name": "academy",
-    "version": "23.5.1",
+    "version": "23.6.1",
     "description": "A metaproject documenting my programming journey.",
     "keywords": [
         "Axios",
@@ -48,7 +48,7 @@
         "nodemon": "nodemon javascript/exp.js",
         "postdeploy": "gcloud app deploy",
         "prestart": "ts-node -v",
-        "sass": "sass --watch css:compiled",
+        "sass": "sass -w --no-source-map css:compiled",
         "start": "NODE_ENV=production ts-node server/express.mjs",
         "stylelint": "stylelint **/*.{css,sass,html}",
         "test": "jest --watchAll --config test/jest.config.json"
