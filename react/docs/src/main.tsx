@@ -14,6 +14,8 @@ import './styles/utilities.scss';
 import './styles/keyframes.scss';
 import './styles/media.scss';
 
+import './utilities/logs';
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
         <BrowserRouter>

@@ -9,7 +9,6 @@ function Modal() {
                 className="modal-image br-1"
                 src=""
                 alt="Modal view of a Pokemon."
-            // style={{ borderRadius: '1rem' }}
             />
         </aside>
     );

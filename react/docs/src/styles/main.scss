@@ -1,0 +1,45 @@
+@mixin offscreen {
+    margin: -100vw;
+    position: fixed;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+#button {
+    &:hover {
+        animation: pulse .5s ease-in-out .25s infinite alternate;
+    }
+}
+
+#photos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    justify-content: center;
+    list-style: none;
+    margin: .5rem;
+
+    img {
+        user-select: none;
+        vertical-align: middle;
+    }
+}
+
+#queue {
+    @include offscreen;
+}
+
+#spinner {
+    $offset: 50%;
+
+    left: $offset;
+    position: fixed;
+    top: $offset;
+    transform: translate(-$offset, -$offset) !important;
+}
+
+#text {
+    @include offscreen;
+}

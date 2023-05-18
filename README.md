@@ -24,7 +24,7 @@ MUI|
 MySQL|Completed
 Next|
 Node|Completed
-React|
+React|Completed
 Sass|Completed
 TypeScript|
 

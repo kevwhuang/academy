@@ -82,6 +82,8 @@
         "multer": "*",
         "nodemon": "*",
         "npm": "*",
+        "react-dom": "*",
+        "react-router-dom": "*",
         "uuid": "*",
         "vite": "*"
     },
@@ -145,6 +147,7 @@
         "helmet": "*",
         "html-validate": "*",
         "html-webpack-plugin": "*",
+        "immer": "*",
         "json-server": "*",
         "jwks-rsa": "*",
         "lodash": "*",
@@ -157,10 +160,8 @@
         "postcss-html": "*",
         "postcss-loader": "*",
         "postcss-sass": "*",
-        "react-dom": "*",
         "react-icons": "*",
         "react-native": "*",
-        "react-router-dom": "*",
         "react-scripts": "*",
         "redux": "*",
         "sass-loader": "*",
@@ -182,7 +183,7 @@
     "bundleDependencies": [],
     "overrides": {},
     "engines": {
-        "node": ">=18.15.0"
+        "node": ">=18.16.0"
     },
     "os": [
         "darwin"
