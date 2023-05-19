@@ -6,7 +6,7 @@ type Users = Array<{ photo: string }>;
 function useFetch(url: string): Users {
     const [users, setUsers]: [Users, Function] = React.useState([]);
 
-    React.useEffect((): any => {
+    React.useLayoutEffect((): any => {
         let controller: AbortController | null = new AbortController();
         const signal: AbortSignal = controller.signal;
 

@@ -1,7 +1,4 @@
-@mixin offscreen {
-    margin: -100vw;
-    position: fixed;
-}
+@use 'utilities' as *;
 
 html {
     overflow-x: hidden;
@@ -27,7 +24,7 @@ html {
     }
 }
 
-#queue {
+#props {
     @include offscreen;
 }
 
@@ -40,6 +37,6 @@ html {
     transform: translate(-$offset, -$offset) !important;
 }
 
-#text {
+#state {
     @include offscreen;
 }

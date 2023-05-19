@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Fragment from '../components/modules/Fragment';
+import Hidden from '../components/modules/Hidden';
 
 function Home(): React.ReactElement {
     function onRender(
@@ -24,6 +25,7 @@ function Home(): React.ReactElement {
     return (
         <React.Profiler id="Fragment" onRender={onRender}>
             <Fragment />
+            <Hidden />
         </React.Profiler>
     );
 }
