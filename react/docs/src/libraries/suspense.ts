@@ -2,7 +2,7 @@ function suspense(promise: any): { read: Function } {
     let result: any = null;
     let status: string = 'pending';
 
-    let suspender: Function = promise.then(
+    let suspender: any = promise.then(
         (res: any) => {
             status = 'success';
             result = res;

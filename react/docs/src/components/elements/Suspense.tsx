@@ -24,6 +24,9 @@ function Suspense(): React.ReactElement {
     const [promise, setPromise]: [any, Function] = React.useState(null);
 
     function handleClick(): void {
+        const element: any = document.getElementById('button-ref');
+
+        if (element) element.style.display = 'none';
         setPromise(suspense(getUsers()));
     }
 
@@ -33,9 +36,9 @@ function Suspense(): React.ReactElement {
         <>
             <nav style={styleNav}>
                 <CellTowerIcon
-                    id="button"
-                    onClick={handleClick}
+                    id="button-fetch"
                     sx={{ cursor: 'pointer', fontSize: '100px' }}
+                    onClick={handleClick}
                 />
             </nav>
             <ul id="photos">

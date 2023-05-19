@@ -9,12 +9,13 @@ import Navbar from '../components/Navbar';
 export const CounterContext: any = React.createContext(null);
 
 export default function Home(): React.ReactElement {
-    const [counter, dispatchCounter]: [number, Function] = React.useReducer(reducer, 0);
+    const [counter, dispatchCounter]: [number, Function] = React.useReducer(counterReducer, 0);
 
-    function reducer(state: number, action: { type: string }): number {
+    function counterReducer(state: number, action: { type: string }): number {
         if (action.type === 'yes') {
             return state + 1;
         }
+
         return state;
     }
 

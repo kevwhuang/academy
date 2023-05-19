@@ -35,7 +35,7 @@ function State(): React.ReactElement {
         setCounter((prev: number): number => prev * 5);
     }
 
-    return <p id="state" onClick={handleClick} />;
+    return <section id="state" onClick={handleClick} />;
 }
 
 export default State;

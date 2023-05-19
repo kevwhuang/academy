@@ -8,11 +8,9 @@ import Error from './pages/Error';
 import Home from './pages/Home';
 
 import './styles/rectify.scss';
-import './styles/root.scss';
 import './styles/main.scss';
 import './styles/utilities.scss';
 import './styles/keyframes.scss';
-import './styles/media.scss';
 
 import './utilities/logs';
 

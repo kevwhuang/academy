@@ -4,7 +4,14 @@ html {
     overflow-x: hidden;
 }
 
-#button {
+span {
+    display: block;
+    font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#button-fetch {
     &:hover {
         animation: pulse .5s ease-in-out .25s infinite alternate;
     }
