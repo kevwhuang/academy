@@ -24,9 +24,12 @@ function Suspense(): React.ReactElement {
     const [promise, setPromise]: [any, Function] = React.useState(null);
 
     function handleClick(): void {
-        const element: any = document.getElementById('button-ref');
+        const buttonRef: any = document.getElementById('button-ref');
+        const buttonEffect: any = document.getElementById('button-effect');
 
-        if (element) element.style.display = 'none';
+        if (buttonRef) buttonRef.style.display = 'none';
+        if (buttonEffect) buttonEffect.style.display = 'none';
+
         setPromise(suspense(getUsers()));
     }
 

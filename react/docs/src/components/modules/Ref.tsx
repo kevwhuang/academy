@@ -3,7 +3,7 @@ import { flushSync } from 'react-dom';
 
 import Counter from '../elements/Counter';
 
-function Advanced(): React.ReactElement {
+function Ref(): React.ReactElement {
     const buttonRef: React.MutableRefObject<any> = React.useRef(null);
     const numRef: React.MutableRefObject<number> = React.useRef(0);
     const timeoutRef: React.MutableRefObject<any> = React.useRef(null);
@@ -21,7 +21,8 @@ function Advanced(): React.ReactElement {
         display: 'block',
         fontSize: '100px',
         margin: 'auto',
-        opacity: isHover ? .8 : 1,
+        marginBottom: '1rem',
+        opacity: isHover ? .9 : 1,
         padding: '0 1rem',
         transform: isHover ? 'scale(.9)' : 'none',
         transition: 'all .5s',
@@ -47,7 +48,7 @@ function Advanced(): React.ReactElement {
     }
 
     return (
-        <section>
+        <section id="ref">
             <Counter
                 id="button-ref"
                 style={styleButton}
@@ -62,4 +63,4 @@ function Advanced(): React.ReactElement {
     );
 }
 
-export default React.memo(Advanced);
+export default React.memo(Ref);

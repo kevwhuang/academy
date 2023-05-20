@@ -17,7 +17,8 @@
         "Node",
         "React",
         "Sass",
-        "TypeScript"
+        "TypeScript",
+        "Vite"
     ],
     "homepage": "https://github.com/kevwhuang/academy",
     "bugs": {
@@ -66,7 +67,8 @@
         "next": "* || 13.x",
         "react": "* || 18.x",
         "sass": "* || 1.x",
-        "typescript": "* || 5.x"
+        "typescript": "* || 5.x",
+        "vite": "* || 4.x"
     },
     "devDependencies": {
         "bcrypt": "*",
@@ -84,8 +86,7 @@
         "npm": "*",
         "react-dom": "*",
         "react-router-dom": "*",
-        "uuid": "*",
-        "vite": "*"
+        "uuid": "*"
     },
     "peerDependencies": {
         "@babel/core": "*",

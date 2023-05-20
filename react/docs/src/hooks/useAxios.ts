@@ -3,7 +3,7 @@ import axios from 'axios';
 
 type Users = Array<{ photo: string }>;
 
-function useFetch(url: string): Users {
+function useAxios(url: string): Users {
     const [users, setUsers]: [Users, Function] = React.useState([]);
 
     React.useLayoutEffect((): any => {
@@ -12,9 +12,12 @@ function useFetch(url: string): Users {
 
         async function getUsers(): Promise<void> {
             const data: any = [];
-            const res: any = await axios(url, { signal }).catch((): void => { });
 
             try {
+                if (!navigator.onLine) throw Error;
+
+                const res: any = await axios(url, { signal }).catch(Function);
+
                 res.data.results.forEach((u: { picture: { large: string } }): void => {
                     data.push({ photo: u.picture.large });
                 });
@@ -32,4 +35,4 @@ function useFetch(url: string): Users {
     return users;
 }
 
-export default useFetch;
+export default useAxios;

@@ -27,6 +27,7 @@ Node|Completed
 React|Completed
 Sass|Completed
 TypeScript|
+Vite|Completed
 
 # RESOURCES
 
@@ -121,14 +122,15 @@ NeetCode 150|
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
 
-<script src="https://cdn.jsdelivr.net/npm/@mui/material@5/umd/material-ui.production.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/eslint/lib/api.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/express/index.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jest/build/index.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/mysql/index.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/next/dist/server/next.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sass/sass.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/typescript/lib/typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mui/material@5/umd/material-ui.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/eslint/lib/api.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/express/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jest/build/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mysql/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/next/dist/server/next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sass/sass.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typescript/lib/typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vite/dist/node/constants.min.js"></script>
 ```

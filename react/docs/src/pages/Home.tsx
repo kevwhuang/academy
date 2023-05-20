@@ -1,10 +1,25 @@
 import React from 'react';
 
+import Effect from '../components/modules/Effect';
 import Fragment from '../components/modules/Fragment';
 import Hidden from '../components/modules/Hidden';
 import Ref from '../components/modules/Ref';
 
+import useAxios from '../hooks/useAxios';
+
+const endpoint = 'https://randomuser.me/api/?results=100&nat=us';
+let init = false;
+
 function Home(): React.ReactElement {
+    if (!init) {
+        const data: any = useAxios(endpoint);
+
+        if (data.length) {
+            import.meta.env.VITE_LOG && console.log(data);
+            init = true;
+        }
+    }
+
     function onRender(
         id: any,
         phase: any,
@@ -13,7 +28,7 @@ function Home(): React.ReactElement {
         startTime: any,
         commitTime: any): void {
 
-        if (import.meta.env.VITE_LOG) console.table([
+        import.meta.env.VITE_LOG && console.table([
             `ID: ${id}`,
             `Phase: ${phase}`,
             `Actual duration: ${Math.round(actualDuration)} ms`,
@@ -27,6 +42,7 @@ function Home(): React.ReactElement {
         <React.Profiler id="Fragment" onRender={onRender}>
             <Fragment />
             <Ref />
+            <Effect />
             <Hidden />
         </React.Profiler>
     );
