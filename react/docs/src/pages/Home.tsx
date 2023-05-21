@@ -15,7 +15,7 @@ function Home(): React.ReactElement {
         const data: any = useAxios(endpoint);
 
         if (data.length) {
-            import.meta.env.VITE_LOG && console.log(data);
+            import.meta.env.VITE_LOGS && console.log(data);
             init = true;
         }
     }
@@ -28,7 +28,7 @@ function Home(): React.ReactElement {
         startTime: any,
         commitTime: any): void {
 
-        import.meta.env.VITE_LOG && console.table([
+        import.meta.env.VITE_LOGS && console.table([
             `ID: ${id}`,
             `Phase: ${phase}`,
             `Actual duration: ${Math.round(actualDuration)} ms`,

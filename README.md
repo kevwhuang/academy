@@ -2,7 +2,7 @@
 
 Name|Status
 -|-
-CSS|
+CSS|Completed
 Git|Completed
 HTML|Completed
 JavaScript|Completed
@@ -43,9 +43,9 @@ NeetCode 150|
 
 # WEB 101
 
-- [ ] Academy
-- [ ] Projects
-- [ ] Videos
+- [x] Academy
+- [x] Projects
+- [x] Videos
 
 # JS 211
 
@@ -61,14 +61,13 @@ NeetCode 150|
 
 # JS 411
 
-- [ ] Academy
-- [ ] Projects
-- [ ] Videos
+- [x] Academy
+- [x] Projects
+- [x] Videos
 
 # JOB 501
 
 - [ ] Academy
-- [ ] Projects
 
 ## HTML BOILERPLATE
 

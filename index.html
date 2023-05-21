@@ -46,7 +46,7 @@
 <body>
 
     <script>
-        const labels = ['HTML', 'CSS', 'Sass', 'Advanced', 'JS-ACA', 'JS-W3S', 'JS-WEB'];
+        const labels = ['HTML', 'CSS', 'Advanced', 'JS-ACA', 'JS-W3S', 'JS-WEB'];
 
         for (const e of labels) {
             const button = document.createElement('button');
@@ -57,12 +57,12 @@
             document.body.appendChild(button);
         }
 
-        window.addEventListener('mousemove', e => {
+        addEventListener('mousemove', e => {
             const r = Math.min(e.clientX / 5, 150);
             const g = Math.min(e.clientY / 5, 150);
             const b = Math.min((r + g) / 2, 150);
 
-            document.body.style.backgroundColor = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+            document.body.style.backgroundColor = `rgb(${r},${g},${b})`;
         });
     </script>
 

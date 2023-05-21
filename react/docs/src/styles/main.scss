@@ -16,6 +16,33 @@ p {
     }
 }
 
+#params {
+    margin-top: 1rem;
+    text-align: center;
+
+    a {
+        background: teal;
+        border-radius: 1rem;
+        color: white;
+        display: inline-block;
+        font-size: 3rem;
+        padding: 1rem;
+        text-transform: uppercase;
+
+        &:visited {
+            color: white;
+        }
+
+        &:hover {
+            background: darken(teal, 2%)
+        }
+
+        &:active {
+            transform: scale(.98);
+        }
+    }
+}
+
 #photos {
     display: flex;
     flex-wrap: wrap;
