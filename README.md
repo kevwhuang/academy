@@ -35,7 +35,7 @@ Name|Status
 -|-
 Cracking the Coding Interview|
 CS50|
-CSS-Tricks|
+CSS-Tricks|Completed
 HackerRank|
 JavaScript 30|Completed
 Modern JavaScript Tutorial|

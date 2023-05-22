@@ -40,6 +40,8 @@
         crossorigin="anonymous"></script>
 
     <style data-title="*">
+        @charset 'utf-8';
+
         @import url(https://fonts.googleapis.com/css?family=Inconsolata);
 
         @font-face {
@@ -152,6 +154,7 @@
             left: calc(var(--x) + 1vw);
             position: fixed;
             text-align: center;
+            top: -2px;
             width: calc(100vw - var(--x) * 2 - 2vw);
             z-index: 2;
         }
@@ -210,7 +213,7 @@
             min-width: 25%;
             position: absolute;
             right: 0;
-            top: var(--x);
+            top: calc(var(--x) + 2px);
         }
 
         nav menu .dropdown-content a {
@@ -397,6 +400,64 @@
         }
     </style>
 
+    <style data-title="main#flexbox">
+        main#flexbox {
+            border: 1px solid green;
+            height: calc(100vh - var(--x) * 1.5);
+            margin: auto;
+            position: relative;
+            top: var(--x);
+            width: calc(100% - var(--x) * 2 - 2vw);
+        }
+
+        main#flexbox div h3 {
+            animation: fadeInOut 4s;
+            animation-timing-function: ease-in-out;
+            color: #ddd;
+            font-size: var(--s4);
+            font-weight: bolder;
+            left: 50%;
+            letter-spacing: 0.5rem;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            width: 100%;
+        }
+    </style>
+
+    <style data-title="main#grid">
+        main#grid {
+            border: 1px solid blue;
+            height: calc(100vh - var(--x) * 1.5);
+            margin: auto;
+            position: relative;
+            top: var(--x);
+            width: calc(100% - var(--x) * 2 - 2vw);
+        }
+
+        main#grid div h3 {
+            animation: fadeInOut 4s;
+            animation-timing-function: ease-in-out;
+            color: #ddd;
+            font-size: var(--s4);
+            font-weight: bolder;
+            left: 50%;
+            letter-spacing: 0.5rem;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            width: 100%;
+        }
+    </style>
+
     <style data-title="main#main">
         main#main canvas {
             animation: opacity2 11s;
@@ -494,6 +555,10 @@
             position: absolute;
             top: 50%;
             transform: translate(-50%, -50%);
+        }
+
+        main#main div#demos article>div:empty {
+            background: red !important;
         }
 
         main#main div#demos article#demo-01 {
@@ -696,11 +761,16 @@
             cursor: pointer;
             filter: brightness(90%) grayscale(100%);
             height: 100px;
+            transition: filter .5s;
             width: 100px;
         }
 
+        main#main div#demos article#demo-12>div #cards div img:hover {
+            filter: brightness(100%) grayscale(50%);
+        }
+
         main#main div#demos article#demo-12>div #cards div img:active {
-            opacity: 0.5;
+            filter: grayscale(0%);
         }
 
         main#main div#demos article#demo-12>div #cards div span {
@@ -714,64 +784,6 @@
             text-transform: uppercase;
             top: var(--s1);
             transform: translateX(-50%);
-        }
-    </style>
-
-    <style data-title="main#flexbox">
-        main#flexbox {
-            border: 1px solid green;
-            height: calc(100vh - var(--x) * 1.5);
-            margin: auto;
-            position: relative;
-            top: var(--x);
-            width: calc(100% - var(--x) * 2 - 2vw);
-        }
-
-        main#flexbox div h3 {
-            animation: fadeInOut 4s;
-            animation-timing-function: ease-in-out;
-            color: #ddd;
-            font-size: var(--s4);
-            font-weight: bolder;
-            left: 50%;
-            letter-spacing: 0.5rem;
-            opacity: 0;
-            position: absolute;
-            text-align: center;
-            text-transform: uppercase;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            user-select: none;
-            width: 100%;
-        }
-    </style>
-
-    <style data-title="main#grid">
-        main#grid {
-            border: 1px solid blue;
-            height: calc(100vh - var(--x) * 1.5);
-            margin: auto;
-            position: relative;
-            top: var(--x);
-            width: calc(100% - var(--x) * 2 - 2vw);
-        }
-
-        main#grid div h3 {
-            animation: fadeInOut 4s;
-            animation-timing-function: ease-in-out;
-            color: #ddd;
-            font-size: var(--s4);
-            font-weight: bolder;
-            left: 50%;
-            letter-spacing: 0.5rem;
-            opacity: 0;
-            position: absolute;
-            text-align: center;
-            text-transform: uppercase;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            user-select: none;
-            width: 100%;
         }
     </style>
 
@@ -923,6 +935,42 @@
     </style>
 
     <style data-title="@media">
+        @media (prefers-color-scheme: light) {
+
+            footer section,
+            input[type="submit"]:hover,
+            main#flexbox div h3,
+            main#grid div h3,
+            main#main div#demos article>div,
+            main#main div#demos article>h3,
+            main#main div#demos article#demo-10 div button,
+            main#main div#welcome h1,
+            nav menu a:hover,
+            nav menu .dropdown-button:hover,
+            textarea {
+                color: #fff !important;
+            }
+
+            main#main canvas,
+            main#main div#demos article#demo-10 div button,
+            nav menu .dropdown-content a {
+                border-color: #fff !important;
+            }
+
+            main#main div#demos article#demo-09 div p {
+                column-rule-color: #fff !important;
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            * {
+                animation: none !important;
+            }
+
+        }
+
         @media screen and (max-width: 1000px) {
 
             main#main div#welcome h1 {
@@ -983,8 +1031,8 @@
             main#main div#demos {
                 animation-duration: 0s !important;
                 border: 1px solid red !important;
-                height: calc(100vh - var(--s3) * 3) !important;
-                top: calc(var(--s3) * 3) !important;
+                height: calc(100vh - var(--s3) * 3 - 2px) !important;
+                top: calc(var(--s3) * 3 + 2px) !important;
                 width: 100vw !important;
             }
 
@@ -994,8 +1042,8 @@
 
             main#flexbox,
             main#grid {
-                height: calc(100vh - var(--s3) * 3) !important;
-                top: calc(var(--s3) * 3) !important;
+                height: calc(100vh - var(--s3) * 3 - 2px) !important;
+                top: calc(var(--s3) * 3 + 2px) !important;
                 width: 100vw !important;
             }
 
@@ -1133,6 +1181,26 @@
 
     </aside>
 
+    <main id="flexbox" style="display:none;">
+
+        <div>
+
+            <h3 data-test>Flexbox</h3>
+
+        </div>
+
+    </main>
+
+    <main id="grid" style="display:none;">
+
+        <div>
+
+            <h3 data-test>Grid</h3>
+
+        </div>
+
+    </main>
+
     <main id="main">
 
         <div data-test id="welcome">
@@ -1152,7 +1220,7 @@
 
                 <h3 data-test>Demo 01</h3>
 
-                <div class="fa-solid fa-road-barrier"></div>
+                <div class="fa-solid fa-road-barrier"> </div>
 
             </article>
 
@@ -1326,7 +1394,7 @@
                             font-size: var(--s3);
                             padding: 0 10px;
                             position: absolute;
-                            top: calc((-1 * var(--s3)) - 1px);
+                            top: calc((-1 * var(--s3)) - 2px);
                         }
 
                         button:hover {
@@ -1367,26 +1435,6 @@
                 </template>
 
             </article>
-
-        </div>
-
-    </main>
-
-    <main id="flexbox" style="display:none;">
-
-        <div>
-
-            <h3 data-test>Flexbox</h3>
-
-        </div>
-
-    </main>
-
-    <main id="grid" style="display:none;">
-
-        <div>
-
-            <h3 data-test>Grid</h3>
 
         </div>
 
@@ -1834,7 +1882,7 @@
         }
 
         async function switchUser() {
-            await axios.get('https://randomuser.me/api/?nat=us,ca,gb,au')
+            await axios.get('https://randomuser.me/api/?nat=au,ca,gb,us')
                 .then(res => {
                     const e = res.data.results[0];
 
@@ -1902,12 +1950,11 @@
         output.innerHTML = text;
     </script>
 
-    <script data-title="dev" type="?">
-        const css = document.styleSheets[3];
-        css.cssRules[9].style.setProperty('display', 'none', 'important');
-        css.cssRules[10].style.setProperty('animation-duration', '0s', 'important');
-        setTimeout(() => console.groupEnd('Media'), 1000);
+    <script data-title="development" type="">
+        document.styleSheets[3].cssRules[9].style.setProperty('display', 'none', 'important');
+        document.styleSheets[3].cssRules[10].style.setProperty('animation-duration', '0s', 'important');
         document.querySelector('[title="Demo 12"]').click();
+        setTimeout(() => console.groupEnd('Media'), 1000);
     </script>
 
 </body>

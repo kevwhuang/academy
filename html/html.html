@@ -23,6 +23,30 @@
         href="https://fonts.googleapis.com/css?family=Audiowide&effect=fire-animation|Roboto">
 
     <style>
+        :root {
+            --spacing: 0.5rem;
+        }
+
+        :is(a, article, picture, td, th):has(img:not([alt])) {
+            opacity: 50%;
+        }
+
+        ::-webkit-meter-suboptimum-value {
+            background-color: red;
+        }
+
+        ::file-selector-button {
+            background-color: seagreen;
+            border-radius: 6px;
+            color: azure;
+        }
+
+        ::placeholder {
+            opacity: 50%;
+        }
+    </style>
+
+    <style>
         * {
             box-sizing: border-box;
             color: black;
@@ -155,18 +179,17 @@
             text-align: right;
         }
 
-        footer details a,
-        footer section a {
-            display: block;
-            padding: var(--spacing);
-        }
-
         footer section {
             grid-column: 2/3;
             grid-row: 1/2;
             margin: 0;
             padding: 20px;
             text-align: center;
+        }
+
+        footer :where(details, section) a {
+            display: block;
+            padding: var(--spacing, 0.5rem);
         }
 
         h1 {
@@ -255,13 +278,12 @@
             width: 200px;
         }
 
-        menu ol,
-        menu ul {
-            background-color: silver;
-        }
-
         menu>li {
             background-color: slateblue;
+        }
+
+        menu :is(ol, ul) {
+            background-color: silver;
         }
 
         meter {
@@ -372,6 +394,57 @@
             margin-top: 20px;
             object-fit: fill;
             object-position: 0 0;
+        }
+    </style>
+
+    <style>
+        .addPaddingBot {
+            padding-bottom: 10px;
+        }
+
+        .addPaddingTop {
+            padding-top: 10px;
+        }
+
+        /* exception rule */
+        .colorException,
+        .colorException td {
+            border: none;
+        }
+
+        /* exception rule */
+        .colorException tr:hover {
+            background-color: wheat;
+        }
+
+        /* exception rule */
+        .formButton {
+            background-color: wheat;
+            border: none;
+        }
+
+        /* exception rule */
+        .noHover {
+            background-color: slateblue;
+        }
+
+        /* hide elements */
+        .off {
+            display: none;
+        }
+
+        /* normal flow override */
+        .offBackground {
+            background-color: wheat;
+        }
+
+        .textBold {
+            font-weight: bold;
+        }
+
+        .textSmall {
+            font-family: monospace;
+            font-size: smaller;
         }
     </style>
 
@@ -722,67 +795,6 @@
             height: 50px;
             text-align: center;
             width: 50px;
-        }
-    </style>
-
-    <style>
-        .addPaddingBot {
-            padding-bottom: 10px;
-        }
-
-        .addPaddingTop {
-            padding-top: 10px;
-        }
-
-        /* exception rule */
-        .colorException,
-        .colorException td {
-            border: none;
-        }
-
-        /* exception rule */
-        .colorException tr:hover {
-            background-color: wheat;
-        }
-
-        /* exception rule */
-        .formButton {
-            background-color: wheat;
-            border: none;
-        }
-
-        /* exception rule */
-        .noHover {
-            background-color: slateblue;
-        }
-
-        /* hide elements */
-        .off {
-            display: none;
-        }
-
-        /* normal flow override */
-        .offBackground {
-            background-color: wheat;
-        }
-
-        .textBold {
-            font-weight: bold;
-        }
-
-        .textSmall {
-            font-family: monospace;
-            font-size: smaller;
-        }
-    </style>
-
-    <style>
-        :root {
-            --spacing: 0.5rem;
-        }
-
-        ::-webkit-meter-suboptimum-value {
-            background-color: red;
         }
     </style>
 
@@ -1665,9 +1677,10 @@
 
             <article>
 
-                <a href="https://ninanesbittmusic.com" target="_blank">
-                    <img src="assets/nina-nesbitt.jpg" alt="Nina Nesbitt." width="1000"
-                        height="1000"></a>
+                <a href="https://ninanesbittmusic.com" target="_blank"><img
+                        src="assets/nina-nesbitt.jpg" alt="Nina Nesbitt." width="1000"
+                        height="1000">
+                </a>
 
             </article>
 
