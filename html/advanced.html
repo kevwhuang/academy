@@ -619,11 +619,11 @@
         }
 
         main#main div#demos article#demo-03 div img {
-            -webkit-mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 75%);
+            -webkit-mask-image: radial-gradient(circle, #000 50%, rgba(0, 0, 0, 0.5) 75%);
             display: block;
             height: auto;
             margin: auto;
-            mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 75%);
+            mask-image: radial-gradient(circle, #000 50%, rgba(0, 0, 0, 0.5) 75%);
             max-width: 100%;
             position: relative;
             top: 50%;
@@ -687,7 +687,23 @@
         main#main div#demos article#demo-05 div {
             background: #000;
             height: 80%;
+            overflow-x: hidden;
+            overflow-y: auto;
             width: 80%;
+        }
+
+        main#main div#demos article#demo-05 div p {
+            cursor: crosshair;
+            font-family: Verdana, sans-serif;
+            hyphens: auto;
+            line-height: 2.5rem;
+            padding: 2rem;
+            text-align: justify;
+            text-justify: auto;
+            text-overflow: ellipsis;
+            white-space: normal;
+            word-break: keep-all;
+            word-wrap: normal;
         }
 
         main#main div#demos article#demo-06 div {
@@ -717,7 +733,6 @@
             line-height: 2.5rem;
             margin: 2rem;
             orphans: 1;
-            text-overflow: ellipsis;
             user-select: none;
             widows: 1;
             word-wrap: break-word;
@@ -796,15 +811,157 @@
         }
 
         main#main div#demos article#demo-08 div {
-            background: #000;
             height: 80%;
             width: 80%;
         }
 
+        main#main div#demos article#demo-08 div p {
+            animation: flash 2s infinite alternate;
+            display: inline-block;
+            font-family: 'Helvetica Neue', 'sans-serif';
+            font-size: var(--s6);
+            line-height: var(--s6);
+            padding: 0 1rem;
+            position: absolute;
+        }
+
+        main#main div#demos article#demo-08 div p:hover span {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        main#main div#demos article#demo-08 div p:nth-of-type(1) {
+            transform: scale(1, -1);
+        }
+
+        main#main div#demos article#demo-08 div p:nth-of-type(1) span {
+            transform: scale(1, -1);
+        }
+
+        main#main div#demos article#demo-08 div p:nth-of-type(1) span::after {
+            right: 97.5%;
+            top: 25%;
+        }
+
+        main#main div#demos article#demo-08 div p:nth-of-type(2) {
+            right: 0;
+            transform: scale(-1, -1);
+        }
+
+        main#main div#demos article#demo-08 div p:nth-of-type(2) span {
+            transform: scale(-1, -1);
+        }
+
+        main#main div#demos article#demo-08 div p:nth-of-type(2) span::after {
+            left: 97.5%;
+            top: 25%;
+            transform: scale(-1, -1);
+        }
+
+        main#main div#demos article#demo-08 div p:nth-of-type(3) {
+            bottom: 0;
+            right: 0;
+            transform: scale(-1, -1);
+        }
+
+        main#main div#demos article#demo-08 div p:nth-of-type(3) span {
+            transform: scale(-1, -1);
+        }
+
+        main#main div#demos article#demo-08 div p:nth-of-type(3) span::after {
+            left: 97.5%;
+            top: 25%;
+            transform: scale(-1, -1);
+        }
+
+        main#main div#demos article#demo-08 div p:nth-of-type(4) {
+            bottom: 0;
+            left: 0;
+            transform: scale(1, -1);
+        }
+
+        main#main div#demos article#demo-08 div p:nth-of-type(4) span::after {
+            right: 97.5%;
+            top: 25%;
+        }
+
+        main#main div#demos article#demo-08 div p:nth-of-type(4) span {
+            transform: scale(1, -1);
+        }
+
+        main#main div#demos article#demo-08 div p span {
+            background: #666;
+            border-radius: 2rem;
+            color: #ddd;
+            display: inline-block;
+            font-size: var(--s4);
+            opacity: 0;
+            padding: 0 1rem;
+            transition: opacity 1s ease-in-out;
+            vertical-align: top;
+            visibility: hidden;
+        }
+
+        main#main div#demos article#demo-08 div p span::after {
+            border: var(--s3) solid;
+            border-color: transparent #666 transparent transparent;
+            content: '';
+            position: absolute;
+        }
+
         main#main div#demos article#demo-09 div {
-            background: #000;
             height: 80%;
             width: 80%;
+        }
+
+        main#main div#demos article#demo-09 div section:first-of-type {
+            height: calc(100% - 48.72px - 2rem);
+            margin: 1rem;
+        }
+
+        main#main div#demos article#demo-09 div section:first-of-type p {
+            animation: pulse 1s ease-in-out infinite alternate;
+            display: inline-block;
+            font-size: var(--s6);
+            left: 50%;
+            position: relative;
+            top: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            transition: color 1s;
+        }
+
+        main#main div#demos article#demo-09 div section:first-of-type p:hover {
+            animation-duration: 2s;
+            animation-name: pendulum;
+            color: steelblue;
+        }
+
+        main#main div#demos article#demo-09 div section:last-of-type {
+            bottom: 0;
+            font-family: 'Helvetica Neue', sans-serif;
+            position: absolute;
+            text-align: center;
+            width: 100%;
+        }
+
+        main#main div#demos article#demo-09 div section:last-of-type span {
+            background: #000;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            float: left;
+            font-size: var(--s3);
+            padding: 0.5rem;
+            transition: background-color 200ms;
+            width: calc(100% / 12);
+        }
+
+        main#main div#demos article#demo-09 div section:last-of-type span:hover {
+            background: #222;
+        }
+
+        main#main div#demos article#demo-09 div section:last-of-type span.active {
+            background: steelblue;
+            color: #000;
         }
 
         main#main div#demos article#demo-10 div {
@@ -1022,6 +1179,19 @@
 
         }
 
+        @keyframes flash {
+
+            25% {
+                color: currentcolor;
+            }
+
+            50%,
+            100% {
+                color: steelblue;
+            }
+
+        }
+
         @keyframes marquee {
 
             100% {
@@ -1090,6 +1260,30 @@
             }
 
         }
+
+        @keyframes pendulum {
+
+            5% {
+                transform: rotate(0deg) scale(1) translate(-50%, -50%);
+            }
+
+            50% {
+                transform: rotate(-180deg) scale(0.85) translate(-50%, -50%);
+            }
+
+            95% {
+                transform: rotate(-360deg) scale(1) translate(-50%, -50%);
+            }
+
+        }
+
+        @keyframes pulse {
+
+            to {
+                transform: matrix(1.2, -0.5, 0.5, 1.2, -50, -75);
+            }
+
+        }
     </style>
 
     <style data-title="@media">
@@ -1103,6 +1297,7 @@
             main#main div#demos article>h3,
             main#main div#demos article#demo-04 div button:hover,
             main#main div#demos article#demo-07 div input,
+            main#main div#demos article#demo-08 div p span,
             main#main div#demos article#demo-10 div button,
             main#main div#welcome h1,
             nav menu a:hover,
@@ -1116,6 +1311,7 @@
             }
 
             main#main canvas,
+            main#main div#demos article#demo-09 div section:last-of-type span,
             main#main div#demos article#demo-10 div button,
             nav menu .dropdown-content a {
                 border-color: #fff !important;
@@ -1134,8 +1330,26 @@
         @media screen and (max-height: 400px) {
 
             main#main div#demos article#demo-04 div button {
-                font-size: var(--s2);
-                top: calc(-1 * var(--s2));
+                font-size: var(--s2) !important;
+                top: calc(-1 * var(--s2)) !important;
+            }
+
+            main#main div#demos article#demo-08 div p {
+                font-size: var(--s5);
+                line-height: var(--s5);
+            }
+
+            main#main div#demos article#demo-08 div p span {
+                border-radius: 1rem;
+                font-size: var(--s3);
+            }
+
+            main#main div#demos article#demo-08 div p span::after {
+                border-width: var(--s2);
+            }
+
+            main#main div#demos article#demo-09 div section:first-of-type p {
+                font-size: var(--s5) !important;
             }
 
         }
@@ -1153,6 +1367,30 @@
         }
 
         @media screen and (max-width: 768px) {
+
+            main#main div#demos article#demo-08 div p {
+                font-size: var(--s5);
+                line-height: var(--s5);
+            }
+
+            main#main div#demos article#demo-08 div p span {
+                border-radius: 1rem;
+                font-size: var(--s3);
+            }
+
+
+            main#main div#demos article#demo-08 div p span::after {
+                border-width: var(--s2);
+            }
+
+            main#main div#demos article#demo-09 div section:first-of-type {
+                height: calc(100% - 28.89px - 2rem) !important;
+            }
+
+            main#main div#demos article#demo-09 div section:last-of-type span {
+                padding: 0.25rem !important;
+                font-size: var(--s2) !important;
+            }
 
             main#main div#welcome h1 {
                 font-size: var(--s3) !important;
@@ -1197,6 +1435,13 @@
                 font-size: var(--s3) !important;
             }
 
+            main#flexbox,
+            main#grid {
+                height: calc(100vh - var(--s3) * 3 - 2px) !important;
+                top: calc(var(--s3) * 3 + 2px) !important;
+                width: 100vw !important;
+            }
+
             main#main div#demos {
                 animation-duration: 0s !important;
                 border: 1px solid red !important;
@@ -1206,26 +1451,41 @@
             }
 
             main#main div#demos article#demo-04 div button {
-                left: 50%;
-                padding: 0;
-                transform: translateX(-50%);
-                width: 100%;
+                left: 50% !important;
+                padding: 0 !important;
+                transform: translateX(-50%) !important;
+                width: 100% !important;
+            }
+
+            main#main div#demos article#demo-05 div p {
+                line-height: 1rem !important;
+                padding: 1rem 4px !important;
             }
 
             main#main div#demos article#demo-06 div p {
-                line-height: 1rem;
-                margin: 2rem 2px;
+                line-height: 1rem !important;
+                margin: 1rem 4px !important;
             }
 
             main#main div#demos article#demo-07 div summary {
-                font-size: var(--s3);
+                font-size: var(--s3) !important;
             }
 
-            main#flexbox,
-            main#grid {
-                height: calc(100vh - var(--s3) * 3 - 2px) !important;
-                top: calc(var(--s3) * 3 + 2px) !important;
-                width: 100vw !important;
+            main#main div#demos article#demo-08 div p {
+                font-size: var(--s4);
+                line-height: var(--s4);
+            }
+
+            main#main div#demos article#demo-08 div p span {
+                display: none;
+            }
+
+            main#main div#demos article#demo-09 div section:first-of-type p {
+                font-size: var(--s5) !important;
+            }
+
+            main#main div#demos article#demo-09 div section:last-of-type span {
+                display: none !important;
             }
 
             nav {
@@ -1444,7 +1704,34 @@
 
                 <h3 data-test>Demo 05</h3>
 
-                <div></div>
+                <div>
+
+                    <p>
+                        Minima animi, atque aspernatur consequatur iure, accusantium minus impedit
+                        dolorem odio quibusdam numquam quod. Laborum incidunt beatae quo alias id
+                        eligendi natus ipsa, officia labore culpa repellat tempore vitae mollitia
+                        quibusdam dolore? Culpa ad vel temporibus esse rerum dicta libero dolorem
+                        doloribus et repellendus enim illo saepe quidem minus iure aperiam animi
+                        odio nostrum, dolores molestias. Aliquid quibusdam veniam sunt sequi, et
+                        cupiditate alias quod nostrum similique, obcaecati accusantium libero at
+                        magni a earum corrupti eveniet maiores dolores deserunt exercitationem
+                        minima iusto unde. Nemo officia sapiente inventore corporis incidunt
+                        consequatur laborum deleniti suscipit dolores. Voluptas rem eaque minima
+                        sit incidunt! Recusandae eaque sed expedita repellendus, tempora quod nihil,
+                        obcaecati sequi facilis facere eveniet error. Quae molestias minima odit
+                        sed non ratione ipsa libero, nemo iure veniam voluptates accusantium
+                        reprehenderit impedit perferendis quaerat adipisci amet atque voluptatem?
+                        Ducimus assumenda debitis porro culpa inventore maiores nihil.
+                        Exercitationem sapiente blanditiis, consequuntur, similique maiores,
+                        facilis iure at odio nemo autem esse deserunt deleniti. Maiores vitae
+                        molestias temporibus alias inventore fugit cum aliquam voluptates ipsam
+                        nisi ab perspiciatis eos, quas iure nesciunt magnam quisquam autem
+                        consequatur sint amet error tempore culpa. Modi veritatis, accusamus,
+                        totam officiis provident tempore cum perferendis dolores tenetur blanditiis
+                        dicta sunt.
+                    </p>
+
+                </div>
 
             </article>
 
@@ -1491,11 +1778,11 @@
 
                     <summary>
 
-                        <p></p>
+                        <p>hello there</p>
 
                     </summary>
 
-                    <input type="text" placeholder="enter text" maxlength="20">
+                    <input type="text" value="hello there" placeholder="enter text" maxlength="20">
 
                 </div>
 
@@ -1505,7 +1792,29 @@
 
                 <h3 data-test>Demo 08</h3>
 
-                <div></div>
+                <div>
+
+                    <p>
+                        &Alpha;
+                        <span>abstraction</span>
+                    </p>
+
+                    <p>
+                        &Beta;
+                        <span>encapsulation</span>
+                    </p>
+
+                    <p>
+                        &Gamma;
+                        <span>inheritance</span>
+                    </p>
+
+                    <p>
+                        &Delta;
+                        <span>polymorphism</span>
+                    </p>
+
+                </div>
 
             </article>
 
@@ -1513,7 +1822,32 @@
 
                 <h3 data-test>Demo 09</h3>
 
-                <div></div>
+                <div>
+
+                    <section>
+
+                        <p>1</p>
+
+                    </section>
+
+                    <section>
+
+                        <span>«</span>
+                        <span class="active">1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>»</span>
+
+                    </section>
+
+                </div>
 
             </article>
 
@@ -1935,6 +2269,36 @@
         });
     </script>
 
+    <script data-title="article#demo-09">
+        const page = document.querySelector('#demo-09 p');
+        const pageButtons = document.querySelectorAll('#demo-09 span');
+
+        for (let i = 0; i < pageButtons.length; i++) {
+            if (i === 0) {
+                pageButtons[i].addEventListener('click', () => {
+                    if (page.textContent == 1) page.textContent = 10;
+                    else page.textContent = Number(page.textContent) - 1;
+                });
+            } else if (i === pageButtons.length - 1) {
+                pageButtons[i].addEventListener('click', () => {
+                    if (page.textContent == 10) page.textContent = 1;
+                    else page.textContent = Number(page.textContent) + 1;
+                });
+            } else {
+                pageButtons[i].addEventListener('click', e => {
+                    page.textContent = e.target.textContent;
+                });
+            }
+
+            pageButtons[i].addEventListener('click', () => {
+                for (const e of pageButtons) {
+                    if (e.textContent === page.textContent) e.classList = 'active';
+                    else e.classList = '';
+                }
+            });
+        }
+    </script>
+
     <script data-title="article#demo-10">
         const buttons = ['&Delta;', '&Theta;', '&Sigma;', '&Omega;'];
         const buttonsDiv = document.querySelector('#demo-10').lastElementChild;
@@ -2179,10 +2543,10 @@
         output.innerHTML = text;
     </script>
 
-    <script data-title="development" type="">
+    <script data-title="development" type="?">
         document.styleSheets[3].cssRules[9].style.setProperty('display', 'none', 'important');
         document.styleSheets[3].cssRules[10].style.setProperty('animation-duration', '0s', 'important');
-        document.querySelector('[title="Demo 05"]').click();
+        document.querySelector('[title="Demo 01"]').click();
         setTimeout(() => console.groupEnd('Media'), 1000);
     </script>
 
