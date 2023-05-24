@@ -38,8 +38,8 @@
     <link rel="stylesheet" media="screen" href="css/root.css">
 
     <script src="https://kit.fontawesome.com/c9d939b58f.js" crossorigin="anonymous" async></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" crossorigin="anonymous"
-        async></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+        crossorigin="anonymous"></script>
 
     <style data-title="*">
         @charset 'utf-8';
@@ -413,6 +413,21 @@
             width: calc(100% - var(--x) * 2 - 2vw);
         }
 
+        main#flexbox div {
+            animation: fadeIn 1s;
+            animation-timing-function: ease-in-out;
+            height: 100%;
+            overflow: auto;
+        }
+
+        main#flexbox div>section {
+            animation: fadeInLong 10s;
+            animation-timing-function: ease-in-out;
+            height: 100%;
+            opacity: 1;
+            width: 100%;
+        }
+
         main#flexbox div h3 {
             animation: fadeInOut 4s;
             animation-timing-function: ease-in-out;
@@ -430,6 +445,21 @@
             user-select: none;
             width: 100%;
         }
+
+        main#flexbox div section {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        main#flexbox div section img {
+            max-height: 200px;
+            max-width: 200px;
+            min-height: 200px;
+            min-width: 200px;
+            object-fit: cover;
+            object-position: center;
+        }
     </style>
 
     <style data-title="main#grid">
@@ -440,6 +470,21 @@
             position: relative;
             top: var(--x);
             width: calc(100% - var(--x) * 2 - 2vw);
+        }
+
+        main#grid div {
+            animation: fadeIn 1s;
+            animation-timing-function: ease-in-out;
+            height: 100%;
+            overflow: auto;
+        }
+
+        main#grid div>section {
+            animation: fadeInLong 10s;
+            animation-timing-function: ease-in-out;
+            height: 100%;
+            opacity: 1;
+            width: 100%;
         }
 
         main#grid div h3 {
@@ -458,6 +503,19 @@
             transform: translate(-50%, -50%);
             user-select: none;
             width: 100%;
+        }
+
+        main#grid div section {
+            display: grid;
+        }
+
+        main#grid div section img {
+            max-height: 200px;
+            max-width: 200px;
+            min-height: 200px;
+            min-width: 200px;
+            object-fit: cover;
+            object-position: center;
         }
     </style>
 
@@ -1622,21 +1680,25 @@
 
     </aside>
 
-    <main id="flexbox" style="display:none;">
+    <main id="flexbox" style="display: none;">
 
         <div>
 
             <h3 data-test>Flexbox</h3>
 
+            <section></section>
+
         </div>
 
     </main>
 
-    <main id="grid" style="display:none;">
+    <main id="grid" style="display: none;">
 
         <div>
 
             <h3 data-test>Grid</h3>
+
+            <section></section>
 
         </div>
 
@@ -2232,6 +2294,44 @@
         });
     </script>
 
+    <script data-title="main#flexbox">
+        const populateFlexbox = async () => {
+            const flexboxDisplay = document.querySelector('#flexbox section');
+            const res = await axios('https://picsum.photos/v2/list?page=2&limit=50');
+
+            res.data.forEach(e => {
+                const img = document.createElement('img');
+
+                img.src = e.download_url;
+                img.alt = `${e.author}.`;
+                img.draggable = false;
+
+                flexboxDisplay.appendChild(img);
+            });
+        };
+
+        populateFlexbox();
+    </script>
+
+    <script data-title="main#grid">
+        const populateGrid = async () => {
+            const gridDisplay = document.querySelector('#grid section');
+            const res = await axios('https://picsum.photos/v2/list?page=3&limit=50');
+
+            res.data.forEach(e => {
+                const img = document.createElement('img');
+
+                img.src = e.download_url;
+                img.alt = `${e.author}.`;
+                img.draggable = false;
+
+                gridDisplay.appendChild(img);
+            });
+        };
+
+        populateGrid();
+    </script>
+
     <script data-title="div#demos">
         {
             const $ = e => console.log(`%c${e}`, 'color:peru;');
@@ -2469,7 +2569,7 @@
                         div.addEventListener('mouseleave', hideName);
                     }
                 })
-                .catch(new Function());
+                .catch(Function);
 
             hideUsers();
         }
@@ -2484,7 +2584,7 @@
                     this.alt = `A photo of ${e.name.first} ${e.name.last}.`;
                     this.nextElementSibling.innerText = e.name.first;
                 })
-                .catch(new Function());
+                .catch(Function);
         }
 
         function showName() {
@@ -2500,10 +2600,15 @@
             const photos = document.querySelectorAll('#demo-12 img');
             const height = getComputedStyle(container).height.replace('px', '');
 
-            for (const e of photos) {
-                const offset = e.offsetParent.offsetTop + e.height + 16;
-                if (offset < parseInt(height, 10)) e.parentElement.style.visibility = 'visible';
-                else e.parentElement.style.visibility = 'hidden';
+            try {
+                for (const e of photos) {
+                    const offset = e.offsetParent.offsetTop + e.height + 16;
+
+                    if (offset < parseInt(height, 10)) e.parentElement.style.visibility = 'visible';
+                    else e.parentElement.style.visibility = 'hidden';
+                }
+            } catch {
+                return;
             }
         }
 
@@ -2543,10 +2648,10 @@
         output.innerHTML = text;
     </script>
 
-    <script data-title="development" type="?">
+    <script data-title="development" type="">
         document.styleSheets[3].cssRules[9].style.setProperty('display', 'none', 'important');
         document.styleSheets[3].cssRules[10].style.setProperty('animation-duration', '0s', 'important');
-        document.querySelector('[title="Demo 01"]').click();
+        document.querySelector('#buttonFlexbox').click();
         setTimeout(() => console.groupEnd('Media'), 1000);
     </script>
 

@@ -6,6 +6,7 @@ import State from '../elements/State';
 import GlobalContext from '../../contexts/GlobalContext';
 
 function Hidden(): React.ReactElement {
+    const global: any = React.useContext(GlobalContext);
     const [letter, setLetter]: [string, Function] = React.useState('e');
 
     const cb: Function = React.useCallback((res: string): void => {
@@ -18,7 +19,7 @@ function Hidden(): React.ReactElement {
     }), [cb, letter]);
 
     return (
-        <GlobalContext.Provider value="f">
+        <GlobalContext.Provider value={global}>
             <GlobalContext.Provider value={contextValue}>
                 <Props a="a" b="b">c</Props>
                 <State />

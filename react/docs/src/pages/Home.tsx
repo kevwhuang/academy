@@ -5,6 +5,7 @@ import Fragment from '../components/modules/Fragment';
 import Hidden from '../components/modules/Hidden';
 import Ref from '../components/modules/Ref';
 
+import GlobalContext from '../contexts/GlobalContext';
 import useAxios from '../hooks/useAxios';
 
 const endpoint = 'https://randomuser.me/api/?results=100&nat=us';
@@ -40,11 +41,13 @@ function Home(): React.ReactElement {
 
     return (
         <React.Profiler id="Fragment" onRender={onRender}>
-            <Fragment />
-            <Ref />
-            <Effect />
-            <Hidden />
-        </React.Profiler>
+            <GlobalContext.Provider value="f">
+                <Fragment />
+                <Ref />
+                <Effect />
+                <Hidden />
+            </GlobalContext.Provider>
+        </React.Profiler >
     );
 }
 
