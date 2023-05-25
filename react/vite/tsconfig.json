@@ -3,8 +3,18 @@
         "src",
     ],
     "compilerOptions": {
+        "allowImportingTsExtensions": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "resolveJsonModule": true,
         "skipLibCheck": true,
+        "strict": true,
+        "jsx": "react-jsx",
         "module": "esnext",
+        "moduleResolution": "bundler",
         "target": "esnext",
         "lib": [
             "dom",
@@ -12,20 +22,8 @@
             "esnext",
         ],
         "types": [
-            "vite/client"
+            "vite/client",
         ],
-        // Bundle
-        "allowImportingTsExtensions": true,
-        "isolatedModules": true,
-        "noEmit": true,
-        "resolveJsonModule": true,
-        "jsx": "react-jsx",
-        "moduleResolution": "bundler",
-        // Lint
-        "noFallthroughCasesInSwitch": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "strict": true,
     },
     "references": [
         {

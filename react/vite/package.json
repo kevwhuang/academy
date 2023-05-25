@@ -35,6 +35,7 @@
         "@typescript-eslint/eslint-plugin": "*",
         "@typescript-eslint/parser": "*",
         "@vitejs/plugin-react-swc": "*",
+        "autoprefixer": "*",
         "eslint": "*",
         "eslint-plugin-react-hooks": "*",
         "eslint-plugin-react-refresh": "*",

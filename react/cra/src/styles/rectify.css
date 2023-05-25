@@ -299,6 +299,8 @@ hr {
 }
 
 html {
+    -webkit-font-smoothing: antialiased;
+    color: black;
     display: block;
     font-family: Arial, sans-serif;
 }
