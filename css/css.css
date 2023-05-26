@@ -32,11 +32,13 @@ header p {
     -o-transition: transform 2s;
     -webkit-transition: -webkit-transform 2s;
     -webkit-writing-mode: vertical-rl;
-    bottom: 0;
+    bottom: 1px;
     cursor: default;
     font-size: var(--s1);
     position: fixed;
-    right: 0;
+    right: 1px;
+    text-combine-upright: none;
+    text-orientation: upright;
     transition: transform 2s, -webkit-transform 2s;
     writing-mode: vertical-rl;
 }

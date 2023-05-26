@@ -40,6 +40,7 @@
         "url": "https://github.com/kevwhuang/academy.git"
     },
     "scripts": {
+        "autoprefixer": "postcss css/*.css -u autoprefixer -d build --nomap",
         "build": "tsc --watch",
         "deploy": "gcloud app deploy",
         "eslint": "eslint '**/*.{js,cjs,mjs,jsx,ts,tsx}'",
@@ -47,7 +48,6 @@
         "htmllint": "html-validate **/*.{html,htm,hbs}",
         "jsdoc": "jsdoc -c documents/jsdoc.json",
         "nodemon": "nodemon javascript/exp.js",
-        "postcss": "postcss css/*.css -u autoprefixer -d build --nomap",
         "postdeploy": "gcloud app deploy",
         "prestart": "ts-node -v",
         "sass": "sass -w --no-source-map css:compiled",
@@ -73,6 +73,7 @@
     },
     "devDependencies": {
         "@reduxjs/toolkit": "*",
+        "autoprefixer": "*",
         "bcrypt": "*",
         "cookie": "*",
         "cookie-parser": "*",
@@ -86,6 +87,7 @@
         "npm": "*",
         "react-dom": "*",
         "react-router-dom": "*",
+        "redux-thunk": "*",
         "uuid": "*"
     },
     "peerDependencies": {
@@ -113,7 +115,6 @@
         "@typescript-eslint/eslint-plugin": "*",
         "@typescript-eslint/parser": "*",
         "@webpack-cli/generators": "*",
-        "autoprefixer": "*",
         "babel-jest": "*",
         "bootstrap": "*",
         "chai": "*",
@@ -170,7 +171,6 @@
         "react-redux": "*",
         "react-scripts": "*",
         "redux": "*",
-        "redux-thunk": "*",
         "sass-loader": "*",
         "style-loader": "*",
         "styled-components": "*",

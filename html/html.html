@@ -106,7 +106,7 @@
         }
 
         blockquote span::before {
-            content: "☫ ";
+            content: '☫ ';
         }
 
         caption {
@@ -190,6 +190,10 @@
         footer :where(details, section) a {
             display: block;
             padding: var(--spacing, 0.5rem);
+            text-decoration-skip: ink;
+            text-decoration-skip-ink: auto;
+            text-underline-offset: auto;
+            text-underline-position: below;
         }
 
         h1 {
@@ -550,13 +554,13 @@
 
         #fsForms input:invalid~span::after,
         #fsForms textarea:invalid~span::after {
-            content: "✖";
+            content: '✖';
             padding-left: 10px;
         }
 
         #fsForms input:valid~span::after,
         #fsForms textarea:valid~span::after {
-            content: "✓";
+            content: '✓';
             padding-left: 10px;
         }
 
@@ -614,7 +618,7 @@
 
         #fsImages {
             display: grid;
-            grid-template-areas: "a b c" "d d d";
+            grid-template-areas: 'a b c' 'd d d';
             grid-template-columns: 1fr 1fr 1fr;
             justify-items: center;
         }
@@ -660,7 +664,7 @@
         #fsLists {
             display: grid;
             font-size: 20px;
-            grid-template-areas: "a b" "c d" "e e";
+            grid-template-areas: 'a b' 'c d' 'e e';
             grid-template-columns: 1fr 1fr;
             justify-items: center;
             line-height: 30px;
@@ -721,6 +725,10 @@
         #fsLists section label {
             font-weight: bold;
             margin-right: 20px;
+            text-emphasis: dot currentcolor;
+            text-emphasis-color: currentcolor;
+            text-emphasis-position: under right;
+            text-emphasis-style: dot;
         }
 
         #fsMedia {

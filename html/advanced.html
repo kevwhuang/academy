@@ -62,8 +62,10 @@
 
         html {
             direction: ltr;
+            text-orientation: mixed;
+            text-rendering: optimizeLegibility;
+            touch-action: auto;
             unicode-bidi: normal;
-            will-change: auto;
         }
 
         .material-symbols-outlined {
@@ -534,10 +536,34 @@
             width: calc(100% - var(--x) * 2 - 2vw);
         }
 
+        main#grid>section {
+            cursor: pointer;
+            display: flex;
+            height: 0.5rem;
+        }
+
+        main#grid>section section {
+            flex-grow: 1;
+            opacity: 0.8;
+        }
+
+        main#grid>section section:nth-of-type(1) {
+            background: red;
+        }
+
+        main#grid>section section:nth-of-type(2) {
+            background: green;
+            flex-grow: 2;
+        }
+
+        main#grid>section section:nth-of-type(3) {
+            background: blue;
+        }
+
         main#grid div {
             animation: fadeIn 1s;
             animation-timing-function: ease-in-out;
-            height: calc(100% - 1.5rem);
+            height: calc(100% - 2rem);
             margin: 0.5rem 0.5rem 1rem;
             overflow: hidden auto;
         }
@@ -571,6 +597,7 @@
         main#grid div>section img {
             filter: drop-shadow(2px 2px 4px #000);
             height: clamp(200px, 200px, 200px);
+            image-rendering: crisp-edges;
             margin: 0.5rem;
             object-fit: cover;
             object-position: center;
@@ -825,7 +852,7 @@
             line-height: 2.5rem;
             padding: 2rem;
             text-align: justify;
-            text-justify: auto;
+            text-justify: inter-word;
             text-overflow: ellipsis;
             white-space: normal;
             word-break: keep-all;
@@ -1053,6 +1080,7 @@
             position: relative;
             top: 50%;
             transform: translate3d(-50%, -50%, 0);
+            transform-origin: center;
             transition: color 1s;
         }
 
@@ -1252,6 +1280,7 @@
             top: 50%;
             transform: translateY(-50%);
             user-select: none;
+            will-change: auto;
             word-wrap: break-word;
         }
     </style>
@@ -1417,8 +1446,8 @@
 
             footer section,
             input[type="submit"]:hover,
-            main#flexbox div h3,
-            main#grid div h3,
+            main#flexbox div>h3,
+            main#grid div>h3,
             main#main div#demos article>div,
             main#main div#demos article>h3,
             main#main div#demos article#demo-04 div button:hover,
@@ -1793,6 +1822,14 @@
             <section></section>
 
         </div>
+
+        <section>
+
+            <section name=""></section>
+            <section name=""></section>
+            <section name=""></section>
+
+        </section>
 
     </main>
 
@@ -2776,8 +2813,8 @@
     </script>
 
     <script data-title="development" type="">
-        document.styleSheets[3].cssRules[9].style.setProperty('display', 'none', 'important');
-        document.styleSheets[3].cssRules[10].style.setProperty('animation-duration', '0s', 'important');
+        document.styleSheets[3].cssRules[10].style.setProperty('display', 'none', 'important');
+        document.styleSheets[3].cssRules[11].style.setProperty('animation-duration', '0s', 'important');
         document.querySelector('#buttonGrid').click();
         setTimeout(() => console.groupEnd('Media'), 1000);
     </script>

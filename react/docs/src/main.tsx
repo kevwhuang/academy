@@ -1,10 +1,10 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
-    createBrowserRouter,
-    createRoutesFromElements,
     Route,
     RouterProvider,
+    createBrowserRouter,
+    createRoutesFromElements,
 } from 'react-router-dom';
 
 import Navbar from './layouts/Navbar';
@@ -15,12 +15,12 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Params from './pages/Params';
 
+import './utilities/logs';
+
 import './styles/rectify.scss';
 import './styles/main.scss';
 import './styles/utilities.scss';
 import './styles/keyframes.scss';
-
-import './utilities/logs';
 
 const router: any = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Navbar />} errorElement={<Error />}>
