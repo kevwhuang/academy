@@ -232,6 +232,7 @@
         }
 
         iframe {
+            aspect-ratio: attr(width) / attr(height);
             border-radius: 10px;
             margin: 20px;
         }
@@ -239,6 +240,7 @@
         input[type="checkbox"],
         input[type="radio"] {
             -webkit-transform: scale(1.5);
+            accent-color: seagreen;
             transform: scale(1.5);
         }
 
@@ -323,7 +325,7 @@
         }
 
         q {
-            quotes: '"' '"';
+            quotes: '"' '"' "'" "'";
         }
 
         rt,
@@ -369,6 +371,8 @@
         }
 
         textarea {
+            -webkit-appearance: textarea;
+            appearance: textarea;
             background-color: azure;
             border: 2px solid steelblue;
             border-radius: 5px;
@@ -579,6 +583,10 @@
             border-style: inset;
         }
 
+        #fsForms .formButton input[type="reset"] {
+            margin-top: 0.75em;
+        }
+
         #fsForms .selectorWidth input {
             margin: 0 auto;
             padding: 0;
@@ -675,6 +683,7 @@
         #fsLists>* {
             border: 5px solid cadetblue;
             border-radius: 10px;
+            justify-self: center;
             padding: 20px;
             text-align: center;
             width: 80%;
@@ -1430,7 +1439,7 @@
                         <td style="background-color:peru;">peru</td>
                         <td>Border</td>
                         <td style="background-color:seagreen;">sea green</td>
-                        <td>Background</td>
+                        <td>Background, decoration</td>
                     </tr>
                     <tr>
                         <td style="background-color:silver;">silver</td>

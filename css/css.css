@@ -118,10 +118,10 @@ nav ul li {
 /* ============================================================================================== */
 
 aside button {
-    -o-transition: all 0.5s ease-in-out 500ms, color 2s;
+    -o-transition: all 0.5s, color 2s, ease-in-out 500ms;
     -o-transition-delay: 500ms;
     -o-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-    -webkit-transition: all 0.5s ease-in-out 500ms, color 2s;
+    -webkit-transition: all 0.5s, color 2s, ease-in-out 500ms;
     -webkit-transition-delay: 500ms;
     -webkit-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
     border: none;
@@ -131,7 +131,7 @@ aside button {
     font-size: var(--s4);
     left: 0.75rem;
     position: fixed;
-    transition: all 0.5s ease-in-out 500ms, color 2s;
+    transition: all 0.5s, color 2s, ease-in-out 500ms;
     transition-delay: 500ms;
     transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
     z-index: 100;
@@ -152,11 +152,9 @@ aside button:nth-child(2) {
 }
 
 aside button:hover {
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
     color: indigo;
     font-size: calc(var(--s4) + 0.5rem);
-    transform: rotate(360deg);
+    rotate: 1turn;
 }
 
 aside button:active {

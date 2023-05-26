@@ -175,6 +175,7 @@
         nav menu .dropdown-container>a {
             float: left;
             overflow: hidden;
+            padding: 11px !important;
             width: 25%;
         }
 
@@ -849,6 +850,8 @@
             cursor: crosshair;
             font-family: Verdana, sans-serif;
             hyphens: auto;
+            hyphenate-character: '-';
+            hyphenate-limit-chars: 6 3 3;
             line-height: 2.5rem;
             padding: 2rem;
             text-align: justify;
@@ -883,6 +886,7 @@
             columns: auto 3;
             cursor: crosshair;
             font-family: Verdana, sans-serif;
+            line-break: normal;
             line-height: 2.5rem;
             margin: 2rem;
             orphans: 1;
@@ -1600,8 +1604,8 @@
 
             main#flexbox,
             main#grid {
-                height: calc(100vh - var(--s3) * 3 - 2px) !important;
-                top: calc(var(--s3) * 3 + 2px) !important;
+                height: calc(100vh - var(--s3) * 3 + 2px) !important;
+                top: calc(var(--s3) * 3 - 2px) !important;
                 width: 100vw !important;
             }
 
@@ -1612,8 +1616,8 @@
             main#main div#demos {
                 animation-duration: 0s !important;
                 border: 1px solid red !important;
-                height: calc(100vh - var(--s3) * 3 - 2px) !important;
-                top: calc(var(--s3) * 3 + 2px) !important;
+                height: calc(100vh - var(--s3) * 3 + 2px) !important;
+                top: calc(var(--s3) * 3 - 2px) !important;
                 width: 100vw !important;
             }
 
