@@ -13,7 +13,6 @@
         "@emotion/styled": "*",
         "@mui/icons-material": "*",
         "@mui/material": "*",
-        "@reduxjs/toolkit": "*",
         "axios": "*",
         "cookie": "*",
         "react": "*",

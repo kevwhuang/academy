@@ -17,6 +17,7 @@
     padding: 6px;
     text-align: center;
     text-transform: uppercase;
+    user-select: none;
     width: 100%;
 }
 
@@ -70,6 +71,7 @@
     border-color: #1e2937;
     outline: none;
     padding: 6px;
+    user-select: none;
     width: 100%;
 }
 
@@ -141,10 +143,15 @@
 
 .menu li:hover {
     background: var(--bc);
-    text-decoration: underline;
+    text-decoration: underline teal;
 }
 
-.menu li:active {
+.menu li a {
+    color: white;
+    user-select: none;
+}
+
+.menu li a:active {
     color: teal;
 }
 

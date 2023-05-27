@@ -20,6 +20,7 @@
             "dom",
             "dom.iterable",
             "esnext",
+            "webworker",
         ],
         "types": [
             "vite/client",

@@ -14,7 +14,6 @@
         "@emotion/styled": "*",
         "@mui/material": "*",
         "@mui/icons-material": "*",
-        "@reduxjs/toolkit": "*",
         "cookie": "*",
         "json-server": "*",
         "react": "*",
