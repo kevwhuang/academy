@@ -5,10 +5,12 @@
     "license": "GPL-3.0+",
     "author": "Kevin Huang",
     "scripts": {
-        "build": "tsc && vite build",
+        "build": "vite build",
         "dev": "vite",
         "lint": "eslint src --ext ts,tsx",
-        "start": "vite preview"
+        "prebuild": "tsc",
+        "start": "vite preview",
+        "test": "vitest"
     },
     "dependencies": {
         "@emotion/react": "*",
@@ -41,6 +43,7 @@
         "sass": "*",
         "typescript": "*",
         "vite": "*",
-        "vite-plugin-pwa": "*"
+        "vite-plugin-pwa": "*",
+        "vitest": "*"
     }
 }

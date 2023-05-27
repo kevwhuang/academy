@@ -88,6 +88,8 @@
         "react-router-dom": "*",
         "swr": "*",
         "uuid": "*",
+        "vite-plugin-pwa": "*",
+        "vitest": "*",
         "zustand": "*"
     },
     "peerDependencies": {
@@ -162,6 +164,7 @@
         "mocha": "*",
         "moment": "*",
         "morgan": "*",
+        "n": "*",
         "netlify-cli": "*",
         "passport": "*",
         "postcss": "*",
@@ -185,11 +188,13 @@
         "ts-loader": "*",
         "ts-node": "*",
         "tslib": "*",
+        "turbo": "*",
         "vercel": "*",
-        "vite-plugin-pwa": "*",
         "webpack": "*",
         "webpack-cli": "*",
         "webpack-dev-server": "*",
+        "workbox-sw": "*",
+        "workbox-window": "*",
         "workbox-webpack-plugin": "*"
     },
     "bundleDependencies": [],
@@ -207,7 +212,5 @@
     "publishConfig": {
         "port": 65535
     },
-    "workspaces": [
-        "./"
-    ]
+    "workspaces": []
 }
