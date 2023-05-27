@@ -26,6 +26,8 @@
         "uuid": "*"
     },
     "devDependencies": {
+        "@testing-library/jest-dom": "*",
+        "@testing-library/react": "*",
         "@types/cookie": "*",
         "@types/node": "*",
         "@types/react": "*",
@@ -40,6 +42,7 @@
         "eslint": "*",
         "eslint-plugin-react-hooks": "*",
         "eslint-plugin-react-refresh": "*",
+        "jsdom": "*",
         "sass": "*",
         "typescript": "*",
         "vite": "*",

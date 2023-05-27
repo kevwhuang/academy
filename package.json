@@ -107,6 +107,9 @@
         "@jest/globals": "*",
         "@mui/icons-material": "*",
         "@reduxjs/toolkit": "*",
+        "@testing-library/dom": "*",
+        "@testing-library/jest-dom": "*",
+        "@testing-library/react": "*",
         "@types/cookie": "*",
         "@types/express": "*",
         "@types/jest": "*",
@@ -157,6 +160,7 @@
         "html-validate": "*",
         "html-webpack-plugin": "*",
         "immer": "*",
+        "jsdom": "*",
         "json-server": "*",
         "jwks-rsa": "*",
         "lodash": "*",
@@ -194,8 +198,8 @@
         "webpack-cli": "*",
         "webpack-dev-server": "*",
         "workbox-sw": "*",
-        "workbox-window": "*",
-        "workbox-webpack-plugin": "*"
+        "workbox-webpack-plugin": "*",
+        "workbox-window": "*"
     },
     "bundleDependencies": [],
     "overrides": {},

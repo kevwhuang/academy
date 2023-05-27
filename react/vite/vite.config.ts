@@ -1,7 +1,13 @@
 import autoprefixer from 'autoprefixer';
 import react from '@vitejs/plugin-react-swc';
-import { VitePWA } from 'vite-plugin-pwa';
-import { defineConfig } from 'vite';
+import {
+    ManifestOptions,
+    VitePWA,
+} from 'vite-plugin-pwa';
+import {
+    UserConfigExport,
+    defineConfig,
+} from 'vite';
 
 const assets: string[] = [
     'apple-touch-icon.png',
@@ -9,7 +15,7 @@ const assets: string[] = [
     'pwa-512x512.png',
 ];
 
-const manifest: Object = {
+const manifest: Partial<ManifestOptions> = {
     background_color: '#000000',
     description: '',
     dir: 'ltr',
@@ -43,7 +49,7 @@ const manifest: Object = {
     screenshots: [],
 };
 
-const vite: any = defineConfig({
+const vite: UserConfigExport = defineConfig({
     appType: 'spa',
     base: '/',
     envDir: '.',
