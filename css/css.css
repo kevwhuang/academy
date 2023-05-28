@@ -32,11 +32,18 @@ header p {
     -o-transition: transform 2s;
     -webkit-transition: -webkit-transform 2s;
     -webkit-writing-mode: vertical-rl;
-    bottom: 1px;
     cursor: default;
     font-size: var(--s1);
+    inline-size: 150px;
+    inset: auto 1px 1px auto;
+    inset-block: 2px 0;
+    inset-block-end: 0;
+    inset-block-start: 1px;
+    inset-inline: auto 1px;
+    inset-inline-end: 1px;
+    inset-inline-start: auto;
+    max-inline-size: 150px;
     position: fixed;
-    right: 1px;
     text-combine-upright: none;
     text-orientation: upright;
     transition: transform 2s, -webkit-transform 2s;
@@ -49,20 +56,20 @@ header p span {
 }
 
 header p:hover {
-    -ms-transform: scale(2) translateX(-10vw) translateY(-10vh);
+    -ms-transform: scale(1.5) translateX(-5vw) translateY(90vh);
     -ms-transform-origin: right bottom;
     -ms-writing-mode: initial;
     -webkit-backface-visibility: hidden;
     -webkit-perspective: none;
     -webkit-perspective-origin: inherit;
-    -webkit-transform: scale(2) translateX(-10vw) translateY(-10vh);
+    -webkit-transform: scale(1.5) translateX(-5vw) translateY(90vh);
     -webkit-transform-origin: right bottom;
     -webkit-transform-style: flat;
     -webkit-writing-mode: initial;
     backface-visibility: hidden;
     perspective: none;
     perspective-origin: inherit;
-    transform: scale(2) translateX(-10vw) translateY(-10vh);
+    transform: scale(1.5) translateX(-5vw) translateY(90vh);
     transform-origin: right bottom;
     transform-style: flat;
     writing-mode: initial;
@@ -176,6 +183,7 @@ main .container {
     outline: medium none;
     outline-color: #999;
     outline-offset: 0.5rem;
+    outline-width: 1px;
     position: relative;
     width: calc(100% - var(--box) * 2);
 }
@@ -228,6 +236,7 @@ main .container .sect1 p {
 
 main .container .sect1 p::first-letter {
     font-size: 150%;
+    initial-letter: 2;
 }
 
 main .container .sect1 p::first-line {

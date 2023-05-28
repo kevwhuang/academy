@@ -62,6 +62,10 @@
 
         html {
             direction: ltr;
+            overflow-anchor: auto;
+            overscroll-behavior: contain;
+            pointer-events: all;
+            print-color-adjust: exact;
             text-orientation: mixed;
             text-rendering: optimizeLegibility;
             touch-action: auto;
@@ -452,7 +456,12 @@
             animation: fadeIn 1s;
             animation-timing-function: ease-in-out;
             height: calc(100% - 2rem);
-            margin: 0.5rem 0.5rem 1rem;
+            margin-block: 0.5rem 1rem;
+            margin-block-end: 1rem;
+            margin-block-start: 0.5rem;
+            margin-inline: 0.5rem 0.5rem;
+            margin-inline-end: 0.5rem;
+            margin-inline-start: 0.5rem;
             overflow: hidden auto;
         }
 
@@ -506,6 +515,7 @@
             flex-wrap: wrap;
             gap: 0 0;
             justify-content: center;
+            place-content: flex-start center;
             row-gap: 0;
         }
 
@@ -567,6 +577,12 @@
             height: calc(100% - 2rem);
             margin: 0.5rem 0.5rem 1rem;
             overflow: hidden auto;
+            padding-block: 0 0;
+            padding-block-end: 0;
+            padding-block-start: 0;
+            padding-inline: 0 0;
+            padding-inline-end: 0;
+            padding-inline-start: 0;
         }
 
         main#grid div>h3 {
@@ -612,6 +628,8 @@
 
         main#grid div section {
             display: grid;
+            /* place-items: align-items jusitfy-items */
+            /* place-self: align-self justify-self */
         }
     </style>
 
@@ -819,6 +837,10 @@
         }
 
         main#main div#demos article#demo-04 div img {
+            -webkit-mask: url(../assets/favicon-advanced.ico);
+            -webkit-mask-box-image: unset;
+            -webkit-mask-clip: border-box;
+            -webkit-mask-composite: source-in, xor;
             -webkit-mask-image: url(../assets/favicon-advanced.ico);
             -webkit-mask-origin: border-box;
             -webkit-mask-position: left;
@@ -827,11 +849,17 @@
             border-radius: 0 2rem 2rem;
             cursor: pointer;
             height: 100%;
+            mask: url(../assets/favicon-advanced.ico);
+            mask-border: unset;
+            mask-clip: border-box;
+            mask-composite: intersect;
             mask-image: url(../assets/favicon-advanced.ico);
+            mask-mode: luminance;
             mask-origin: border-box;
             mask-position: left;
             mask-repeat: repeat;
             mask-size: 2rem;
+            mask-type: luminance;
             object-fit: cover;
             object-position: center;
             user-select: none;
@@ -1066,6 +1094,20 @@
             position: absolute;
         }
 
+        main#main div#demos article#demo-08 section {
+            animation: move 5s ease-in-out infinite alternate;
+            background: orange;
+            height: 0.5rem;
+            offset: path() 0 auto auto;
+            offset-anchor: auto;
+            offset-distance: 0;
+            offset-path: path('M 0 0 H 0');
+            offset-rotate: auto;
+            position: sticky;
+            width: 10%;
+            z-index: -1;
+        }
+
         main#main div#demos article#demo-09 div {
             height: 80%;
             width: 80%;
@@ -1224,6 +1266,7 @@
 
         main#main div#demos article#demo-12>div #cards div {
             display: inline-block;
+            isolation: isolate;
             position: relative;
         }
 
@@ -1232,6 +1275,7 @@
             cursor: pointer;
             filter: brightness(90%) grayscale(100%);
             height: 100px;
+            mix-blend-mode: multiply;
             transition: filter 0.5s;
             width: 100px;
         }
@@ -1251,6 +1295,7 @@
             font-size: var(--s1);
             font-weight: 300;
             left: 50%;
+            mix-blend-mode: normal;
             position: absolute;
             text-transform: uppercase;
             top: var(--s1);
@@ -1384,6 +1429,18 @@
 
         }
 
+        @keyframes move {
+
+            from {
+                offset-distance: 0;
+            }
+
+            to {
+                offset-distance: 100%;
+            }
+
+        }
+
         @keyframes opacity1 {
 
             0% {
@@ -1482,6 +1539,16 @@
 
             * {
                 animation: none !important;
+            }
+
+        }
+
+        @media print {
+
+            h1 {
+                page-break-after: avoid;
+                page-break-before: always;
+                page-break-inside: avoid;
             }
 
         }
@@ -1986,6 +2053,8 @@
             <article id="demo-08">
 
                 <h3 data-test>Demo 08</h3>
+
+                <section></section>
 
                 <div>
 
@@ -2537,6 +2606,26 @@
         });
     </script>
 
+    <script data-title="article#demo-08">
+        const bar = document.querySelector('#demo-08 section');
+        const pathLength = document.querySelector('aside').getBoundingClientRect().width;
+
+        bar.style.offsetPath = `path('M 0 0 H ${innerWidth - pathLength * 2}')`;
+
+        function adjustPath() {
+            const pathLength = document.querySelector('aside').getBoundingClientRect().width;
+
+            bar.style.offsetPath = `path('M 0 0 H ${innerWidth - pathLength * 2}')`;
+        }
+
+        let debouncePath = null;
+
+        addEventListener('resize', () => {
+            clearTimeout(debouncePath);
+            debouncePath = setTimeout(adjustPath, 100);
+        });
+    </script>
+
     <script data-title="article#demo-09">
         const page = document.querySelector('#demo-09 p');
         const pageButtons = document.querySelectorAll('#demo-09 span');
@@ -2781,11 +2870,11 @@
         }
 
         const template = document.querySelector('#demo-12 template');
-        let debounce = null;
+        let debounceUsers = null;
 
         addEventListener('resize', () => {
-            clearTimeout(debounce);
-            debounce = setTimeout(hideUsers, 100);
+            clearTimeout(debounceUsers);
+            debounceUsers = setTimeout(hideUsers, 100);
         });
 
         class CustomElement extends HTMLElement {
@@ -2819,7 +2908,8 @@
     <script data-title="development" type="">
         document.styleSheets[3].cssRules[10].style.setProperty('display', 'none', 'important');
         document.styleSheets[3].cssRules[11].style.setProperty('animation-duration', '0s', 'important');
-        document.querySelector('#buttonGrid').click();
+        // document.querySelector('#buttonFlexbox').click();
+        document.querySelector('[title="Demo 08"]').click();
         setTimeout(() => console.groupEnd('Media'), 1000);
     </script>
 
