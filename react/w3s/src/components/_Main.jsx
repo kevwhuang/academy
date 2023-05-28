@@ -1,5 +1,4 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import { v4 as uuid } from 'uuid';
 
 function Message(props) {
@@ -16,24 +15,48 @@ function Message(props) {
 }
 
 function Main() {
-    const [messages, setMessages] = React.useState([]);
-    const { register, handleSubmit } = useForm({ shouldUseNativeValidation: true });
+    const [formInputs, setFormInputs] = React.useState({
+        name: '',
+        email: '',
+        message: '',
+        color: 'peru',
+    });
 
-    function onSubmit(data) {
-        if (data.name + data.email + data.message) setMessages([data, ...messages]);
+    const [messages, setMessages] = React.useState([]);
+
+    const handleChange = React.useCallback(e => {
+        setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
+    }, [formInputs]);
+
+    function handleSubmit(e) {
+        const copy = [...messages];
+
+        e.preventDefault();
+        if (!(formInputs.name + formInputs.email + formInputs.message)) return;
+        copy.unshift(formInputs);
+        setMessages(copy);
+
+        setFormInputs({
+            name: '',
+            email: '',
+            message: '',
+            color: 'peru',
+        });
     }
 
     return (
         <main>
-            <form className="form" onSubmit={handleSubmit(onSubmit)}>
+            <form className="form" onSubmit={handleSubmit}>
                 <h2>Contact</h2>
                 <div className="form-input">
                     <label htmlFor="input-name">Name</label>
                     <input
                         id="input-name"
                         type="text"
+                        name="name"
+                        value={formInputs.name || ''}
                         maxLength="50"
-                        {...register('name')}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="form-input">
@@ -41,16 +64,20 @@ function Main() {
                     <input
                         id="input-email"
                         type="email"
+                        name="email"
+                        value={formInputs.email || ''}
                         maxLength="50"
-                        {...register('email')}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="form-input">
                     <label htmlFor="input-message">Message</label>
                     <textarea
                         id="input-message"
+                        name="message"
+                        value={formInputs.message || ''}
                         maxLength="500"
-                        {...register('message')}
+                        onChange={handleChange}
                     >
                     </textarea>
                 </div>
@@ -59,7 +86,9 @@ function Main() {
                     <select
                         id="input-select"
                         className="form-select"
-                        {...register('color')}>
+                        name="color"
+                        value={formInputs.color}
+                        onChange={handleChange}>
                         <option value="peru">Peru</option>
                         <option value="teal">Teal</option>
                     </select>

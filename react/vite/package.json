@@ -21,7 +21,7 @@
         "cookie": "*",
         "react": "*",
         "react-dom": "*",
-        "react-redux": "*",
+        "react-hook-form": "*",
         "react-router-dom": "*",
         "uuid": "*"
     },
@@ -32,7 +32,6 @@
         "@types/node": "*",
         "@types/react": "*",
         "@types/react-dom": "*",
-        "@types/react-redux": "*",
         "@types/react-router-dom": "*",
         "@types/uuid": "*",
         "@typescript-eslint/eslint-plugin": "*",
