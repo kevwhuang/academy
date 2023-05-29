@@ -71,6 +71,11 @@
             background-color: silver;
         }
 
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y proximity;
+        }
+
         main {
             background-color: wheat;
             padding: 15px;
@@ -142,6 +147,9 @@
         fieldset {
             margin-bottom: 50px;
             margin-top: 40px;
+            scroll-margin: 10px 0 0 0;
+            scroll-snap-align: start;
+            scroll-snap-stop: normal;
         }
 
         figcaption {
@@ -796,9 +804,16 @@
         #mySVG {
             background-color: slateblue;
             border: 3px solid cadetblue;
+            fill: transparent;
             float: right;
             margin: 20px;
             paint-order: fill stroke markers;
+            stroke: slategray;
+            stroke-dasharray: 10px 5px;
+            stroke-dashoffset: 10px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: unset;
         }
 
         #submitNV {
@@ -1893,16 +1908,11 @@
                 </canvas>
 
                 <svg id="mySVG" width="300" height="300">
-                    <circle cx="150" cy="150" r="125" fill="silver" stroke="slategray"
-                        stroke-width="5" />
-                    <circle cx="150" cy="150" r="100" fill="silver" stroke="slategray"
-                        stroke-width="4" />
-                    <circle cx="150" cy="150" r="075" fill="silver" stroke="slategray"
-                        stroke-width="3" />
-                    <circle cx="150" cy="150" r="050" fill="silver" stroke="slategray"
-                        stroke-width="2" />
-                    <circle cx="150" cy="150" r="025" fill="silver" stroke="slategray"
-                        stroke-width="1" />
+                    <circle cx="150" cy="150" r="125" fill="silver" stroke-width="5" />
+                    <circle cx="150" cy="150" r="100" fill="silver" stroke-width="4" />
+                    <circle cx="150" cy="150" r="075" fill="silver" stroke-width="3" />
+                    <circle cx="150" cy="150" r="050" fill="silver" stroke-width="2" />
+                    <circle cx="150" cy="150" r="025" fill="silver" stroke-width="1" />
                     Your browser does not support SVG.
                 </svg>
 

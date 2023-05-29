@@ -17,17 +17,20 @@
         Marquee, Material Symbols, Media Queries, Navigation Bar, Pagination, Positioning, 
         Responsive Design, Selectors, Shadows, Toggles, Transformations, Transitions, Web Components">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <base href="../" target="_blank">
     <noscript>Your browser does not support scripts.</noscript>
 
-    <link rel="apple-touch-icon" sizes="180x180"
-        href="assets/favicon-advanced-apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-advanced-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-advanced-32x32.png">
+    <link rel="apple-touch-icon" href="assets/favicon-advanced-apple-touch-icon.png"
+        sizes="180x180">
+    <link rel="icon" type="image/png" href="assets/favicon-advanced-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/favicon-advanced-32x32.png" sizes="32x32">
     <link rel="icon" type="image/x-icon" href="assets/favicon-advanced.ico">
     <link rel="manifest" href="documents/advanced.webmanifest">
+    <link rel="mask-icon" type="image/png" href="assets/favicon-advanced-android-chrome-512x512.png"
+        color="#000000">
 
     <link rel="preload" as="style" href="css/reset.css">
     <link rel="preload" as="style" href="css/root.css">
@@ -47,7 +50,9 @@
         @import url(https://fonts.googleapis.com/css?family=Inconsolata);
 
         @font-face {
+            font-display: fallback;
             font-family: Audiowide;
+            font-stretch: normal;
             src: url(../assets/audiowide-regular.ttf) format(woff);
             unicode-range: U+00-FF;
         }
@@ -55,17 +60,25 @@
         body {
             -webkit-font-smoothing: antialiased;
             background: #222;
+            font: var(--s2) Audiowide, Copperplate, fantasy;
             font-family: Audiowide, Copperplate, fantasy;
             font-size: var(--s2);
             overflow: hidden;
         }
 
         html {
+            contain: none;
+            content-visibility: visible;
             direction: ltr;
+            font-kerning: normal;
+            font-optical-sizing: auto;
+            font-synthesis: weight style;
             overflow-anchor: auto;
             overscroll-behavior: contain;
             pointer-events: all;
             print-color-adjust: exact;
+            scroll-behavior: smooth;
+            speak-as: normal;
             text-orientation: mixed;
             text-rendering: optimizeLegibility;
             touch-action: auto;
@@ -95,6 +108,7 @@
 
         :root {
             --x: 45.89px;
+            color-scheme: light dark;
         }
 
         ::-webkit-scrollbar {
@@ -175,8 +189,7 @@
             z-index: 20;
         }
 
-        nav menu>a,
-        nav menu .dropdown-container>a {
+        nav menu>a {
             float: left;
             overflow: hidden;
             padding: 11px !important;
@@ -223,6 +236,13 @@
 
         nav menu .dropdown-container:hover .dropdown-content {
             display: block !important;
+        }
+
+        nav menu .dropdown-container>a {
+            float: left;
+            overflow: hidden;
+            padding: 11px !important;
+            width: 25%;
         }
 
         nav menu .dropdown-content {
@@ -745,7 +765,8 @@
 
         main#main div#demos article#demo-01 :last-child {
             border: 1px solid transparent;
-            border-image-outset: 2rem;
+            border-image: url(../assets/colors.bmp) 100 1rem 3rem round;
+            border-image-outset: 3rem;
             border-image-repeat: round;
             border-image-slice: 100;
             border-image-source: url(../assets/colors.bmp);
@@ -762,16 +783,12 @@
             background:
                 url(../assets/favicon-index.ico) no-repeat bottom 10px right 10px,
                 url(../assets/nina-nesbitt.jpg) no-repeat center;
+            background-blend-mode: difference, normal;
             background-clip: padding-box;
             background-origin: padding-box;
             background-size: 50px 50px, cover;
-            box-shadow:
-                rgba(0, 0, 0, 0.09) 0px -3px 5px,
-                rgba(0, 0, 0, 0.12) 0px -12px 30px,
-                rgba(0, 0, 0, 0.12) 0px 4px 6px,
-                rgba(0, 0, 0, 0.17) 0px 12px 13px,
-                rgba(0, 0, 0, 0.25) 0px 54px 55px;
-            height: 80%;
+            block-size: 80%;
+            clip-path: inset(0 0 0 0);
             margin: auto;
             width: clamp(480px, 80%, 1280px);
         }
@@ -809,6 +826,10 @@
 
         main#main div#demos article#demo-03 div img:hover {
             transform: scaleX(-1) translateY(-50%);
+        }
+
+        main#main div#demos article#demo-04 {
+            background-image: radial-gradient(circle, #222 0%, #d96057 200%);
         }
 
         main#main div#demos article#demo-04 div {
@@ -866,8 +887,11 @@
             width: 100%;
         }
 
+        main#main div#demos article#demo-05 {
+            background-image: radial-gradient(circle, #222 0%, #000 125%);
+        }
+
         main#main div#demos article#demo-05 div {
-            background: #000;
             height: 80%;
             overflow-x: hidden;
             overflow-y: auto;
@@ -890,8 +914,20 @@
             word-wrap: normal;
         }
 
+        main#main div#demos article#demo-05 div section {
+            float: left;
+            height: 50%;
+            shape-image-threshold: 1;
+            shape-margin: 0;
+            shape-outside: circle(50%);
+            width: 20%;
+        }
+
+        main#main div#demos article#demo-06 {
+            background-image: radial-gradient(circle, #222 0%, #000 125%);
+        }
+
         main#main div#demos article#demo-06 div {
-            background: #000;
             height: 80%;
             overflow-x: hidden;
             overflow-y: scroll;
@@ -933,6 +969,13 @@
             border: 1px solid blue;
             border-radius: 5px;
             bottom: 0;
+            box-shadow:
+                0 02.8px 2.2px rgba(0, 0, 0, 0.034),
+                0 06.7px 5.3px rgba(0, 0, 0, 0.048),
+                0 12.5px 10px rgba(0, 0, 0, 0.06),
+                0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+                0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+                0 100px 80px rgba(0, 0, 0, 0.12);
             caret-color: green;
             color: #ddd;
             display: block;
@@ -967,12 +1010,12 @@
             margin: 1rem;
             position: relative;
             text-align: center;
-            transition: transform 1s;
+            transition: scale 1s;
             word-break: break-all;
         }
 
         main#main div#demos article#demo-07 div summary:hover {
-            transform: scale(1.1);
+            scale: 1.2;
         }
 
         main#main div#demos article#demo-07 div summary p {
@@ -1113,6 +1156,10 @@
             width: 80%;
         }
 
+        main#main div#demos article#demo-09 {
+            background-image: radial-gradient(circle, #444 0%, #222 80%);
+        }
+
         main#main div#demos article#demo-09 div section:first-of-type {
             height: calc(100% - 48.72px - 2rem);
             margin: 1rem;
@@ -1164,6 +1211,10 @@
             color: #000;
         }
 
+        main#main div#demos article#demo-10 {
+            background-image: radial-gradient(circle, #222 0%, #bc9f50 500%);
+        }
+
         main#main div#demos article#demo-10 div {
             background: #000;
             height: 80%;
@@ -1190,8 +1241,11 @@
             transition: font-size 250ms;
         }
 
+        main#main div#demos article#demo-11 {
+            background-image: radial-gradient(circle, #222 0%, #334075 500%);
+        }
+
         main#main div#demos article#demo-11>div {
-            background: #000;
             height: 80%;
             width: 80%;
         }
@@ -1234,14 +1288,14 @@
         }
 
         main#main div#demos article#demo-11>div div#demo-11-div section i {
-            font-size: 5vmin;
-            width: 100%;
             cursor: default;
-            text-align: center;
+            font-size: 5vmin;
             height: 50%;
-            top: 50%;
             position: relative;
+            text-align: center;
+            top: 50%;
             transform: translateY(-50%);
+            width: 100%;
         }
 
         main#main div#demos article#demo-11>div div#demo-11-div section i:hover {
@@ -1252,8 +1306,12 @@
             font-variation-settings: 'FILL' 0;
         }
 
+        main#main div#demos article#demo-12 {
+            background-image: radial-gradient(circle, #222 0%, #2f6d73 500%);
+        }
+
         main#main div#demos article#demo-12>div {
-            background: #000;
+            backdrop-filter: invert(5%);
             height: 80%;
             width: 80%;
         }
@@ -1272,6 +1330,12 @@
 
         main#main div#demos article#demo-12>div #cards div img {
             border: 2px solid transparent;
+            border-block: 2px solid transparent;
+            border-block-end: 2px solid transparent;
+            border-block-start: 2px solid transparent;
+            border-inline: 2px solid transparent;
+            border-inline-end: 2px solid transparent;
+            border-inline-start: 2px solid transparent;
             cursor: pointer;
             filter: brightness(90%) grayscale(100%);
             height: 100px;
@@ -1320,10 +1384,12 @@
 
         footer section output {
             animation:
-                opacity2 11s,
-                marquee 86400s linear infinite;
+                marquee 86400s linear infinite,
+                opacity2 11s;
             font-family: Inconsolata, 'Courier New', monospace;
+            font-feature-settings: 'aalt' off;
             font-size: var(--s2);
+            font-variant-numeric: lining-nums;
             opacity: 1;
             position: absolute;
             top: 50%;
@@ -1546,9 +1612,9 @@
         @media print {
 
             h1 {
-                page-break-after: avoid;
-                page-break-before: always;
-                page-break-inside: avoid;
+                page-break-after: avoid !important;
+                page-break-before: always !important;
+                page-break-inside: avoid !important;
             }
 
         }
@@ -1556,7 +1622,11 @@
         @media screen and (max-height: 400px) {
 
             main#flexbox div>section img {
-                height: 150px;
+                height: 150px !important;
+            }
+
+            main#main div#demos article#demo-01 :last-child {
+                border-image-outset: 2rem !important;
             }
 
             main#main div#demos article#demo-04 div button {
@@ -1565,17 +1635,17 @@
             }
 
             main#main div#demos article#demo-08 div p {
-                font-size: var(--s5);
-                line-height: var(--s5);
+                font-size: var(--s5) !important;
+                line-height: var(--s5) !important;
             }
 
             main#main div#demos article#demo-08 div p span {
-                border-radius: 1rem;
-                font-size: var(--s3);
+                border-radius: 1rem !important;
+                font-size: var(--s3) !important;
             }
 
             main#main div#demos article#demo-08 div p span::after {
-                border-width: var(--s2);
+                border-width: var(--s2) !important;
             }
 
             main#main div#demos article#demo-09 div section:first-of-type p {
@@ -1599,22 +1669,21 @@
         @media screen and (max-width: 768px) {
 
             main#flexbox>section section {
-                flex-basis: calc(100% / 3);
+                flex-basis: calc(100% / 3) !important;
             }
 
             main#main div#demos article#demo-08 div p {
-                font-size: var(--s5);
-                line-height: var(--s5);
+                font-size: var(--s5) !important;
+                line-height: var(--s5) !important;
             }
 
             main#main div#demos article#demo-08 div p span {
-                border-radius: 1rem;
-                font-size: var(--s3);
+                border-radius: 1rem !important;
+                font-size: var(--s3) !important;
             }
 
-
             main#main div#demos article#demo-08 div p span::after {
-                border-width: var(--s2);
+                border-width: var(--s2) !important;
             }
 
             main#main div#demos article#demo-09 div section:first-of-type {
@@ -1622,8 +1691,8 @@
             }
 
             main#main div#demos article#demo-09 div section:last-of-type span {
-                padding: 0.25rem !important;
                 font-size: var(--s2) !important;
+                padding: 0.25rem !important;
             }
 
             main#main div#welcome h1 {
@@ -1642,7 +1711,10 @@
                 animation-duration: 2s !important;
             }
 
-            main#main div#welcome h1,
+            main#main div#welcome h1 {
+                display: none !important;
+            }
+
             main#main div#welcome h2 {
                 display: none !important;
             }
@@ -1659,8 +1731,7 @@
                 display: none !important;
             }
 
-            footer section,
-            nav menu {
+            footer section {
                 left: 0 !important;
                 width: 100% !important;
             }
@@ -1669,15 +1740,20 @@
                 font-size: var(--s3) !important;
             }
 
-            main#flexbox,
-            main#grid {
+            main#flexbox {
                 height: calc(100vh - var(--s3) * 3 + 2px) !important;
                 top: calc(var(--s3) * 3 - 2px) !important;
                 width: 100vw !important;
             }
 
             main#flexbox div section img {
-                flex-grow: 1;
+                flex-grow: 1 !important;
+            }
+
+            main#grid {
+                height: calc(100vh - var(--s3) * 3 + 2px) !important;
+                top: calc(var(--s3) * 3 - 2px) !important;
+                width: 100vw !important;
             }
 
             main#main div#demos {
@@ -1696,7 +1772,7 @@
             }
 
             main#main div#demos article#demo-04 div img {
-                border-top-right-radius: 0;
+                border-top-right-radius: 0 !important;
             }
 
             main#main div#demos article#demo-05 div p {
@@ -1714,12 +1790,12 @@
             }
 
             main#main div#demos article#demo-08 div p {
-                font-size: var(--s4);
-                line-height: var(--s4);
+                font-size: var(--s4) !important;
+                line-height: var(--s4) !important;
             }
 
             main#main div#demos article#demo-08 div p span {
-                display: none;
+                display: none !important;
             }
 
             main#main div#demos article#demo-09 div section:first-of-type p {
@@ -1734,14 +1810,23 @@
                 display: block !important;
             }
 
-            nav menu>a,
-            nav menu .dropdown-container>a {
+            nav menu {
+                left: 0 !important;
+                width: 100% !important;
+            }
+
+            nav menu>a {
                 padding: 0 !important;
                 width: 100% !important;
             }
 
             nav menu .dropdown-container {
                 display: none !important;
+            }
+
+            nav menu .dropdown-container>a {
+                padding: 0 !important;
+                width: 100% !important;
             }
 
         }
@@ -1967,6 +2052,8 @@
                 <h3 data-test>Demo 05</h3>
 
                 <div>
+
+                    <section></section>
 
                     <p>
                         Minima animi, atque aspernatur consequatur iure, accusantium minus impedit
@@ -2209,22 +2296,22 @@
                             color: #000 !important;
                         }
 
-                        @media screen and (max-width: 480px) {
+                        @media screen and (max-height: 400px) {
 
                             button {
-                                left: 50%;
-                                padding: 0;
-                                transform: translateX(-50%);
-                                width: 100%;
+                                font-size: var(--s2) !important;
+                                top: calc(-1 * var(--s2)) !important;
                             }
 
                         }
 
-                        @media screen and (max-height: 400px) {
+                        @media screen and (max-width: 480px) {
 
                             button {
-                                font-size: var(--s2);
-                                top: calc(-1 * var(--s2));
+                                left: 50% !important;
+                                padding: 0 !important;
+                                transform: translateX(-50%) !important;
+                                width: 100% !important;
                             }
 
                         }
@@ -2660,13 +2747,13 @@
         const buttons = ['&Delta;', '&Theta;', '&Sigma;', '&Omega;'];
         const buttonsDiv = document.querySelector('#demo-10').lastElementChild;
 
-        for (const b of buttons) {
+        for (const btn of buttons) {
             const button = document.createElement('button');
 
-            button.id = `my${b}`;
+            button.id = `my${btn}`;
             button.className = 'hover';
-            button.setAttribute('title', `${b.toLowerCase().slice(1, -1)}`);
-            button.innerHTML = b;
+            button.setAttribute('title', `${btn.toLowerCase().slice(1, -1)}`);
+            button.innerHTML = btn;
             buttonsDiv.appendChild(button);
         }
 
@@ -2844,14 +2931,6 @@
                 .catch(Function);
         }
 
-        function showName() {
-            this.lastElementChild.style.display = 'inline';
-        }
-
-        function hideName() {
-            this.lastElementChild.style.display = 'none';
-        }
-
         function hideUsers() {
             const container = document.querySelector('#demo-12>div');
             const photos = document.querySelectorAll('#demo-12 img');
@@ -2867,6 +2946,14 @@
             } catch {
                 return;
             }
+        }
+
+        function hideName() {
+            this.lastElementChild.style.display = 'none';
+        }
+
+        function showName() {
+            this.lastElementChild.style.display = 'inline';
         }
 
         const template = document.querySelector('#demo-12 template');
@@ -2906,11 +2993,11 @@
     </script>
 
     <script data-title="development" type="">
+        setTimeout(() => console.groupEnd('Media'), 1000);
         document.styleSheets[3].cssRules[10].style.setProperty('display', 'none', 'important');
         document.styleSheets[3].cssRules[11].style.setProperty('animation-duration', '0s', 'important');
-        // document.querySelector('#buttonFlexbox').click();
-        document.querySelector('[title="Demo 08"]').click();
-        setTimeout(() => console.groupEnd('Media'), 1000);
+        document.querySelector('#buttonGrid').click();
+        // document.querySelector('[title$="01"]').click();
     </script>
 
 </body>

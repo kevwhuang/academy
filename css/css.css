@@ -59,14 +59,14 @@ header p:hover {
     -ms-transform: scale(1.5) translateX(-5vw) translateY(90vh);
     -ms-transform-origin: right bottom;
     -ms-writing-mode: initial;
-    -webkit-backface-visibility: hidden;
+    -webkit-backface-visibility: visible;
     -webkit-perspective: none;
     -webkit-perspective-origin: inherit;
     -webkit-transform: scale(1.5) translateX(-5vw) translateY(90vh);
     -webkit-transform-origin: right bottom;
     -webkit-transform-style: flat;
     -webkit-writing-mode: initial;
-    backface-visibility: hidden;
+    backface-visibility: visible;
     perspective: none;
     perspective-origin: inherit;
     transform: scale(1.5) translateX(-5vw) translateY(90vh);
@@ -266,6 +266,10 @@ main .container .sect2 .list {
     word-break: break-all;
 }
 
+main .container .sect2>ol {
+    counter-set: counter 0;
+}
+
 main .container .sect2 ol {
     counter-reset: counter;
     list-style: initial;
@@ -340,7 +344,7 @@ main .container .sect2 section .parallax:first-child {
 }
 
 main .container .sect2 section .parallax:last-child {
-    background: var(--c1) url(../assets/gradient-2.webp) no-repeat fixed center;
+    background: url(../assets/gradient-2.webp) center no-repeat fixed padding-box content-box var(--c1);
     background-clip: content-box;
     background-size: cover;
     height: 50%;

@@ -303,6 +303,9 @@ html {
     color: black;
     display: block;
     font-family: Arial, sans-serif;
+    font-synthesis: weight style;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
 }
 
 i {
