@@ -14,6 +14,7 @@ import Fallback from './pages/Fallback';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Params from './pages/Params';
+import State from './pages/State';
 
 import './utilities/logs';
 
@@ -29,6 +30,7 @@ const router: any = createBrowserRouter(createRoutesFromElements(
         <Route path="params" element={<Params />}>
             <Route path=":id" />
         </Route>
+        <Route path="state" element={<State />} />
     </Route>
 ));
 

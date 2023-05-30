@@ -19,7 +19,8 @@
         "react-dom": "*",
         "react-redux": "*",
         "react-router-dom": "*",
-        "uuid": "*"
+        "uuid": "*",
+        "zustand": "*"
     },
     "devDependencies": {
         "@types/cookie": "*",

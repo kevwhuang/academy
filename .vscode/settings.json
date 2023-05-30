@@ -34,6 +34,7 @@
     "security.workspace.trust.untrustedFiles": "open",
     "terminal.integrated.defaultProfile.osx": "bash",
     "typescript.preferences.quoteStyle": "single",
+    "typescript.updateImportsOnFileMove.enabled": "always",
     "update.mode": "start",
     "workbench.colorTheme": "Default High Contrast",
     "workbench.editor.untitled.hint": "hidden",
@@ -42,5 +43,5 @@
     "workbench.startupEditor": "none",
     "[javascript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
-    }
+    },
 }

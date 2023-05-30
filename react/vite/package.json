@@ -23,7 +23,8 @@
         "react-dom": "*",
         "react-hook-form": "*",
         "react-router-dom": "*",
-        "uuid": "*"
+        "uuid": "*",
+        "zustand": "*"
     },
     "devDependencies": {
         "@testing-library/jest-dom": "*",

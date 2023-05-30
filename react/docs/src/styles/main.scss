@@ -16,8 +16,8 @@ p {
     }
 }
 
-#params {
-    margin-top: 1rem;
+#params,
+#zustand {
     text-align: center;
 
     a {
@@ -26,6 +26,7 @@ p {
         color: white;
         display: inline-block;
         font-size: 3rem;
+        margin: 1rem 0;
         padding: 1rem;
         text-transform: uppercase;
 
@@ -72,4 +73,37 @@ p {
 
 #state {
     @include offscreen;
+}
+
+#zustand {
+    ul {
+        list-style-type: none;
+
+        li {
+            border-top: 1px dotted black;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            row-gap: .5rem;
+
+            p {
+                text-transform: none;
+
+                &:nth-of-type(1) {
+                    font-size: 2rem;
+                    text-transform: uppercase;
+                }
+
+                &:nth-of-type(2) {
+                    font-size: 1rem;
+                    opacity: .75;
+                }
+
+                &:nth-of-type(3) {
+                    font-size: 1rem;
+                    opacity: .75;
+                }
+            }
+        }
+    }
 }
