@@ -37,8 +37,8 @@
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..200">
-    <link rel="stylesheet" media="screen" href="css/reset.css">
-    <link rel="stylesheet" media="screen" href="css/root.css">
+    <link rel="stylesheet" media="all" href="css/reset.css">
+    <link rel="stylesheet" media="all" href="css/root.css">
 
     <script src="https://kit.fontawesome.com/c9d939b58f.js" crossorigin="anonymous" async></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
@@ -569,33 +569,37 @@
 
         main#grid>section {
             cursor: pointer;
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
             height: 0.5rem;
-        }
-
-        main#grid>section section {
-            flex-grow: 1;
             opacity: 0.8;
         }
 
         main#grid>section section:nth-of-type(1) {
             background: red;
+            grid-column: 1 / 2;
+            grid-column-end: 2;
+            grid-column-start: 1;
         }
 
         main#grid>section section:nth-of-type(2) {
             background: green;
-            flex-grow: 2;
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            grid-row-end: 2;
+            grid-row-start: 1;
         }
 
         main#grid>section section:nth-of-type(3) {
             background: blue;
+            grid-column: 3 / 4;
         }
 
         main#grid div {
             animation: fadeIn 1s;
             animation-timing-function: ease-in-out;
-            height: calc(100% - 2rem);
-            margin: 0.5rem 0.5rem 1rem;
+            height: calc(100% - 2.5rem);
+            margin: 1rem;
             overflow: hidden auto;
             padding-block: 0 0;
             padding-block-end: 0;
@@ -631,25 +635,171 @@
             width: 100%;
         }
 
-        main#grid div>section img {
+        main#grid div section:nth-of-type(1) {
+            --content: max(400px, calc(100vh - var(--x) * 1.5 - 2.5rem));
+            --hero: max(400px, calc(100vh - var(--x) * 1.5 - 2.5rem - 50px));
+            display: grid;
+            grid: auto-flow dense / 240px 1fr;
+            grid-auto-columns: 1fr;
+            grid-auto-flow: dense;
+            grid-auto-rows: 150px;
+            grid-template:
+                '. status' 50px 'menu hero' var(--hero) 'menu content' var(--content) 'menu footer' 240px / 240px 1fr;
+            grid-template-areas:
+                '.    status '
+                'menu hero   '
+                'menu content'
+                'menu footer ';
+            grid-template-columns: [first] 240px;
+            grid-template-rows: 50px var(--hero) var(--content);
+            margin: auto;
+            max-width: 1280px;
+        }
+
+        main#grid div section:nth-of-type(1) p {
+            align-items: center;
+            color: #000;
+            display: flex;
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: var(--s4);
+            font-weight: bold;
+            justify-content: center;
+            letter-spacing: 0.5pc;
+            text-transform: uppercase;
+            transition: border-radius 500ms, transform 500ms;
+        }
+
+        main#grid div section:nth-of-type(1) p:hover {
+            border-radius: 1rem;
+            letter-spacing: 0;
+            transform: scale(0.95);
+        }
+
+        main#grid div section:nth-of-type(1) p:nth-of-type(1) {
+            background: var(--c1);
+            grid-area: menu;
+            text-orientation: upright;
+            writing-mode: vertical-lr;
+        }
+
+        main#grid div section:nth-of-type(1) p:nth-of-type(2) {
+            background: var(--c2);
+            grid-area: status;
+        }
+
+        main#grid div section:nth-of-type(1) p:nth-of-type(3) {
+            background: var(--c3);
+            grid-area: hero;
+        }
+
+        main#grid div section:nth-of-type(1) p:nth-of-type(4) {
+            background: var(--c4);
+            grid-area: content;
+        }
+
+        main#grid div section:nth-of-type(1) p:nth-of-type(5) {
+            background: var(--c5);
+            grid-area: footer;
+        }
+
+        main#grid div section:nth-of-type(2) {
+            align-content: flex-start;
+            align-items: stretch;
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+            height: auto;
+            justify-content: space-between;
+            justify-items: stretch;
+            margin: auto;
+            max-width: 1280px;
+            place-items: stretch stretch;
+        }
+
+        main#grid div section:nth-of-type(2) img {
+            --size: 200px;
             filter: drop-shadow(2px 2px 4px #000);
-            height: clamp(200px, 200px, 200px);
+            height: clamp(var(--size), var(--size), var(--size));
             image-rendering: crisp-edges;
-            margin: 0.5rem;
+            margin: auto;
             object-fit: cover;
             object-position: center;
             transition: transform 500ms;
-            width: clamp(200px, 200px, 200px);
+            width: clamp(var(--size), var(--size), var(--size));
         }
 
-        main#grid div>section img:hover {
+        main#grid div section:nth-of-type(2) img:hover {
             transform: scale(1.05);
         }
 
-        main#grid div section {
+        main#grid div section:nth-of-type(3) {
+            align-items: stretch;
+            color: #000;
+            column-gap: 1rem;
             display: grid;
-            /* place-items: align-items jusitfy-items */
-            /* place-self: align-self justify-self */
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: var(--s3);
+            gap: 1rem;
+            grid-template: repeat(5, 1fr) / repeat(9, minmax(0, 1fr));
+            grid-template-columns: repeat(9, minmax(0, 1fr));
+            grid-template-rows: repeat(5, 1fr);
+            overflow: hidden;
+            row-gap: 1rem;
+            transition: gap 1s;
+        }
+
+        main#grid div section:nth-of-type(3) p {
+            align-items: center;
+            border-radius: 1rem;
+            display: flex;
+            font-weight: bold;
+            justify-content: center;
+            transition: transform 500ms;
+        }
+
+        main#grid div section:nth-of-type(3) p:hover {
+            transform: scale(1.05);
+        }
+
+        main#grid div section:nth-of-type(3) p:nth-of-type(1) {
+            background: var(--c1);
+            grid-area: 1 / 2 / 2 / span 7;
+        }
+
+        main#grid div section:nth-of-type(3) p:nth-of-type(2) {
+            background: var(--c2);
+            grid-area: 2 / 1 / span 3;
+        }
+
+        main#grid div section:nth-of-type(3) p:nth-of-type(3) {
+            background: var(--c3);
+            grid-area: 5 / 2 / 6 / span 3;
+        }
+
+        main#grid div section:nth-of-type(3) p:nth-of-type(4) {
+            background: var(--c3);
+            grid-area: 5 / 6 / 6 / span 3;
+        }
+
+        main#grid div section:nth-of-type(3) p:nth-of-type(5) {
+            background: var(--c2);
+            grid-area: 2 / 9 / span 3;
+        }
+
+        main#grid div section:nth-of-type(3) p:nth-of-type(6) {
+            background: var(--c4);
+            grid-area: 3 / 7 / span 2 / span 2;
+        }
+
+        main#grid div section:nth-of-type(3) p:nth-of-type(7) {
+            background: var(--c5);
+            grid-area: 2 / 5 / span 4;
+        }
+
+        main#grid div section:nth-of-type(3) p:nth-of-type(8) {
+            background: var(--c4);
+            grid-area: 2 / 2 / span 2 / span 2;
         }
     </style>
 
@@ -1625,6 +1775,23 @@
                 height: 150px !important;
             }
 
+            main#grid div section:nth-of-type(1) {
+                font-size: var(--s3) !important;
+                grid-template-areas:
+                    'menu status '
+                    'menu hero   '
+                    'menu content'
+                    'menu footer ' !important;
+            }
+
+            main#grid div section:nth-of-type(3) {
+                gap: 0 !important;
+            }
+
+            main#grid div section:nth-of-type(3) p {
+                border-radius: 0 !important;
+            }
+
             main#main div#demos article#demo-01 :last-child {
                 border-image-outset: 2rem !important;
             }
@@ -1672,6 +1839,43 @@
                 flex-basis: calc(100% / 3) !important;
             }
 
+            main#grid>section {
+                grid-template-columns: 1fr 1fr 1fr !important;
+            }
+
+            main#grid div section:nth-of-type(1) p {
+                font-size: var(--s3) !important;
+                letter-spacing: 0 !important;
+            }
+
+            main#grid div section:nth-of-type(3) {
+                gap: 0 !important;
+            }
+
+            main#grid div section:nth-of-type(3) p {
+                border-radius: 0 !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:nth-of-type(1) {
+                align-self: center !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:nth-of-type(2) {
+                justify-self: flex-end !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:nth-of-type(3) {
+                align-self: flex-end !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:nth-of-type(4) {
+                align-self: flex-end !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:nth-of-type(5) {
+                justify-self: flex-start !important;
+            }
+
             main#main div#demos article#demo-08 div p {
                 font-size: var(--s5) !important;
                 line-height: var(--s5) !important;
@@ -1703,9 +1907,17 @@
                 font-size: var(--s2) !important;
             }
 
+            .hide {
+                display: none;
+            }
+
         }
 
         @media screen and (max-width: 600px) {
+
+            main#grid div section:nth-of-type(1) p:not(:nth-of-type(1)) {
+                font-size: var(--s2) !important;
+            }
 
             main#main canvas {
                 animation-duration: 2s !important;
@@ -1723,11 +1935,15 @@
 
         @media screen and (max-width: 480px) {
 
-            aside#left,
-            aside#right,
-            footer,
-            main#main canvas,
-            main#main div#welcome {
+            aside#left {
+                display: none !important;
+            }
+
+            aside#right {
+                display: none !important;
+            }
+
+            footer {
                 display: none !important;
             }
 
@@ -1754,6 +1970,76 @@
                 height: calc(100vh - var(--s3) * 3 + 2px) !important;
                 top: calc(var(--s3) * 3 - 2px) !important;
                 width: 100vw !important;
+            }
+
+            main#grid div {
+                height: calc(100% - 1.5rem) !important;
+                margin: 0.5rem !important;
+            }
+
+            main#grid div section:nth-of-type(1) {
+                grid-template-columns: 0 !important;
+            }
+
+            main#grid div section:nth-of-type(1) p:first-of-type {
+                opacity: 0 !important;
+            }
+
+            main#grid div section:nth-of-type(3) {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:hover {
+                transform: scale(0.9) !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:nth-of-type(1) {
+                background: var(--c5) !important;
+                grid-area: 1 / 1 / 2 / 3 !important;
+                place-self: auto auto !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:nth-of-type(2) {
+                background: var(--c4) !important;
+                grid-area: 2 / 1 !important;
+                place-self: auto auto !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:nth-of-type(3) {
+                background: var(--c4) !important;
+                grid-area: 2 / 2 !important;
+                place-self: auto auto !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:nth-of-type(4) {
+                background: var(--c3) !important;
+                grid-area: 3 / 1 !important;
+                place-self: auto auto !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:nth-of-type(5) {
+                background: var(--c3) !important;
+                grid-area: 3 / 2 !important;
+                place-self: auto auto !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:nth-of-type(6) {
+                background: var(--c2) !important;
+                grid-area: 4 / 1 !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:nth-of-type(7) {
+                background: var(--c2) !important;
+                grid-area: 4 / 2 !important;
+            }
+
+            main#grid div section:nth-of-type(3) p:nth-of-type(8) {
+                background: var(--c1) !important;
+                grid-area: 5 / 1 / 6 / 3 !important;
+            }
+
+            main#main canvas {
+                display: none !important;
             }
 
             main#main div#demos {
@@ -1806,6 +2092,10 @@
                 display: none !important;
             }
 
+            main#main div#welcome {
+                display: none !important;
+            }
+
             nav {
                 display: block !important;
             }
@@ -1850,7 +2140,7 @@
         <menu>
 
             <a id="buttonMain" class="current" onclick="navMain()">Main</a>
-            <a id="buttonFlexbox" onclick="navFlexbox()">Flexbox</a>
+            <a id="buttonFlexbox" onclick="navFlexbox()">Flex<span class="hide">box</span></a>
             <a id="buttonGrid" onclick="navGrid()">Grid</a>
 
             <div class="dropdown-container">
@@ -1975,15 +2265,38 @@
 
             <h3 data-test>Grid</h3>
 
+            <section style="display: none;">
+
+                <p>Menu</p>
+                <p>Status</p>
+                <p>Hero</p>
+                <p>Content</p>
+                <p>Footer</p>
+
+            </section>
+
             <section></section>
+
+            <section style="display: none;">
+
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+                <p>5</p>
+                <p>6</p>
+                <p>7</p>
+                <p>8</p>
+
+            </section>
 
         </div>
 
         <section>
 
-            <section name=""></section>
-            <section name=""></section>
-            <section name=""></section>
+            <section name="layout"></section>
+            <section name="gallery"></section>
+            <section name="areas"></section>
 
         </section>
 
@@ -2340,7 +2653,7 @@
     </footer>
 
     <script data-title="header">
-        const $ = e => console.log('%c' + e, 'color:crimson;');
+        const $ = e => console.log('%c' + e, 'color: crimson;');
         const time = e => Math.floor(e.timeStamp / 1000).toString().padStart(5, '0');
 
         const audio = document.querySelector('audio');
@@ -2408,6 +2721,7 @@
         const buttonFlexbox = document.getElementById('buttonFlexbox');
         const buttonGrid = document.getElementById('buttonGrid');
         const buttonMain = document.getElementById('buttonMain');
+        const buttonNavbar = document.querySelector('[title*="Navbar"]');
         const pageFlexbox = document.getElementById('flexbox');
         const pageGrid = document.getElementById('grid');
         const pageMain = document.getElementById('main');
@@ -2415,36 +2729,39 @@
         function navFlexbox() {
             buttonFlexbox.style.backgroundColor = '#000';
             buttonFlexbox.style.color = '#bbb';
-            pageFlexbox.style.display = 'block';
             buttonGrid.style.backgroundColor = '#666';
             buttonGrid.style.color = '#000';
-            pageGrid.style.display = 'none';
             buttonMain.style.backgroundColor = '#666';
             buttonMain.style.color = '#000';
+            buttonNavbar.style.opacity = '0.25';
+            pageFlexbox.style.display = 'block';
+            pageGrid.style.display = 'none';
             pageMain.style.display = 'none';
         }
 
         function navGrid() {
             buttonFlexbox.style.backgroundColor = '#666';
             buttonFlexbox.style.color = '#000';
-            pageFlexbox.style.display = 'none';
             buttonGrid.style.backgroundColor = '#000';
             buttonGrid.style.color = '#bbb';
-            pageGrid.style.display = 'block';
             buttonMain.style.backgroundColor = '#666';
             buttonMain.style.color = '#000';
+            buttonNavbar.style.opacity = '0.25';
+            pageFlexbox.style.display = 'none';
+            pageGrid.style.display = 'block';
             pageMain.style.display = 'none';
         }
 
         function navMain() {
             buttonFlexbox.style.backgroundColor = '#666';
             buttonFlexbox.style.color = '#000';
-            pageFlexbox.style.display = 'none';
             buttonGrid.style.backgroundColor = '#666';
             buttonGrid.style.color = '#000';
-            pageGrid.style.display = 'none';
             buttonMain.style.backgroundColor = '#000';
             buttonMain.style.color = '#bbb';
+            buttonNavbar.style.opacity = '1';
+            pageFlexbox.style.display = 'none';
+            pageGrid.style.display = 'none';
             pageMain.style.display = 'block';
         }
     </script>
@@ -2459,6 +2776,8 @@
         const right = document.getElementById('right');
 
         function toggleNav() {
+            if (buttonNavbar.style.opacity === '0.25') return;
+
             if (footer.style.display === 'none') {
                 demos.style.borderWidth = '1px';
                 footer.style.display = 'block';
@@ -2590,13 +2909,13 @@
     </script>
 
     <script data-title="main#flexbox">
-        const buttonEven = document.querySelector('#flexbox [name="even"]');
-        const buttonFilter = document.querySelector('#flexbox [name="filter"]');
-        const buttonOdd = document.querySelector('#flexbox [name="odd"]');
+        const buttonEven = document.querySelector('main#flexbox [name="even"]');
+        const buttonFilter = document.querySelector('main#flexbox [name="filter"]');
+        const buttonOdd = document.querySelector('main#flexbox [name="odd"]');
         let filter = 'normal';
 
         const populateFlexbox = async () => {
-            const flexboxDisplay = document.querySelector('#flexbox section');
+            const flexboxDisplay = document.querySelector('main#flexbox section');
             const res = await axios('https://picsum.photos/v2/list?page=2&limit=50');
 
             res.data.forEach(e => {
@@ -2638,27 +2957,49 @@
     </script>
 
     <script data-title="main#grid">
-        const populateGrid = async () => {
-            const gridDisplay = document.querySelector('#grid section');
-            const res = await axios('https://picsum.photos/v2/list?page=3&limit=50');
+        const buttonAreas = document.querySelector('main#grid [name="areas"]');
+        const buttonGallery = document.querySelector('main#grid [name="gallery"]');
+        const buttonLayout = document.querySelector('main#grid [name="layout"]');
+        const gridAreas = document.querySelector('main#grid div section:nth-of-type(3)');
+        const gridGallery = document.querySelector('main#grid div section:nth-of-type(2)');
+        const gridLayout = document.querySelector('main#grid div section:nth-of-type(1)');
 
-            res.data.forEach(e => {
+        const populateGrid = async () => {
+            for (let i = 1; i <= 50; i++) {
                 const img = document.createElement('img');
 
-                img.src = e.download_url;
-                img.alt = `${e.author}.`;
+                img.src = `https://100k-faces.glitch.me/random-image?${i}`;
+                img.alt = `Face ${i}.`;
                 img.draggable = false;
 
-                gridDisplay.appendChild(img);
-            });
+                gridGallery.appendChild(img);
+            }
         };
 
         populateGrid();
+
+        buttonAreas.addEventListener('click', () => {
+            gridAreas.style.display = 'grid';
+            gridGallery.style.display = 'none';
+            gridLayout.style.display = 'none';
+        });
+
+        buttonGallery.addEventListener('click', () => {
+            gridAreas.style.display = 'none';
+            gridGallery.style.display = 'grid';
+            gridLayout.style.display = 'none';
+        });
+
+        buttonLayout.addEventListener('click', () => {
+            gridAreas.style.display = 'none';
+            gridGallery.style.display = 'none';
+            gridLayout.style.display = 'grid';
+        });
     </script>
 
     <script data-title="div#demos">
         {
-            const $ = e => console.log(`%c${e}`, 'color:peru;');
+            const $ = e => console.log(`%c${e}`, 'color: peru;');
             const animate = document.querySelector('#demos article>h3');
 
             animate.onanimationstart = e => $(`[${time(e)}] Animation: start`);
@@ -2873,7 +3214,7 @@
         });
 
         {
-            const $ = e => console.log(`%c${e}`, 'color:seagreen;');
+            const $ = e => console.log(`%c${e}`, 'color: seagreen;');
             const trans = document.querySelector('#demo-10 div button');
 
             trans.ontransitionrun = e => $(`[${time(e)}] Transition: run`);
@@ -2992,12 +3333,12 @@
         output.innerHTML = text;
     </script>
 
-    <script data-title="development" type="">
+    <script data-title="development" type="?">
         setTimeout(() => console.groupEnd('Media'), 1000);
         document.styleSheets[3].cssRules[10].style.setProperty('display', 'none', 'important');
         document.styleSheets[3].cssRules[11].style.setProperty('animation-duration', '0s', 'important');
-        document.querySelector('#buttonGrid').click();
-        // document.querySelector('[title$="01"]').click();
+        document.querySelector('#buttonFlexbox').click();
+        document.querySelector('[title$="01"]').click();
     </script>
 
 </body>
