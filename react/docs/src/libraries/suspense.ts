@@ -1,13 +1,13 @@
-function suspense(promise: any): { read: Function } {
+function suspense(promise: Promise<any>): { read: Function } {
     let result: any = null;
     let status: string = 'pending';
 
     let suspender: any = promise.then(
-        (res: any) => {
+        (res: any): void => {
             status = 'success';
             result = res;
         },
-        (error: Error) => {
+        (error: Error): void => {
             status = 'error';
             result = error;
         }

@@ -19,6 +19,7 @@
         "react-dom": "*",
         "react-redux": "*",
         "react-router-dom": "*",
+        "swr": "*",
         "uuid": "*",
         "zustand": "*"
     },

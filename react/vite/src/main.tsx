@@ -6,6 +6,7 @@ import {
     createBrowserRouter,
     createRoutesFromElements,
 } from 'react-router-dom';
+import { SWRConfig } from 'swr';
 
 import Navbar from './layouts/Navbar';
 
@@ -21,6 +22,8 @@ import './styles/utilities.scss';
 import './styles/keyframes.scss';
 import './styles/media.scss';
 
+const config: Config = {};
+
 const router: any = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Navbar />} errorElement={<Error />}>
         <Route index element={<Home />} />
@@ -30,6 +33,8 @@ const router: any = createBrowserRouter(createRoutesFromElements(
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
-        <RouterProvider router={router} fallbackElement={<Fallback />} />
+        <SWRConfig value={config}>
+            <RouterProvider router={router} fallbackElement={<Fallback />} />
+        </SWRConfig>
     </React.StrictMode>
 );

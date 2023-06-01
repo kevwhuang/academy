@@ -2,6 +2,13 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { v4 as uuid } from 'uuid';
 
+const defaultValues = {
+    name: '',
+    email: '',
+    message: '',
+    color: 'peru',
+};
+
 function Message(props) {
     const { color, email, message, name } = props.data;
     const classAdd = color === 'teal' ? '--switch' : '';
@@ -17,11 +24,16 @@ function Message(props) {
 
 function Main() {
     const [messages, setMessages] = React.useState([]);
-    const { register, handleSubmit } = useForm({ shouldUseNativeValidation: true });
+    const { formState, handleSubmit, register, reset }
+        = useForm({ defaultValues, shouldUseNativeValidation: true });
 
     function onSubmit(data) {
         if (data.name + data.email + data.message) setMessages([data, ...messages]);
     }
+
+    React.useEffect(() => {
+        if (formState.isSubmitSuccessful) reset(defaultValues);
+    }, [formState]);
 
     return (
         <main>

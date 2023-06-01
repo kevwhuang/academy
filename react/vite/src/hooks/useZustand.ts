@@ -2,8 +2,8 @@ import { create } from 'zustand';
 
 const initialize: State = {};
 
-const useStore = create<Actions & State>(() => ({
+const useZustand = create<Actions & State>(() => ({
     ...initialize,
 }));
 
-export default useStore;
+export default useZustand;

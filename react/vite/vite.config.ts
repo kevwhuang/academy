@@ -58,12 +58,12 @@ const vite: UserConfigExport = defineConfig({
     publicDir: 'public',
     root: process.cwd(),
     plugins: [
-        react(),
         VitePWA({
             manifest,
             registerType: 'autoUpdate',
             includeAssets: assets,
         }),
+        react(),
     ],
     build: {
         outDir: 'dist',

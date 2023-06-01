@@ -23,6 +23,7 @@
         "react-dom": "*",
         "react-hook-form": "*",
         "react-router-dom": "*",
+        "swr": "*",
         "uuid": "*",
         "zustand": "*"
     },
