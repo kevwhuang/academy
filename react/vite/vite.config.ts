@@ -16,7 +16,7 @@ const assets: string[] = [
 ];
 
 const manifest: Partial<ManifestOptions> = {
-    background_color: '#000000',
+    background_color: '#1b2635',
     description: '',
     dir: 'ltr',
     display: 'standalone',
@@ -26,7 +26,7 @@ const manifest: Partial<ManifestOptions> = {
     scope: '/',
     short_name: 'vite',
     start_url: '/',
-    theme_color: '#000000',
+    theme_color: '#1b2635',
     categories: [],
     icons: [
         {

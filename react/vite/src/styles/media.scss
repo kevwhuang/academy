@@ -1,3 +1,22 @@
+@use '_root' as *;
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-1: #ffffff;
+        --color-2: #2f65cb;
+        --color-3: #407ad6;
+        --color-4: #d3382f;
+        --color-5: #202021;
+        --color-6: #696a6b;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+    }
+}
+
 @media screen and (max-width: 1280px) {}
 
 @media screen and (max-width: 1024px) {}

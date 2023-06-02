@@ -18,7 +18,7 @@ module.exports = {
         sourceType: 'module',
     },
     rules: {
-        // Options
+        // OPTIONS
         'arrow-parens': [2, 'always'],
         'func-style': [2, 'expression'],
         'id-length': [2, { min: 2 }],
@@ -26,7 +26,7 @@ module.exports = {
         'max-len': [2, { code: 100 }],
         'newline-per-chained-call': [2, { ignoreChainWithDepth: 4 }],
         'quotes': [2, 'single'],
-        // Error
+        // ERRORS
         'array-bracket-spacing': 2,
         'array-callback-return': 2,
         'arrow-spacing': 2,
@@ -108,7 +108,7 @@ module.exports = {
         'spaced-comment': 2,
         'template-curly-spacing': 2,
         'wrap-iife': 2,
-        // Warn
+        // WARNINGS
         'no-console': 1,
         'no-unused-vars': 1,
     },

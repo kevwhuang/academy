@@ -2,10 +2,8 @@ import React from 'react';
 
 function NotFound(): React.ReactElement {
     return (
-        <>
-            <main id="not-found">
-            </main>
-        </>
+        <main id="not-found">
+        </main>
     );
 }
 

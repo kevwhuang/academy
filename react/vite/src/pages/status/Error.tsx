@@ -2,10 +2,8 @@ import React from 'react';
 
 function Error(): React.ReactElement {
     return (
-        <>
-            <main id="error">
-            </main>
-        </>
+        <main id="error">
+        </main>
     );
 }
 
