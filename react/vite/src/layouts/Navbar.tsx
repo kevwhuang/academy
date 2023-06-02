@@ -4,6 +4,8 @@ import { Outlet } from 'react-router-dom';
 function Navbar(): React.ReactElement {
     return (
         <>
+            <nav id="navbar">
+            </nav>
             <Outlet />
         </>
     );
