@@ -1,13 +1,14 @@
 ---
 # Airbnb JavaScript Style Guide
 rules:
-    # Options
+    # PROJECT
+    # OPTIONS
     arrow-parens:
         - 2
-        - always
+        - as-needed
     func-style:
         - 2
-        - expression
+        - declaration
     id-length:
         - 2
         - min: 2
@@ -20,10 +21,28 @@ rules:
     newline-per-chained-call:
         - 2
         - ignoreChainWithDepth: 4
+    object-curly-spacing:
+        - 2
+        - always
+    one-var:
+        - 2
+        - never
+    operator-linebreak:
+        - 2
+        - before
+    padded-blocks:
+        - 2
+        - never
+    quote-props:
+        - 2
+        - as-needed
     quotes:
         - 2
         - single
-    # Error
+    space-before-function-paren:
+        - 2
+        - never
+    # ERROR
     array-bracket-spacing: 2
     array-callback-return: 2
     arrow-spacing: 2
@@ -84,27 +103,21 @@ rules:
     no-whitespace-before-property: 2
     nonblock-statement-body-position: 2
     object-curly-newline: 2
-    object-curly-spacing: 2
     object-shorthand: 2
-    one-var: 2
-    operator-linebreak: 2
-    padded-blocks: 2
     prefer-arrow-callback: 2
     prefer-const: 2
     prefer-destructuring: 2
     prefer-object-spread: 2
     prefer-spread: 2
     prefer-template: 2
-    quote-props: 2
     radix: 2
     semi: 2
     space-before-blocks: 2
-    space-before-function-paren: 2
     space-in-parens: 2
     space-infix-ops: 2
     spaced-comment: 2
     template-curly-spacing: 2
     wrap-iife: 2
-    # Warn
+    # WARN
     no-console: 1
     no-unused-vars: 1

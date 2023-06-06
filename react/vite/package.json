@@ -16,9 +16,10 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "lint": "eslint src --ext ts,tsx",
+        "lint": "eslint src --ext js,cjs,mjs,jsx,ts,tsx",
         "prebuild": "tsc",
-        "start": "vite preview",
+        "preview": "vite preview",
+        "start": "",
         "test": "vitest"
     },
     "dependencies": {
@@ -50,6 +51,7 @@
         "@vitejs/plugin-react-swc": "*",
         "autoprefixer": "*",
         "eslint": "*",
+        "eslint-plugin-import": "*",
         "eslint-plugin-react-hooks": "*",
         "eslint-plugin-react-refresh": "*",
         "jsdom": "*",
@@ -58,5 +60,6 @@
         "vite": "*",
         "vite-plugin-pwa": "*",
         "vitest": "*"
-    }
+    },
+    "private": true
 }

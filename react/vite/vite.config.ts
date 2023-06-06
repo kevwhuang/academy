@@ -66,7 +66,9 @@ const vite: UserConfigExport = defineConfig({
         react(),
     ],
     build: {
+        manifest: true,
         outDir: 'dist',
+        sourcemap: 'hidden',
     },
     css: {
         postcss: {

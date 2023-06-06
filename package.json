@@ -11,14 +11,13 @@
         "HTML",
         "JavaScript",
         "Jest",
-        "MUI",
         "MySQL",
-        "Next",
         "Node",
         "React",
         "Sass",
         "TypeScript",
-        "Vite"
+        "Vite",
+        "Zustand"
     ],
     "homepage": "https://github.com/kevwhuang/academy",
     "bugs": {
@@ -59,17 +58,16 @@
         "port": 65535
     },
     "dependencies": {
-        "@mui/material": "* || 5.x",
         "axios": "* || 1.x",
         "eslint": "* || 8.x",
         "express": "* || 4.x",
         "jest": "* || 29.x",
         "mysql": "* || 2.x",
-        "next": "* || 13.x",
         "react": "* || 18.x",
         "sass": "* || 1.x",
         "typescript": "* || 5.x",
-        "vite": "* || 4.x"
+        "vite": "* || 4.x",
+        "zustand": "* || 4.x"
     },
     "devDependencies": {
         "autoprefixer": "*",
@@ -90,8 +88,7 @@
         "swr": "*",
         "uuid": "*",
         "vite-plugin-pwa": "*",
-        "vitest": "*",
-        "zustand": "*"
+        "vitest": "*"
     },
     "peerDependencies": {
         "@apollo/client": "*",
@@ -107,6 +104,7 @@
         "@godaddy/terminus": "*",
         "@jest/globals": "*",
         "@mui/icons-material": "*",
+        "@mui/material": "*",
         "@reduxjs/toolkit": "*",
         "@testing-library/dom": "*",
         "@testing-library/jest-dom": "*",
@@ -134,6 +132,7 @@
         "corepack": "*",
         "create-next-app": "*",
         "create-react-app": "*",
+        "create-remix": "*",
         "css-loader": "*",
         "dotenv-vault": "*",
         "electron": "*",
@@ -171,6 +170,7 @@
         "morgan": "*",
         "n": "*",
         "netlify-cli": "*",
+        "next": "*",
         "passport": "*",
         "postcss": "*",
         "postcss-cli": "*",
@@ -183,6 +183,7 @@
         "react-scripts": "*",
         "redux": "*",
         "redux-thunk": "*",
+        "remix": "*",
         "sass-loader": "*",
         "style-loader": "*",
         "styled-components": "*",

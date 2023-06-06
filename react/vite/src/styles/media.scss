@@ -2,8 +2,8 @@
 
 @media (prefers-color-scheme: light) {
     :root {
-        --color-1: #ffffff;
-        --color-2: #2f65cb;
+        --color-1: #f3f4f5;
+        --color-2: #f3f4f5;
         --color-3: #407ad6;
         --color-4: #d3382f;
         --color-5: #202021;
@@ -14,6 +14,8 @@
 @media (prefers-reduced-motion: reduce) {
     * {
         animation: none !important;
+        opacity: 1 !important;
+        transition: none !important;
     }
 }
 
@@ -24,3 +26,5 @@
 @media screen and (max-width: 768px) {}
 
 @media screen and (max-width: 480px) {}
+
+@media screen and (min-width: 2560px) {}
