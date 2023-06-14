@@ -315,8 +315,10 @@
 
     const obj = Object.create(null), __obj__ = obj, k1 = 'k1'; // instantiate object
     const proto = { test: NaN }; Object.setPrototypeOf(obj, proto); // set __proto__
+    const sym = Symbol.for('k0'); // global symbols
     obj[k1] = 'v1'; obj['k2'] = '2'; obj.k3 = '3'; // property assignments
-    obj[Symbol('k0')] = 'v0'; // symbol assignment
+    obj[sym] = 'v0'; // symbol assignment
+    obj[Symbol.toPrimitive] = () => alert('error'); // object to primitive conversion hint
 
     Object.defineProperty(obj, 'k4', // property descriptor attributes false by default
         { value: 'v4', enumerable: true }); // can be iterated in for...of

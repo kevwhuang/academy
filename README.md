@@ -32,12 +32,10 @@ Zustand|Completed
 
 Name|Status
 -|-
-Cracking the Coding Interview|
 CS50|
 CSS-Tricks|Completed
 HackerRank|
 JavaScript 30|Completed
-Modern JavaScript Tutorial|
 NeetCode 150|
 
 # WEB 101
