@@ -13,9 +13,9 @@ import Display from '../layouts/Display';
 
 import Home from '../pages/Home';
 
-import Error from '../pages/status/Error';
-import Fallback from '../pages/status/Fallback';
-import NotFound from '../pages/status/NotFound';
+import Error from '../pages/statuses/Error';
+import Fallback from '../pages/statuses/Fallback';
+import NotFound from '../pages/statuses/NotFound';
 
 describe('Render', () => {
     screen.debug();
@@ -34,7 +34,7 @@ describe('Render', () => {
         });
     });
 
-    describe('Status', () => {
+    describe('Statuses', () => {
         test('Error', () => {
             render(<Error />);
             expect(document.body).toBeInTheDocument();

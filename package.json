@@ -135,7 +135,6 @@
         "create-remix": "*",
         "css-loader": "*",
         "dotenv-vault": "*",
-        "electron": "*",
         "emotion": "*",
         "eslint-config-airbnb": "*",
         "eslint-config-airbnb-base": "*",

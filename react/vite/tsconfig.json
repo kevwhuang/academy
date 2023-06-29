@@ -4,6 +4,7 @@
     ],
     "compilerOptions": {
         "allowImportingTsExtensions": true,
+        "esModuleInterop": true,
         "isolatedModules": true,
         "noEmit": true,
         "noFallthroughCasesInSwitch": true,
@@ -23,7 +24,6 @@
         ],
         "types": [
             "vite/client",
-            "vite-plugin-pwa/client",
         ],
     },
     "references": [
