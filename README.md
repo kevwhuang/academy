@@ -24,7 +24,7 @@ MySQL|Completed
 Node|Completed
 React|Completed
 Sass|Completed
-TypeScript|
+TypeScript|Completed
 Vite|Completed
 Zustand|Completed
 
@@ -32,11 +32,10 @@ Zustand|Completed
 
 Name|Status
 -|-
-CS50|
+CS50x|Completed
 CSS-Tricks|Completed
-HackerRank|
 JavaScript 30|Completed
-NeetCode 150|
+NeetCode 150|Completed
 
 # WEB 101
 
@@ -64,7 +63,7 @@ NeetCode 150|
 
 # JOB 501
 
-- [ ] Academy
+- [x] Academy
 
 ## HTML BOILERPLATE
 
