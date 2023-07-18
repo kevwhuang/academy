@@ -41,7 +41,7 @@ const utility: Partial<ObjOne> = { c: new Promise<unknown>(function () { }) };
 c(function (item: number, key: keyof Obj): unknown[] {
     return [item, key, obj!.b];
 }(List.d, 'c'));
-c(function <T>(month: number = 0, day?: T): Date {
+c(function <T>(month: number = 0, day?: string | T): Date {
     return new Date(0, month, Number(day));
 }(0, '1'));
 
@@ -62,5 +62,5 @@ class ClassExt extends Class {
 abstract class Blueprint<T extends boolean | string = string> extends ClassExt {
     protected abstract abs: T;
 }
-class ClassAbs extends Blueprint { readonly abs: string = ''; }
+class ClassAbs extends Blueprint<string> { readonly abs: string = ''; }
 new ClassAbs().print();

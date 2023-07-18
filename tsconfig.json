@@ -17,7 +17,7 @@
         "skipLibCheck": true,
         "sourceMap": false,
         "strict": true,
-        "strictNullChecks": false,
+        "strictNullChecks": true,
         "module": "system",
         "outDir": "build",
         "outFile": "build/dist.js",

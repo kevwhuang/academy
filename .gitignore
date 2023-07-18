@@ -1,5 +1,5 @@
-**/.DS_Store
-node_modules/
-
 .env.me
+**/.DS_Store
+
 .turbo/
+node_modules/
