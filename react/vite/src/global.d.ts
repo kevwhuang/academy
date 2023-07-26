@@ -1,3 +1,0 @@
-interface Actions { }
-
-interface State { }
