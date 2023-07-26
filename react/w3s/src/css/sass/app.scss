@@ -1,0 +1,70 @@
+@forward 'utilities';
+@use 'sass:map';
+
+$map: (
+    display: inline-block,
+);
+
+%dimensions {
+    height: 100px + 100px;
+    width: 2 * 100px;
+}
+
+@mixin text($color, $alignment: center, $arg-list...) {
+    color: complement(complement(darken(lighten($color, 50%), 50%)));
+    text-align: $alignment;
+    text-transform: function('12345');
+}
+
+@mixin user-select {
+    @content;
+    -moz-user-select: none; // vendor prefixes
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+@function function($param) {
+    @if str-length($param)>=3 {
+        @return uppercase;
+    }
+
+    @else {
+        @return lowercase;
+    }
+}
+
+.card {
+    display: map.get($map, 'display');
+
+    >h6 {
+        @include text(teal);
+        @include user-select;
+        font-family: Pokemon, fantasy;
+        letter-spacing: 2px;
+        position: relative;
+        top: 6px;
+    }
+
+    img {
+        @extend %dimensions;
+
+        @include user_select {
+            user-select: auto;
+        }
+
+        cursor: move;
+        position: relative;
+        top: 6px;
+        transition: filter .5s;
+
+        padding: abs(-20px) {
+            bottom: null;
+            top: 20px;
+        }
+
+        &:hover {
+            filter: saturate(percentage(1.5));
+        }
+    }
+}

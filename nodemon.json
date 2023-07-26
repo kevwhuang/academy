@@ -1,0 +1,6 @@
+{
+    "verbose": false,
+    "delay": 10,
+    "ext": "js,cjs,mjs,ts,json",
+    "restartable": "r"
+}

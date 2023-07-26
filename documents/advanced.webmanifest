@@ -1,0 +1,53 @@
+{
+    "share_target": null,
+    "prefer_related_applications": false,
+    "background_color": "#222222",
+    "description": "A metaproject documenting my programming journey.",
+    "dir": "ltr",
+    "display": "browser",
+    "id": "",
+    "lang": "en",
+    "name": "academy",
+    "orientation": "landscape-primary",
+    "scope": "../",
+    "short_name": "academy",
+    "start_url": "../html/advanced.html",
+    "theme_color": "#222222",
+    "categories": [
+        "education"
+    ],
+    "display_override": [
+        "standalone",
+        "minimal-ui"
+    ],
+    "file_handlers": [],
+    "icons": [
+        {
+            "purpose": "any",
+            "sizes": "192x192",
+            "src": "../assets/favicon-advanced-android-chrome-192x192.png",
+            "type": "image/png"
+        },
+        {
+            "purpose": "any maskable",
+            "sizes": "512x512",
+            "src": "../assets/favicon-advanced-android-chrome-512x512.png",
+            "type": "image/png"
+        }
+    ],
+    "protocol_handlers": [],
+    "related_applications": [],
+    "screenshots": [
+        {
+            "label": "Home screen",
+            "platform": "wide",
+            "sizes": "1440x900",
+            "src": "../assets/screenshot.tif",
+            "type": "image/tiff"
+        }
+    ],
+    "shortcuts": [],
+    "launch_handler": {
+        "client_mode": "auto"
+    }
+}

@@ -1,0 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans);
+
+@font-face {
+    font-family: Pokemon;
+    src: url(../resources/pokemon.ttf);
+}
+
+:root {
+    --bc: #0D1117;
+    --bc2: #23272F;
+    --fc: #F6F7F9;
+}
+
+::view-transition-new(root) {
+    animation-duration: 1s;
+}
+
+::view-transition-old(root) {
+    animation-duration: 1s;
+}

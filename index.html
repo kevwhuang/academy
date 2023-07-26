@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en-US" dir="ltr">
+
+<head>
+
+    <title>Academy</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Kevin Huang">
+    <meta name="description" content="Table of contents.">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon-index.ico">
+    <link rel="stylesheet" href="css/reset.css">
+
+    <style>
+        body {
+            background: #000;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+
+        button {
+            border: 0.1rem solid #fff;
+            color: #fff;
+            display: block;
+            font-weight: bolder;
+            margin: 1rem;
+            padding: 1rem;
+            text-transform: uppercase;
+            width: 10rem;
+        }
+
+        button:active {
+            border-color: yellow;
+            color: yellow;
+            opacity: 0.5;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <script>
+        const labels = ['HTML', 'CSS', 'Advanced', 'JS-ACA', 'JS-W3S', 'JS-WEB'];
+
+        for (const e of labels) {
+            const button = document.createElement('button');
+            const link = `html/${e.toLowerCase()}.html`;
+
+            button.innerText = e;
+            button.addEventListener('click', () => document.location = link);
+            document.body.appendChild(button);
+        }
+
+        addEventListener('mousemove', e => {
+            const r = Math.min(e.clientX / 5, 150);
+            const g = Math.min(e.clientY / 5, 150);
+            const b = Math.min((r + g) / 2, 150);
+
+            document.body.style.backgroundColor = `rgb(${r},${g},${b})`;
+        });
+    </script>
+
+</body>
+
+</html>

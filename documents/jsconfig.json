@@ -1,0 +1,12 @@
+{
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "./*",
+    ],
+    "compilerOptions": {
+        "module": "system",
+        "target": "es6"
+    }
+}

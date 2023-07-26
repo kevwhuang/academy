@@ -1,0 +1,16 @@
+{
+    "background_color": "#000000",
+    "description": "",
+    "dir": "ltr",
+    "display": "standalone",
+    "lang": "en",
+    "name": "cra",
+    "orientation": "any",
+    "scope": "/",
+    "short_name": "cra",
+    "start_url": "/",
+    "theme_color": "#000000",
+    "categories": [],
+    "icons": [],
+    "screenshots": []
+}

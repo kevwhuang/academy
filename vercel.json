@@ -1,0 +1,16 @@
+{
+    "framework": null,
+    "cleanUrls": true,
+    "public": false,
+    "buildCommand": "",
+    "installCommand": "",
+    "outputDirectory": "",
+    "github": {
+        "autoAlias": false,
+        "autoJobCancelation": true,
+        "silent": true,
+        "deploymentEnabled": {
+            "main": true
+        }
+    }
+}
