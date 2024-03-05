@@ -1,4 +1,7 @@
+.env
 .env.me
+.env.previous
+.env.vault
 **/.DS_Store
 
 .turbo/

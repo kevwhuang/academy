@@ -32,7 +32,6 @@ Zustand|Completed
 
 Name|Status
 -|-
-CS50x|Completed
 CSS-Tricks|Completed
 JavaScript 30|Completed
 NeetCode 150|Completed

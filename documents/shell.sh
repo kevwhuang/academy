@@ -4,7 +4,7 @@ clear;
 echo -e "\033[0;33m>>> CLI\033[0m";
 cd /Users/kevinhuang/Documents/dev;
 sudo find . -name ".DS_Store" -delete;
-cd /Users/kevinhuang/Documents/dev/academy;
+cd /Users/kevinhuang/Documents/dev/\(archives\)/study/academy;
 echo -e "\033[0;36m--------------------";
 
 echo -e "\033[0;33m>>> HOMEBREW\033[0m";
